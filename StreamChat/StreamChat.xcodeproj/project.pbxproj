@@ -16,7 +16,7 @@
 		D9A4F8BF262EB0B900F9A28E /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8BE262EB0B900F9A28E /* Host.swift */; };
 		D9A4F8C3262EB32D00F9A28E /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8C2262EB32D00F9A28E /* Client.swift */; };
 		D9A4F8C6262EB4FE00F9A28E /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8C5262EB4FE00F9A28E /* ChatManager.swift */; };
-		D9A4F8CF262EB66A00F9A28E /* StreamChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8CE262EB66A00F9A28E /* StreamChatTests.swift */; };
+		D9A4F8CF262EB66A00F9A28E /* StreamChatManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8CE262EB66A00F9A28E /* StreamChatManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,7 @@
 		D9A4F8C2262EB32D00F9A28E /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		D9A4F8C5262EB4FE00F9A28E /* ChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
 		D9A4F8CC262EB66A00F9A28E /* StreamChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9A4F8CE262EB66A00F9A28E /* StreamChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamChatTests.swift; sourceTree = "<group>"; };
+		D9A4F8CE262EB66A00F9A28E /* StreamChatManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamChatManagerTests.swift; sourceTree = "<group>"; };
 		D9A4F8D0262EB66A00F9A28E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,7 +110,7 @@
 		D9A4F8CD262EB66A00F9A28E /* StreamChatTests */ = {
 			isa = PBXGroup;
 			children = (
-				D9A4F8CE262EB66A00F9A28E /* StreamChatTests.swift */,
+				D9A4F8CE262EB66A00F9A28E /* StreamChatManagerTests.swift */,
 				D9A4F8D0262EB66A00F9A28E /* Info.plist */,
 			);
 			path = StreamChatTests;
@@ -229,7 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9A4F8CF262EB66A00F9A28E /* StreamChatTests.swift in Sources */,
+				D9A4F8CF262EB66A00F9A28E /* StreamChatManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

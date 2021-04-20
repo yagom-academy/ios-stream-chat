@@ -2,8 +2,8 @@
 import Foundation
 
 class ChatManager: NSObject, StreamDelegate {    
-    private var inputStream: InputStream?
-    private var outputStream: OutputStream?
+   private var inputStream: InputStream?
+   private var outputStream: OutputStream?
     
     func connectSocket() {
         Stream.getStreamsToHost(withName: Host.address, port: Host.port, inputStream: &inputStream, outputStream: &outputStream)
@@ -13,13 +13,11 @@ class ChatManager: NSObject, StreamDelegate {
             return
         }
         
-        let myRunLoop = RunLoop.current
-        inputStream.schedule(in: myRunLoop, forMode: .default)
+        let runLoop = RunLoop.current
+        inputStream.schedule(in: runLoop, forMode: .default)
         inputStream.delegate = self
         
         inputStream.open()
         outputStream.open()
-        
-        print("current ip : \(Host.address)")
     }
 }
