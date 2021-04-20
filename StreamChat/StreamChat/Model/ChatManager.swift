@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct ChatManager {
+class ChatManager: NSObject, StreamDelegate {    
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
     
