@@ -41,6 +41,16 @@ class ChatManager: NSObject {
         
         writeOnOutputStream(with: data)
     }
+    
+    func closeSocket() {
+        guard let inputStream = self.inputStream,
+              let outputStream = self.outputStream else {
+            return
+        }
+        
+        inputStream.close()
+        outputStream.close()
+    }
 }
 extension ChatManager: StreamDelegate {
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
@@ -52,6 +62,8 @@ extension ChatManager: StreamDelegate {
             iStream.read(&buffer, maxLength: bufferSize)
             let msg = String(bytes: buffer, encoding: .utf8)
             print(msg)
+        case .endEncountered:
+            closeSocket()
         default:
             print("some other event...")
         }
