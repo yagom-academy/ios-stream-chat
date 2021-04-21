@@ -21,6 +21,7 @@
 		D9A4F8E2262FBF4900F9A28E /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8C2262EB32D00F9A28E /* Client.swift */; };
 		D9A4F8E5262FBF4C00F9A28E /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8BE262EB0B900F9A28E /* Host.swift */; };
 		D9A4F8E9262FC09200F9A28E /* CommunicationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8E8262FC09200F9A28E /* CommunicationMessage.swift */; };
+		D9A4F8EC262FC4E800F9A28E /* CommunicationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8E8262FC09200F9A28E /* CommunicationMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -239,6 +240,7 @@
 				D9A4F8CF262EB66A00F9A28E /* StreamChatManagerTests.swift in Sources */,
 				D9A4F8DF262FBDEB00F9A28E /* ChatManager.swift in Sources */,
 				D9A4F8E2262FBF4900F9A28E /* Client.swift in Sources */,
+				D9A4F8EC262FC4E800F9A28E /* CommunicationMessage.swift in Sources */,
 				D9A4F8E5262FBF4C00F9A28E /* Host.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -30,16 +30,16 @@ class ChatManager: NSObject {
             return
         }
         
-        data.withUnsafeBytes {
-            guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
-                print("Error joining chat")
-                return
-            }
-            
-            if let outputStream = self.outputStream {
-                outputStream.write(pointer, maxLength: data.count)
-            }
+        writeOnOutputStream(with: data)
+    }
+    
+    func send(message: String) {
+        let sendingMessage = CommunicationMessage.send(message).description
+        guard let data = sendingMessage.data(using: .utf8) else {
+            return
         }
+        
+        writeOnOutputStream(with: data)
     }
 }
 extension ChatManager: StreamDelegate {
@@ -47,7 +47,7 @@ extension ChatManager: StreamDelegate {
         switch eventCode {
         case .hasBytesAvailable:
             let iStream  =  aStream as! InputStream
-            let bufferSize = 1024
+            let bufferSize = 300
             var buffer = [UInt8](repeating: 0, count: bufferSize)
             iStream.read(&buffer, maxLength: bufferSize)
             let msg = String(bytes: buffer, encoding: .utf8)
@@ -57,3 +57,18 @@ extension ChatManager: StreamDelegate {
         }
     }
 }
+extension ChatManager {
+    private func writeOnOutputStream(with data: Data) {
+        data.withUnsafeBytes {
+            guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
+                print("Error")
+                return
+            }
+            
+            if let outputStream = self.outputStream {
+                outputStream.write(pointer, maxLength: data.count)
+            }
+        }
+    }
+}
+
