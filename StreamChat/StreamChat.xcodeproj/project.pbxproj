@@ -22,6 +22,9 @@
 		D9A4F8E5262FBF4C00F9A28E /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8BE262EB0B900F9A28E /* Host.swift */; };
 		D9A4F8E9262FC09200F9A28E /* CommunicationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8E8262FC09200F9A28E /* CommunicationMessage.swift */; };
 		D9A4F8EC262FC4E800F9A28E /* CommunicationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8E8262FC09200F9A28E /* CommunicationMessage.swift */; };
+		D9A4F8F22631035F00F9A28E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8F12631035F00F9A28E /* Message.swift */; };
+		D9A4F8F8263103D200F9A28E /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8F7263103D200F9A28E /* ChatMessage.swift */; };
+		D9A4F8FC2631060E00F9A28E /* AlarmMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8FB2631060E00F9A28E /* AlarmMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		D9A4F8CE262EB66A00F9A28E /* StreamChatManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamChatManagerTests.swift; sourceTree = "<group>"; };
 		D9A4F8D0262EB66A00F9A28E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9A4F8E8262FC09200F9A28E /* CommunicationMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationMessage.swift; sourceTree = "<group>"; };
+		D9A4F8F12631035F00F9A28E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		D9A4F8F7263103D200F9A28E /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		D9A4F8FB2631060E00F9A28E /* AlarmMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,7 @@
 		D9A4F8BD262EB0AD00F9A28E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D9A4F8F02631033A00F9A28E /* Message */,
 				D9A4F8BE262EB0B900F9A28E /* Host.swift */,
 				D9A4F8C2262EB32D00F9A28E /* Client.swift */,
 				D9A4F8C5262EB4FE00F9A28E /* ChatManager.swift */,
@@ -121,6 +128,16 @@
 				D9A4F8D0262EB66A00F9A28E /* Info.plist */,
 			);
 			path = StreamChatTests;
+			sourceTree = "<group>";
+		};
+		D9A4F8F02631033A00F9A28E /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				D9A4F8F12631035F00F9A28E /* Message.swift */,
+				D9A4F8F7263103D200F9A28E /* ChatMessage.swift */,
+				D9A4F8FB2631060E00F9A28E /* AlarmMessage.swift */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,11 +240,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9A4F8F8263103D200F9A28E /* ChatMessage.swift in Sources */,
 				C7927559262C562B00EF5D3A /* ViewController.swift in Sources */,
 				D9A4F8E9262FC09200F9A28E /* CommunicationMessage.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
 				D9A4F8C6262EB4FE00F9A28E /* ChatManager.swift in Sources */,
+				D9A4F8F22631035F00F9A28E /* Message.swift in Sources */,
+				D9A4F8FC2631060E00F9A28E /* AlarmMessage.swift in Sources */,
 				D9A4F8C3262EB32D00F9A28E /* Client.swift in Sources */,
 				D9A4F8BF262EB0B900F9A28E /* Host.swift in Sources */,
 			);
