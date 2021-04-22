@@ -20,8 +20,8 @@
 		D9A4F8DF262FBDEB00F9A28E /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8C5262EB4FE00F9A28E /* ChatManager.swift */; };
 		D9A4F8E2262FBF4900F9A28E /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8C2262EB32D00F9A28E /* Client.swift */; };
 		D9A4F8E5262FBF4C00F9A28E /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8BE262EB0B900F9A28E /* Host.swift */; };
-		D9A4F8E9262FC09200F9A28E /* CommunicationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8E8262FC09200F9A28E /* CommunicationMessage.swift */; };
-		D9A4F8EC262FC4E800F9A28E /* CommunicationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8E8262FC09200F9A28E /* CommunicationMessage.swift */; };
+		D9A4F8E9262FC09200F9A28E /* SocketDataFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8E8262FC09200F9A28E /* SocketDataFormat.swift */; };
+		D9A4F8EC262FC4E800F9A28E /* SocketDataFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8E8262FC09200F9A28E /* SocketDataFormat.swift */; };
 		D9A4F8F22631035F00F9A28E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8F12631035F00F9A28E /* Message.swift */; };
 		D9A4F8F8263103D200F9A28E /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8F7263103D200F9A28E /* ChatMessage.swift */; };
 		D9A4F8FC2631060E00F9A28E /* AlarmMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8FB2631060E00F9A28E /* AlarmMessage.swift */; };
@@ -52,7 +52,7 @@
 		D9A4F8CC262EB66A00F9A28E /* StreamChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9A4F8CE262EB66A00F9A28E /* StreamChatManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamChatManagerTests.swift; sourceTree = "<group>"; };
 		D9A4F8D0262EB66A00F9A28E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D9A4F8E8262FC09200F9A28E /* CommunicationMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationMessage.swift; sourceTree = "<group>"; };
+		D9A4F8E8262FC09200F9A28E /* SocketDataFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketDataFormat.swift; sourceTree = "<group>"; };
 		D9A4F8F12631035F00F9A28E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D9A4F8F7263103D200F9A28E /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		D9A4F8FB2631060E00F9A28E /* AlarmMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmMessage.swift; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 				D9A4F8BE262EB0B900F9A28E /* Host.swift */,
 				D9A4F8C2262EB32D00F9A28E /* Client.swift */,
 				D9A4F8C5262EB4FE00F9A28E /* ChatManager.swift */,
-				D9A4F8E8262FC09200F9A28E /* CommunicationMessage.swift */,
+				D9A4F8E8262FC09200F9A28E /* SocketDataFormat.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -242,7 +242,7 @@
 			files = (
 				D9A4F8F8263103D200F9A28E /* ChatMessage.swift in Sources */,
 				C7927559262C562B00EF5D3A /* ViewController.swift in Sources */,
-				D9A4F8E9262FC09200F9A28E /* CommunicationMessage.swift in Sources */,
+				D9A4F8E9262FC09200F9A28E /* SocketDataFormat.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
 				D9A4F8C6262EB4FE00F9A28E /* ChatManager.swift in Sources */,
@@ -260,7 +260,7 @@
 				D9A4F8CF262EB66A00F9A28E /* StreamChatManagerTests.swift in Sources */,
 				D9A4F8DF262FBDEB00F9A28E /* ChatManager.swift in Sources */,
 				D9A4F8E2262FBF4900F9A28E /* Client.swift in Sources */,
-				D9A4F8EC262FC4E800F9A28E /* CommunicationMessage.swift in Sources */,
+				D9A4F8EC262FC4E800F9A28E /* SocketDataFormat.swift in Sources */,
 				D9A4F8E5262FBF4C00F9A28E /* Host.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

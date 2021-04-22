@@ -1,7 +1,7 @@
 
 import Foundation
 
-enum CommunicationMessage: CustomStringConvertible {
+enum SocketDataFormat: CustomStringConvertible {
     case join(String)
     case send(String)
     
