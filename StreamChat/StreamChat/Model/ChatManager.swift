@@ -102,21 +102,19 @@ extension ChatManager {
         
         if receivedMessage.isJoinMessage || receivedMessage.isLeavingMessage {
             return AlarmMessage(content: receivedMessage, receivedTime: Date())
-        } else if receivedMessage.components(separatedBy: "::").count == 2 {
+        } else {
             let messageInfo = receivedMessage.components(separatedBy: "::")
             let (sender, content) = (messageInfo[0],messageInfo[1])
             return ChatMessage(content: content, receivedTime: Date(), sender: sender)
         }
-        
-        return nil
     }
 }
 extension String {
     var isJoinMessage: Bool {
-        return hasSuffix("has joined\n")
+        return hasSuffix(String(describing: SocketDataFormat.userJoined))
     }
     
     var isLeavingMessage: Bool {
-        return hasSuffix("has left\n")
+        return hasSuffix(String(describing: SocketDataFormat.userLeft))
     }
 }

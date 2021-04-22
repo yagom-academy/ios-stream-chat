@@ -4,6 +4,8 @@ import Foundation
 enum SocketDataFormat: CustomStringConvertible {
     case join(String)
     case send(String)
+    case userJoined
+    case userLeft
     
     var description: String {
         switch self {
@@ -11,6 +13,10 @@ enum SocketDataFormat: CustomStringConvertible {
             return "USR_NAME::\(nickname)"
         case .send(let message):
             return "MSG::\(message)"
+        case .userJoined:
+            return "has joined\n"
+        case .userLeft:
+            return "has left\n"
         }
     }
 }
