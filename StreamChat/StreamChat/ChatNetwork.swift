@@ -8,7 +8,7 @@ final class ChatNetwork: NSObject {
     
     func setupNetwork() {
         let serverAddress = "stream-ios.yagom-academy.kr" as CFString
-        let serverPort: UInt32 = 80
+        let serverPort: UInt32 = 7748
         
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?

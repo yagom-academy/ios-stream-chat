@@ -1,18 +1,11 @@
-//
-//  StreamChat - ViewController.swift
-//  Created by yagom. 
-//  Copyright © yagom. All rights reserved.
-// 
-
 import UIKit
 
-class ViewController: UIViewController {
-
+final class ViewController: UIViewController {
+    private let chatNetwork = ChatNetwork()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        chatNetwork.setupNetwork()
     }
-
-
 }
-
