@@ -24,4 +24,23 @@ final class ChatNetwork: NSObject {
         inputStream.open()
         outputStream.open()
     }
+    
+    func connectChat() {
+        let joinMessage = "USR_NAME::\(username)".data(using: .utf8)!
+    
+        joinMessage.withUnsafeBytes { (unsafeRawBufferPointer) in
+            guard let message = unsafeRawBufferPointer.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
+                print("채팅 연결 실패")
+                return
+            }
+            
+            // Writes the contents of a provided data buffer to the receiver.
+            let result = outputStream.write(message, maxLength: joinMessage.count)
+            if result > 0 {
+                print("연결 메시지 전송 성공")
+            } else {
+                print("연결 메시지 전송 실패")
+            }
+        }
+    }
 }
