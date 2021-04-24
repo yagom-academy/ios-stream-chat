@@ -21,6 +21,8 @@ final class ChatNetwork: NSObject {
         inputStream.schedule(in: .current, forMode: .common)
         outputStream.schedule(in: .current, forMode: .common)
         
+        inputStream.delegate = self
+        
         inputStream.open()
         outputStream.open()
     }
@@ -42,5 +44,27 @@ final class ChatNetwork: NSObject {
                 print("연결 메시지 전송 실패")
             }
         }
+    }
+}
+
+extension ChatNetwork: StreamDelegate {
+    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+        switch eventCode {
+        case .hasBytesAvailable:
+            readMessage(stream: aStream as! InputStream)
+        default:
+            print("다른 스트림 이벤트 발생")
+        }
+    }
+    
+    private func readMessage(stream: InputStream) {
+        let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxMessageLength)
+        let readBytes = inputStream.read(buffer, maxLength: maxMessageLength)
+
+        guard let messages = String(bytesNoCopy: buffer, length: readBytes, encoding: .utf8, freeWhenDone: true) else {
+            return
+        }
+        
+        print(messages)
     }
 }
