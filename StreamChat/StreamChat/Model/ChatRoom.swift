@@ -47,6 +47,18 @@ class ChatRoom: NSObject, StreamDelegate {
            }
        }
     
+    func send(message: String) {
+         let message = "MSG::\(message)".data(using: .utf8)!
+         
+         message.withUnsafeBytes {
+             guard let output = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
+                 print("Error send message")
+                 return
+             }
+             outputStream.write(output, maxLength: maxLength)
+         }
+     }
+    
     func disconnect() {
             inputStream.close()
             outputStream.close()
