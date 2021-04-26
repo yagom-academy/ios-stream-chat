@@ -46,6 +46,11 @@ class ChatRoom: NSObject, StreamDelegate {
                outputStream.write(output, maxLength: maxLength)
            }
        }
+    
+    func disconnect() {
+            inputStream.close()
+            outputStream.close()
+        }
 }
 
 
