@@ -33,7 +33,19 @@ class ChatRoom: NSObject, StreamDelegate {
         outputStream.open()
     }
     
-   
+    func joinChat(username: String) {
+           let joinMessage = "USR_NAME::\(username)".data(using: .utf8)!
+           
+           self.username = username
+           
+           joinMessage.withUnsafeBytes {
+               guard let output = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
+                   print("Error joining chat")
+                   return
+               }
+               outputStream.write(output, maxLength: maxLength)
+           }
+       }
 }
 
 
