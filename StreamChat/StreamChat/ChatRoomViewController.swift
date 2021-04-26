@@ -16,6 +16,7 @@ class ChatRoomViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         chatRoom.setupNetworkCommunication()
+        chatRoom.joinChat(username: "")
     }
 }
 
