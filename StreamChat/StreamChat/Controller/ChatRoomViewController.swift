@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ChatRoomViewController: UIViewController {
     
     let chatRoom = ChatRoom()
     

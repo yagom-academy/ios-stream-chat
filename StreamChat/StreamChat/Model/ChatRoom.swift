@@ -31,66 +31,78 @@ class ChatRoom: NSObject {
         
         inputStream.open()
         outputStream.open()
+        
     }
     
     func joinChat(username: String) {
-           let joinMessage = "USR_NAME::\(username)".data(using: .utf8)!
-           
-           self.username = username
-           
-           joinMessage.withUnsafeBytes {
-               guard let output = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
-                   print("Error joining chat")
-                   return
-               }
-               outputStream.write(output, maxLength: maxLength)
-           }
-       }
+        let joinMessage = "USR_NAME::\(username)".data(using: .utf8)!
+        
+        self.username = username
+        
+        joinMessage.withUnsafeBytes {
+            guard let output = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
+                print("Error joining chat")
+                return
+            }
+            outputStream.write(output, maxLength: maxLength)
+        }
+    }
     
     func send(message: String) {
-         let message = "MSG::\(message)".data(using: .utf8)!
-         
-         message.withUnsafeBytes {
-             guard let output = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
-                 print("Error send message")
-                 return
-             }
-             outputStream.write(output, maxLength: maxLength)
-         }
-     }
+        let message = "MSG::\(message)".data(using: .utf8)!
+        
+        message.withUnsafeBytes {
+            guard let output = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
+                print("Error send message")
+                return
+            }
+            outputStream.write(output, maxLength: maxLength)
+        }
+    }
     
     func disconnect() {
-            inputStream.close()
-            outputStream.close()
-        }
+        inputStream.close()
+        outputStream.close()
+    }
 }
 
 extension ChatRoom: StreamDelegate {
     func stream(_ stream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
-        case Stream.Event.errorOccurred:
+        case .errorOccurred:
             print("ErrorOccurred")
-        case Stream.Event.openCompleted:
+        case .openCompleted:
             print("OpenCompleted")
-        case Stream.Event.hasBytesAvailable:
+        case .hasBytesAvailable:
             print("HasBytesAvailable")
             readAvailableBytes(stream: stream)
-        case Stream.Event.endEncountered:
+        case .endEncountered:
             print("EndEncountered")
+        case .hasSpaceAvailable:
+            print("HasSpaceAvailable")
         default:
             print("unknown event")
         }
     }
     
     private func readAvailableBytes(stream: Stream) {
-        let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxLength)
-        let readByte = inputStream.read(buffer, maxLength: maxLength)
-        
-        guard let message = String(bytesNoCopy: buffer, length: readByte, encoding: .utf8, freeWhenDone: true) else {
+        guard let stream = stream as? InputStream else {
             return
         }
-        print(message)
+        let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxLength)
+        
+        while stream.hasBytesAvailable {
+            guard let readByteNumber = inputStream?.read(buffer, maxLength: maxLength),
+                  let input = String(bytesNoCopy: buffer,
+                                     length: readByteNumber,
+                                     encoding: .utf8,
+                                     freeWhenDone: true) else {
+                return
+            }
+            print(input)
+        }
     }
 }
+
 
 
