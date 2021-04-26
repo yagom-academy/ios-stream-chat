@@ -7,12 +7,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    
+    let chatRoom = ChatRoom()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        chatRoom.connect()
+        chatRoom.joinChat(username: "taetae")
     }
-
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        chatRoom.disconnect()
+    }
+    
 }
 
