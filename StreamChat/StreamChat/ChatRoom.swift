@@ -16,8 +16,6 @@ class ChatRoom: NSObject {
     var outputStream: OutputStream!
     var username = ""
     let maxReadLength = 300
-    var hostURL = "stream-ios.yagom-academy.kr"
-    var port: UInt32 = 7748
     
     weak var delegate: ChatRoomDelegate?
     
@@ -25,7 +23,7 @@ class ChatRoom: NSObject {
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?
         
-        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, hostURL as CFString, port, &readStream, &writeStream)
+        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, ChatHost.url as CFString, ChatHost.port, &readStream, &writeStream)
         
         inputStream = readStream!.takeRetainedValue()
         outputStream = writeStream!.takeRetainedValue()
@@ -83,6 +81,7 @@ extension ChatRoom: StreamDelegate {
             
             if let message = processedMessageString(buffer: buffer, length: numberOfBytesRead) {
                 delegate?.receive(message: message)
+                print(message)
             }
         }
     }
