@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ChatRoomDelegate: AnyObject {
+    func receive(message: Message)
+}
+
 class ChatRoom: NSObject {
     var inputStream: InputStream!
     var outputStream: OutputStream!
@@ -14,6 +18,8 @@ class ChatRoom: NSObject {
     let maxReadLength = 300
     var hostURL = "stream-ios.yagom-academy.kr"
     var port: UInt32 = 7748
+    
+    weak var delegate: ChatRoomDelegate?
     
     func setupNetworkCommunication() {
         var readStream: Unmanaged<CFReadStream>?
@@ -73,6 +79,10 @@ extension ChatRoom: StreamDelegate {
             if numberOfBytesRead < 0, let error = stream.streamError {
                 print(error)
                 break
+            }
+            
+            if let message = processedMessageString(buffer: buffer, length: numberOfBytesRead) {
+                delegate?.receive(message: message)
             }
         }
     }
