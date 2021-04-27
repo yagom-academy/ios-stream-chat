@@ -43,6 +43,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		348AB6672637DC59007F0E13 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				348AB65A2637729D007F0E13 /* ChatRoom.swift */,
+				348AB6642637D77D007F0E13 /* ChatHost.swift */,
+				348AB6612637A3B8007F0E13 /* Message.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		348AB6682637DC6F007F0E13 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C7927558262C562B00EF5D3A /* ChatRoomViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		C7927548262C562B00EF5D3A = {
 			isa = PBXGroup;
 			children = (
@@ -62,12 +80,10 @@
 		C7927553262C562B00EF5D3A /* StreamChat */ = {
 			isa = PBXGroup;
 			children = (
+				348AB6672637DC59007F0E13 /* Model */,
+				348AB6682637DC6F007F0E13 /* ViewController */,
 				C7927554262C562B00EF5D3A /* AppDelegate.swift */,
 				C7927556262C562B00EF5D3A /* SceneDelegate.swift */,
-				C7927558262C562B00EF5D3A /* ChatRoomViewController.swift */,
-				348AB65A2637729D007F0E13 /* ChatRoom.swift */,
-				348AB6642637D77D007F0E13 /* ChatHost.swift */,
-				348AB6612637A3B8007F0E13 /* Message.swift */,
 				C792755A262C562B00EF5D3A /* Main.storyboard */,
 				C792755D262C562E00EF5D3A /* Assets.xcassets */,
 				C792755F262C562E00EF5D3A /* LaunchScreen.storyboard */,
