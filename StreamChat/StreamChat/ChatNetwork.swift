@@ -30,21 +30,18 @@ final class ChatNetwork {
         outputStream.open()
     }
     
-    func connectChat() {
+    func connectChat(completionHandler: (Result<Int, NetworkError>) -> Void) {
         let chatConnectionMessage = ChatConnectionMessage()
         let joinMessage = chatConnectionMessage.createJoinMessageFormat(username: username)
     
         joinMessage.withUnsafeBytes { (unsafeRawBufferPointer) in
             guard let message = unsafeRawBufferPointer.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
-                print("채팅 연결 실패")
                 return
             }
             
             let result = outputStream.write(message, maxLength: joinMessage.count)
-            if result > 0 {
-                print("연결 메시지 전송 성공")
-            } else {
-                print("연결 메시지 전송 실패")
+            if result < 0 {
+                completionHandler(.failure(.connectionFail))
             }
         }
     }
