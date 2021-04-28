@@ -12,21 +12,19 @@ protocol ChatRoomDelegate: AnyObject {
 }
 
 class ChatRoom: NSObject {
-    var inputStream: InputStream!
-    var outputStream: OutputStream!
+    var inputStream: InputStream?
+    var outputStream: OutputStream?
     var username = ""
     let maxReadLength = 300
     
     weak var delegate: ChatRoomDelegate?
     
     func setupNetworkCommunication() {
-        var readStream: Unmanaged<CFReadStream>?
-        var writeStream: Unmanaged<CFWriteStream>?
+        createSocketToHost(url: ChatHost.url as CFString, port: ChatHost.port)
         
-        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, ChatHost.url as CFString, ChatHost.port, &readStream, &writeStream)
-        
-        inputStream = readStream!.takeRetainedValue()
-        outputStream = writeStream!.takeRetainedValue()
+        guard let inputStream = self.inputStream, let outputStream = self.outputStream else {
+            return
+        }
         
         inputStream.delegate = self
         inputStream.schedule(in: .current, forMode: .common)
@@ -36,6 +34,16 @@ class ChatRoom: NSObject {
         outputStream.open()
     }
     
+    private func createSocketToHost(url: CFString, port: UInt32) {
+        var readStream: Unmanaged<CFReadStream>?
+        var writeStream: Unmanaged<CFWriteStream>?
+        
+        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, url, port, &readStream, &writeStream)
+        
+        inputStream = readStream?.takeRetainedValue()
+        outputStream = writeStream?.takeRetainedValue()
+    }
+    
     func joinChat(username: String) {
         let data = "USR_NAME::{\(username)}".data(using: .utf8)!
         self.username = username
@@ -43,6 +51,10 @@ class ChatRoom: NSObject {
         _ = data.withUnsafeBytes {
             guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
                 print("Error joining chat")
+                return
+            }
+            
+            guard let outputStream = self.outputStream else {
                 return
             }
             
@@ -70,6 +82,10 @@ extension ChatRoom: StreamDelegate {
     
     private func readAvailableBytes(stream: InputStream) {
         let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxReadLength)
+        
+        guard let inputStream = self.inputStream else {
+            return
+        }
         
         while stream.hasBytesAvailable {
             let numberOfBytesRead = inputStream.read(buffer, maxLength: maxReadLength)
