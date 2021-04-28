@@ -1,5 +1,11 @@
 import Foundation
 
+protocol StreamConnection {
+    init(address: String, port: UInt32)
+    func inputStreamConnection() -> InputStream
+    func outputStreamConnection() -> OutputStream
+}
+
 final class ChatNetwork: NSObject {
     private var inputStream: InputStream!
     private var outputStream: OutputStream!
@@ -7,19 +13,24 @@ final class ChatNetwork: NSObject {
     private let maxMessageLength = 300
     
     func setupNetwork() {
-        let serverAddress = "stream-ios.yagom-academy.kr" as CFString
+        let serverAddress = "stream-ios.yagom-academy.kr"
         let serverPort: UInt32 = 7748
+//
+//        var readStream: Unmanaged<CFReadStream>?
+//        var writeStream: Unmanaged<CFWriteStream>?
+//
+//        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, serverAddress, serverPort, &readStream, &writeStream)
+//
+//        inputStream = readStream?.takeRetainedValue()
+//        outputStream = writeStream?.takeRetainedValue()
         
-        var readStream: Unmanaged<CFReadStream>?
-        var writeStream: Unmanaged<CFWriteStream>?
+        let streamConnection: StreamConnection = HostStreamConnection(address: serverAddress, port: serverPort)
         
-        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, serverAddress, serverPort, &readStream, &writeStream)
+//        inputStream.schedule(in: .current, forMode: .common)
+//        outputStream.schedule(in: .current, forMode: .common)
         
-        inputStream = readStream?.takeRetainedValue()
-        outputStream = writeStream?.takeRetainedValue()
-        
-        inputStream.schedule(in: .current, forMode: .common)
-        outputStream.schedule(in: .current, forMode: .common)
+        inputStream = streamConnection.inputStreamConnection()
+        outputStream = streamConnection.outputStreamConnection()
         
         inputStream.delegate = self
         
