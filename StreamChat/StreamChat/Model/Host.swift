@@ -8,6 +8,6 @@
 import Foundation
 
 struct Host {
-    static let address = "stream-ios.yagom-academy.kr"
-    static let port = 7748
+    let address = "stream-ios.yagom-academy.kr" as CFString
+    let port: UInt32 = 7748
 }

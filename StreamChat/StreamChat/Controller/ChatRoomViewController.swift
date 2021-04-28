@@ -8,11 +8,10 @@ import UIKit
 
 class ChatRoomViewController: UIViewController {
     
-    let chatRoom = ChatRoom()
+    let chatRoom = ChatRoom(host: Host())
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        chatRoom.connect()
         chatRoom.joinChat(username: "taetae")
     }
     

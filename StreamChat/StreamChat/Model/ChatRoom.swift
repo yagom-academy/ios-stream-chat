@@ -9,33 +9,42 @@ import Foundation
 
 class ChatRoom: NSObject {
     
-    private var inputStream: InputStream!
-    private var outputStream: OutputStream!
+    private var inputStream: InputStream?
+    private var outputStream: OutputStream?
     private let maxLength = 300
     private var username = ""
     
+    init(host: Host) {
+        super.init()
+        connect(host: host)
+    }
     
-    func connect() {
-        Stream.getStreamsToHost(withName: Host.address, port : Host.port, inputStream: &inputStream, outputStream: &outputStream)
+    private func connect(host: Host) {
+        var readStream: Unmanaged<CFReadStream>?
+        var writeStream: Unmanaged<CFWriteStream>?
         
-        guard let inputStream = self.inputStream,
-              let outputStream = self.outputStream else {
-            return
-        }
+        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
+                                           host.address,
+                                           host.port,
+                                           &readStream,
+                                           &writeStream)
         
-        inputStream.delegate = self
-        outputStream.delegate = self
+        inputStream = readStream?.takeRetainedValue()
+        outputStream = writeStream?.takeRetainedValue()
         
-        inputStream.schedule(in: .main, forMode: RunLoop.Mode.default)
-        outputStream.schedule(in: .main, forMode: RunLoop.Mode.default)
+        inputStream?.delegate = self
         
-        inputStream.open()
-        outputStream.open()
+        inputStream?.schedule(in: .current, forMode: .default)
+        outputStream?.schedule(in: .current, forMode: .default)
         
+        inputStream?.open()
+        outputStream?.open()
     }
     
     func joinChat(username: String) {
-        let joinMessage = "USR_NAME::\(username)".data(using: .utf8)!
+        guard let joinMessage = "USR_NAME::\(username)".data(using: .utf8) else {
+            return
+        }
         
         self.username = username
         
@@ -44,7 +53,7 @@ class ChatRoom: NSObject {
                 print("Error joining chat")
                 return
             }
-            outputStream.write(output, maxLength: maxLength)
+            outputStream?.write(output, maxLength: maxLength)
         }
     }
     
@@ -56,13 +65,13 @@ class ChatRoom: NSObject {
                 print("Error send message")
                 return
             }
-            outputStream.write(output, maxLength: maxLength)
+            outputStream?.write(output, maxLength: maxLength)
         }
     }
     
     func disconnect() {
-        inputStream.close()
-        outputStream.close()
+        inputStream?.close()
+        outputStream?.close()
     }
 }
 
@@ -78,6 +87,7 @@ extension ChatRoom: StreamDelegate {
             readAvailableBytes(stream: stream)
         case .endEncountered:
             print("EndEncountered")
+            disconnect()
         case .hasSpaceAvailable:
             print("HasSpaceAvailable")
         default:
