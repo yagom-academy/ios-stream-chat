@@ -31,7 +31,8 @@ final class ChatNetwork {
     }
     
     func connectChat() {
-        let joinMessage = "USR_NAME::\(username)".data(using: .utf8)!
+        let chatConnectionMessage = ChatConnectionMessage()
+        let joinMessage = chatConnectionMessage.createJoinMessageFormat(username: username)
     
         joinMessage.withUnsafeBytes { (unsafeRawBufferPointer) in
             guard let message = unsafeRawBufferPointer.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
