@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		41CCACA52639C7D3001D2804 /* HostStreamConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CCACA42639C7D3001D2804 /* HostStreamConnection.swift */; };
+		41CCACA72639C974001D2804 /* StreamEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CCACA62639C974001D2804 /* StreamEventHandler.swift */; };
 		41F5B338263464A0006DB4C3 /* ChatNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F5B337263464A0006DB4C3 /* ChatNetwork.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
 		C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927556262C562B00EF5D3A /* SceneDelegate.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		41CCACA42639C7D3001D2804 /* HostStreamConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostStreamConnection.swift; sourceTree = "<group>"; };
+		41CCACA62639C974001D2804 /* StreamEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamEventHandler.swift; sourceTree = "<group>"; };
 		41F5B337263464A0006DB4C3 /* ChatNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNetwork.swift; sourceTree = "<group>"; };
 		C7927551262C562B00EF5D3A /* StreamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7927554262C562B00EF5D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				C7927556262C562B00EF5D3A /* SceneDelegate.swift */,
 				C7927558262C562B00EF5D3A /* ViewController.swift */,
 				41F5B337263464A0006DB4C3 /* ChatNetwork.swift */,
+				41CCACA62639C974001D2804 /* StreamEventHandler.swift */,
 				41CCACA42639C7D3001D2804 /* HostStreamConnection.swift */,
 				C792755A262C562B00EF5D3A /* Main.storyboard */,
 				C792755D262C562E00EF5D3A /* Assets.xcassets */,
@@ -148,6 +151,7 @@
 				41F5B338263464A0006DB4C3 /* ChatNetwork.swift in Sources */,
 				41CCACA52639C7D3001D2804 /* HostStreamConnection.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
+				41CCACA72639C974001D2804 /* StreamEventHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

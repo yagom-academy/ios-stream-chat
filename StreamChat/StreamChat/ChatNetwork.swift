@@ -6,33 +6,25 @@ protocol StreamConnection {
     func outputStreamConnection() -> OutputStream
 }
 
-final class ChatNetwork: NSObject {
+final class ChatNetwork {
     private var inputStream: InputStream!
     private var outputStream: OutputStream!
-    private let username = "3pro😎"
+    private var username = ""
     private let maxMessageLength = 300
+    private let streamDelegate = StreamEventHandler()
     
-    func setupNetwork() {
+    init(username: String) {
         let serverAddress = "stream-ios.yagom-academy.kr"
         let serverPort: UInt32 = 7748
-//
-//        var readStream: Unmanaged<CFReadStream>?
-//        var writeStream: Unmanaged<CFWriteStream>?
-//
-//        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, serverAddress, serverPort, &readStream, &writeStream)
-//
-//        inputStream = readStream?.takeRetainedValue()
-//        outputStream = writeStream?.takeRetainedValue()
+        self.username = username
         
         let streamConnection: StreamConnection = HostStreamConnection(address: serverAddress, port: serverPort)
-        
-//        inputStream.schedule(in: .current, forMode: .common)
-//        outputStream.schedule(in: .current, forMode: .common)
-        
+
         inputStream = streamConnection.inputStreamConnection()
         outputStream = streamConnection.outputStreamConnection()
         
-        inputStream.delegate = self
+        streamDelegate.delegate = self
+        inputStream.delegate = streamDelegate
         
         inputStream.open()
         outputStream.open()
@@ -47,7 +39,6 @@ final class ChatNetwork: NSObject {
                 return
             }
             
-            // Writes the contents of a provided data buffer to the receiver.
             let result = outputStream.write(message, maxLength: joinMessage.count)
             if result > 0 {
                 print("연결 메시지 전송 성공")
@@ -58,24 +49,15 @@ final class ChatNetwork: NSObject {
     }
 }
 
-extension ChatNetwork: StreamDelegate {
-    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
-        switch eventCode {
-        case .hasBytesAvailable:
-            readMessage(stream: aStream as! InputStream)
-        default:
-            print("다른 스트림 이벤트 발생")
-        }
-    }
-    
-    private func readMessage(stream: InputStream) {
+extension ChatNetwork: MessageEventDelegate {
+    func readMessage(stream: InputStream) {
         let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxMessageLength)
         let readBytes = inputStream.read(buffer, maxLength: maxMessageLength)
 
         guard let messages = String(bytesNoCopy: buffer, length: readBytes, encoding: .utf8, freeWhenDone: true) else {
             return
         }
-        
+
         print(messages)
     }
 }
