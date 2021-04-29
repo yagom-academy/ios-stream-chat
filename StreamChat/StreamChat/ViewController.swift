@@ -1,18 +1,17 @@
-//
-//  StreamChat - ViewController.swift
-//  Created by yagom. 
-//  Copyright © yagom. All rights reserved.
-// 
-
 import UIKit
 
-class ViewController: UIViewController {
-
+final class ViewController: UIViewController {
+    private let chatNetwork = ChatNetwork(username: "3percent")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        chatNetwork.connectChat { result in
+            if result == .failure(.connectionFail) {
+                let alert = UIAlertController(title: "네트워크 실패", message: "연결 메시지 전송 실패", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default))
+                present(alert, animated: true)
+            }
+        }
     }
-
-
 }
-
