@@ -25,6 +25,7 @@
 		D9A4F8F22631035F00F9A28E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8F12631035F00F9A28E /* Message.swift */; };
 		D9A4F8F8263103D200F9A28E /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8F7263103D200F9A28E /* ChatMessage.swift */; };
 		D9A4F8FC2631060E00F9A28E /* AlarmMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A4F8FB2631060E00F9A28E /* AlarmMessage.swift */; };
+		D9AC2EC6263AEC1B00640373 /* SocketResponseChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AC2EC5263AEC1B00640373 /* SocketResponseChecker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		D9A4F8F12631035F00F9A28E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D9A4F8F7263103D200F9A28E /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		D9A4F8FB2631060E00F9A28E /* AlarmMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmMessage.swift; sourceTree = "<group>"; };
+		D9AC2EC5263AEC1B00640373 /* SocketResponseChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketResponseChecker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				D9A4F8C2262EB32D00F9A28E /* Client.swift */,
 				D9A4F8C5262EB4FE00F9A28E /* ChatManager.swift */,
 				D9A4F8E8262FC09200F9A28E /* SocketDataFormat.swift */,
+				D9AC2EC5263AEC1B00640373 /* SocketResponseChecker.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				D9A4F8FC2631060E00F9A28E /* AlarmMessage.swift in Sources */,
 				D9A4F8C3262EB32D00F9A28E /* Client.swift in Sources */,
 				D9A4F8BF262EB0B900F9A28E /* Host.swift in Sources */,
+				D9AC2EC6263AEC1B00640373 /* SocketResponseChecker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
