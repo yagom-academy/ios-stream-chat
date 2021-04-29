@@ -12,14 +12,18 @@ struct SocketResponseChecker {
     
     func handleReceivedMessage(inputStream: InputStream) -> Message? {
         var buffer = [UInt8](repeating: 0, count: bufferSize)
-        let byteLength = inputStream.read(&buffer, maxLength: bufferSize)
-        guard byteLength > 0,
-              let receivedMessage = String(bytes: buffer, encoding: .utf8) else {
-            print(inputStream.streamError)
-            return nil
+        var message: Message?
+        
+        while(inputStream.hasBytesAvailable) {
+            let byteLength = inputStream.read(&buffer, maxLength: bufferSize)
+            guard byteLength > 0, let receivedMessage = String(bytes: buffer, encoding: .utf8) else {
+                print(inputStream.streamError)
+                return nil
+            }
+            
+            message = configureMessage(with: receivedMessage)
         }
         
-        let message: Message? = configureMessage(with: receivedMessage)
         return message
     }
     

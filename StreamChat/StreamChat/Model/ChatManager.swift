@@ -7,6 +7,7 @@ protocol MessageReceivable: class {
 
 class ChatManager: NSObject {
     private let socketResponseChecker = SocketResponseChecker()
+    private let messageManager = MessageManager()
     
     private var inputStream: InputStream!
     private var outputStream: OutputStream!
@@ -14,6 +15,12 @@ class ChatManager: NSObject {
     
     private var readStream: Unmanaged<CFReadStream>?
     private var writeStream: Unmanaged<CFWriteStream>?
+    
+    
+    override init() {
+        super.init()
+        self.delegate = messageManager
+    }
     
     func connectSocket() {
         CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,  Host.address as  CFString, Host.port, &readStream,  &writeStream)
@@ -62,11 +69,10 @@ extension ChatManager: StreamDelegate {
                 return
             }
             
-            while(inputStream.hasBytesAvailable) {
-                if let message = socketResponseChecker.handleReceivedMessage(inputStream: inputStream) {
-                    self.delegate?.receive(message: message)
-                }
+            if let message = socketResponseChecker.handleReceivedMessage(inputStream: inputStream) {
+                self.delegate?.receive(message: message)
             }
+            
         case .endEncountered:
             closeSocket()
         default:
