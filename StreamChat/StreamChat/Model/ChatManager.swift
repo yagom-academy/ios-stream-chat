@@ -6,18 +6,20 @@ protocol MessageReceivable: class {
 }
 
 class ChatManager: NSObject {
-    private let bufferSize = 400
-    private weak var inputStream: InputStream?
-    private weak var outputStream: OutputStream?
+    private let socketResponseChecker = SocketResponseChecker()
+    
+    private var inputStream: InputStream!
+    private var outputStream: OutputStream!
     weak var delegate: MessageReceivable?
     
+    private var readStream: Unmanaged<CFReadStream>?
+    private var writeStream: Unmanaged<CFWriteStream>?
+    
     func connectSocket() {
-        Stream.getStreamsToHost(withName: Host.address, port: Host.port, inputStream: &inputStream, outputStream: &outputStream)
+        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,  Host.address as  CFString, Host.port, &readStream,  &writeStream)
         
-        guard let inputStream = self.inputStream,
-              let outputStream = self.outputStream else {
-            return
-        }
+        inputStream = readStream!.takeRetainedValue()
+        outputStream = writeStream!.takeRetainedValue()
         
         inputStream.delegate = self
         
@@ -60,9 +62,10 @@ extension ChatManager: StreamDelegate {
                 return
             }
             
-            var buffer = [UInt8](repeating: 0, count: bufferSize)
             while(inputStream.hasBytesAvailable) {
-                handleReceivedMessage(inputStream: inputStream, buffer: &buffer)
+                if let message = socketResponseChecker.handleReceivedMessage(inputStream: inputStream) {
+                    self.delegate?.receive(message: message)
+                }
             }
         case .endEncountered:
             closeSocket()
@@ -83,62 +86,5 @@ extension ChatManager {
                 outputStream.write(pointer, maxLength: data.count)
             }
         }
-    }
-    
-    private func configureMessage(with receivedMessage: String) -> Message? {
-        let receivedMessage = receivedMessage.replacingOccurrences(of: "\0", with: "")
-        
-        if receivedMessage.isJoinMessage || receivedMessage.isLeavingMessage {
-            return AlarmMessage(content: receivedMessage, receivedTime: Date())
-        }
-        
-        guard let messageInformation = checkMessageFormat(with: receivedMessage) else {
-            return nil
-        }
-        
-        if let messageContent = messageInformation["content"],
-           let messageSender = messageInformation["sender"] {
-            return ChatMessage(content: messageContent, receivedTime: Date(), sender: messageSender)
-        }
-        
-        return nil
-    }
-    
-    private func checkMessageFormat(with message: String) -> [String : String]? {
-        guard message.contains("::") else {
-            return nil
-        }
-        
-        guard let sender = message.components(separatedBy: "::").first,
-              let content = message.components(separatedBy: "::").last else {
-            return nil
-        }
-        
-        let messageInfo = ["sender" : sender, "content": content]
-        
-        return messageInfo
-    }
-    
-    private func handleReceivedMessage(inputStream: InputStream, buffer: inout [UInt8]) {
-        let byteLength = inputStream.read(&buffer, maxLength: bufferSize)
-        guard byteLength > 0 else {
-            print(inputStream.streamError)
-            return
-        }
-        
-        if let receivedMessage = String(bytes: buffer, encoding: .utf8) {
-            print(receivedMessage)
-            let message: Message? = configureMessage(with: receivedMessage)
-            self.delegate?.receive(message: message)
-        }
-    }
-}
-fileprivate extension String {
-    var isJoinMessage: Bool {
-        return hasSuffix(String(describing: SocketDataFormat.userJoined))
-    }
-    
-    var isLeavingMessage: Bool {
-        return hasSuffix(String(describing: SocketDataFormat.userLeft))
     }
 }
