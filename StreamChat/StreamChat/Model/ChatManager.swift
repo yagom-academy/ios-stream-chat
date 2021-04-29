@@ -6,9 +6,9 @@ protocol MessageReceivable: class {
 }
 
 class ChatManager: NSObject {
-    let bufferSize = 400
-    var inputStream: InputStream?
-    var outputStream: OutputStream?
+    private let bufferSize = 400
+    private weak var inputStream: InputStream?
+    private weak var outputStream: OutputStream?
     weak var delegate: MessageReceivable?
     
     func connectSocket() {
@@ -20,10 +20,9 @@ class ChatManager: NSObject {
         }
         
         inputStream.delegate = self
-
-        let runLoop = RunLoop.current
-        inputStream.schedule(in: runLoop, forMode: .default)
-        outputStream.schedule(in: runLoop, forMode: .default)
+        
+        inputStream.schedule(in: .current, forMode: .default)
+        outputStream.schedule(in: .current, forMode: .default)
         
         inputStream.open()
         outputStream.open()
@@ -31,16 +30,11 @@ class ChatManager: NSObject {
     
     func join(with client: Client) {
         let joinMessage = String(describing: SocketDataFormat.join(client.nickname))
-        guard let data = joinMessage.data(using: .utf8) else {
-            return
-        }
-        
-        writeOnOutputStream(with: data)
+        send(message: joinMessage)
     }
     
     func send(message: String) {
-        let sendingMessage = String(describing: SocketDataFormat.send(message))
-        guard let data = sendingMessage.data(using: .utf8) else {
+        guard let data = message.data(using: .utf8) else {
             return
         }
         
@@ -61,20 +55,14 @@ extension ChatManager: StreamDelegate {
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
         case .hasBytesAvailable:
-            let inputStream  =  aStream as! InputStream
+            guard let inputStream  =  aStream as? InputStream else {
+                print(aStream.streamError)
+                return
+            }
+            
             var buffer = [UInt8](repeating: 0, count: bufferSize)
             while(inputStream.hasBytesAvailable) {
-                let byteLength = inputStream.read(&buffer, maxLength: bufferSize)
-                guard byteLength > 0 else {
-                    print(inputStream.streamError)
-                    return
-                }
-                
-                if let receivedMessage = String(bytes: buffer, encoding: .utf8) {
-                    let message: Message? = configureMessage(with: receivedMessage)
-                    self.delegate?.receive(message: message)
-                }
-                
+                handleReceivedMessage(inputStream: inputStream, buffer: &buffer)
             }
         case .endEncountered:
             closeSocket()
@@ -102,14 +90,50 @@ extension ChatManager {
         
         if receivedMessage.isJoinMessage || receivedMessage.isLeavingMessage {
             return AlarmMessage(content: receivedMessage, receivedTime: Date())
-        } else {
-            let messageInfo = receivedMessage.components(separatedBy: "::")
-            let (sender, content) = (messageInfo[0],messageInfo[1])
-            return ChatMessage(content: content, receivedTime: Date(), sender: sender)
+        }
+        
+        guard let messageInformation = checkMessageFormat(with: receivedMessage) else {
+            return nil
+        }
+        
+        if let messageContent = messageInformation["content"],
+           let messageSender = messageInformation["sender"] {
+            return ChatMessage(content: messageContent, receivedTime: Date(), sender: messageSender)
+        }
+        
+        return nil
+    }
+    
+    private func checkMessageFormat(with message: String) -> [String : String]? {
+        guard message.contains("::") else {
+            return nil
+        }
+        
+        guard let sender = message.components(separatedBy: "::").first,
+              let content = message.components(separatedBy: "::").last else {
+            return nil
+        }
+        
+        let messageInfo = ["sender" : sender, "content": content]
+        
+        return messageInfo
+    }
+    
+    private func handleReceivedMessage(inputStream: InputStream, buffer: inout [UInt8]) {
+        let byteLength = inputStream.read(&buffer, maxLength: bufferSize)
+        guard byteLength > 0 else {
+            print(inputStream.streamError)
+            return
+        }
+        
+        if let receivedMessage = String(bytes: buffer, encoding: .utf8) {
+            print(receivedMessage)
+            let message: Message? = configureMessage(with: receivedMessage)
+            self.delegate?.receive(message: message)
         }
     }
 }
-extension String {
+fileprivate extension String {
     var isJoinMessage: Bool {
         return hasSuffix(String(describing: SocketDataFormat.userJoined))
     }
