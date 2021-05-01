@@ -7,12 +7,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    private var chatManager = ChatManager()
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
 }
-
