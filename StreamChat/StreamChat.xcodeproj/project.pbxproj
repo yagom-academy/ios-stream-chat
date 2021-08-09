@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		945077C629F0DC10C38F316D /* Pods_StreamChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC83CF53C531F324A94202B /* Pods_StreamChat.framework */; };
+		C3A9228A26C106D5004BAD77 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C3A9228926C106D5004BAD77 /* .swiftlint.yml */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
 		C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927556262C562B00EF5D3A /* SceneDelegate.swift */; };
 		C7927559262C562B00EF5D3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927558262C562B00EF5D3A /* ViewController.swift */; };
@@ -16,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E5476055DF9E5DCFEA597D7 /* Pods-StreamChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.debug.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.debug.xcconfig"; sourceTree = "<group>"; };
+		4DC83CF53C531F324A94202B /* Pods_StreamChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StreamChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3A9228926C106D5004BAD77 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C7927551262C562B00EF5D3A /* StreamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7927554262C562B00EF5D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7927556262C562B00EF5D3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +29,7 @@
 		C792755D262C562E00EF5D3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7927560262C562E00EF5D3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7927562262C562E00EF5D3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5A3402150724B9E5248972A /* Pods-StreamChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.release.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				945077C629F0DC10C38F316D /* Pods_StreamChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		91DD7B2EE15CC2CA09939812 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2E5476055DF9E5DCFEA597D7 /* Pods-StreamChat.debug.xcconfig */,
+				F5A3402150724B9E5248972A /* Pods-StreamChat.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A3F57C4222B41E869159E540 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DC83CF53C531F324A94202B /* Pods_StreamChat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C7927548262C562B00EF5D3A = {
 			isa = PBXGroup;
 			children = (
+				C3A9228926C106D5004BAD77 /* .swiftlint.yml */,
 				C7927553262C562B00EF5D3A /* StreamChat */,
 				C7927552262C562B00EF5D3A /* Products */,
+				91DD7B2EE15CC2CA09939812 /* Pods */,
+				A3F57C4222B41E869159E540 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +101,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7927565262C562E00EF5D3A /* Build configuration list for PBXNativeTarget "StreamChat" */;
 			buildPhases = (
+				4BA03E32D5DE224A34271D53 /* [CP] Check Pods Manifest.lock */,
 				C792754D262C562B00EF5D3A /* Sources */,
 				C792754E262C562B00EF5D3A /* Frameworks */,
 				C792754F262C562B00EF5D3A /* Resources */,
+				C3A9228626C10612004BAD77 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -124,6 +153,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3A9228A26C106D5004BAD77 /* .swiftlint.yml in Resources */,
 				C7927561262C562E00EF5D3A /* LaunchScreen.storyboard in Resources */,
 				C792755E262C562E00EF5D3A /* Assets.xcassets in Resources */,
 				C792755C262C562B00EF5D3A /* Main.storyboard in Resources */,
@@ -131,6 +161,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4BA03E32D5DE224A34271D53 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StreamChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3A9228626C10612004BAD77 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C792754D262C562B00EF5D3A /* Sources */ = {
@@ -283,6 +355,7 @@
 		};
 		C7927566262C562E00EF5D3A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E5476055DF9E5DCFEA597D7 /* Pods-StreamChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -301,6 +374,7 @@
 		};
 		C7927567262C562E00EF5D3A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5A3402150724B9E5248972A /* Pods-StreamChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
