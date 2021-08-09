@@ -1,0 +1,4 @@
+excluded:
+  - Pods
+  - StreamChat/AppDelegate.swift
+  - StreamChat/SceneDelegate.swift

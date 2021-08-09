@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C6800D9126C1506400EE1778 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C6800D9026C1506400EE1778 /* .swiftlint.yml */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
 		C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927556262C562B00EF5D3A /* SceneDelegate.swift */; };
 		C7927559262C562B00EF5D3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927558262C562B00EF5D3A /* ViewController.swift */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6BB33274245B6C44B64809A1 /* Pods-StreamChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.release.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.release.xcconfig"; sourceTree = "<group>"; };
+		C519B3CCF728D5E130A3795A /* Pods-StreamChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.debug.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.debug.xcconfig"; sourceTree = "<group>"; };
+		C6800D9026C1506400EE1778 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C7927551262C562B00EF5D3A /* StreamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7927554262C562B00EF5D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7927556262C562B00EF5D3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,11 +41,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2EDCB91025CA5F9B569CF86A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C7927548262C562B00EF5D3A = {
 			isa = PBXGroup;
 			children = (
+				C6800D9026C1506400EE1778 /* .swiftlint.yml */,
 				C7927553262C562B00EF5D3A /* StreamChat */,
 				C7927552262C562B00EF5D3A /* Products */,
+				EF20CA94484C58CC353BE1A0 /* Pods */,
+				2EDCB91025CA5F9B569CF86A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +81,15 @@
 			path = StreamChat;
 			sourceTree = "<group>";
 		};
+		EF20CA94484C58CC353BE1A0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C519B3CCF728D5E130A3795A /* Pods-StreamChat.debug.xcconfig */,
+				6BB33274245B6C44B64809A1 /* Pods-StreamChat.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +97,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7927565262C562E00EF5D3A /* Build configuration list for PBXNativeTarget "StreamChat" */;
 			buildPhases = (
+				A593F61F6FB8316CFC05B945 /* [CP] Check Pods Manifest.lock */,
 				C792754D262C562B00EF5D3A /* Sources */,
 				C792754E262C562B00EF5D3A /* Frameworks */,
 				C792754F262C562B00EF5D3A /* Resources */,
+				C6800D8F26C1500100EE1778 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -124,6 +149,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6800D9126C1506400EE1778 /* .swiftlint.yml in Resources */,
 				C7927561262C562E00EF5D3A /* LaunchScreen.storyboard in Resources */,
 				C792755E262C562E00EF5D3A /* Assets.xcassets in Resources */,
 				C792755C262C562B00EF5D3A /* Main.storyboard in Resources */,
@@ -131,6 +157,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A593F61F6FB8316CFC05B945 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StreamChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6800D8F26C1500100EE1778 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C792754D262C562B00EF5D3A /* Sources */ = {
@@ -283,6 +351,7 @@
 		};
 		C7927566262C562E00EF5D3A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C519B3CCF728D5E130A3795A /* Pods-StreamChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -301,6 +370,7 @@
 		};
 		C7927567262C562E00EF5D3A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BB33274245B6C44B64809A1 /* Pods-StreamChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
