@@ -74,6 +74,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7927565262C562E00EF5D3A /* Build configuration list for PBXNativeTarget "StreamChat" */;
 			buildPhases = (
+				8A25F07026C1A2EA00B429C6 /* SwiftLint Script */,
 				C792754D262C562B00EF5D3A /* Sources */,
 				C792754E262C562B00EF5D3A /* Frameworks */,
 				C792754F262C562B00EF5D3A /* Resources */,
@@ -131,6 +132,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8A25F07026C1A2EA00B429C6 /* SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C792754D262C562B00EF5D3A /* Sources */ = {
