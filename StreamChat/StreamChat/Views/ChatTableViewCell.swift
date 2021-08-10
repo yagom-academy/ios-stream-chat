@@ -17,21 +17,13 @@ final class ChatTableViewCell: UITableViewCell {
     private var myChatLabelConstraints: [NSLayoutConstraint] = []
     private var othersChatLabelConstraints: [NSLayoutConstraint] = []
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
     func configure(chatInformation: Chat) {
         setUI(isMyMessage: chatInformation.isMyMessage)
         chatLabel.text = chatInformation.message
         chatBubbleImageView.image = chatInformation.isMyMessage ? UIImage(named: "bubble_right") : UIImage(named: "bubble_left")
     }
+    
+    // MARK: UI Setting
     
     private func setUI(isMyMessage: Bool) {
         self.contentView.backgroundColor = .darkGray
@@ -54,7 +46,7 @@ final class ChatTableViewCell: UITableViewCell {
         setConstraintOfChatLabel(isMyMessage: isMyMessage)
     }
     
-    // MARK: Constraints
+    // MARK: Constraints Setting
     
     private func setConstraintOfSpeechImageView(isMyMessage: Bool) {
         if isMyMessage {

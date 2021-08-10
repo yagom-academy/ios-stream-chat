@@ -7,12 +7,25 @@
 
 import Foundation
 
-struct ChatViewModel {
+class ChatViewModel {
     
-    private var messages: [Chat] = []
+    var onUpdated: (_ newMessages: [Chat], _ oldMessages: [Chat]) -> Void = { _, _  in }
+    
+    private var messages: [Chat] = [] {
+        didSet {
+            onUpdated(messages, oldValue)
+        }
+    }
     
     func getCountOfMessages() -> Int {
         return messages.count
     }
     
+    func insertMessage(chat: Chat) {
+        messages.append(chat)
+    }
+    
+    func getMessage(indexPath: IndexPath) -> Chat {
+        return messages[indexPath.row]
+    }
 }

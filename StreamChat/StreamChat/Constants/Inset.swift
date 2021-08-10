@@ -10,5 +10,5 @@ import UIKit
 
 enum Inset {
     static let chatTableViewCellInset: CGFloat = 10
-    static let chatTableViewInset: CGFloat = 0
+//    static let typingTextFieldInset: [CGFloat] = [10, 10, -20, -70] // top, leading, bottom, trailing
 }

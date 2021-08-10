@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Chat {
+struct Chat: Hashable {
     let message: String
     let isMyMessage: Bool
 }
