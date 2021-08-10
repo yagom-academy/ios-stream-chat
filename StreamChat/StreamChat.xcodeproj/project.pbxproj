@@ -37,6 +37,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AAA0D8CD26C244E700127B3F /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AAA0D8D126C2451100127B3F /* Views */,
+				AAA0D8D026C2450D00127B3F /* Entries */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		AAA0D8CE26C244ED00127B3F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C792755D262C562E00EF5D3A /* Assets.xcassets */,
+				C792755F262C562E00EF5D3A /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AAA0D8CF26C244F100127B3F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C7927562262C562E00EF5D3A /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AAA0D8D026C2450D00127B3F /* Entries */ = {
+			isa = PBXGroup;
+			children = (
+				C7927554262C562B00EF5D3A /* AppDelegate.swift */,
+				C7927556262C562B00EF5D3A /* SceneDelegate.swift */,
+			);
+			path = Entries;
+			sourceTree = "<group>";
+		};
+		AAA0D8D126C2451100127B3F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C7927558262C562B00EF5D3A /* ViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C7927548262C562B00EF5D3A = {
 			isa = PBXGroup;
 			children = (
@@ -57,12 +100,9 @@
 		C7927553262C562B00EF5D3A /* StreamChat */ = {
 			isa = PBXGroup;
 			children = (
-				C7927554262C562B00EF5D3A /* AppDelegate.swift */,
-				C7927556262C562B00EF5D3A /* SceneDelegate.swift */,
-				C7927558262C562B00EF5D3A /* ViewController.swift */,
-				C792755D262C562E00EF5D3A /* Assets.xcassets */,
-				C792755F262C562E00EF5D3A /* LaunchScreen.storyboard */,
-				C7927562262C562E00EF5D3A /* Info.plist */,
+				AAA0D8CE26C244ED00127B3F /* Resources */,
+				AAA0D8CD26C244E700127B3F /* Sources */,
+				AAA0D8CF26C244F100127B3F /* Supporting Files */,
 			);
 			path = StreamChat;
 			sourceTree = "<group>";
@@ -300,7 +340,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = StreamChat/Info.plist;
+				INFOPLIST_FILE = "StreamChat/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -318,7 +358,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = StreamChat/Info.plist;
+				INFOPLIST_FILE = "StreamChat/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
