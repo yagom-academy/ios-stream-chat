@@ -59,11 +59,13 @@ final class ChatTableViewCell: UITableViewCell {
     private func setConstraintOfSpeechImageView(isMyMessage: Bool) {
         if isMyMessage {
             NSLayoutConstraint.deactivate(othersChatImageViewConstraints)
+            NSLayoutConstraint.deactivate(myChatImageViewConstraints)
             setConstraintOfMyChatImageView()
             NSLayoutConstraint.activate(myChatImageViewConstraints)
             return
         }
         
+        NSLayoutConstraint.deactivate(othersChatImageViewConstraints)
         NSLayoutConstraint.deactivate(myChatImageViewConstraints)
         setConstraintOfOthersChatImageView()
         NSLayoutConstraint.activate(othersChatImageViewConstraints)
@@ -72,28 +74,29 @@ final class ChatTableViewCell: UITableViewCell {
     private func setConstraintOfChatLabel(isMyMessage: Bool) {
         if isMyMessage {
             NSLayoutConstraint.deactivate(othersChatLabelConstraints)
+            NSLayoutConstraint.deactivate(myChatLabelConstraints)
             setConstraintOfMyMessageLabel()
             NSLayoutConstraint.activate(myChatLabelConstraints)
             return
         }
-        
+        NSLayoutConstraint.deactivate(othersChatLabelConstraints)
         NSLayoutConstraint.deactivate(myChatLabelConstraints)
         setConstraintOfOthersMessageLabel()
         NSLayoutConstraint.activate(othersChatLabelConstraints)
     }
     
     private func setConstraintOfOthersChatImageView() {
-        myChatImageViewConstraints = [ chatBubbleImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Inset.chatTableViewCellInset),
-                                       chatBubbleImageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Inset.chatTableViewCellInset),
-                                       chatBubbleImageView.widthAnchor.constraint(lessThanOrEqualTo: self.contentView.widthAnchor, constant: -50),
-                                       chatBubbleImageView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, constant: -Inset.chatTableViewCellInset) ]
-    }
-    
-    private func setConstraintOfMyChatImageView() {
         othersChatImageViewConstraints = [ chatBubbleImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Inset.chatTableViewCellInset),
                                            chatBubbleImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Inset.chatTableViewCellInset),
                                            chatBubbleImageView.widthAnchor.constraint(lessThanOrEqualTo: self.contentView.widthAnchor, constant: -50),
-                                           chatBubbleImageView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, constant: -Inset.chatTableViewCellInset) ]
+                                           chatBubbleImageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Inset.chatTableViewCellInset) ]
+    }
+    
+    private func setConstraintOfMyChatImageView() {
+        myChatImageViewConstraints = [ chatBubbleImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Inset.chatTableViewCellInset),
+                                       chatBubbleImageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Inset.chatTableViewCellInset),
+                                       chatBubbleImageView.widthAnchor.constraint(lessThanOrEqualTo: self.contentView.widthAnchor, constant: -50),
+                                       chatBubbleImageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Inset.chatTableViewCellInset) ]
     }
     
     private func setConstraintOfMyMessageLabel() {
@@ -109,4 +112,5 @@ final class ChatTableViewCell: UITableViewCell {
                                        chatLabel.trailingAnchor.constraint(equalTo: self.chatBubbleImageView.trailingAnchor, constant: -Inset.chatTableViewCellInset),
                                        chatLabel.heightAnchor.constraint(equalTo: self.chatBubbleImageView.heightAnchor, constant: -Inset.chatTableViewCellInset) ]
     }
+    
 }
