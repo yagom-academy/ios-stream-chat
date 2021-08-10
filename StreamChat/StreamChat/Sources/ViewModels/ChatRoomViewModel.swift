@@ -37,6 +37,10 @@ final class ChatRoomViewModel {
         chatRoom.send(message: message)
     }
 
+    func join(with username: String) {
+        chatRoom.join(with: username)
+    }
+
     private func createMessage(with string: String) -> Message {
         return Message(sender: chatRoom.user, text: string)
     }

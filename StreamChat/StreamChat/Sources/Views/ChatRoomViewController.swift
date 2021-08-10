@@ -6,9 +6,15 @@
 
 import UIKit
 
-class ChatRoomViewController: UIViewController {
+final class ChatRoomViewController: UIViewController {
+
+    let chatRoomViewModel = ChatRoomViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    func join(with username: String) {
+        chatRoomViewModel.join(with: username)
     }
 }

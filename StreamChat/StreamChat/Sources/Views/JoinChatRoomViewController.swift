@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LoginViewController: UIViewController {
+final class JoinChatRoomViewController: UIViewController {
 
     private enum Style {
 
@@ -57,7 +57,7 @@ final class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        usernameTextField.delegate = self
         setNavigationBar()
         setAttributes()
         addSubviews()
@@ -89,13 +89,12 @@ final class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController: UITextFieldDelegate {
+extension JoinChatRoomViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let chatRoomViewController = ChatRoomViewController()
-
         if let username = textField.text {
-            // TODO: Login through ChatRoomViewController
+            chatRoomViewController.join(with: username)
         }
         navigationController?.pushViewController(chatRoomViewController, animated: true)
         return true
