@@ -9,7 +9,6 @@ import UIKit
 
 final class ChatPageViewController: UIViewController {
     private let chatManager = ChatManager()
-    weak var receiveDelegate: ChatPageDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,10 +17,20 @@ final class ChatPageViewController: UIViewController {
     }
 
     private func connectNetwork() {
-        chatManager.setNetwork()
+        self.chatManager.setNetwork()
     }
     
     private func joinChat() {
-        chatManager.joinChat(username: "")
+        self.chatManager.joinChat(username: "")
+    }
+    
+    private func setDelegate() {
+        self.chatManager.receiveDelegate = self
+    }
+}
+
+extension ChatPageViewController: ChatPageDelegate {
+    func received(message: ChatMessage) {
+        
     }
 }

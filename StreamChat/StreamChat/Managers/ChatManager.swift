@@ -12,6 +12,7 @@ final class ChatManager: NSObject {
     private var outputStream: OutputStream?
     private var username: String?
     private let maxReadLength = 300
+    weak var receiveDelegate: ChatPageDelegate?
     
     override init() {
         super.init()
@@ -92,7 +93,7 @@ extension ChatManager: StreamDelegate {
             }
             
             guard let message = processedMessageString(buffer: buffer, length: numberOfBytesRead) else { return }
-            
+            self.receiveDelegate?.received(message: message)
         }
         
     }
