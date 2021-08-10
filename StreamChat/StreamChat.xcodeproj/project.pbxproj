@@ -14,6 +14,8 @@
 		AAA0D8DE26C2922300127B3F /* SenderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8DD26C2922300127B3F /* SenderType.swift */; };
 		AAA0D8E026C2976700127B3F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8DF26C2976700127B3F /* User.swift */; };
 		AAA0D8E326C2E5B800127B3F /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8E226C2E5B800127B3F /* String+Extension.swift */; };
+		AAA0D8E626C2ED2800127B3F /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8E526C2ED2800127B3F /* ChatRoomViewModel.swift */; };
+		AAA0D8EA26C2F02F00127B3F /* ChatRoomDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8E926C2F02F00127B3F /* ChatRoomDelegate.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
 		C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927556262C562B00EF5D3A /* SceneDelegate.swift */; };
 		C7927559262C562B00EF5D3A /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927558262C562B00EF5D3A /* ChatRoomViewController.swift */; };
@@ -29,6 +31,8 @@
 		AAA0D8DD26C2922300127B3F /* SenderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderType.swift; sourceTree = "<group>"; };
 		AAA0D8DF26C2976700127B3F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AAA0D8E226C2E5B800127B3F /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		AAA0D8E526C2ED2800127B3F /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
+		AAA0D8E926C2F02F00127B3F /* ChatRoomDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomDelegate.swift; sourceTree = "<group>"; };
 		C7927551262C562B00EF5D3A /* StreamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7927554262C562B00EF5D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7927556262C562B00EF5D3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,12 +56,12 @@
 		AAA0D8CD26C244E700127B3F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				AAA0D8D826C2793A00127B3F /* Models */,
-				AAA0D8D526C25BF800127B3F /* Settings */,
-				AAA0D8D226C259F000127B3F /* Services */,
-				AAA0D8E126C2E59700127B3F /* Utils */,
-				AAA0D8D126C2451100127B3F /* Views */,
 				AAA0D8D026C2450D00127B3F /* Entries */,
+				AAA0D8E726C2EFD300127B3F /* Helpers */,
+				AAA0D8D826C2793A00127B3F /* Models */,
+				AAA0D8D226C259F000127B3F /* Services */,
+				AAA0D8D126C2451100127B3F /* Views */,
+				AAA0D8E426C2ED0400127B3F /* ViewModels */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -65,6 +69,7 @@
 		AAA0D8CE26C244ED00127B3F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AAA0D8D526C25BF800127B3F /* Settings */,
 				C792755D262C562E00EF5D3A /* Assets.xcassets */,
 				C792755F262C562E00EF5D3A /* LaunchScreen.storyboard */,
 			);
@@ -128,6 +133,31 @@
 				AAA0D8E226C2E5B800127B3F /* String+Extension.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		AAA0D8E426C2ED0400127B3F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AAA0D8E526C2ED2800127B3F /* ChatRoomViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		AAA0D8E726C2EFD300127B3F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AAA0D8E826C2EFE600127B3F /* Protocols */,
+				AAA0D8E126C2E59700127B3F /* Utils */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		AAA0D8E826C2EFE600127B3F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AAA0D8E926C2F02F00127B3F /* ChatRoomDelegate.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		C7927548262C562B00EF5D3A = {
@@ -251,12 +281,14 @@
 				C7927559262C562B00EF5D3A /* ChatRoomViewController.swift in Sources */,
 				AAA0D8E326C2E5B800127B3F /* String+Extension.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
+				AAA0D8E626C2ED2800127B3F /* ChatRoomViewModel.swift in Sources */,
 				AAA0D8D726C25C2900127B3F /* NetworkConnection.swift in Sources */,
 				AAA0D8D426C25A0100127B3F /* ChatRoom.swift in Sources */,
 				AAA0D8E026C2976700127B3F /* User.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
 				AAA0D8DE26C2922300127B3F /* SenderType.swift in Sources */,
 				AAA0D8DC26C2917300127B3F /* Message.swift in Sources */,
+				AAA0D8EA26C2F02F00127B3F /* ChatRoomDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

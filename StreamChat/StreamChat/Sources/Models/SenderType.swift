@@ -10,5 +10,6 @@ import Foundation
 enum SenderType {
 
     case me
+    case system
     case someoneElse
 }

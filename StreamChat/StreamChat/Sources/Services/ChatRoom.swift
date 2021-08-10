@@ -28,7 +28,8 @@ final class ChatRoom: NSObject {
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
     private let system: User = DefaultUser.system
-    private var user: User = DefaultUser.unknown
+    private(set) var user: User = DefaultUser.unknown
+    weak var delegate: ChatRoomDelegate?
 
     func connect() {
         Stream.getStreamsToHost(withName: ConnectionSetting.host,
@@ -120,7 +121,7 @@ extension ChatRoom: StreamDelegate {
             }
 
             if let message = constructMessage(with: buffer, length: bytesRead) {
-                print(message)
+                delegate?.received(message: message)
             }
         }
     }
