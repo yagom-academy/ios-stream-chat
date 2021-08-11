@@ -18,8 +18,8 @@ final class JoinChatRoomViewController: UIViewController {
         }
 
         enum ContentStackView {
-            static let spacingAtPortraitMode: CGFloat = 80
-            static let spacingAtLandscapeMode: CGFloat = 30
+            static let spacingAtPortraitOrientation: CGFloat = 80
+            static let spacingAtLandscapeOrientation: CGFloat = 30
         }
 
         enum WelcomeLabel {
@@ -60,8 +60,8 @@ final class JoinChatRoomViewController: UIViewController {
         stackView.alignment = .center
         stackView.distribution = .equalSpacing
         stackView.spacing = UITraitCollection.current.horizontalSizeClass == .compact
-            ? Style.ContentStackView.spacingAtPortraitMode
-            : Style.ContentStackView.spacingAtLandscapeMode
+            ? Style.ContentStackView.spacingAtPortraitOrientation
+            : Style.ContentStackView.spacingAtLandscapeOrientation
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -191,9 +191,9 @@ final class JoinChatRoomViewController: UIViewController {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if traitCollection.horizontalSizeClass == .compact {
-            contentStackView.spacing = Style.ContentStackView.spacingAtPortraitMode
+            contentStackView.spacing = Style.ContentStackView.spacingAtPortraitOrientation
         } else {
-            contentStackView.spacing = Style.ContentStackView.spacingAtLandscapeMode
+            contentStackView.spacing = Style.ContentStackView.spacingAtLandscapeOrientation
         }
     }
 
@@ -216,8 +216,8 @@ final class JoinChatRoomViewController: UIViewController {
         let usernameRequiredAlert = UIAlertController(title: Style.Alert.UsernameRequiredTitle,
                                                       message: nil,
                                                       preferredStyle: .alert)
-        let okAction = UIAlertAction(title: Style.Alert.okActionTitle, style: .default) { [weak self] _ in
-            self?.usernameTextField.becomeFirstResponder()
+        let okAction = UIAlertAction(title: Style.Alert.okActionTitle, style: .default) { [self] _ in
+            usernameTextField.becomeFirstResponder()
         }
         usernameRequiredAlert.addAction(okAction)
         present(usernameRequiredAlert, animated: true)
