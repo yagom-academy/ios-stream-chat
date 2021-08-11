@@ -9,9 +9,13 @@ import UIKit
 
 final class JoinChatRoomViewController: UIViewController {
 
+    // MARK: Namespaces
+
     private enum Style {
 
-        static let navigationBarTitle: String = "Sign in"
+        enum NavigationBar {
+            static let title: String = "Sign in"
+        }
 
         enum WelcomeLabel {
             static let welcomeLabelText: String = "Welcome!"
@@ -25,7 +29,23 @@ final class JoinChatRoomViewController: UIViewController {
         enum ContentStackView {
             static let spacing: CGFloat = 80
         }
+
+        enum Constraint {
+            static let centerYAgainstViewSafeArea: CGFloat = -100
+        }
     }
+
+    // MARK: Views
+
+    let contentStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.distribution = .equalSpacing
+        stackView.spacing = Style.ContentStackView.spacing
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
 
     let welcomeLabel: UILabel = {
         let label = UILabel()
@@ -45,15 +65,7 @@ final class JoinChatRoomViewController: UIViewController {
         return textField
     }()
 
-    let contentStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.distribution = .equalSpacing
-        stackView.spacing = Style.ContentStackView.spacing
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
+    // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,12 +76,14 @@ final class JoinChatRoomViewController: UIViewController {
         setUpConstraints()
     }
 
+    // MARK: Set up views
+
     private func setAttributes() {
         view.backgroundColor = .systemBackground
     }
 
     private func setUpNavigationBar() {
-        title = Style.navigationBarTitle
+        title = Style.NavigationBar.title
     }
 
     private func addSubviews() {
@@ -82,10 +96,13 @@ final class JoinChatRoomViewController: UIViewController {
         NSLayoutConstraint.activate([
             contentStackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
             contentStackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
-            contentStackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: -100)
+            contentStackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor,
+                                                      constant: Style.Constraint.centerYAgainstViewSafeArea)
         ])
     }
 }
+
+// MARK: - UITextFieldDelegate
 
 extension JoinChatRoomViewController: UITextFieldDelegate {
 

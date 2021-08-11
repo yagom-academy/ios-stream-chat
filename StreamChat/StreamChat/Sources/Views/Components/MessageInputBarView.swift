@@ -9,6 +9,8 @@ import UIKit
 
 final class MessageInputBarView: UIView {
 
+    // MARK: Namespaces
+
     private enum Style {
 
         static let backgroundColor: UIColor = .systemGray5
@@ -42,6 +44,8 @@ final class MessageInputBarView: UIView {
         }
     }
 
+    // MARK: Views
+
     let contentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -70,6 +74,8 @@ final class MessageInputBarView: UIView {
         return button
     }()
 
+    // MARK: Initializers
+
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
@@ -81,6 +87,8 @@ final class MessageInputBarView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+
+    // MARK: Set up views
 
     private func setUpSubviews() {
         contentStackView.addArrangedSubview(inputTextView)

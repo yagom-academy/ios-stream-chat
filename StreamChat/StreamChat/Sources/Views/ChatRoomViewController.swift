@@ -8,6 +8,8 @@ import UIKit
 
 final class ChatRoomViewController: UIViewController {
 
+    // MARK: Namespaces
+
     private enum Style {
 
         enum NavigationBar {
@@ -19,6 +21,8 @@ final class ChatRoomViewController: UIViewController {
         }
     }
 
+    // MARK: Views
+
     let messagesTableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
@@ -28,15 +32,19 @@ final class ChatRoomViewController: UIViewController {
 
     let messagesInputBarView = MessageInputBarView()
 
+    // MARK: Properties
+
     let chatRoomViewModel = ChatRoomViewModel()
     let cellReuseIdentifier = "MessageCell"
+
+    // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         messagesTableView.dataSource = self
         setUpNavigationBar()
-        addSubviews()
+        setUpSubviews()
         setUpConstraints()
 
         chatRoomViewModel.bind { [weak self] in
@@ -51,15 +59,13 @@ final class ChatRoomViewController: UIViewController {
         chatRoomViewModel.leaveChat()
     }
 
-    func join(with username: String) {
-        chatRoomViewModel.joinChat(with: username)
-    }
+    // MARK: set up views
 
     private func setUpNavigationBar() {
         title = Style.NavigationBar.title
     }
 
-    private func addSubviews() {
+    private func setUpSubviews() {
         view.addSubview(messagesTableView)
         view.addSubview(messagesInputBarView)
     }
@@ -82,7 +88,15 @@ final class ChatRoomViewController: UIViewController {
             messagesTableView.bottomAnchor.constraint(equalTo: messagesInputBarView.topAnchor)
         ])
     }
+
+    // MARK: Chat room features
+
+    func join(with username: String) {
+        chatRoomViewModel.joinChat(with: username)
+    }
 }
+
+// MARK: - UITableViewDataSource
 
 extension ChatRoomViewController: UITableViewDataSource {
 

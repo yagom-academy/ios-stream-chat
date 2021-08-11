@@ -9,7 +9,11 @@ import Foundation
 
 final class ChatRoomViewModel {
 
+    // MARK: Data binding
+    
     private var changed: (() -> Void)?
+
+    // MARK: Properties
 
     private let chatRoom = ChatRoom()
     private var messages: [Message] = [] {
@@ -22,9 +26,13 @@ final class ChatRoomViewModel {
         messages.count
     }
 
+    // MARK: Initializers
+
     init() {
         chatRoom.delegate = self
     }
+
+    // MARK: Chat room view model features
 
     func bind(with changed: @escaping (() -> Void)) {
         self.changed = changed
