@@ -30,6 +30,7 @@ class ChatHomeViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    private var chatUserNameTextFieldConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +41,42 @@ class ChatHomeViewController: UIViewController {
     }
     
     private func setKeyboardObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc func keyboardWillChange(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo,
+              let endFrameValue = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue) else {
+            
+            return
+        }
         
+        NSLayoutConstraint.deactivate([ self.chatUserNameTextFieldConstraint ])
+        
+        let endFrame = endFrameValue.cgRectValue
+        self.chatUserNameTextFieldConstraint = self.chatUsernameTextField.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,
+                                                                                          constant: -(endFrame.size.height + self.chatUsernameTextField.frame.height * 2))
+        NSLayoutConstraint.activate([ self.chatUserNameTextFieldConstraint ])
+        
+        UIView.animate(withDuration: 0.25) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        NSLayoutConstraint.deactivate([ self.chatUserNameTextFieldConstraint ])
+        self.chatUserNameTextFieldConstraint = self.chatUsernameTextField.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,
+                                                                                          constant: -220)
+        NSLayoutConstraint.activate([ self.chatUserNameTextFieldConstraint ])
+
+        UIView.animate(withDuration: 0.25) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
     }
     
     private func setConstraint() {
@@ -66,10 +98,11 @@ class ChatHomeViewController: UIViewController {
     
     private func setChatUsernametextField() {
         self.view.addSubview(chatUsernameTextField)
-        
+        self.chatUserNameTextFieldConstraint = self.chatUsernameTextField.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -220)
         NSLayoutConstraint.activate([
+            self.chatUserNameTextFieldConstraint,
             self.chatUsernameTextField.centerXAnchor.constraint(equalTo: self.chatLogoImageView.centerXAnchor),
-            self.chatUsernameTextField.topAnchor.constraint(equalTo: self.chatLogoImageView.bottomAnchor, constant: 150),
+//            self.chatUsernameTextField.topAnchor.constraint(lessThanOrEqualTo: self.chatLogoImageView.bottomAnchor, constant: 250),
             self.chatUsernameTextField.widthAnchor.constraint(equalTo: self.chatLogoImageView.widthAnchor, multiplier: 3/7, constant: 15)
         ])
     }
