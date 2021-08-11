@@ -19,11 +19,14 @@ final class JoinChatRoomViewController: UIViewController {
 
         enum WelcomeLabel {
             static let welcomeLabelText: String = "Welcome!"
+            static let font: UIFont.TextStyle = .largeTitle
         }
 
         enum UsernameTextField {
             static let placeholderText: String = "Please enter your name..."
             static let borderWidth: CGFloat = 1
+            static let font: UIFont.TextStyle = .title3
+            static let backgroundColor: UIColor = .systemGray6
         }
 
         enum ContentStackView {
@@ -50,7 +53,7 @@ final class JoinChatRoomViewController: UIViewController {
     let welcomeLabel: UILabel = {
         let label = UILabel()
         label.text = Style.WelcomeLabel.welcomeLabelText
-        label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        label.font = UIFont.preferredFont(forTextStyle: Style.WelcomeLabel.font)
         label.textAlignment = .center
         return label
     }()
@@ -58,9 +61,9 @@ final class JoinChatRoomViewController: UIViewController {
     let usernameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = Style.UsernameTextField.placeholderText
-        textField.font = UIFont.preferredFont(forTextStyle: .title3)
+        textField.font = UIFont.preferredFont(forTextStyle: Style.UsernameTextField.font)
+        textField.backgroundColor = Style.UsernameTextField.backgroundColor
         textField.textAlignment = .center
-        textField.backgroundColor = .systemGray6
         textField.borderStyle = .roundedRect
         return textField
     }()
@@ -72,7 +75,7 @@ final class JoinChatRoomViewController: UIViewController {
         usernameTextField.delegate = self
         setUpNavigationBar()
         setAttributes()
-        addSubviews()
+        setUpSubviews()
         setUpConstraints()
     }
 
@@ -86,7 +89,7 @@ final class JoinChatRoomViewController: UIViewController {
         title = Style.NavigationBar.title
     }
 
-    private func addSubviews() {
+    private func setUpSubviews() {
         contentStackView.addArrangedSubview(welcomeLabel)
         contentStackView.addArrangedSubview(usernameTextField)
         view.addSubview(contentStackView)

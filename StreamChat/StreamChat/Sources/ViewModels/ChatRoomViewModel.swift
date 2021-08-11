@@ -10,7 +10,7 @@ import Foundation
 final class ChatRoomViewModel {
 
     // MARK: Data binding
-    
+
     private var changed: (() -> Void)?
 
     // MARK: Properties
