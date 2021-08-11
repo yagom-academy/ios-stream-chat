@@ -9,4 +9,5 @@ import Foundation
 
 protocol ChatPageDelegate: AnyObject {
     func received(message: ChatMessage)
+    func sendButtonTapped(message: String)
 }

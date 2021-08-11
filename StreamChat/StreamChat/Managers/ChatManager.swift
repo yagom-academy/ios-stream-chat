@@ -49,16 +49,34 @@ final class ChatManager: NSObject {
         
     }
     
+    func send(message: String) {
+        guard let data = "MSG::\(message)::END".data(using: .utf8),
+              let outputStream = outputStream else {
+            
+            return
+        }
+        
+        data.withUnsafeBytes {
+            guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else { return }
+            outputStream.write(pointer, maxLength: data.count)
+        }
+    }
+    
     private func setInputStream(_ readStream: Unmanaged<CFReadStream>?) {
-        inputStream = readStream?.takeRetainedValue()
-        inputStream?.schedule(in: .current, forMode: .common)
-        inputStream?.open()
+        self.inputStream = readStream?.takeRetainedValue()
+        self.inputStream?.schedule(in: .current, forMode: .common)
+        self.inputStream?.open()
     }
     
     private func setOutputStream(_ writeStream: Unmanaged<CFWriteStream>?) {
-        outputStream = writeStream?.takeRetainedValue()
-        outputStream?.schedule(in: .current, forMode: .common)
-        outputStream?.open()
+        self.outputStream = writeStream?.takeRetainedValue()
+        self.outputStream?.schedule(in: .current, forMode: .common)
+        self.outputStream?.open()
+    }
+    
+    func stopChatSession() {
+        self.inputStream?.close()
+        self.outputStream?.close()
     }
 }
 
@@ -72,6 +90,7 @@ extension ChatManager: StreamDelegate {
             readAvailableBytes(stream: inputstream)
         case .endEncountered:
             print("new message received")
+            stopChatSession()
         case .errorOccurred:
             print("error occurred")
         case .hasSpaceAvailable:

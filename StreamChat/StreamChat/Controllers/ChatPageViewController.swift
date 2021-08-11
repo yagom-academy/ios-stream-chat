@@ -15,6 +15,11 @@ final class ChatPageViewController: UIViewController {
         connectNetwork()
         joinChat()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        chatManager.stopChatSession()
+    }
 
     private func connectNetwork() {
         self.chatManager.setNetwork()
@@ -32,5 +37,9 @@ final class ChatPageViewController: UIViewController {
 extension ChatPageViewController: ChatPageDelegate {
     func received(message: ChatMessage) {
         
+    }
+    
+    func sendButtonTapped(message: String) {
+        chatManager.send(message: message)
     }
 }
