@@ -43,15 +43,18 @@ final class ChatRoom: NSObject {
 
     func join(with username: String) {
         user = User(name: username)
-        write(username.asJoiningStreamData)
+        guard let joiningStreamData: Data = username.asJoiningStreamData else { return }
+        write(joiningStreamData)
     }
 
     func send(message: String) {
-        write(message.asSendingStreamData)
+        guard let sendingStreamData: Data = message.asSendingStreamData else { return }
+        write(sendingStreamData)
     }
 
     func leave() {
-        write(String.leavingStreamData)
+        guard let leavingStreamData: Data = String.leavingStreamData else { return }
+        write(leavingStreamData)
     }
 
     func disconnect() {
@@ -71,13 +74,13 @@ final class ChatRoom: NSObject {
         outputStream?.open()
     }
 
-    private func write(_ streamData: Data?) {
-        streamData?.withUnsafeBytes { rawBufferPointer in
+    private func write(_ streamData: Data) {
+        streamData.withUnsafeBytes { rawBufferPointer in
             guard let pointer = rawBufferPointer.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
                 print("Output Stream: write 작업에 실패하였어요.")
                 return
             }
-            outputStream?.write(pointer, maxLength: ConnectionSetting.maxReadLength)
+            outputStream?.write(pointer, maxLength: streamData.count)
         }
     }
 }

@@ -41,6 +41,6 @@ extension String {
     }
 
     static var leavingStreamData: Data? {
-        return (String.StreamAffix.Prefix.leave + String.StreamAffix.Suffix.endOfMessage).data(using: .utf8)
+        return (StreamAffix.Prefix.leave + StreamAffix.Suffix.endOfMessage).data(using: .utf8)
     }
 }

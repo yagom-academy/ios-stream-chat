@@ -9,20 +9,23 @@ import Foundation
 
 final class ChatRoomViewModel {
 
-    private var changed: ((Message?) -> Void)?
+    private var changed: (() -> Void)?
 
     private let chatRoom = ChatRoom()
     private var messages: [Message] = [] {
         didSet {
-            changed?(messages.last)
+            changed?()
         }
+    }
+    var messageCount: Int {
+        messages.count
     }
 
     init() {
         chatRoom.delegate = self
     }
 
-    func bind(with changed: @escaping ((Message?) -> Void)) {
+    func bind(with changed: @escaping (() -> Void)) {
         self.changed = changed
     }
 
@@ -37,8 +40,14 @@ final class ChatRoomViewModel {
         chatRoom.send(message: message)
     }
 
-    func join(with username: String) {
+    func joinChat(with username: String) {
+        chatRoom.connect()
         chatRoom.join(with: username)
+    }
+
+    func leaveChat() {
+        chatRoom.leave()
+        chatRoom.disconnect()
     }
 
     private func createMessage(with string: String) -> Message {

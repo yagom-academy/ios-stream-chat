@@ -58,7 +58,7 @@ final class JoinChatRoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameTextField.delegate = self
-        setNavigationBar()
+        setUpNavigationBar()
         setAttributes()
         addSubviews()
         setUpConstraints()
@@ -68,7 +68,7 @@ final class JoinChatRoomViewController: UIViewController {
         view.backgroundColor = .systemBackground
     }
 
-    private func setNavigationBar() {
+    private func setUpNavigationBar() {
         title = Style.navigationBarTitle
     }
 
@@ -80,11 +80,9 @@ final class JoinChatRoomViewController: UIViewController {
 
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
-            contentStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            contentStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            contentStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            contentStackView.topAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.topAnchor),
-            contentStackView.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor)
+            contentStackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
+            contentStackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
+            contentStackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: -100)
         ])
     }
 }
