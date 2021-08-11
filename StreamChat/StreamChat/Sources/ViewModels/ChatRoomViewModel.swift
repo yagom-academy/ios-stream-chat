@@ -17,9 +17,7 @@ final class ChatRoomViewModel {
 
     private let chatRoom = ChatRoom()
     private var messages: [Message] = [] {
-        didSet {
-            changed?()
-        }
+        didSet { changed?() }
     }
 
     var messageCount: Int {
