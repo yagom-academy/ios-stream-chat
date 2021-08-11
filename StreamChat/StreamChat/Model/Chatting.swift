@@ -24,6 +24,9 @@ final class Chatting {
         tcpSocket.send(data: ChattingConstant.leaveTheChatRoom)
     }
     func send(message: String) throws {
+        if message.count > 300 {
+            throw ChattingError.sendingMessagesIsLimitedTo300
+        }
         tcpSocket.send(data: ChattingConstant.send(message: message).string)
     }
     func receivedData() throws -> MessageData {
