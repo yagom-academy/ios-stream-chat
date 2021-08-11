@@ -17,6 +17,11 @@ final class JoinChatRoomViewController: UIViewController {
             static let title: String = "Sign in"
         }
 
+        enum ContentStackView {
+            static let spacingAtPortraitMode: CGFloat = 80
+            static let spacingAtLandscapeMode: CGFloat = 30
+        }
+
         enum WelcomeLabel {
             static let welcomeLabelText: String = "Welcome!"
             static let font: UIFont.TextStyle = .largeTitle
@@ -29,12 +34,21 @@ final class JoinChatRoomViewController: UIViewController {
             static let backgroundColor: UIColor = .systemGray6
         }
 
-        enum ContentStackView {
-            static let spacing: CGFloat = 80
+        enum JoinButton {
+            static let title: String = "Join!"
+            static let font: UIFont.TextStyle = .headline
+            static let backgroundColor: UIColor = .systemGreen
+            static let contentEdgeInsets = UIEdgeInsets(top: 7, left: 30, bottom: 7, right: 30)
+            static let cornerRadius: CGFloat = 10
         }
 
         enum Constraint {
             static let centerYAgainstViewSafeArea: CGFloat = -100
+        }
+
+        enum Alert {
+            static let UsernameRequiredTitle: String = "이름을 입력해주세요"
+            static let okActionTitle: String = "확인"
         }
     }
 
@@ -45,7 +59,9 @@ final class JoinChatRoomViewController: UIViewController {
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.distribution = .equalSpacing
-        stackView.spacing = Style.ContentStackView.spacing
+        stackView.spacing = UITraitCollection.current.horizontalSizeClass == .compact
+            ? Style.ContentStackView.spacingAtPortraitMode
+            : Style.ContentStackView.spacingAtLandscapeMode
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -69,18 +85,38 @@ final class JoinChatRoomViewController: UIViewController {
         return textField
     }()
 
+    let joinButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(Style.JoinButton.title, for: .normal)
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: Style.JoinButton.font)
+        button.backgroundColor = Style.JoinButton.backgroundColor
+        button.contentEdgeInsets = Style.JoinButton.contentEdgeInsets
+        button.layer.cornerRadius = Style.JoinButton.cornerRadius
+        button.showsTouchWhenHighlighted = true
+        button.addTarget(self, action: #selector(joinButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
+    private var centerYConstraint: NSLayoutConstraint?
+
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        usernameTextField.delegate = self
-        setUpNavigationBar()
+        setDelegates()
         setAttributes()
+        setUpNavigationBar()
         setUpSubviews()
         setUpConstraints()
+        addKeyboardNotificationObservers()
+        addKeyboardDismissGestureRecognizer()
     }
 
     // MARK: Set up views
+
+    private func setDelegates() {
+        usernameTextField.delegate = self
+    }
 
     private func setAttributes() {
         view.backgroundColor = .systemBackground
@@ -93,16 +129,98 @@ final class JoinChatRoomViewController: UIViewController {
     private func setUpSubviews() {
         contentStackView.addArrangedSubview(welcomeLabel)
         contentStackView.addArrangedSubview(usernameTextField)
+        contentStackView.addArrangedSubview(joinButton)
         view.addSubview(contentStackView)
     }
 
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
             contentStackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
-            contentStackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
-            contentStackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor,
-                                                      constant: Style.Constraint.centerYAgainstViewSafeArea)
+            contentStackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor)
         ])
+        centerYConstraint = contentStackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+        centerYConstraint?.isActive = true
+    }
+
+    // MARK: Handling keyboard notifications
+
+    private func addKeyboardNotificationObservers() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow(_:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide(_:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        centerYConstraint?.constant = -keyboardFrame.height / 2
+
+        guard let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
+        UIView.animate(withDuration: duration) { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
+    }
+
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
+        centerYConstraint?.constant = .zero
+        UIView.animate(withDuration: duration) { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
+    }
+
+    // MARK: Dismiss keyboard by tapping
+
+    private func addKeyboardDismissGestureRecognizer() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
+
+    // MARK: Change layout the size classes
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if traitCollection.horizontalSizeClass == .compact {
+            contentStackView.spacing = Style.ContentStackView.spacingAtPortraitMode
+        } else {
+            contentStackView.spacing = Style.ContentStackView.spacingAtLandscapeMode
+        }
+    }
+
+    // MARK: Join chat room
+
+    @objc private func joinButtonTapped() {
+        let chatRoomViewController = ChatRoomViewController()
+        guard let username = usernameTextField.text,
+              !username.isEmpty else {
+            showUsernameRequiredAlert()
+            return
+        }
+        chatRoomViewController.join(with: username)
+        navigationController?.pushViewController(chatRoomViewController, animated: true)
+    }
+
+    // MARK: Alerts
+
+    private func showUsernameRequiredAlert() {
+        let usernameRequiredAlert = UIAlertController(title: Style.Alert.UsernameRequiredTitle,
+                                                      message: nil,
+                                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: Style.Alert.okActionTitle, style: .default) { [weak self] _ in
+            self?.usernameTextField.becomeFirstResponder()
+        }
+        usernameRequiredAlert.addAction(okAction)
+        present(usernameRequiredAlert, animated: true)
     }
 }
 
@@ -112,9 +230,12 @@ extension JoinChatRoomViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let chatRoomViewController = ChatRoomViewController()
-        if let username = textField.text {
-            chatRoomViewController.join(with: username)
+        guard let username = textField.text,
+              !username.isEmpty else {
+            showUsernameRequiredAlert()
+            return false
         }
+        chatRoomViewController.join(with: username)
         navigationController?.pushViewController(chatRoomViewController, animated: true)
         return true
     }

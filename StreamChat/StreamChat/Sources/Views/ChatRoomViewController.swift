@@ -41,7 +41,7 @@ final class ChatRoomViewController: UIViewController {
     let cellReuseIdentifier = "MessageCell"
     private var bottomConstraint: NSLayoutConstraint?
     private var lastIndexPath: IndexPath {
-        IndexPath(row: self.chatRoomViewModel.messages.count - 1, section: .zero)
+        IndexPath(row: chatRoomViewModel.messages.count - 1, section: .zero)
     }
     private var isLastMessageVisible: Bool {
         guard let isVisible = messagesTableView.indexPathsForVisibleRows?.contains(lastIndexPath) else { return false }
@@ -151,7 +151,7 @@ final class ChatRoomViewController: UIViewController {
         scrollToLastMessage()
     }
 
-    // MARK: Dismiss keyboard when tapped
+    // MARK: Dismiss keyboard by tapping
 
     func addKeyboardDismissGestureRecognizer() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
