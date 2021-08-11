@@ -33,7 +33,7 @@ final class MessageInputBarView: UIView {
                 systemName: "paperplane.fill",
                 withConfiguration: Style.SendButton.symbolConfiguration
             )?.withTintColor(.white, renderingMode: .alwaysOriginal)
-            static let contentEdgeInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+            static let contentEdgeInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
             static let backgroundColor: UIColor = .systemGreen
         }
 
@@ -60,6 +60,8 @@ final class MessageInputBarView: UIView {
         let textView = UITextView()
         textView.font = UIFont.preferredFont(forTextStyle: Style.InputTextView.font)
         textView.layer.cornerRadius = Style.InputTextView.cornerRadius
+        textView.isScrollEnabled = false
+        textView.autocorrectionType = .no
         return textView
     }()
 
@@ -70,9 +72,16 @@ final class MessageInputBarView: UIView {
         button.contentEdgeInsets = Style.SendButton.contentEdgeInset
         button.backgroundColor = Style.SendButton.backgroundColor
         button.contentMode = .scaleAspectFit
+        button.adjustsImageWhenHighlighted = false
         button.layer.cornerRadius = button.frame.height / 2
+        button.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
+        button.setContentHuggingPriority(.required, for: .horizontal)
         return button
     }()
+
+    // MARK: Properties
+
+    weak var delegate: MessageInputBarViewDelegate?
 
     // MARK: Initializers
 
@@ -105,5 +114,15 @@ final class MessageInputBarView: UIView {
             contentStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,
                                                   constant: Style.Constraint.top)
         ])
+    }
+
+    // MARK: Button actions
+
+    @objc private func sendButtonTapped() {
+        guard let delegate = delegate,
+              let message = inputTextView.text,
+              !message.isEmpty else { return }
+        delegate.sendButtonTapped(message: message)
+        inputTextView.text = ""
     }
 }

@@ -65,6 +65,7 @@ final class JoinChatRoomViewController: UIViewController {
         textField.backgroundColor = Style.UsernameTextField.backgroundColor
         textField.textAlignment = .center
         textField.borderStyle = .roundedRect
+        textField.autocorrectionType = .no
         return textField
     }()
 

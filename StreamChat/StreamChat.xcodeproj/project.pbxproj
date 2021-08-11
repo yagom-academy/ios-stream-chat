@@ -19,6 +19,7 @@
 		AAA0D8EE26C3025500127B3F /* JoinChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8ED26C3025500127B3F /* JoinChatRoomViewController.swift */; };
 		AAA0D8F226C3B57E00127B3F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8F126C3B57E00127B3F /* Date+Extension.swift */; };
 		AAA0D8F526C3B9FE00127B3F /* MessageInputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8F426C3B9FE00127B3F /* MessageInputBarView.swift */; };
+		AAA0D8F926C3FF6D00127B3F /* MessageInputBarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8F826C3FF6D00127B3F /* MessageInputBarViewDelegate.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
 		C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927556262C562B00EF5D3A /* SceneDelegate.swift */; };
 		C7927559262C562B00EF5D3A /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927558262C562B00EF5D3A /* ChatRoomViewController.swift */; };
@@ -39,6 +40,7 @@
 		AAA0D8ED26C3025500127B3F /* JoinChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChatRoomViewController.swift; sourceTree = "<group>"; };
 		AAA0D8F126C3B57E00127B3F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		AAA0D8F426C3B9FE00127B3F /* MessageInputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputBarView.swift; sourceTree = "<group>"; };
+		AAA0D8F826C3FF6D00127B3F /* MessageInputBarViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputBarViewDelegate.swift; sourceTree = "<group>"; };
 		C7927551262C562B00EF5D3A /* StreamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7927554262C562B00EF5D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7927556262C562B00EF5D3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				AAA0D8E926C2F02F00127B3F /* ChatRoomDelegate.swift */,
+				AAA0D8F826C3FF6D00127B3F /* MessageInputBarViewDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAA0D8EE26C3025500127B3F /* JoinChatRoomViewController.swift in Sources */,
+				AAA0D8F926C3FF6D00127B3F /* MessageInputBarViewDelegate.swift in Sources */,
 				C7927559262C562B00EF5D3A /* ChatRoomViewController.swift in Sources */,
 				AAA0D8F226C3B57E00127B3F /* Date+Extension.swift in Sources */,
 				AAA0D8E326C2E5B800127B3F /* String+Extension.swift in Sources */,

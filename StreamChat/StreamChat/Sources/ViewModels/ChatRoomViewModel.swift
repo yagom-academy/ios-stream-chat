@@ -16,12 +16,8 @@ final class ChatRoomViewModel {
     // MARK: Properties
 
     private let chatRoom = ChatRoom()
-    private var messages: [Message] = [] {
+    private(set) var messages: [Message] = [] {
         didSet { changed?() }
-    }
-
-    var messageCount: Int {
-        messages.count
     }
 
     // MARK: Initializers
@@ -42,8 +38,6 @@ final class ChatRoomViewModel {
     }
 
     func send(message: String) {
-        let created = createMessage(with: message)
-        messages.append(created)
         chatRoom.send(message: message)
     }
 
@@ -55,10 +49,6 @@ final class ChatRoomViewModel {
     func leaveChat() {
         chatRoom.leave()
         chatRoom.disconnect()
-    }
-
-    private func createMessage(with string: String) -> Message {
-        return Message(sender: chatRoom.user, text: string, dateTime: Date())
     }
 }
 
