@@ -1,0 +1,7 @@
+disabled_rules:
+
+included:
+excluded:
+- Pods
+- StreamChat/AppDelegate.swift
+- StreamChat/SceneDelegate.swift
