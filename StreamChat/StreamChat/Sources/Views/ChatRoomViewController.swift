@@ -28,6 +28,7 @@ final class ChatRoomViewController: UIViewController {
         let tableView = UITableView()
         tableView.separatorStyle = .none
         tableView.keyboardDismissMode = .interactive
+        tableView.register(MessageTableViewCell.self, forCellReuseIdentifier: MessageTableViewCell.reuseIdentifier)
         tableView.allowsSelection = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -38,7 +39,6 @@ final class ChatRoomViewController: UIViewController {
     // MARK: Properties
 
     let chatRoomViewModel = ChatRoomViewModel()
-    let cellReuseIdentifier = "MessageCell"
     private var bottomConstraint: NSLayoutConstraint?
     private var lastIndexPath: IndexPath {
         IndexPath(row: chatRoomViewModel.messages.count - 1, section: .zero)
@@ -190,11 +190,12 @@ extension ChatRoomViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let messageCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)
-            ?? UITableViewCell(style: .subtitle, reuseIdentifier: cellReuseIdentifier)
-        let message = chatRoomViewModel.message(at: indexPath.row)
-        messageCell.textLabel?.text = message?.sender.name
-        messageCell.detailTextLabel?.text = message?.text
+        guard let messageCell = tableView.dequeueReusableCell(
+                withIdentifier: MessageTableViewCell.reuseIdentifier,
+                for: indexPath
+        ) as? MessageTableViewCell else { return MessageTableViewCell() }
+        guard let message = chatRoomViewModel.message(at: indexPath.row) else { return MessageTableViewCell() }
+        messageCell.configure(with: message)
         return messageCell
     }
 }
