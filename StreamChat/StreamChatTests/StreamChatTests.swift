@@ -60,7 +60,6 @@ final class StreamChatTests: XCTestCase {
         chatting.disconnect()
     }
     
-    // TODO: - 보내는 메시지 글자수 제한 테스트 구현
     // MARK: - 채팅참가 알림 및 수신
     func test_채팅참가_알림_및_수신() throws {
         let chatParticipationNotification = "\(actName) has joined"
