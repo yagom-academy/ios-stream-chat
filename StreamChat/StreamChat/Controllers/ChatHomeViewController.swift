@@ -26,7 +26,8 @@ class ChatHomeViewController: UIViewController {
         let button = UIButton()
         button.layer.cornerRadius = 15
         button.setTitle("JOIN", for: .normal)
-        button.backgroundColor = .systemOrange
+        button.isEnabled = false
+        button.backgroundColor = .systemGray3
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -34,10 +35,19 @@ class ChatHomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isToolbarHidden = true
-        self.view.backgroundColor = .white
+        setViewController()
+        setDelegate()
         setKeyboardObserver()
         setConstraint()
+    }
+    
+    private func setDelegate() {
+        self.chatUsernameTextField.delegate = self
+    }
+    
+    private func setViewController() {
+        self.navigationController?.isToolbarHidden = true
+        self.view.backgroundColor = .white
     }
     
     private func setKeyboardObserver() {
@@ -102,7 +112,6 @@ class ChatHomeViewController: UIViewController {
         NSLayoutConstraint.activate([
             self.chatUserNameTextFieldConstraint,
             self.chatUsernameTextField.centerXAnchor.constraint(equalTo: self.chatLogoImageView.centerXAnchor),
-//            self.chatUsernameTextField.topAnchor.constraint(lessThanOrEqualTo: self.chatLogoImageView.bottomAnchor, constant: 250),
             self.chatUsernameTextField.widthAnchor.constraint(equalTo: self.chatLogoImageView.widthAnchor, multiplier: 3/7, constant: 15)
         ])
     }
@@ -116,5 +125,22 @@ class ChatHomeViewController: UIViewController {
             self.chatJoinButton.widthAnchor.constraint(equalTo: chatUsernameTextField.widthAnchor, multiplier: 3/5)
         ])
     }
+}
 
+extension ChatHomeViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.chatUsernameTextField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let textField = chatUsernameTextField.text else { return }
+        if !textField.isEmpty {
+            self.chatJoinButton.isEnabled = true
+            self.chatJoinButton.backgroundColor = .systemOrange
+        } else {
+            self.chatJoinButton.isEnabled = false
+            self.chatJoinButton.backgroundColor = .systemGray3
+        }
+    }
 }
