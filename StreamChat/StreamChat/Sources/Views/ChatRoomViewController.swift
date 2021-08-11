@@ -10,7 +10,13 @@ final class ChatRoomViewController: UIViewController {
 
     private enum Style {
 
-        static let navigationBarTitle: String = "Let's chat!"
+        enum NavigationBar {
+            static let title: String = "Let's chat!"
+        }
+
+        enum Constraint {
+            static let contentStackViewBottom: CGFloat = -10
+        }
     }
 
     let messagesTableView: UITableView = {
@@ -19,6 +25,8 @@ final class ChatRoomViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+
+    let messagesInputBarView = MessageInputBarView()
 
     let chatRoomViewModel = ChatRoomViewModel()
     let cellReuseIdentifier = "MessageCell"
@@ -48,19 +56,30 @@ final class ChatRoomViewController: UIViewController {
     }
 
     private func setUpNavigationBar() {
-        title = Style.navigationBarTitle
+        title = Style.NavigationBar.title
     }
 
     private func addSubviews() {
         view.addSubview(messagesTableView)
+        view.addSubview(messagesInputBarView)
     }
 
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
+            messagesInputBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            messagesInputBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            messagesInputBarView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            messagesInputBarView.contentStackView.bottomAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+                constant: Style.Constraint.contentStackViewBottom
+            )
+        ])
+
+        NSLayoutConstraint.activate([
             messagesTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             messagesTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             messagesTableView.topAnchor.constraint(equalTo: view.topAnchor),
-            messagesTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            messagesTableView.bottomAnchor.constraint(equalTo: messagesInputBarView.topAnchor)
         ])
     }
 }
