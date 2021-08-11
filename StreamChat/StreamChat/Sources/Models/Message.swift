@@ -11,4 +11,5 @@ struct Message {
 
     let sender: User
     let text: String
+    let dateTime: Date
 }

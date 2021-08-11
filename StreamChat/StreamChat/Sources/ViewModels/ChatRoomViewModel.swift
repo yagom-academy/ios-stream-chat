@@ -17,6 +17,7 @@ final class ChatRoomViewModel {
             changed?()
         }
     }
+
     var messageCount: Int {
         messages.count
     }
@@ -51,7 +52,7 @@ final class ChatRoomViewModel {
     }
 
     private func createMessage(with string: String) -> Message {
-        return Message(sender: chatRoom.user, text: string)
+        return Message(sender: chatRoom.user, text: string, dateTime: Date())
     }
 }
 

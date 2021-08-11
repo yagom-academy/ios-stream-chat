@@ -16,13 +16,12 @@ final class ChatRoom: NSObject {
         static let host = NetworkConnection.host
         static let port = NetworkConnection.port
         static let maxReadLength = 2400
-        static let maxWriteLength = 2400
     }
 
     private enum DefaultUser {
 
-        static let system = User(name: "SYS")
-        static let unknown = User(name: "Unknown")
+        static let system = User(name: "SYS", senderType: .system)
+        static let unknown = User(name: "Unknown", senderType: .me)
     }
 
     private var inputStream: InputStream?
@@ -42,7 +41,7 @@ final class ChatRoom: NSObject {
     }
 
     func join(with username: String) {
-        user = User(name: username)
+        user = User(name: username, senderType: .me)
         guard let joiningStreamData: Data = username.asJoiningStreamData else { return }
         write(joiningStreamData)
     }
@@ -140,10 +139,10 @@ extension ChatRoom: StreamDelegate {
         let isSystemMessage: Bool = strings.count <= 1
 
         if isSystemMessage {
-            return Message(sender: system, text: message)
+            return Message(sender: system, text: message, dateTime: Date())
         } else {
-            let sender: User = (name == user.name) ? user : User(name: name)
-            return Message(sender: sender, text: message)
+            let sender: User = (name == user.name) ? user : User(name: name, senderType: .someoneElse)
+            return Message(sender: sender, text: message, dateTime: Date())
         }
     }
 }
