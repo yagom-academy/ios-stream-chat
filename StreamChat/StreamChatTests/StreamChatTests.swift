@@ -8,7 +8,7 @@
 import XCTest
 @testable import StreamChat
 
-class StreamChatTests: XCTestCase {
+final class StreamChatTests: XCTestCase {
     
     let host = ChattingConstant.host
     let port = ChattingConstant.port
@@ -50,7 +50,6 @@ class StreamChatTests: XCTestCase {
         
         let receivedData = try chattingOfObserver.receivedData()
         let receivedMessage = "\(receivedData.userName) \(receivedData.message)"
-        // TODO: - 비동기 처리..?
         chattingOfAct.leaveTheChatRoom()
         chattingOfAct.disconnect()
         chattingOfObserver.leaveTheChatRoom()
@@ -73,7 +72,6 @@ class StreamChatTests: XCTestCase {
         
         let receivedData = try chattingOfObserver.receivedData()
         let receivedMessage = "\(receivedData.userName) \(receivedData.message)"
-        // TODO: - 비동기 처리..?
         chattingOfAct.disconnect()
         chattingOfObserver.leaveTheChatRoom()
         chattingOfObserver.disconnect()

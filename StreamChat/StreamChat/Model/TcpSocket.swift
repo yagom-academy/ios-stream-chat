@@ -7,12 +7,13 @@
 
 import Foundation
 
-class TcpSocket: NSObject {
+final class TcpSocket: NSObject {
     
     var inputStream: InputStream?
     var outputStream: OutputStream?
     
     func connect(host: String, port: Int) {
+        // TODO: - deprecated 함수에대한 변경
         Stream.getStreamsToHost(withName: host, port: port, inputStream: &inputStream,
                                 outputStream: &outputStream)
         inputStream?.open()

@@ -1,5 +1,5 @@
 //
-//  MessageData.swift
+//  ReceivedData.swift
 //  StreamChat
 //
 //  Created by 강경 on 2021/08/11.
@@ -14,7 +14,7 @@ final class ReceivedData {
     init(receivedString: String) {
         self.receivedString = receivedString
     }
-    // TODO: - 과연 이게 최선인가..?
+    // TODO: - 받는 데이터가 "메시지"형식인지, "알림"형식인지 판단하는 로직에 대한 적절성 검토
     func processedData() -> MessageData {
         let stringData = receivedString.components(separatedBy: "::")
         if stringData.count == 2 {
