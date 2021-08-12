@@ -8,7 +8,7 @@
 import Foundation
 
 class ChatViewModel {
-    
+    let service = Service()
     var onUpdated: (_ newMessages: [Chat], _ oldMessages: [Chat]) -> Void = { _, _  in }
     
     private var messages: [Chat] = [] {
@@ -22,10 +22,15 @@ class ChatViewModel {
     }
     
     func insertMessage(chat: Chat) {
+        service.send(message: chat.message)
         messages.append(chat)
     }
     
     func getMessage(indexPath: IndexPath) -> Chat {
         return messages[indexPath.row]
+    }
+    
+    func send(message: String) {
+        service.send(message: message)
     }
 }

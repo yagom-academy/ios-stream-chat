@@ -8,7 +8,7 @@ import UIKit
 
 final class ChatViewController: UIViewController {
     
-    private var chatViewModel = ChatViewModel()
+    let chatViewModel = ChatViewModel()
     private var typingContainerViewBottomConstraints: NSLayoutConstraint = NSLayoutConstraint()
     private let chatTableView: UITableView = {
         let tableView = UITableView()
@@ -53,6 +53,10 @@ final class ChatViewController: UIViewController {
         setDataBindingWithViewModel()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
     // MARK: NotificationCenter
     
     private func setNotificationCenter() {
@@ -91,9 +95,11 @@ final class ChatViewController: UIViewController {
     }
     
     private func setNavigationBar() {
+        self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = .darkGray
+        self.navigationController?.navigationBar.tintColor = .yellow
     }
     
     private func setChatTableView() {
