@@ -24,8 +24,8 @@ final class ChatManager: NSObject {
         var writeStream: Unmanaged<CFWriteStream>?
         
         CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
-                                           ChatConfiguration.stream.url as CFString,
-                                           ChatConfiguration.stream.port,
+                                           StreamConfig.url as CFString,
+                                           StreamConfig.port,
                                            &readStream,
                                            &writeStream)
         
@@ -36,7 +36,7 @@ final class ChatManager: NSObject {
     func joinChat(username: String) {
         self.username = username
         
-        guard let data = "USR_NAME::\(username)::END".data(using: .utf8),
+        guard let data = StreamFormat.join(username).description.data(using: .utf8),
               let outputStream = outputStream else {
             
             return
@@ -50,7 +50,7 @@ final class ChatManager: NSObject {
     }
     
     func send(message: String) {
-        guard let data = "MSG::\(message)::END".data(using: .utf8),
+        guard let data = StreamFormat.send(message).description.data(using: .utf8),
               let outputStream = outputStream else {
             
             return
@@ -69,7 +69,7 @@ final class ChatManager: NSObject {
     }
     
     private func leave() {
-        guard let data = "LEAVE::::END".data(using: .utf8),
+        guard let data = StreamFormat.exit.description.data(using: .utf8),
               let outputStream = outputStream else {
             
             return
@@ -138,7 +138,7 @@ extension ChatManager: StreamDelegate {
             
             return nil
         }
-        let messageSender: ChatConfiguration.userState = (self.username == name) ? .ourself : .someoneElse
+        let messageSender: UserState = (self.username == name) ? .ourself : .someoneElse
         
         return ChatMessage(message: message, user: ChatUser(username: name, state: messageSender))
     }

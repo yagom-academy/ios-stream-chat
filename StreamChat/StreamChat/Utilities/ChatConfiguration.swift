@@ -7,14 +7,32 @@
 
 import Foundation
 
-enum ChatConfiguration {
-    enum userState {
-        case ourself
-        case someoneElse
-    }
-    
-    enum stream {
-        static let url = "15.165.55.224"
-        static let port: UInt32 = 5080
+
+enum UserState {
+    case ourself
+    case someoneElse
+}
+
+enum StreamConfig {
+    static let url = "15.165.55.224"
+    static let port: UInt32 = 5080
+}
+
+enum StreamFormat {
+    case join(String)
+    case send(String)
+    case exit
+}
+
+extension StreamFormat: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .join(let username):
+            return "USR_NAME::\(username)::END"
+        case .send(let message):
+            return "MSG::\(message)::END"
+        case .exit:
+            return "LEAVE::::END"
+        }
     }
 }

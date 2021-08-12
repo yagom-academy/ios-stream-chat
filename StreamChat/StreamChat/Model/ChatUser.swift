@@ -9,5 +9,5 @@ import Foundation
 
 struct ChatUser {
     let username: String
-    let state: ChatConfiguration.userState
+    let state: UserState
 }
