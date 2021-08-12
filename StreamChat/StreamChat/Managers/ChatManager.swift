@@ -62,6 +62,25 @@ final class ChatManager: NSObject {
         }
     }
     
+    func stopChatSession() {
+        leave()
+        self.inputStream?.close()
+        self.outputStream?.close()
+    }
+    
+    private func leave() {
+        guard let data = "LEAVE::::END".data(using: .utf8),
+              let outputStream = outputStream else {
+            
+            return
+        }
+        
+        data.withUnsafeBytes {
+            guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else { return }
+            outputStream.write(pointer, maxLength: data.count)
+        }
+    }
+    
     private func setInputStream(_ readStream: Unmanaged<CFReadStream>?) {
         self.inputStream = readStream?.takeRetainedValue()
         self.inputStream?.schedule(in: .current, forMode: .common)
@@ -73,11 +92,6 @@ final class ChatManager: NSObject {
         self.outputStream?.schedule(in: .current, forMode: .common)
         self.outputStream?.open()
     }
-    
-    func stopChatSession() {
-        self.inputStream?.close()
-        self.outputStream?.close()
-    }
 }
 
 extension ChatManager: StreamDelegate {
@@ -86,10 +100,8 @@ extension ChatManager: StreamDelegate {
         
         switch eventCode {
         case .hasBytesAvailable:
-            print("new message received")
             readAvailableBytes(stream: inputstream)
         case .endEncountered:
-            print("new message received")
             stopChatSession()
         case .errorOccurred:
             print("error occurred")
@@ -114,7 +126,6 @@ extension ChatManager: StreamDelegate {
             guard let message = processedMessageString(buffer: buffer, length: numberOfBytesRead) else { return }
             self.receiveDelegate?.received(message: message)
         }
-        
     }
     
     private func processedMessageString(buffer: UnsafeMutablePointer<UInt8>, length: Int) -> ChatMessage? {
