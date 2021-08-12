@@ -93,6 +93,59 @@
 			path = StreamChatTests;
 			sourceTree = "<group>";
 		};
+		B0D4692326C4FB9600FBA6E1 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				B0D4692426C4FB9E00FBA6E1 /* Application */,
+				B0D4692726C506E400FBA6E1 /* Controllers */,
+				B0D4692826C5070000FBA6E1 /* Network */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		B0D4692426C4FB9E00FBA6E1 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C7927554262C562B00EF5D3A /* AppDelegate.swift */,
+				C7927556262C562B00EF5D3A /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		B0D4692526C4FBB500FBA6E1 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C792755A262C562B00EF5D3A /* Main.storyboard */,
+				C792755F262C562E00EF5D3A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		B0D4692626C4FBDB00FBA6E1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C792755D262C562E00EF5D3A /* Assets.xcassets */,
+				C7927562262C562E00EF5D3A /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B0D4692726C506E400FBA6E1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C7927558262C562B00EF5D3A /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B0D4692826C5070000FBA6E1 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B027F9B826C3A84200AA67F3 /* StreamManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		C7927548262C562B00EF5D3A = {
 			isa = PBXGroup;
 			children = (
@@ -117,14 +170,9 @@
 		C7927553262C562B00EF5D3A /* StreamChat */ = {
 			isa = PBXGroup;
 			children = (
-				C7927554262C562B00EF5D3A /* AppDelegate.swift */,
-				C7927556262C562B00EF5D3A /* SceneDelegate.swift */,
-				C7927558262C562B00EF5D3A /* ViewController.swift */,
-				C792755A262C562B00EF5D3A /* Main.storyboard */,
-				C792755D262C562E00EF5D3A /* Assets.xcassets */,
-				C792755F262C562E00EF5D3A /* LaunchScreen.storyboard */,
-				C7927562262C562E00EF5D3A /* Info.plist */,
-				B027F9B826C3A84200AA67F3 /* StreamManager.swift */,
+				B0D4692326C4FB9600FBA6E1 /* Source */,
+				B0D4692526C4FBB500FBA6E1 /* Storyboards */,
+				B0D4692626C4FBDB00FBA6E1 /* Resources */,
 			);
 			path = StreamChat;
 			sourceTree = "<group>";
