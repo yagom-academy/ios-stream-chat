@@ -45,8 +45,8 @@ class StreamManager: NSObject, StreamDelegate {
     }
     
     func close() {
-        inputStream?.open()
-        outputStream?.open()
+        inputStream?.close()
+        outputStream?.close()
     }
     
     func send(message: String) {
