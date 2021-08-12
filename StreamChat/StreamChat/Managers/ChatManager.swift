@@ -24,8 +24,8 @@ final class ChatManager: NSObject {
         var writeStream: Unmanaged<CFWriteStream>?
         
         CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
-                                           "15.165.55.224" as CFString,
-                                           5080,
+                                           ChatConfiguration.stream.url as CFString,
+                                           ChatConfiguration.stream.port,
                                            &readStream,
                                            &writeStream)
         
@@ -138,8 +138,8 @@ extension ChatManager: StreamDelegate {
             
             return nil
         }
-        let messageSender: ChatMessageState = (self.username == name) ? .ourself : .someoneElse
+        let messageSender: ChatConfiguration.userState = (self.username == name) ? .ourself : .someoneElse
         
-        return ChatMessage(message: message, username: name, messageSender: messageSender)
+        return ChatMessage(message: message, user: ChatUser(username: name, state: messageSender))
     }
 }

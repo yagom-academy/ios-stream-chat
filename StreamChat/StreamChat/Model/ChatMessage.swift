@@ -9,12 +9,10 @@ import Foundation
 
 struct ChatMessage {
     let message: String
-    let username: String
-    let messageSender: ChatMessageState
+    let user: ChatUser
     
-    init(message: String, username: String, messageSender: ChatMessageState) {
+    init(message: String, user: ChatUser) {
         self.message = message.withoutWhitespace()
-        self.username = username
-        self.messageSender = messageSender
+        self.user = user
     }
 }
