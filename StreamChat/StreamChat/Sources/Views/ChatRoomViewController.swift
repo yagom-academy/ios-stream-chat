@@ -35,11 +35,6 @@ final class ChatRoomViewController: UIViewController {
         IndexPath(row: chatRoomViewModel.messages.count - 1, section: .zero)
     }
 
-    private var isLastMessageVisible: Bool {
-        guard let isVisible = messagesTableView.indexPathsForVisibleRows?.contains(lastIndexPath) else { return false }
-        return isVisible
-    }
-
     // MARK: Views
 
     let messagesTableView: UITableView = {
@@ -145,9 +140,8 @@ final class ChatRoomViewController: UIViewController {
         guard let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
         UIView.animate(withDuration: duration) { [weak self] in
             self?.view.layoutIfNeeded()
+            self?.scrollToLastMessage()
         }
-        guard !chatRoomViewModel.messages.isEmpty else { return }
-        messagesTableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
     }
 
     @objc private func keyboardWillHide(_ notification: Notification) {
@@ -161,7 +155,13 @@ final class ChatRoomViewController: UIViewController {
         UIView.animate(withDuration: duration) { [weak self] in
             self?.view.layoutIfNeeded()
         }
-        scrollToLastMessage()
+    }
+
+    // MARK: Positioning table view
+
+    private func scrollToLastMessage() {
+        guard !chatRoomViewModel.messages.isEmpty else { return }
+        messagesTableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
     }
 
     // MARK: Dismiss keyboard by tapping
@@ -183,14 +183,6 @@ final class ChatRoomViewController: UIViewController {
             self.messagesTableView.insertRows(at: [self.lastIndexPath], with: .none)
             self.scrollToLastMessage()
         }
-    }
-
-    // MARK: Positioning table view
-
-    private func scrollToLastMessage() {
-        guard !chatRoomViewModel.messages.isEmpty,
-              !isLastMessageVisible else { return }
-        messagesTableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
     }
 }
 
