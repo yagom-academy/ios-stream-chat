@@ -22,6 +22,7 @@
 		AAA0D8F926C3FF6D00127B3F /* MessageInputBarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8F826C3FF6D00127B3F /* MessageInputBarViewDelegate.swift */; };
 		AAA0D8FB26C4497F00127B3F /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8FA26C4497F00127B3F /* MessageTableViewCell.swift */; };
 		AAA0D8FD26C4620A00127B3F /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8FC26C4620A00127B3F /* InsetLabel.swift */; };
+		AAA0D90026C4727E00127B3F /* SystemMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8FF26C4727E00127B3F /* SystemMessageTableViewCell.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
 		C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927556262C562B00EF5D3A /* SceneDelegate.swift */; };
 		C7927559262C562B00EF5D3A /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927558262C562B00EF5D3A /* ChatRoomViewController.swift */; };
@@ -45,6 +46,7 @@
 		AAA0D8F826C3FF6D00127B3F /* MessageInputBarViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputBarViewDelegate.swift; sourceTree = "<group>"; };
 		AAA0D8FA26C4497F00127B3F /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		AAA0D8FC26C4620A00127B3F /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
+		AAA0D8FF26C4727E00127B3F /* SystemMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessageTableViewCell.swift; sourceTree = "<group>"; };
 		C7927551262C562B00EF5D3A /* StreamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7927554262C562B00EF5D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7927556262C562B00EF5D3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,11 +181,20 @@
 		AAA0D8F326C3B95600127B3F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AAA0D8FE26C4724C00127B3F /* Cells */,
 				AAA0D8FC26C4620A00127B3F /* InsetLabel.swift */,
 				AAA0D8F426C3B9FE00127B3F /* MessageInputBarView.swift */,
-				AAA0D8FA26C4497F00127B3F /* MessageTableViewCell.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		AAA0D8FE26C4724C00127B3F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AAA0D8FA26C4497F00127B3F /* MessageTableViewCell.swift */,
+				AAA0D8FF26C4727E00127B3F /* SystemMessageTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		C7927548262C562B00EF5D3A = {
@@ -306,6 +317,7 @@
 			files = (
 				AAA0D8EE26C3025500127B3F /* JoinChatRoomViewController.swift in Sources */,
 				AAA0D8F926C3FF6D00127B3F /* MessageInputBarViewDelegate.swift in Sources */,
+				AAA0D90026C4727E00127B3F /* SystemMessageTableViewCell.swift in Sources */,
 				C7927559262C562B00EF5D3A /* ChatRoomViewController.swift in Sources */,
 				AAA0D8F226C3B57E00127B3F /* Date+Extension.swift in Sources */,
 				AAA0D8E326C2E5B800127B3F /* String+Extension.swift in Sources */,

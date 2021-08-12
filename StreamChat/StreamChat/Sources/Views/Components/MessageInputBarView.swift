@@ -26,14 +26,14 @@ final class MessageInputBarView: UIView {
 
         enum SendButton {
             static let frameSize = CGSize(width: 20, height: 20)
-            private static let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 17,
+            private static let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 20,
                                                                                  weight: .light,
                                                                                  scale: .large)
             static let image = UIImage(
                 systemName: "paperplane.fill",
                 withConfiguration: Style.SendButton.symbolConfiguration
             )?.withTintColor(.white, renderingMode: .alwaysOriginal)
-            static let contentEdgeInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+            static let contentEdgeInset = UIEdgeInsets(top: 3, left: 8, bottom: 3, right: 8)
             static let backgroundColor: UIColor = .systemGreen
         }
 
@@ -43,6 +43,10 @@ final class MessageInputBarView: UIView {
             static let top: CGFloat = 8
         }
     }
+
+    // MARK: Properties
+
+    weak var delegate: MessageInputBarViewDelegate?
 
     // MARK: Views
 
@@ -78,10 +82,6 @@ final class MessageInputBarView: UIView {
         button.setContentHuggingPriority(.required, for: .horizontal)
         return button
     }()
-
-    // MARK: Properties
-
-    weak var delegate: MessageInputBarViewDelegate?
 
     // MARK: Initializers
 

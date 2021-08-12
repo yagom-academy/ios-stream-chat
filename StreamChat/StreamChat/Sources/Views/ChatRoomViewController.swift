@@ -16,10 +16,28 @@ final class ChatRoomViewController: UIViewController {
             static let title: String = "Let's chat!"
         }
 
+        enum MessagesTableView {
+            static let topContentInset: CGFloat = 10
+        }
+
         enum Constraint {
             static let contentStackViewBottom: CGFloat = -10
             static let contentStackViewBottomWhenKeyboardShown: CGFloat = 27
         }
+    }
+
+    // MARK: Properties
+
+    let chatRoomViewModel = ChatRoomViewModel()
+    private var bottomConstraint: NSLayoutConstraint?
+
+    private var lastIndexPath: IndexPath {
+        IndexPath(row: chatRoomViewModel.messages.count - 1, section: .zero)
+    }
+
+    private var isLastMessageVisible: Bool {
+        guard let isVisible = messagesTableView.indexPathsForVisibleRows?.contains(lastIndexPath) else { return false }
+        return isVisible
     }
 
     // MARK: Views
@@ -28,6 +46,8 @@ final class ChatRoomViewController: UIViewController {
         let tableView = UITableView()
         tableView.separatorStyle = .none
         tableView.keyboardDismissMode = .interactive
+        tableView.register(SystemMessageTableViewCell.self,
+                           forCellReuseIdentifier: SystemMessageTableViewCell.reuseIdentifier)
         tableView.register(MessageTableViewCell.self, forCellReuseIdentifier: MessageTableViewCell.reuseIdentifier)
         tableView.allowsSelection = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,18 +55,6 @@ final class ChatRoomViewController: UIViewController {
     }()
 
     let messagesInputBarView = MessageInputBarView()
-
-    // MARK: Properties
-
-    let chatRoomViewModel = ChatRoomViewModel()
-    private var bottomConstraint: NSLayoutConstraint?
-    private var lastIndexPath: IndexPath {
-        IndexPath(row: chatRoomViewModel.messages.count - 1, section: .zero)
-    }
-    private var isLastMessageVisible: Bool {
-        guard let isVisible = messagesTableView.indexPathsForVisibleRows?.contains(lastIndexPath) else { return false }
-        return isVisible
-    }
 
     // MARK: Lifecycle
 
@@ -59,6 +67,11 @@ final class ChatRoomViewController: UIViewController {
         addKeyboardNotificationObservers()
         addKeyboardDismissGestureRecognizer()
         bindWithViewModel()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        messagesTableView.contentInset.top = Style.MessagesTableView.topContentInset
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -167,7 +180,7 @@ final class ChatRoomViewController: UIViewController {
     private func bindWithViewModel() {
         chatRoomViewModel.bind { [weak self] in
             guard let self = self else { return }
-            self.messagesTableView.insertRows(at: [self.lastIndexPath], with: .bottom)
+            self.messagesTableView.insertRows(at: [self.lastIndexPath], with: .none)
             self.scrollToLastMessage()
         }
     }
@@ -190,13 +203,30 @@ extension ChatRoomViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let messageCell = tableView.dequeueReusableCell(
-                withIdentifier: MessageTableViewCell.reuseIdentifier,
-                for: indexPath
-        ) as? MessageTableViewCell else { return MessageTableViewCell() }
-        guard let message = chatRoomViewModel.message(at: indexPath.row) else { return MessageTableViewCell() }
-        messageCell.configure(with: message)
-        return messageCell
+        guard let message = chatRoomViewModel.message(at: indexPath.row) else {
+            return MessageTableViewCell()
+        }
+
+        switch message.sender.senderType {
+        case .system:
+            guard let systemMessageCell = tableView.dequeueReusableCell(
+                    withIdentifier: SystemMessageTableViewCell.reuseIdentifier,
+                    for: indexPath) as? SystemMessageTableViewCell else {
+                return SystemMessageTableViewCell()
+            }
+
+            systemMessageCell.configure(with: message)
+            return systemMessageCell
+        default:
+            guard let messageCell = tableView.dequeueReusableCell(
+                    withIdentifier: MessageTableViewCell.reuseIdentifier,
+                    for: indexPath) as? MessageTableViewCell else {
+                return MessageTableViewCell()
+            }
+
+            messageCell.configure(with: message)
+            return messageCell
+        }
     }
 }
 

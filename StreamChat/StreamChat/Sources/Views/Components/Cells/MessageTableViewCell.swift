@@ -59,6 +59,9 @@ final class MessageTableViewCell: UITableViewCell {
             static let contentStackViewBottom: CGFloat = -4
         }
     }
+    // MARK: Properties
+
+    static let reuseIdentifier = "MessageTableViewCell"
 
     // MARK: Views
 
@@ -110,10 +113,6 @@ final class MessageTableViewCell: UITableViewCell {
         return label
     }()
 
-    // MARK: Properties
-
-    static let reuseIdentifier = "MessageTableViewCell"
-
     // MARK: Initializers
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -159,7 +158,7 @@ final class MessageTableViewCell: UITableViewCell {
         ])
     }
 
-    // MARK: Configure while dequeuing
+    // MARK: Configure a cell while dequeuing
 
     func configure(with message: Message) {
         usernameInitialLabel.text = String(message.sender.name.first ?? Style.unknownUserInitial)

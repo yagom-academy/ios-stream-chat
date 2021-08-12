@@ -52,6 +52,10 @@ final class JoinChatRoomViewController: UIViewController {
         }
     }
 
+    // MARK: Properties
+
+    private var centerYConstraint: NSLayoutConstraint?
+
     // MARK: Views
 
     let contentStackView: UIStackView = {
@@ -96,8 +100,6 @@ final class JoinChatRoomViewController: UIViewController {
         button.addTarget(self, action: #selector(joinButtonTapped), for: .touchUpInside)
         return button
     }()
-
-    private var centerYConstraint: NSLayoutConstraint?
 
     // MARK: Lifecycle
 
