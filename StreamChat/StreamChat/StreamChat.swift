@@ -7,20 +7,19 @@
 
 import Foundation
 
-class StreamChat: NSObject {
+final class StreamChat: NSObject {
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
     private var username = ""
     private let maxReadLength = 4096
 
-    func setupNetworkComunication() {
+    func setupNetworkCommunication() {
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?
 
-        // todo : host, port 값 외부 참조화 필요
         CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
-                                           "15.165.55.224" as CFString,
-                                           5080,
+                                           StreamInfomation.host,
+                                           StreamInfomation.port,
                                            &readStream,
                                            &writeStream)
 
@@ -35,7 +34,7 @@ class StreamChat: NSObject {
         outputStream?.open()
     }
 
-    func stringToOutputStreamData(string: String) {
+    private func stringToOutputStreamData(string: String) {
         guard let data = string.data(using: .utf8) else { return }
 
         data.withUnsafeBytes {
@@ -45,7 +44,6 @@ class StreamChat: NSObject {
     }
 
     func joinChat(username: String) {
-        print("join start")
         let data = "USR_NAME::\(username)::END"
         self.username = username
 
@@ -53,19 +51,14 @@ class StreamChat: NSObject {
     }
 
     func sendChat(message: String) {
-        print("send Message")
-        let data = "MSG::\(message)::END"
+        if message.count < 300 {
+            let data = "MSG::\(message)::END"
 
-        stringToOutputStreamData(string: data)
-    }
+            stringToOutputStreamData(string: data)
+        } else {
+            print("message limit over")
+        }
 
-    func stopChat() {
-        print("leave Stream Chat")
-        let data = "LEAVE::::END"
-
-        stringToOutputStreamData(string: data)
-        inputStream?.close()
-        outputStream?.close()
     }
 
     private func readChat(stream: InputStream) {
@@ -80,9 +73,16 @@ class StreamChat: NSObject {
                 break
             }
 
-            // message object
             processedMessagedString(buffer: buffer, length: numberOfBytesRead)
         }
+    }
+
+    func stopChat() {
+        let data = "LEAVE::::END"
+
+        stringToOutputStreamData(string: data)
+        inputStream?.close()
+        outputStream?.close()
     }
 }
 
@@ -90,14 +90,12 @@ extension StreamChat: StreamDelegate {
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
         case .hasBytesAvailable:
-            print("새로운 메시지를 받았습니다.")
-//            guard let inputStream = aStream as? InputStream else { return }
-            readChat(stream: aStream as! InputStream)
+            guard let inputStream = aStream as? InputStream else { return }
+            readChat(stream: inputStream)
         case .endEncountered:
-            print("채팅을 종료합니다")
             stopChat()
         default:
-            print("알 수 없는 이벤트")
+            print("unknown Event")
         }
     }
     
@@ -105,10 +103,18 @@ extension StreamChat: StreamDelegate {
         guard let stringArray = String(bytesNoCopy: buffer,
                                        length: length,
                                        encoding: .utf8,
-                                       freeWhenDone: true)?.components(separatedBy: "::"),
-              let name = stringArray.first,
-              let message = stringArray.last else { return }
+                                       freeWhenDone: true)?.components(separatedBy: "::") else { return }
+        if stringArray.count == 2 {
+            guard let name = stringArray.first,
+                  let message = stringArray.last else { return }
 
-        print("\(name) : \(message)")
+            print("\(name) : \(message)")
+        } else {
+            guard let stringNotification = stringArray.first?.components(separatedBy: " "),
+                  let name = stringNotification.first,
+                  let joinStatus = stringNotification.last else { return }
+
+            print("\(name) has \(joinStatus)")
+        }
     }
 }
