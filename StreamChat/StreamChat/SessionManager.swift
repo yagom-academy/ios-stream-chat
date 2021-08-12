@@ -13,13 +13,14 @@ enum ChatServerInfo {
     static let maxMessageLength = 300
 }
 
-protocol StreamManagerDelegate {
+protocol StreamManagerDelegate: NSObject {
     func received(message: String)
 }
 
 class StreamManager: NSObject, StreamDelegate {
     var inputStream: InputStream?
     var outputStream: OutputStream?
+    weak var delegate: StreamManagerDelegate?
     
     func setup() {
         var readStream: Unmanaged<CFReadStream>?
@@ -61,25 +62,29 @@ class StreamManager: NSObject, StreamDelegate {
         }
     }
     
-    func receive() -> String {
-        var message: String = ""
+    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+        if eventCode == .hasBytesAvailable {
+            readAvailableBytes(stream: aStream as! InputStream)
+        }
+    }
+    
+    func readAvailableBytes(stream: InputStream) {
         let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: ChatServerInfo.maxMessageLength)
         
-        while inputStream!.hasBytesAvailable {
-            let numberOfBytesRead = inputStream!.read(buffer, maxLength: ChatServerInfo.maxMessageLength)
+        while stream.hasBytesAvailable {
+            let numberOfBytesRead = inputStream?.read(buffer, maxLength: ChatServerInfo.maxMessageLength)
             
-            if numberOfBytesRead < 0, let error = inputStream?.streamError {
+            if numberOfBytesRead! < 0, let error = stream.streamError {
                 break
             }
             
             guard let bufferString = String(bytesNoCopy: buffer,
-                                       length: numberOfBytesRead,
+                                            length: numberOfBytesRead!,
                                        encoding: .utf8,
                                        freeWhenDone: true) else {
-                break
+                continue
             }
-            message = bufferString
+            delegate?.received(message: bufferString)
         }
-        return message
     }
 }
