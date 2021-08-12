@@ -13,14 +13,18 @@ enum ChatServerInfo {
     static let maxMessageLength = 300
 }
 
-class StreamManager {
+protocol StreamManagerDelegate {
+    func received(message: String)
+}
+
+class StreamManager: NSObject, StreamDelegate {
     var inputStream: InputStream?
     var outputStream: OutputStream?
     
     func setup() {
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?
-        
+
         CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
                                            ChatServerInfo.url as CFString,
                                            ChatServerInfo.port,
@@ -28,7 +32,8 @@ class StreamManager {
                                            &writeStream)
         inputStream = readStream?.takeRetainedValue()
         outputStream = writeStream?.takeRetainedValue()
-        
+        inputStream?.delegate = self
+        outputStream?.delegate = self
         inputStream?.schedule(in: .current, forMode: .common)
         outputStream?.schedule(in: .current, forMode: .common)
     }
