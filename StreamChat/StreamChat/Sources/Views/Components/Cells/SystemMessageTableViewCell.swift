@@ -79,6 +79,5 @@ final class SystemMessageTableViewCell: UITableViewCell {
 
     func configure(with message: Message) {
         systemMessageLabel.text = message.text
-        layoutIfNeeded()
     }
 }
