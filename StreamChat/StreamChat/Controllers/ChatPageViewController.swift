@@ -36,7 +36,7 @@ final class ChatPageViewController: UIViewController {
 
 extension ChatPageViewController: ChatPageDelegate {
     func received(message: ChatMessage) {
-        
+        // TODO: - 셀에 올릴 작업
     }
     
     func sendButtonTapped(message: String) {

@@ -11,7 +11,7 @@ final class ChatManager: NSObject {
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
     private var username: String?
-    private let maxReadLength = 300
+    private let maxReadLength = StreamConfig.maxReadLength
     weak var receiveDelegate: ChatPageDelegate?
     
     override init() {
@@ -36,49 +36,24 @@ final class ChatManager: NSObject {
     func joinChat(username: String) {
         self.username = username
         
-        guard let data = StreamFormat.join(username).description.data(using: .utf8),
-              let outputStream = outputStream else {
-            
-            return
-        }
-        
-        data.withUnsafeBytes {
-            guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else { return }
-            outputStream.write(pointer, maxLength: data.count)
-        }
-        
+        guard let data = StreamFormat.join(username).description.data(using: .utf8) else { return }
+        writeToStream(data)
     }
     
     func send(message: String) {
-        guard let data = StreamFormat.send(message).description.data(using: .utf8),
-              let outputStream = outputStream else {
-            
-            return
-        }
-        
-        data.withUnsafeBytes {
-            guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else { return }
-            outputStream.write(pointer, maxLength: data.count)
-        }
+        guard let data = StreamFormat.send(message).description.data(using: .utf8) else { return }
+        writeToStream(data)
     }
     
     func stopChatSession() {
-        leave()
         self.inputStream?.close()
+        leave()
         self.outputStream?.close()
     }
     
     private func leave() {
-        guard let data = StreamFormat.exit.description.data(using: .utf8),
-              let outputStream = outputStream else {
-            
-            return
-        }
-        
-        data.withUnsafeBytes {
-            guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else { return }
-            outputStream.write(pointer, maxLength: data.count)
-        }
+        guard let data = StreamFormat.exit.description.data(using: .utf8) else { return }
+        writeToStream(data)
     }
     
     private func setInputStream(_ readStream: Unmanaged<CFReadStream>?) {
@@ -91,6 +66,13 @@ final class ChatManager: NSObject {
         self.outputStream = writeStream?.takeRetainedValue()
         self.outputStream?.schedule(in: .current, forMode: .common)
         self.outputStream?.open()
+    }
+    
+    private func writeToStream(_ data: Data) {
+        data.withUnsafeBytes {
+            guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else { return }
+            outputStream?.write(pointer, maxLength: data.count)
+        }
     }
 }
 

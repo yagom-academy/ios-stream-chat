@@ -16,6 +16,7 @@ enum UserState {
 enum StreamConfig {
     static let url = "15.165.55.224"
     static let port: UInt32 = 5080
+    static let maxReadLength = 300
 }
 
 enum StreamFormat {

@@ -20,9 +20,8 @@ class StreamChatTests: XCTestCase {
 
     func test_joinChat_채팅참가() {
         self.chatManager?.setNetwork()
-        self.chatManager?.joinChat(username: "ksss")
-        self.chatManager?.send(message: "되는거야??????")
+        self.chatManager?.joinChat(username: "Fezz")
+        self.chatManager?.send(message: "안녕하세요 Fezz 입니다 @@")
         self.chatManager?.stopChatSession()
     }
-    
 }
