@@ -7,12 +7,6 @@
 
 import Foundation
 
-enum ChatServerInfo {
-    static let url = "15.165.55.224"
-    static let port: UInt32 = 5080
-    static let maxMessageLength = 300
-}
-
 protocol StreamManagerDelegate: NSObject {
     func received(message: String)
 }
@@ -68,7 +62,7 @@ class StreamManager: NSObject, StreamDelegate {
         }
     }
     
-    func readAvailableBytes(stream: InputStream) {
+    private func readAvailableBytes(stream: InputStream) {
         let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: ChatServerInfo.maxMessageLength)
         
         while stream.hasBytesAvailable {

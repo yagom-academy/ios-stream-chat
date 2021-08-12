@@ -10,6 +10,8 @@
 		B027F9B026C390C700AA67F3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B027F9AF26C390C700AA67F3 /* .swiftlint.yml */; };
 		B027F9B926C3A84200AA67F3 /* StreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027F9B826C3A84200AA67F3 /* StreamManager.swift */; };
 		B027F9D326C3A93500AA67F3 /* StreamChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027F9D226C3A93500AA67F3 /* StreamChatTests.swift */; };
+		B0D4692B26C508F500FBA6E1 /* ChatServerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D4692A26C508F500FBA6E1 /* ChatServerInfo.swift */; };
+		B0D4693026C50D8A00FBA6E1 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D4692F26C50D8A00FBA6E1 /* ChatRoom.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
 		C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927556262C562B00EF5D3A /* SceneDelegate.swift */; };
 		C7927559262C562B00EF5D3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927558262C562B00EF5D3A /* ViewController.swift */; };
@@ -37,6 +39,8 @@
 		B027F9D026C3A93500AA67F3 /* StreamChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B027F9D226C3A93500AA67F3 /* StreamChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamChatTests.swift; sourceTree = "<group>"; };
 		B027F9D426C3A93500AA67F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0D4692A26C508F500FBA6E1 /* ChatServerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatServerInfo.swift; sourceTree = "<group>"; };
+		B0D4692F26C50D8A00FBA6E1 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		BEE05EEB774DC4085A13624D /* Pods-StreamChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.release.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.release.xcconfig"; sourceTree = "<group>"; };
 		C7927551262C562B00EF5D3A /* StreamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7927554262C562B00EF5D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 			children = (
 				B0D4692426C4FB9E00FBA6E1 /* Application */,
 				B0D4692726C506E400FBA6E1 /* Controllers */,
+				B0D4692E26C50D7400FBA6E1 /* Services */,
 				B0D4692826C5070000FBA6E1 /* Network */,
 			);
 			path = Source;
@@ -141,9 +146,18 @@
 		B0D4692826C5070000FBA6E1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B0D4692A26C508F500FBA6E1 /* ChatServerInfo.swift */,
 				B027F9B826C3A84200AA67F3 /* StreamManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		B0D4692E26C50D7400FBA6E1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B0D4692F26C50D8A00FBA6E1 /* ChatRoom.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		C7927548262C562B00EF5D3A = {
@@ -330,8 +344,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0D4693026C50D8A00FBA6E1 /* ChatRoom.swift in Sources */,
 				C7927559262C562B00EF5D3A /* ViewController.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
+				B0D4692B26C508F500FBA6E1 /* ChatServerInfo.swift in Sources */,
 				B027F9B926C3A84200AA67F3 /* StreamManager.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
 			);
