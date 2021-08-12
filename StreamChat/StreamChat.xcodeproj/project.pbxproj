@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B027F9B026C390C700AA67F3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B027F9AF26C390C700AA67F3 /* .swiftlint.yml */; };
-		B027F9B926C3A84200AA67F3 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027F9B826C3A84200AA67F3 /* SessionManager.swift */; };
+		B027F9B926C3A84200AA67F3 /* StreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027F9B826C3A84200AA67F3 /* StreamManager.swift */; };
 		B027F9D326C3A93500AA67F3 /* StreamChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027F9D226C3A93500AA67F3 /* StreamChatTests.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
 		C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927556262C562B00EF5D3A /* SceneDelegate.swift */; };
@@ -33,7 +33,7 @@
 		108D3E23FA92816AE043B483 /* Pods-StreamChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.debug.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.debug.xcconfig"; sourceTree = "<group>"; };
 		46D4B9AAC811CFE887F5813C /* Pods_StreamChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StreamChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B027F9AF26C390C700AA67F3 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		B027F9B826C3A84200AA67F3 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		B027F9B826C3A84200AA67F3 /* StreamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamManager.swift; sourceTree = "<group>"; };
 		B027F9D026C3A93500AA67F3 /* StreamChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B027F9D226C3A93500AA67F3 /* StreamChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamChatTests.swift; sourceTree = "<group>"; };
 		B027F9D426C3A93500AA67F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 				C792755D262C562E00EF5D3A /* Assets.xcassets */,
 				C792755F262C562E00EF5D3A /* LaunchScreen.storyboard */,
 				C7927562262C562E00EF5D3A /* Info.plist */,
-				B027F9B826C3A84200AA67F3 /* SessionManager.swift */,
+				B027F9B826C3A84200AA67F3 /* StreamManager.swift */,
 			);
 			path = StreamChat;
 			sourceTree = "<group>";
@@ -284,7 +284,7 @@
 			files = (
 				C7927559262C562B00EF5D3A /* ViewController.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
-				B027F9B926C3A84200AA67F3 /* SessionManager.swift in Sources */,
+				B027F9B926C3A84200AA67F3 /* StreamManager.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
