@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Equatable {
+struct User {
 
     let name: String
     let senderType: SenderType
