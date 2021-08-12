@@ -5,8 +5,6 @@
 //  Created by Ryan-Son on 2021/08/12.
 //
 
-import UIKit
-
 enum StreamChatError: Error {
 
     // MARK: ChatRoom Socket Network
@@ -20,7 +18,7 @@ enum StreamChatError: Error {
     // MARK: UI
 
     case messageNotFound
-    case cellTypecastingFailed(toType: UITableViewCell.Type)
+    case cellTypecastingFailed(toType: String)
 
     // MARK: View Model
 
