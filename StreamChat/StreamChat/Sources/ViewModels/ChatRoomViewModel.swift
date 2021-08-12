@@ -33,7 +33,12 @@ final class ChatRoomViewModel {
     }
 
     func message(at index: Int) -> Message? {
-        guard index < messages.count else { return nil }
+        guard index < messages.count else {
+            Log.logic.notice(
+                "\(StreamChatError.indexOutOfBound(requestedIndex: index, maxIndex: self.messages.count))"
+            )
+            return nil
+        }
         return messages[index]
     }
 

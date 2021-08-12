@@ -42,17 +42,26 @@ final class ChatRoom: NSObject {
 
     func join(with username: String) {
         user = User(name: username, senderType: .me)
-        guard let joiningStreamData: Data = username.asJoiningStreamData else { return }
+        guard let joiningStreamData: Data = username.asJoiningStreamData else {
+            Log.logic.error("\(StreamChatError.failedToConvertStringToStreamData(location: #function))")
+            return
+        }
         write(joiningStreamData)
     }
 
     func send(message: String) {
-        guard let sendingStreamData: Data = message.asSendingStreamData else { return }
+        guard let sendingStreamData: Data = message.asSendingStreamData else {
+            Log.logic.error("\(StreamChatError.failedToConvertStringToStreamData(location: #function))")
+            return
+        }
         write(sendingStreamData)
     }
 
     func leave() {
-        guard let leavingStreamData: Data = String.leavingStreamData else { return }
+        guard let leavingStreamData: Data = String.leavingStreamData else {
+            Log.logic.error("\(StreamChatError.failedToConvertStringToStreamData(location: #function))")
+            return
+        }
         write(leavingStreamData)
     }
 
@@ -76,7 +85,7 @@ final class ChatRoom: NSObject {
     private func write(_ streamData: Data) {
         streamData.withUnsafeBytes { rawBufferPointer in
             guard let pointer = rawBufferPointer.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
-                print("Output Stream: write 작업에 실패하였어요.")
+                Log.network.error("\(StreamChatError.failedToWriteOnStream)")
                 return
             }
             outputStream?.write(pointer, maxLength: streamData.count)
@@ -91,20 +100,18 @@ extension ChatRoom: StreamDelegate {
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
         case .openCompleted:
-            print("연결 성공!")
+            Log.flowCheck.debug("연결 성공!")
         case .hasBytesAvailable:
-            print("새로운 메시지를 받았어요 1")
             readAvailableBytes(from: aStream)
         case .endEncountered:
-            print("새로운 메시지를 받았어요 2")
             leave()
             disconnect()
         case .errorOccurred:
-            print("에러가 발생했어요.")
+            Log.network.notice("\(StreamChatError.errorOccurredAtStream)")
         case .hasSpaceAvailable:
-            print("더 쓸 수 있는 버퍼가 있어요.")
+            Log.network.info("더 사용할 수 있는 버퍼가 있어요. case: hasSpaceAvailable")
         default:
-            print("무슨 일이 일어났죠?")
+            Log.network.notice("\(StreamChatError.unknown(location: #function))")
         }
     }
 
@@ -118,7 +125,7 @@ extension ChatRoom: StreamDelegate {
             guard let bytesRead = inputStream?.read(buffer, maxLength: ConnectionSetting.maxReadLength) else { return }
 
             if let error = stream.streamError, bytesRead < 0 {
-                print("Input stream을 읽어들이던 중에 문제가 발생했어요.", error)
+                Log.network.error("\(StreamChatError.streamDataReadingFailed(error: error))")
                 break
             }
 
@@ -133,6 +140,7 @@ extension ChatRoom: StreamDelegate {
                 .components(separatedBy: String.StreamAffix.Infix.receive),
               let name = strings.first,
               let message = strings.last else {
+            Log.logic.error("\(StreamChatError.failedToConvertByteToString)")
             return nil
         }
 

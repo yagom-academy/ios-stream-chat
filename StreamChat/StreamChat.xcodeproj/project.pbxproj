@@ -23,7 +23,8 @@
 		AAA0D8FB26C4497F00127B3F /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8FA26C4497F00127B3F /* MessageTableViewCell.swift */; };
 		AAA0D8FD26C4620A00127B3F /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8FC26C4620A00127B3F /* InsetLabel.swift */; };
 		AAA0D90026C4727E00127B3F /* SystemMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8FF26C4727E00127B3F /* SystemMessageTableViewCell.swift */; };
-		AAA0D90526C4CE0300127B3F /* OSLog+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D90426C4CE0300127B3F /* OSLog+Extension.swift */; };
+		AAA0D90526C4CE0300127B3F /* OSLog+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D90426C4CE0300127B3F /* OSLog+Log.swift */; };
+		AAA0D90826C4D07800127B3F /* StreamChatError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D90726C4D07800127B3F /* StreamChatError.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
 		C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927556262C562B00EF5D3A /* SceneDelegate.swift */; };
 		C7927559262C562B00EF5D3A /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927558262C562B00EF5D3A /* ChatRoomViewController.swift */; };
@@ -48,7 +49,8 @@
 		AAA0D8FA26C4497F00127B3F /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		AAA0D8FC26C4620A00127B3F /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		AAA0D8FF26C4727E00127B3F /* SystemMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessageTableViewCell.swift; sourceTree = "<group>"; };
-		AAA0D90426C4CE0300127B3F /* OSLog+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extension.swift"; sourceTree = "<group>"; };
+		AAA0D90426C4CE0300127B3F /* OSLog+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Log.swift"; sourceTree = "<group>"; };
+		AAA0D90726C4D07800127B3F /* StreamChatError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamChatError.swift; sourceTree = "<group>"; };
 		C7927551262C562B00EF5D3A /* StreamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7927554262C562B00EF5D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7927556262C562B00EF5D3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				AAA0D8D026C2450D00127B3F /* Entries */,
+				AAA0D90626C4D06600127B3F /* Errors */,
 				AAA0D8E726C2EFD300127B3F /* Helpers */,
 				AAA0D8D826C2793A00127B3F /* Models */,
 				AAA0D8D226C259F000127B3F /* Services */,
@@ -149,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				AAA0D8F126C3B57E00127B3F /* Date+Extension.swift */,
-				AAA0D90426C4CE0300127B3F /* OSLog+Extension.swift */,
+				AAA0D90426C4CE0300127B3F /* OSLog+Log.swift */,
 				AAA0D8E226C2E5B800127B3F /* String+Extension.swift */,
 			);
 			path = Utils;
@@ -198,6 +201,14 @@
 				AAA0D8FF26C4727E00127B3F /* SystemMessageTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		AAA0D90626C4D06600127B3F /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				AAA0D90726C4D07800127B3F /* StreamChatError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 		C7927548262C562B00EF5D3A = {
@@ -321,7 +332,7 @@
 				AAA0D8EE26C3025500127B3F /* JoinChatRoomViewController.swift in Sources */,
 				AAA0D8F926C3FF6D00127B3F /* MessageInputBarViewDelegate.swift in Sources */,
 				AAA0D90026C4727E00127B3F /* SystemMessageTableViewCell.swift in Sources */,
-				AAA0D90526C4CE0300127B3F /* OSLog+Extension.swift in Sources */,
+				AAA0D90526C4CE0300127B3F /* OSLog+Log.swift in Sources */,
 				C7927559262C562B00EF5D3A /* ChatRoomViewController.swift in Sources */,
 				AAA0D8F226C3B57E00127B3F /* Date+Extension.swift in Sources */,
 				AAA0D8E326C2E5B800127B3F /* String+Extension.swift in Sources */,
@@ -336,6 +347,7 @@
 				AAA0D8FB26C4497F00127B3F /* MessageTableViewCell.swift in Sources */,
 				AAA0D8FD26C4620A00127B3F /* InsetLabel.swift in Sources */,
 				AAA0D8DC26C2917300127B3F /* Message.swift in Sources */,
+				AAA0D90826C4D07800127B3F /* StreamChatError.swift in Sources */,
 				AAA0D8EA26C2F02F00127B3F /* ChatRoomDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
