@@ -10,6 +10,7 @@ import Foundation
 final class StreamChat: NSObject {
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
+
     private var username = ""
     private let maxReadLength = 4096
 
@@ -58,7 +59,6 @@ final class StreamChat: NSObject {
         } else {
             print("message limit over")
         }
-
     }
 
     private func readChat(stream: InputStream) {
@@ -104,6 +104,7 @@ extension StreamChat: StreamDelegate {
                                        length: length,
                                        encoding: .utf8,
                                        freeWhenDone: true)?.components(separatedBy: "::") else { return }
+        
         if stringArray.count == 2 {
             guard let name = stringArray.first,
                   let message = stringArray.last else { return }
