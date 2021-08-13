@@ -8,10 +8,6 @@
 import Foundation
 
 enum ChatError: Error {
-    case notExistedPointer
-    case invalidData
-    case streamError(_ : String)
-    case encodingErrorFromPointer
     case notExistedSocket
     case invalidResponseFormat
 }
