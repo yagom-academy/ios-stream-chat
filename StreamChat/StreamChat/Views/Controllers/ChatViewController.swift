@@ -90,6 +90,7 @@ final class ChatViewController: UIViewController {
     // MARK: UI Setting
     
     private func setUI() {
+        addAllSubviews()
         setChatTableView()
         setNavigationBar()
         setTypingContainerView()
