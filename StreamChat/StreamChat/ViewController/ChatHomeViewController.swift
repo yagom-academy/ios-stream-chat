@@ -13,6 +13,7 @@ class ChatHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         chatRoomManager.join(userName: "kane")
+        chatRoomManager.send(message: "hi")
         chatRoomManager.delegate = self
     }
 
