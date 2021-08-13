@@ -19,11 +19,16 @@ class ChatRoom: NSObject, StreamManagerDelegate {
         super.init()
         self.streamManager.delegate = self
         self.streamManager.open()
+        self.streamManager.send(message: "\(OutgoingMessage.enter(userName))")
     }
     
     deinit {
         self.streamManager.send(message: "\(OutgoingMessage.leave)")
         self.streamManager.close()
+    }
+    
+    func send(message: String) {
+        self.streamManager.send(message: "\(OutgoingMessage.send(message))")
     }
     
     func received(message: String) {

@@ -11,14 +11,11 @@ import XCTest
 class StreamChatTests: XCTestCase {
 
     func test_메시지_전송() {
-        let sessionManager = StreamManager()
-        
-        sessionManager.setup()
-        sessionManager.open()
-        
-        sessionManager.send(message: "USR_NAME::james::END")
-        sessionManager.send(message: "LEAVE::::END")
-        sessionManager.close()
+        let streamManager = StreamManager()
+        let chatRoom = ChatRoom(userName: "steven", streamManager: streamManager)
+        XCTAssertEqual(chatRoom.messages.count, 1)
+        chatRoom.send(message: "hello!")
+        XCTAssertEqual(chatRoom.messages.count, 2)
     }
-
+    
 }
