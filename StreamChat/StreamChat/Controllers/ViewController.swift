@@ -7,12 +7,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    let chatRoom = ChatRoom()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
 }
-
