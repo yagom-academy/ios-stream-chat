@@ -3,5 +3,5 @@ disabled_rules:
 included:
 excluded:
 - Pods
-- StreamChat/AppDelegate.swift
-- StreamChat/SceneDelegate.swift
+- StreamChat/Source/Application/AppDelegate.swift
+- StreamChat/Source/Application/SceneDelegate.swift
