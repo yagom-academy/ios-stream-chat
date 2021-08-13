@@ -44,7 +44,9 @@ enum StreamData {
     static func convertDateToString(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_kr")
-        dateFormatter.dateFormat = "MM월 dd일 HH시 mm분"
+        dateFormatter.dateFormat = "M월 d일 a h시 m분"
+        dateFormatter.amSymbol = "오전"
+        dateFormatter.pmSymbol = "오후"
         dateFormatter.timeZone = TimeZone.current
 
         return dateFormatter.string(from: date)

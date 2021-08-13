@@ -44,6 +44,7 @@ class OtherChatTableViewCell: UITableViewCell {
     private func setUserNameLabel() {
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
         userNameLabel.textColor = .systemGray5
+        userNameLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
         setConstraintOfUserNameLabel()
     }
     
@@ -63,6 +64,7 @@ class OtherChatTableViewCell: UITableViewCell {
     private func setDateLabel() {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.textColor = .systemGray5
+        dateLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
         setConstraintOfDateLabel()
     }
     

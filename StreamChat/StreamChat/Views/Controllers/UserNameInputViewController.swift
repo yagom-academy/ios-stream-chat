@@ -37,9 +37,9 @@ class UserNameInputViewController: UIViewController {
     }
     
     @objc func inputUserName() {
-        
         guard let textFieldText = userNameTextField.text, textFieldText.count > 0 else { return }
         self.chatViewController.chatViewModel.send(message: StreamData.joinTheChat(userName: textFieldText))
+        self.navigationController?.navigationBar.isHidden = false
         navigationController?.pushViewController(chatViewController, animated: true)
     }
     
@@ -57,20 +57,20 @@ class UserNameInputViewController: UIViewController {
     private func setUserNameTextField() {
         self.view.addSubview(userNameTextField)
         NSLayoutConstraint.activate([
-            userNameTextField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 30),
+            userNameTextField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             userNameTextField.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0),
-            userNameTextField.widthAnchor.constraint(equalToConstant: 250),
-            userNameTextField.heightAnchor.constraint(equalToConstant: 50)
+            userNameTextField.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.65),
+            userNameTextField.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.07)
         ])
     }
     
     private func setInputUserNameButton() {
         self.view.addSubview(inputUserNameButton)
         NSLayoutConstraint.activate([
-            inputUserNameButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30),
+            inputUserNameButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             inputUserNameButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0),
             inputUserNameButton.leadingAnchor.constraint(equalTo: self.userNameTextField.trailingAnchor, constant: 10),
-            inputUserNameButton.heightAnchor.constraint(equalToConstant: 50)
+            inputUserNameButton.heightAnchor.constraint(equalTo: self.userNameTextField.heightAnchor)
         ])
     }
 }

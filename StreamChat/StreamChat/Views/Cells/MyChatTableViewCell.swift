@@ -53,6 +53,7 @@ final class MyChatTableViewCell: UITableViewCell {
     private func setDateLabel() {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.textColor = .systemGray5
+        dateLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
         setConstraintOfDateLabel()
     }
     

@@ -72,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				8A3BC6DB26C1C63900CFABB1 /* Chat.swift */,
-				8A3BC6F026C6377200CFABB1 /* StreamData.swift */,
 				8A3BC6F226C6449B00CFABB1 /* Secret.swift */,
 				8A3BC6F426C64AE700CFABB1 /* Identifier.swift */,
 			);
@@ -91,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				8A3BC6E226C2539C00CFABB1 /* ChatTableViewCellConstants.swift */,
+				8A3BC6F026C6377200CFABB1 /* StreamData.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -122,6 +122,13 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		8A3BC6FC26C6761100CFABB1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		C7927548262C562B00EF5D3A = {
 			isa = PBXGroup;
 			children = (
@@ -141,8 +148,9 @@
 		C7927553262C562B00EF5D3A /* StreamChat */ = {
 			isa = PBXGroup;
 			children = (
-				8A3BC6E626C46E9000CFABB1 /* Networks */,
+				8A3BC6FC26C6761100CFABB1 /* Protocols */,
 				8A3BC6E126C2538800CFABB1 /* Constants */,
+				8A3BC6E626C46E9000CFABB1 /* Networks */,
 				8A3BC6DE26C2504300CFABB1 /* ViewModels */,
 				8A3BC6DA26C1C62A00CFABB1 /* Models */,
 				8A3BC6D626C1BB1200CFABB1 /* Views */,
