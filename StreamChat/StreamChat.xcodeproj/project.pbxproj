@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		945077C629F0DC10C38F316D /* Pods_StreamChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC83CF53C531F324A94202B /* Pods_StreamChat.framework */; };
 		C3A9228A26C106D5004BAD77 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C3A9228926C106D5004BAD77 /* .swiftlint.yml */; };
+		C3A9228D26C1149C004BAD77 /* TcpSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A9228C26C1149C004BAD77 /* TcpSocket.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
 		C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927556262C562B00EF5D3A /* SceneDelegate.swift */; };
 		C7927559262C562B00EF5D3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927558262C562B00EF5D3A /* ViewController.swift */; };
@@ -21,6 +22,10 @@
 		2E5476055DF9E5DCFEA597D7 /* Pods-StreamChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.debug.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.debug.xcconfig"; sourceTree = "<group>"; };
 		4DC83CF53C531F324A94202B /* Pods_StreamChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StreamChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3A9228926C106D5004BAD77 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		C3A9228C26C1149C004BAD77 /* TcpSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpSocket.swift; sourceTree = "<group>"; };
+		C3C6B6A626C4E75D00595BFD /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
+		C3C6B6A826C4E7A100595BFD /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
+		C3C6B6AA26C4E8E700595BFD /* SocketError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketError.swift; sourceTree = "<group>"; };
 		C7927551262C562B00EF5D3A /* StreamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7927554262C562B00EF5D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7927556262C562B00EF5D3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +66,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C3A9228B26C11489004BAD77 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C3A9228C26C1149C004BAD77 /* TcpSocket.swift */,
+				C3C6B6A826C4E7A100595BFD /* ChatRoom.swift */,
+				C3C6B6AA26C4E8E700595BFD /* SocketError.swift */,
+				C3C6B6A626C4E75D00595BFD /* Format.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C3DB7D7C26C3F55700614E57 /* Entry */ = {
+			isa = PBXGroup;
+			children = (
+				C7927554262C562B00EF5D3A /* AppDelegate.swift */,
+				C7927556262C562B00EF5D3A /* SceneDelegate.swift */,
+			);
+			path = Entry;
+			sourceTree = "<group>";
+		};
 		C7927548262C562B00EF5D3A = {
 			isa = PBXGroup;
 			children = (
@@ -83,8 +108,8 @@
 		C7927553262C562B00EF5D3A /* StreamChat */ = {
 			isa = PBXGroup;
 			children = (
-				C7927554262C562B00EF5D3A /* AppDelegate.swift */,
-				C7927556262C562B00EF5D3A /* SceneDelegate.swift */,
+				C3DB7D7C26C3F55700614E57 /* Entry */,
+				C3A9228B26C11489004BAD77 /* Model */,
 				C7927558262C562B00EF5D3A /* ViewController.swift */,
 				C792755A262C562B00EF5D3A /* Main.storyboard */,
 				C792755D262C562E00EF5D3A /* Assets.xcassets */,
@@ -209,8 +234,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3C6B6A926C4E7A100595BFD /* ChatRoom.swift in Sources */,
 				C7927559262C562B00EF5D3A /* ViewController.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
+				C3C6B6A726C4E75E00595BFD /* Format.swift in Sources */,
+				C3C6B6AB26C4E8E700595BFD /* SocketError.swift in Sources */,
+				C3A9228D26C1149C004BAD77 /* TcpSocket.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
