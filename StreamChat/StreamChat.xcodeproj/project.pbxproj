@@ -11,6 +11,9 @@
 		B027F9B926C3A84200AA67F3 /* StreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027F9B826C3A84200AA67F3 /* StreamManager.swift */; };
 		B027F9D326C3A93500AA67F3 /* StreamChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027F9D226C3A93500AA67F3 /* StreamChatTests.swift */; };
 		B0783CFE26C605FB00902FFE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0783CFD26C605FB00902FFE /* Message.swift */; };
+		B0783D0B26C65CE400902FFE /* MessageConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0783D0A26C65CE400902FFE /* MessageConstant.swift */; };
+		B0783D1126C65CFF00902FFE /* OutgoingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0783D1026C65CFF00902FFE /* OutgoingMessage.swift */; };
+		B0783D1526C65D1800902FFE /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0783D1426C65D1800902FFE /* MessageType.swift */; };
 		B0D4692B26C508F500FBA6E1 /* ChatServerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D4692A26C508F500FBA6E1 /* ChatServerInfo.swift */; };
 		B0D4693026C50D8A00FBA6E1 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D4692F26C50D8A00FBA6E1 /* ChatRoom.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
@@ -41,6 +44,9 @@
 		B027F9D226C3A93500AA67F3 /* StreamChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamChatTests.swift; sourceTree = "<group>"; };
 		B027F9D426C3A93500AA67F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0783CFD26C605FB00902FFE /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		B0783D0A26C65CE400902FFE /* MessageConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageConstant.swift; sourceTree = "<group>"; };
+		B0783D1026C65CFF00902FFE /* OutgoingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessage.swift; sourceTree = "<group>"; };
+		B0783D1426C65D1800902FFE /* MessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
 		B0D4692A26C508F500FBA6E1 /* ChatServerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatServerInfo.swift; sourceTree = "<group>"; };
 		B0D4692F26C50D8A00FBA6E1 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		BEE05EEB774DC4085A13624D /* Pods-StreamChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.release.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.release.xcconfig"; sourceTree = "<group>"; };
@@ -107,10 +113,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B0783D0926C65CD100902FFE /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				B0D4692A26C508F500FBA6E1 /* ChatServerInfo.swift */,
+				B0783D0A26C65CE400902FFE /* MessageConstant.swift */,
+				B0783D1426C65D1800902FFE /* MessageType.swift */,
+				B0783D1026C65CFF00902FFE /* OutgoingMessage.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
 		B0D4692326C4FB9600FBA6E1 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				B0D4692426C4FB9E00FBA6E1 /* Application */,
+				B0783D0926C65CD100902FFE /* Constant */,
 				B0D4692726C506E400FBA6E1 /* Controllers */,
 				B0783CFB26C605E200902FFE /* Model */,
 				B0D4692E26C50D7400FBA6E1 /* Services */,
@@ -157,7 +175,6 @@
 		B0D4692826C5070000FBA6E1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				B0D4692A26C508F500FBA6E1 /* ChatServerInfo.swift */,
 				B027F9B826C3A84200AA67F3 /* StreamManager.swift */,
 			);
 			path = Network;
@@ -358,10 +375,13 @@
 				B0D4693026C50D8A00FBA6E1 /* ChatRoom.swift in Sources */,
 				C7927559262C562B00EF5D3A /* ViewController.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
+				B0783D1526C65D1800902FFE /* MessageType.swift in Sources */,
 				B0D4692B26C508F500FBA6E1 /* ChatServerInfo.swift in Sources */,
 				B027F9B926C3A84200AA67F3 /* StreamManager.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
+				B0783D1126C65CFF00902FFE /* OutgoingMessage.swift in Sources */,
 				B0783CFE26C605FB00902FFE /* Message.swift in Sources */,
+				B0783D0B26C65CE400902FFE /* MessageConstant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
