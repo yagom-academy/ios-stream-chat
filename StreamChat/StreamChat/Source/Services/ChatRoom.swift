@@ -10,7 +10,7 @@ import Foundation
 class ChatRoom: NSObject, StreamManagerDelegate {
     let userName: String
     let streamManager: StreamManager
-//    var messages = []
+    var messages: [Message] = []
     
     init(userName: String, streamManager: StreamManager) {
         self.userName = userName
@@ -22,10 +22,11 @@ class ChatRoom: NSObject, StreamManagerDelegate {
     }
     
     deinit {
+        self.streamManager.send(message: "\(OutgoingMessage.leave)")
         self.streamManager.close()
     }
     
     func received(message: String) {
-        
+        messages.append(Message(buffer: message, username: userName))
     }
 }
