@@ -18,10 +18,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="EE7-Lz-Kjk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10" y="89"/>
+            <point key="canvasLocation" x="900.00000000000011" y="88.392857142857139"/>
         </scene>
     </scenes>
     <resources>
