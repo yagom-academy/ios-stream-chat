@@ -8,7 +8,10 @@
 import Foundation
 
 struct SocketResponseHandler {
-    private let maxBufferSize = 300
+    private let maxBufferSize: Int
+    init(maxBufferSize: Int) {
+        self.maxBufferSize = maxBufferSize
+    }
 
     func receivedMessage(inputStream: InputStream) -> ChatReceiveFormat? {
         let pointer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxBufferSize)
@@ -32,17 +35,19 @@ struct SocketResponseHandler {
     private func convert(_ message: String) -> ChatReceiveFormat? {
         let message = message.replacingOccurrences(of: "\0", with: "")
 
-        if message.contains("::") == true {
-            let elements = message.components(separatedBy: "::")
+        if message.contains(ChatRoom.messageSeperator) {
+            let elements = message.components(separatedBy: ChatRoom.messageSeperator)
             let sender = elements.first!
             let content = elements.last!
             return .message(sender: sender, content: content)
-        } else if message.contains(" has joined") == true {
-            let sender = message.components(separatedBy: " has joined").first!
-            return .userJoin(sender: sender)
-        } else if message.contains(" has left") == true {
-            let sender = message.components(separatedBy: " has left").first!
-            return .userLeave(sender: sender)
+        } else if message.contains(ChatRoom.joinPostfix) {
+            if let sender = message.components(separatedBy: ChatRoom.joinPostfix).first {
+                return .userJoin(sender: sender)
+            }
+        } else if message.contains(ChatRoom.leavePostfix) {
+            if let sender = message.components(separatedBy: ChatRoom.leavePostfix).first {
+                return .userLeave(sender: sender)
+            }
         }
         return nil
     }

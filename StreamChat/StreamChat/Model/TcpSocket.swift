@@ -13,13 +13,13 @@ protocol TcpSocketDelegate: AnyObject {
 }
 
 final class TcpSocket: NSObject {
-    private let socketResponseHandler = SocketResponseHandler()
-
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
     private let host: String
     private let port: UInt32
     private let maxLength: Int
+    private lazy var socketResponseHandler = SocketResponseHandler(maxBufferSize: maxLength)
+
     weak var delegate: TcpSocketDelegate?
 
     init(host: String, port: UInt32, maxLength: Int = 300) {
