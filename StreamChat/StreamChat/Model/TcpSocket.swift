@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TcpSocketDelegate: AnyObject {
-    func receive(_ chatDataFormat: ChatDataFormat)
+    func receive(_ chatDataFormat: ChatReceiveFormat)
 }
 
 final class TcpSocket: NSObject {
@@ -47,16 +47,36 @@ final class TcpSocket: NSObject {
         }
     }
 
-    func send(data: Data) throws {
-        try data.withUnsafeBytes {
+    private func writeOnOutputStream(_ data: Data) {
+        data.withUnsafeBytes {
             guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
-                throw ChatError.notExistedPointer
+                return
             }
-            outputStream?.write(pointer, maxLength: data.count)
+            if let outputStream = outputStream {
+                outputStream.write(pointer, maxLength: data.count)
+            }
         }
     }
 
+    func join(userName: String) {
+        guard let data = ChatPostFormat.myJoin(userName: userName).data else {
+            return
+        }
+        writeOnOutputStream(data)
+    }
+
+    func send(message: String) {
+        guard let data = ChatPostFormat.post(message: message).data else {
+            return
+        }
+        writeOnOutputStream(data)
+    }
+
     func disconnect() {
+        guard let data = ChatPostFormat.myDisconnect.data else {
+            return
+        }
+        writeOnOutputStream(data)
         inputStream?.close()
         outputStream?.close()
     }

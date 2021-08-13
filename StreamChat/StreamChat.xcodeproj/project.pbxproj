@@ -10,7 +10,8 @@
 		945077C629F0DC10C38F316D /* Pods_StreamChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC83CF53C531F324A94202B /* Pods_StreamChat.framework */; };
 		C331449E26C61849001DEB3A /* ChatError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331449D26C61849001DEB3A /* ChatError.swift */; };
 		C33144A026C62C40001DEB3A /* SocketResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331449F26C62C40001DEB3A /* SocketResponseHandler.swift */; };
-		C33144A226C641F3001DEB3A /* ChatDataFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33144A126C641F3001DEB3A /* ChatDataFormat.swift */; };
+		C33144A226C641F3001DEB3A /* ChatReceiveFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33144A126C641F3001DEB3A /* ChatReceiveFormat.swift */; };
+		C33144A426C6469E001DEB3A /* ChatPostFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33144A326C6469E001DEB3A /* ChatPostFormat.swift */; };
 		C3A9228A26C106D5004BAD77 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C3A9228926C106D5004BAD77 /* .swiftlint.yml */; };
 		C3A9228D26C1149C004BAD77 /* TcpSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A9228C26C1149C004BAD77 /* TcpSocket.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
@@ -26,7 +27,8 @@
 		4DC83CF53C531F324A94202B /* Pods_StreamChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StreamChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C331449D26C61849001DEB3A /* ChatError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatError.swift; sourceTree = "<group>"; };
 		C331449F26C62C40001DEB3A /* SocketResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketResponseHandler.swift; sourceTree = "<group>"; };
-		C33144A126C641F3001DEB3A /* ChatDataFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataFormat.swift; sourceTree = "<group>"; };
+		C33144A126C641F3001DEB3A /* ChatReceiveFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatReceiveFormat.swift; sourceTree = "<group>"; };
+		C33144A326C6469E001DEB3A /* ChatPostFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPostFormat.swift; sourceTree = "<group>"; };
 		C3A9228926C106D5004BAD77 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C3A9228C26C1149C004BAD77 /* TcpSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpSocket.swift; sourceTree = "<group>"; };
 		C7927551262C562B00EF5D3A /* StreamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,7 +76,8 @@
 			children = (
 				C3A9228C26C1149C004BAD77 /* TcpSocket.swift */,
 				C331449F26C62C40001DEB3A /* SocketResponseHandler.swift */,
-				C33144A126C641F3001DEB3A /* ChatDataFormat.swift */,
+				C33144A126C641F3001DEB3A /* ChatReceiveFormat.swift */,
+				C33144A326C6469E001DEB3A /* ChatPostFormat.swift */,
 				C331449D26C61849001DEB3A /* ChatError.swift */,
 			);
 			path = Model;
@@ -243,7 +246,8 @@
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
 				C3A9228D26C1149C004BAD77 /* TcpSocket.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
-				C33144A226C641F3001DEB3A /* ChatDataFormat.swift in Sources */,
+				C33144A426C6469E001DEB3A /* ChatPostFormat.swift in Sources */,
+				C33144A226C641F3001DEB3A /* ChatReceiveFormat.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

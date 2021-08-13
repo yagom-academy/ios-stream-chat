@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ChatDataFormat {
+enum ChatReceiveFormat {
     case message(sender: String, content: String)
     case userJoin(sender: String)
     case userLeave(sender: String)
