@@ -50,6 +50,7 @@ final class AlertTableViewCell: UITableViewCell {
         self.contentView.addSubview(dateLabel)
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.textColor = .systemGray5
+        dateLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
         setConstraintOfDateLabel()
     }
     

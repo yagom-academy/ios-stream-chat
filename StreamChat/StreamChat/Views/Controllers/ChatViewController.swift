@@ -70,6 +70,7 @@ final class ChatViewController: UIViewController {
             self.typingContainerViewBottomConstraints.isActive = true
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()
+                self.scrollTableViewToBottom()
             }
         }
         
@@ -81,6 +82,7 @@ final class ChatViewController: UIViewController {
             self.typingContainerViewBottomConstraints.isActive = true
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()
+                self.scrollTableViewToBottom()
             }
         }
     }
@@ -95,6 +97,13 @@ final class ChatViewController: UIViewController {
         setMessageSendButton()
     }
     
+    private func addAllSubviews() {
+        self.view.addSubview(chatTableView)
+        self.view.addSubview(typingContainerView)
+        self.typingContainerView.addSubview(typingTextField)
+        self.typingContainerView.addSubview(messageSendButton)
+    }
+    
     private func setNavigationBar() {
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -104,7 +113,6 @@ final class ChatViewController: UIViewController {
     }
     
     private func setChatTableView() {
-        self.view.addSubview(chatTableView)
         chatTableView.dataSource = self
         chatTableView.delegate = self
         chatTableView.register(MyChatTableViewCell.self, forCellReuseIdentifier: MyChatTableViewCell.identifier)
@@ -115,20 +123,17 @@ final class ChatViewController: UIViewController {
     }
     
     private func setTypingContainerView() {
-        self.view.addSubview(typingContainerView)
         typingContainerView.backgroundColor = .darkGray
         setConstraintOfTypingContainerView()
     }
     
     private func setTypingTextField() {
-        typingContainerView.addSubview(typingTextField)
         typingTextField.backgroundColor = .systemGray
         typingTextField.layer.cornerRadius = 10
         setConstraintOfTypingTextField()
     }
     
     private func setMessageSendButton() {
-        typingContainerView.addSubview(messageSendButton)
         messageSendButton.layer.cornerRadius = 10
         messageSendButton.backgroundColor = .yellow
         messageSendButton.tintColor = .darkGray
@@ -189,18 +194,20 @@ final class ChatViewController: UIViewController {
             
             if newMessages.count - oldMessages.count > 1 {
                 self.chatTableView.reloadData()
-                self.chatTableView.scrollToRow(at: indexPath,
-                                      at: UITableView.ScrollPosition.bottom,
-                                      animated: true)
+                self.scrollTableViewToBottom()
                 return
             }
             
-            self.chatTableView.insertRows(at: [indexPath],
-                                          with: UITableView.RowAnimation.none)
-            self.chatTableView.scrollToRow(at: indexPath,
-                                  at: UITableView.ScrollPosition.bottom,
-                                  animated: true)
+            self.chatTableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.none)
+            self.scrollTableViewToBottom()
         }
+    }
+    
+    private func scrollTableViewToBottom() {
+        guard chatViewModel.getCountOfMessages() > 0 else { return }
+        self.chatTableView.scrollToRow(at: IndexPath(row: chatViewModel.getCountOfMessages()-1, section: .zero),
+                                       at: .bottom,
+                                       animated: true)
     }
 }
 
