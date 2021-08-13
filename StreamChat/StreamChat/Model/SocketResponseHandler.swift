@@ -37,10 +37,10 @@ struct SocketResponseHandler {
             let sender = elements.first!
             let content = elements.last!
             return .message(sender: sender, content: content)
-        } else if message.contains("has joined") == true {
+        } else if message.contains(" has joined") == true {
             let sender = message.components(separatedBy: " has joined").first!
             return .userJoin(sender: sender)
-        } else if message.contains("has left") == true {
+        } else if message.contains(" has left") == true {
             let sender = message.components(separatedBy: " has left").first!
             return .userLeave(sender: sender)
         }

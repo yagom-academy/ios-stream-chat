@@ -12,4 +12,6 @@ enum ChatError: Error {
     case invalidData
     case streamError(_ : String)
     case encodingErrorFromPointer
+    case notExistedSocket
+    case invalidResponseFormat
 }

@@ -9,6 +9,7 @@ import Foundation
 
 protocol TcpSocketDelegate: AnyObject {
     func receive(_ chatDataFormat: ChatReceiveFormat)
+    func handleError(_ error: Error)
 }
 
 final class TcpSocket: NSObject {
@@ -38,12 +39,12 @@ final class TcpSocket: NSObject {
             inputStream = readStream.takeRetainedValue()
             outputStream = writeStream.takeRetainedValue()
         }
-        if inputStream != nil && outputStream != nil {
-            inputStream?.delegate = self
-            inputStream?.schedule(in: .main, forMode: .default)
-            outputStream?.schedule(in: .main, forMode: .default)
-            inputStream?.open()
-            outputStream?.open()
+        if let inputStream = inputStream, let outputStream = outputStream {
+            inputStream.delegate = self
+            inputStream.schedule(in: .main, forMode: .default)
+            outputStream.schedule(in: .main, forMode: .default)
+            inputStream.open()
+            outputStream.open()
         }
     }
 
@@ -77,8 +78,12 @@ final class TcpSocket: NSObject {
             return
         }
         writeOnOutputStream(data)
-        inputStream?.close()
-        outputStream?.close()
+        guard let inputStream = inputStream, let outputStream = outputStream else {
+            delegate?.handleError(ChatError.notExistedSocket)
+            return
+        }
+        inputStream.close()
+        outputStream.close()
     }
 }
 
@@ -86,8 +91,12 @@ extension TcpSocket: StreamDelegate {
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
         case .hasBytesAvailable:
-            guard let inputStream = aStream as? InputStream else { return }
+            guard let inputStream = aStream as? InputStream else {
+                delegate?.handleError(ChatError.notExistedSocket)
+                return
+            }
             guard let message = socketResponseHandler.receivedMessage(inputStream: inputStream) else {
+                delegate?.handleError(ChatError.invalidResponseFormat)
                 return
             }
             self.delegate?.receive(message)
