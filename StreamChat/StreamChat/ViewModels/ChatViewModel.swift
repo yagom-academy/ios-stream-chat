@@ -22,7 +22,7 @@ class ChatViewModel {
     }
     
     func insertMessage(chat: Chat) {
-        service.send(message: chat.message)
+        service.send(message: "MSG::\(chat.message)::END")
         messages.append(chat)
     }
     

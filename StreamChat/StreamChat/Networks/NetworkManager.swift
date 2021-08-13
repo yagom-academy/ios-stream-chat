@@ -16,10 +16,9 @@ class NetworkManager: NSObject {
     
     override init() {
         super.init()
-        self.connectServer()
     }
     
-    private func connectServer() {
+    func connectServer() {
         session = URLSession(configuration: .default, delegate: self, delegateQueue: .main)
         let task = session?.streamTask(withHostName: "15.165.55.224", port: 5080)
         task?.resume()
@@ -27,16 +26,17 @@ class NetworkManager: NSObject {
     }
     
     func send(message: String) {
-        let messageFormat = "MSG::{\(message)}::END"
-        guard let data = messageFormat.data(using: .utf8) else { return }
+        guard let data = message.data(using: .utf8) else { return }
         outputStream?.write(data: data)
-        print("@ \(data)")
+        print("\(outputStream)")
+        print("write \(message)")
     }
 
 }
 
 extension NetworkManager: URLSessionStreamDelegate {
     func urlSession(_ session: URLSession, streamTask: URLSessionStreamTask, didBecome inputStream: InputStream, outputStream: OutputStream) {
+        print("연결")
         self.outputStream = outputStream
         self.inputStream = inputStream
         
@@ -63,6 +63,8 @@ extension NetworkManager: StreamDelegate {
                 print(message)
             default: break
             }
+        } else {
+//            print("output: \(aStream)")
         }
     }
 }
@@ -72,7 +74,7 @@ extension OutputStream {
     func write(data: Data) -> Int {
         let count = data.count
         return data.withUnsafeBytes {
-            write($0.bindMemory(to: UInt8.self).baseAddress!, maxLength: count)
+            return write($0.bindMemory(to: UInt8.self).baseAddress!, maxLength: count)
         }
     }
 }
@@ -81,13 +83,14 @@ extension InputStream {
     private var maxLength: Int { 4096 }
     
     func read(data: inout Data) -> Int {
-        print("read")
         var totalReadCount: Int = 0
         let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxLength)
         while hasBytesAvailable {
             let numberOfBytesRead = read(buffer, maxLength: maxLength)
-            if numberOfBytesRead < 0, let error = streamError {
+            if let error = streamError {
                 print(error)
+                break
+            } else if numberOfBytesRead < 0 {
                 break
             }
             data.append(buffer, count: numberOfBytesRead)

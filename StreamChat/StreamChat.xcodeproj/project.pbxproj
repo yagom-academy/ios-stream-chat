@@ -85,12 +85,12 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
-		8A3BC6E626C46E9000CFABB1 /* Network */ = {
+		8A3BC6E626C46E9000CFABB1 /* Networks */ = {
 			isa = PBXGroup;
 			children = (
 				8A3BC6E726C46EAE00CFABB1 /* NetworkManager.swift */,
 			);
-			path = Network;
+			path = Networks;
 			sourceTree = "<group>";
 		};
 		8A3BC6ED26C5A2BD00CFABB1 /* Services */ = {
@@ -121,7 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				8A3BC6ED26C5A2BD00CFABB1 /* Services */,
-				8A3BC6E626C46E9000CFABB1 /* Network */,
+				8A3BC6E626C46E9000CFABB1 /* Networks */,
 				8A3BC6E126C2538800CFABB1 /* Constants */,
 				8A3BC6DE26C2504300CFABB1 /* ViewModels */,
 				8A3BC6DA26C1C62A00CFABB1 /* Models */,

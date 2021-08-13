@@ -55,6 +55,7 @@ final class ChatViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
+        chatViewModel.send(message: "LEAVE::::END")
     }
     
     // MARK: NotificationCenter

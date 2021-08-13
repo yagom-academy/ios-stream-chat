@@ -28,15 +28,18 @@ class UserNameInputViewController: UIViewController {
         return button
     }()
     
+    private let chatViewController = ChatViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        chatViewController.chatViewModel.service.networkManager.connectServer()
     }
     
     @objc func inputUserName() {
-        let chatViewController = ChatViewController()
+        
         guard let textFieldText = userNameTextField.text, textFieldText.count > 0 else { return }
-        chatViewController.chatViewModel.send(message: "USR_NAME::{\(textFieldText)}::END")
+        self.chatViewController.chatViewModel.send(message: "USR_NAME::\(textFieldText)::END")
         navigationController?.pushViewController(chatViewController, animated: true)
     }
     

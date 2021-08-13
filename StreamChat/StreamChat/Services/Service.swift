@@ -11,6 +11,6 @@ struct Service {
     let networkManager = NetworkManager()
     
     func send(message: String) {
-        
+        networkManager.send(message: message)
     }
 }
