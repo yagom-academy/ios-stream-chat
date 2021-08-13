@@ -1,5 +1,5 @@
 //
-//  TcpSocket.swift
+//  ChatRoomManager.swift
 //  StreamChat
 //
 //  Created by 이영우 on 2021/08/09.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol TcpSocketDelegate: AnyObject {
+protocol ChatRoomManagerDelegate: AnyObject {
     func receive(_ chatDataFormat: ChatReceiveFormat)
     func handleError(_ error: Error)
 }
 
-final class TcpSocket: NSObject {
+final class ChatRoomManager: NSObject {
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
     private let host: String
@@ -20,7 +20,7 @@ final class TcpSocket: NSObject {
     private let maxLength: Int
     private lazy var socketResponseHandler = SocketResponseHandler(maxBufferSize: maxLength)
 
-    weak var delegate: TcpSocketDelegate?
+    weak var delegate: ChatRoomManagerDelegate?
 
     init(host: String, port: UInt32, maxLength: Int = 300) {
         self.host = host
@@ -87,7 +87,7 @@ final class TcpSocket: NSObject {
     }
 }
 
-extension TcpSocket: StreamDelegate {
+extension ChatRoomManager: StreamDelegate {
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
         case .hasBytesAvailable:
