@@ -8,15 +8,21 @@
 import UIKit
 
 final class ChatRoom: NSObject {
+    
+    // MARK: - Properties
+    
     var urlSession: URLSession
     var streamTask: URLSessionStreamTask?
     var inputStream: InputStream?
     var outputStream: OutputStream?
     let maxReadLength = 2400
+    var username = ""
+    
+    // MARK: - Methods
+    
     init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession
         }
-    var username = ""
     private func setUpNetwork() {
         let configuration = URLSessionConfiguration.default
         configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
@@ -50,7 +56,22 @@ final class ChatRoom: NSObject {
             }
         }
     }
+    func send(_ message: String) {
+        guard let data = "MSG::\(message)::END".data(using: .utf8) else {
+            return
+            
+        }
+        data.withUnsafeBytes { unsafeRawBufferPointer in
+            guard let pointer = unsafeRawBufferPointer.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
+                return
+            }
+            outputStream?.write(pointer, maxLength: data.count)
+        }
+    }
 }
+
+// MARK: - StreamDelegate
+
 extension ChatRoom: StreamDelegate {
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
       switch eventCode {
@@ -67,6 +88,8 @@ extension ChatRoom: StreamDelegate {
       }
 }
 }
+
+// MARK: - URLSessionStreamDelegate
 
 extension ChatRoom: URLSessionStreamDelegate {
     func urlSession(_ session: URLSession, streamTask: URLSessionStreamTask, didBecome inputStream: InputStream, outputStream: OutputStream) {
