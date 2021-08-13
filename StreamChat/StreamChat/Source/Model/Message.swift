@@ -39,6 +39,7 @@ extension OutgoingMessage: CustomStringConvertible {
         case .leave:
             return MessageConstant.exitPrefix +
                     MessageConstant.separator +
+                    MessageConstant.separator +
                     MessageConstant.postfix
         }
     }
