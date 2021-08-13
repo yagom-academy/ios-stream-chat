@@ -39,6 +39,20 @@ final class TcpSocket: NSObject {
             outputStream?.open()
         }
     }
+    
+    func send(data: Data) throws {
+        try data.withUnsafeBytes {
+            guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
+                throw ChatError.notExistedPointer
+            }
+            outputStream?.write(pointer, maxLength: data.count)
+        }
+    }
+    
+    func disconnect() {
+        inputStream?.close()
+        outputStream?.close()
+    }
 }
 
 extension TcpSocket: StreamDelegate {
