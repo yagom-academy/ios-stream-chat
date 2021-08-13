@@ -13,9 +13,9 @@ struct SocketResponseHandler {
         self.maxBufferSize = maxBufferSize
     }
 
-    func receivedMessage(inputStream: InputStream) -> ChatReceiveFormat? {
+    func receivedMessage(inputStream: InputStream) -> Message? {
         let pointer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxBufferSize)
-        var convertedMessage: ChatReceiveFormat?
+        var convertedMessage: Message?
         while inputStream.hasBytesAvailable {
             let numberOfBytesRead = inputStream.read(pointer, maxLength: maxBufferSize)
             if numberOfBytesRead < 0, let error = inputStream.streamError {
@@ -32,21 +32,21 @@ struct SocketResponseHandler {
         return convertedMessage
     }
 
-    private func convert(_ message: String) -> ChatReceiveFormat? {
+    private func convert(_ message: String) -> Message? {
         let message = message.replacingOccurrences(of: "\0", with: "")
 
         if message.contains(ChatRoom.messageSeperator) {
             let elements = message.components(separatedBy: ChatRoom.messageSeperator)
-            let sender = elements.first!
-            let content = elements.last!
-            return .message(sender: sender, content: content)
+            guard let sender = elements.first else { return nil }
+            guard let content = elements.last else { return nil }
+            return ChatMessage(name: sender, content: content, date: Date())
         } else if message.contains(ChatRoom.joinPostfix) {
             if let sender = message.components(separatedBy: ChatRoom.joinPostfix).first {
-                return .userJoin(sender: sender)
+                return ConnectionMessage(name: sender, content: ChatRoom.joinPostfix)
             }
         } else if message.contains(ChatRoom.leavePostfix) {
             if let sender = message.components(separatedBy: ChatRoom.leavePostfix).first {
-                return .userLeave(sender: sender)
+                return ConnectionMessage(name: sender, content: ChatRoom.leavePostfix)
             }
         }
         return nil

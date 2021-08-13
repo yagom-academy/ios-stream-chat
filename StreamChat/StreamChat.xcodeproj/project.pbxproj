@@ -10,11 +10,11 @@
 		945077C629F0DC10C38F316D /* Pods_StreamChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC83CF53C531F324A94202B /* Pods_StreamChat.framework */; };
 		C331449E26C61849001DEB3A /* ChatError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331449D26C61849001DEB3A /* ChatError.swift */; };
 		C33144A026C62C40001DEB3A /* SocketResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331449F26C62C40001DEB3A /* SocketResponseHandler.swift */; };
-		C33144A226C641F3001DEB3A /* ChatReceiveFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33144A126C641F3001DEB3A /* ChatReceiveFormat.swift */; };
 		C33144A426C6469E001DEB3A /* ChatPostFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33144A326C6469E001DEB3A /* ChatPostFormat.swift */; };
 		C33144A626C64AA9001DEB3A /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33144A526C64AA9001DEB3A /* ChatRoomViewController.swift */; };
 		C33144A826C6502D001DEB3A /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33144A726C6502D001DEB3A /* ChatRoom.swift */; };
 		C33144AA26C6638C001DEB3A /* ChatHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33144A926C6638C001DEB3A /* ChatHomeViewController.swift */; };
+		C33144AE26C68393001DEB3A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33144AD26C68393001DEB3A /* Message.swift */; };
 		C3A9228A26C106D5004BAD77 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C3A9228926C106D5004BAD77 /* .swiftlint.yml */; };
 		C3A9228D26C1149C004BAD77 /* ChatRoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A9228C26C1149C004BAD77 /* ChatRoomManager.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
@@ -29,11 +29,11 @@
 		4DC83CF53C531F324A94202B /* Pods_StreamChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StreamChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C331449D26C61849001DEB3A /* ChatError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatError.swift; sourceTree = "<group>"; };
 		C331449F26C62C40001DEB3A /* SocketResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketResponseHandler.swift; sourceTree = "<group>"; };
-		C33144A126C641F3001DEB3A /* ChatReceiveFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatReceiveFormat.swift; sourceTree = "<group>"; };
 		C33144A326C6469E001DEB3A /* ChatPostFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPostFormat.swift; sourceTree = "<group>"; };
 		C33144A526C64AA9001DEB3A /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		C33144A726C6502D001DEB3A /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		C33144A926C6638C001DEB3A /* ChatHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHomeViewController.swift; sourceTree = "<group>"; };
+		C33144AD26C68393001DEB3A /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		C3A9228926C106D5004BAD77 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C3A9228C26C1149C004BAD77 /* ChatRoomManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomManager.swift; sourceTree = "<group>"; };
 		C7927551262C562B00EF5D3A /* StreamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,8 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				C3A9228C26C1149C004BAD77 /* ChatRoomManager.swift */,
+				C33144AD26C68393001DEB3A /* Message.swift */,
 				C331449F26C62C40001DEB3A /* SocketResponseHandler.swift */,
-				C33144A126C641F3001DEB3A /* ChatReceiveFormat.swift */,
 				C33144A326C6469E001DEB3A /* ChatPostFormat.swift */,
 				C331449D26C61849001DEB3A /* ChatError.swift */,
 				C33144A726C6502D001DEB3A /* ChatRoom.swift */,
@@ -268,7 +268,7 @@
 				C3A9228D26C1149C004BAD77 /* ChatRoomManager.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
 				C33144A426C6469E001DEB3A /* ChatPostFormat.swift in Sources */,
-				C33144A226C641F3001DEB3A /* ChatReceiveFormat.swift in Sources */,
+				C33144AE26C68393001DEB3A /* Message.swift in Sources */,
 				C33144AA26C6638C001DEB3A /* ChatHomeViewController.swift in Sources */,
 				C33144A826C6502D001DEB3A /* ChatRoom.swift in Sources */,
 				C33144A626C64AA9001DEB3A /* ChatRoomViewController.swift in Sources */,

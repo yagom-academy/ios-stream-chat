@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ChatRoomManagerDelegate: AnyObject {
-    func receive(_ chatDataFormat: ChatReceiveFormat)
+    func receive(_ chatDataFormat: Message)
     func handleError(_ error: Error)
 }
 
