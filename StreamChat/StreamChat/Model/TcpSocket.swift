@@ -8,17 +8,19 @@
 import Foundation
 
 protocol TcpSocketDelegate: AnyObject {
-    func receive(_ message: String)
+    func receive(_ chatDataFormat: ChatDataFormat)
 }
 
 final class TcpSocket: NSObject {
+    private let socketResponseHandler = SocketResponseHandler()
+
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
     private let host: String
     private let port: UInt32
     private let maxLength: Int
     weak var delegate: TcpSocketDelegate?
-    
+
     init(host: String, port: UInt32, maxLength: Int = 300) {
         self.host = host
         self.port = port
@@ -26,11 +28,11 @@ final class TcpSocket: NSObject {
         super.init()
         connect()
     }
-    
+
     private func connect() {
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?
-        
+
         CFStreamCreatePairWithSocketToHost(kCFAllocatorSystemDefault, host as CFString, port, &readStream, &writeStream)
         if let readStream = readStream, let writeStream = writeStream {
             inputStream = readStream.takeRetainedValue()
@@ -44,7 +46,7 @@ final class TcpSocket: NSObject {
             outputStream?.open()
         }
     }
-    
+
     func send(data: Data) throws {
         try data.withUnsafeBytes {
             guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
@@ -53,7 +55,7 @@ final class TcpSocket: NSObject {
             outputStream?.write(pointer, maxLength: data.count)
         }
     }
-    
+
     func disconnect() {
         inputStream?.close()
         outputStream?.close()
@@ -65,7 +67,10 @@ extension TcpSocket: StreamDelegate {
         switch eventCode {
         case .hasBytesAvailable:
             guard let inputStream = aStream as? InputStream else { return }
-            readAvailableBytes(stream: inputStream)
+            guard let message = socketResponseHandler.receivedMessage(inputStream: inputStream) else {
+                return
+            }
+            self.delegate?.receive(message)
         case .endEncountered:
             disconnect()
         case .errorOccurred:
@@ -75,30 +80,5 @@ extension TcpSocket: StreamDelegate {
         default:
             print("some other event...")
         }
-    }
-    
-    private func readAvailableBytes(stream: InputStream) {
-        let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxLength)
-        
-        while stream.hasBytesAvailable {
-            guard let numberOfBytesRead = inputStream?.read(buffer, maxLength: maxLength) else {
-                return
-            }
-            if numberOfBytesRead < 0, let error = stream.streamError {
-                print(error)
-                break
-            }
-            if let message = processedString(buffer: buffer, length: numberOfBytesRead) {
-                delegate?.receive(message)
-            }
-        }
-    }
-    
-    private func processedString(buffer: UnsafeMutablePointer<UInt8>,
-                                        length: Int) -> String? {
-        guard let string = String(bytesNoCopy: buffer, length: length, encoding: .utf8, freeWhenDone: true) else {
-            return nil
-        }
-        return string
     }
 }
