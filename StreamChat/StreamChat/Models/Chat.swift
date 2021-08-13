@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct Chat: Hashable, Codable {
+struct Chat: Hashable {
+    let senderType: Identifier
+    let senderName: String
     let message: String
-    let isMyMessage: Bool
+    let date: Date
 }

@@ -55,7 +55,7 @@ final class ChatViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
-        chatViewModel.send(message: "LEAVE::::END")
+        chatViewModel.send(message: StreamData.leaveMessage)
     }
     
     // MARK: NotificationCenter
@@ -107,7 +107,9 @@ final class ChatViewController: UIViewController {
         self.view.addSubview(chatTableView)
         chatTableView.dataSource = self
         chatTableView.delegate = self
-        chatTableView.register(ChatTableViewCell.self, forCellReuseIdentifier: ChatTableViewCell.identifier)
+        chatTableView.register(MyChatTableViewCell.self, forCellReuseIdentifier: MyChatTableViewCell.identifier)
+        chatTableView.register(OtherChatTableViewCell.self, forCellReuseIdentifier: OtherChatTableViewCell.identifier)
+        chatTableView.register(AlertTableViewCell.self, forCellReuseIdentifier: AlertTableViewCell.identifier)
         chatTableView.keyboardDismissMode = .onDrag
         setConstraintOfChatTableView()
     }
@@ -174,7 +176,7 @@ final class ChatViewController: UIViewController {
     
     @objc func sendButton() {
         guard let text = typingTextField.text, text.isEmpty == false else { return }
-        chatViewModel.insertMessage(chat: Chat(message: text, isMyMessage: true))
+        chatViewModel.insertMessage(chat: Chat(senderType: Identifier.userSelf, senderName: StreamData.ownUserName, message: text, date: Date()))
         typingTextField.text = nil
     }
     
@@ -208,11 +210,27 @@ extension ChatViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ChatTableViewCell.identifier, for: indexPath) as? ChatTableViewCell else {
-            return UITableViewCell()
+        let chatInformation = chatViewModel.getMessage(indexPath: indexPath)
+        switch chatInformation.senderType {
+        case .userSelf:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MyChatTableViewCell.identifier, for: indexPath) as? MyChatTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configure(chatInformation: chatInformation)
+            return cell
+        case .otherUser:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: OtherChatTableViewCell.identifier, for: indexPath) as? OtherChatTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configure(chatInformation: chatInformation)
+            return cell
+        case .chatManager:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: AlertTableViewCell.identifier, for: indexPath) as? AlertTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configure(chatInformation: chatInformation)
+            return cell
         }
-        cell.configure(chatInformation: chatViewModel.getMessage(indexPath: indexPath))
-        return cell
     }
     
 }

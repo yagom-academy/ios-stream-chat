@@ -8,11 +8,12 @@
 import Foundation
 import UIKit
 
-class NetworkManager: NSObject {
+final class NetworkManager: NSObject {
     
     private var session: URLSession?
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
+    weak var delegate: Receivable?
     
     override init() {
         super.init()
@@ -20,23 +21,20 @@ class NetworkManager: NSObject {
     
     func connectServer() {
         session = URLSession(configuration: .default, delegate: self, delegateQueue: .main)
-        let task = session?.streamTask(withHostName: "15.165.55.224", port: 5080)
+        let task = session?.streamTask(withHostName: Secret.ipAddress, port: Secret.port)
         task?.resume()
-        task?.captureStreams() // URLSessionStreamDelegate 메소드 실행
+        task?.captureStreams()
     }
     
     func send(message: String) {
         guard let data = message.data(using: .utf8) else { return }
         outputStream?.write(data: data)
-        print("\(outputStream)")
-        print("write \(message)")
     }
 
 }
 
 extension NetworkManager: URLSessionStreamDelegate {
     func urlSession(_ session: URLSession, streamTask: URLSessionStreamTask, didBecome inputStream: InputStream, outputStream: OutputStream) {
-        print("연결")
         self.outputStream = outputStream
         self.inputStream = inputStream
         
@@ -52,19 +50,23 @@ extension NetworkManager: URLSessionStreamDelegate {
 }
 
 extension NetworkManager: StreamDelegate {
-    //지정된 스트림에서 지정된 이벤트가 발생하면 대리자가 이 메시지를 수신한다.
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         if inputStream == aStream {
             switch eventCode {
             case .hasBytesAvailable:
                 var data = Data()
-                guard let inputStream = inputStream, inputStream.read(data: &data) > 0 else { return }
-                let message = String(data: data, encoding: .utf8)
-                print(message)
+                guard let inputStream = inputStream,
+                      inputStream.read(data: &data) > 0,
+                      let message = String(data: data, encoding: .utf8)
+                else { return }
+                
+                if let receivedMessage = StreamData.receiveMessage(message) {
+                    delegate?.receive(chat: receivedMessage)
+                    return
+                }
+                
             default: break
             }
-        } else {
-//            print("output: \(aStream)")
         }
     }
 }

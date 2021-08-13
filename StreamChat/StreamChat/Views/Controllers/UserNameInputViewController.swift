@@ -33,13 +33,13 @@ class UserNameInputViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        chatViewController.chatViewModel.service.networkManager.connectServer()
+        chatViewController.chatViewModel.networkManager.connectServer()
     }
     
     @objc func inputUserName() {
         
         guard let textFieldText = userNameTextField.text, textFieldText.count > 0 else { return }
-        self.chatViewController.chatViewModel.send(message: "USR_NAME::\(textFieldText)::END")
+        self.chatViewController.chatViewModel.send(message: StreamData.joinTheChat(userName: textFieldText))
         navigationController?.pushViewController(chatViewController, animated: true)
     }
     
