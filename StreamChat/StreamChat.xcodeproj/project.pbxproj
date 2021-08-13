@@ -75,6 +75,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C33144AB26C66657001DEB3A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C33144A526C64AA9001DEB3A /* ChatRoomViewController.swift */,
+				C33144A926C6638C001DEB3A /* ChatHomeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C33144AC26C66672001DEB3A /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				C792755A262C562B00EF5D3A /* Main.storyboard */,
+				C792755F262C562E00EF5D3A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		C3A9228B26C11489004BAD77 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,11 +139,9 @@
 			children = (
 				C3DB7D7C26C3F55700614E57 /* Entry */,
 				C3A9228B26C11489004BAD77 /* Model */,
-				C33144A526C64AA9001DEB3A /* ChatRoomViewController.swift */,
-				C33144A926C6638C001DEB3A /* ChatHomeViewController.swift */,
-				C792755A262C562B00EF5D3A /* Main.storyboard */,
+				C33144AB26C66657001DEB3A /* ViewController */,
+				C33144AC26C66672001DEB3A /* Storyboard */,
 				C792755D262C562E00EF5D3A /* Assets.xcassets */,
-				C792755F262C562E00EF5D3A /* LaunchScreen.storyboard */,
 				C7927562262C562E00EF5D3A /* Info.plist */,
 			);
 			path = StreamChat;
