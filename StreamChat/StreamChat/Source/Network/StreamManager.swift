@@ -11,7 +11,7 @@ protocol StreamManagerDelegate: NSObject {
     func received(message: String)
 }
 
-class StreamManager: NSObject, StreamDelegate {
+class StreamManager: NSObject {
     var inputStream: InputStream?
     var outputStream: OutputStream?
     weak var delegate: StreamManagerDelegate?
@@ -28,7 +28,6 @@ class StreamManager: NSObject, StreamDelegate {
         inputStream = readStream?.takeRetainedValue()
         outputStream = writeStream?.takeRetainedValue()
         inputStream?.delegate = self
-        outputStream?.delegate = self
         inputStream?.schedule(in: .current, forMode: .common)
         outputStream?.schedule(in: .current, forMode: .common)
     }
@@ -56,19 +55,13 @@ class StreamManager: NSObject, StreamDelegate {
         }
     }
     
-    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
-        if eventCode == .hasBytesAvailable {
-            readAvailableBytes(stream: aStream as! InputStream)
-        }
-    }
-    
     private func readAvailableBytes(stream: InputStream) {
         let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: ChatServerInfo.maxMessageLength)
         
         while stream.hasBytesAvailable {
             let numberOfBytesRead = inputStream?.read(buffer, maxLength: ChatServerInfo.maxMessageLength)
             
-            if numberOfBytesRead! < 0, let error = stream.streamError {
+            if numberOfBytesRead! < 0, stream.streamError != nil {
                 break
             }
             
@@ -79,6 +72,17 @@ class StreamManager: NSObject, StreamDelegate {
                 continue
             }
             delegate?.received(message: bufferString)
+        }
+    }
+}
+
+extension StreamManager: StreamDelegate {
+    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+        if eventCode == Stream.Event.hasBytesAvailable {
+            guard let inputStream = aStream as? InputStream else {
+                return
+            }
+            readAvailableBytes(stream: inputStream)
         }
     }
 }
