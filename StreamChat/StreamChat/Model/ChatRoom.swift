@@ -10,14 +10,13 @@ import UIKit
 final class ChatRoom: NSObject {
     
     // MARK: - Properties
-    
-    var urlSession: URLSession
+    var urlSession: URLSessionProtocol
     var streamTask: URLSessionStreamTask?
     var username = ""
     
     // MARK: - Methods
     
-    init(urlSession: URLSession = .shared) {
+    init(urlSession: URLSessionProtocol = URLSession.shared) {
         self.urlSession = urlSession
     }
     
