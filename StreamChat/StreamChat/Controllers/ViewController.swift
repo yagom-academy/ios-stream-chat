@@ -10,5 +10,7 @@ class ViewController: UIViewController {
     let chatRoom = ChatRoom()
     override func viewDidLoad() {
         super.viewDidLoad()
+        chatRoom.setUpNetwork()
+        chatRoom.joinChat(username: "James")
     }
 }

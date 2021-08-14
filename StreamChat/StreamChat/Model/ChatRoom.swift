@@ -58,10 +58,13 @@ final class ChatRoom: NSObject {
             defer {
                 self.read(from: streamTask)
             }
-            guard data != nil else {
-                
+            guard let data = data else {
                 return
             }
+            
+            // MARK: - Read Log
+            NSLog(String(data: data, encoding: .utf8) ?? "no message could be read")
+            
             if let readError = error {
                 NSLog(readError.localizedDescription)
             }
