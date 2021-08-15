@@ -10,14 +10,15 @@ import UIKit
 
 final class NetworkManager: NSObject {
     
-    private var session: URLSession
+    private var session: URLSession!
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
     private var streamTask: URLSessionStreamTask?
     weak var delegate: ChatViewModelDelegate?
     
-    init(session: URLSession) {
-        self.session = session
+    init(configuration: URLSessionConfiguration, delegateQueue: OperationQueue?) {
+        super.init()
+        self.session = URLSession.init(configuration: configuration, delegate: self, delegateQueue: delegateQueue)
     }
     
     func setURLSession(_ session: URLSession) {

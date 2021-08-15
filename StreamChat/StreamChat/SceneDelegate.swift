@@ -17,11 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: scene)
         
-        let fakeSession = URLSession(configuration: .default, delegate: nil, delegateQueue: .main)
-        let netWorkManager = NetworkManager(session: fakeSession)
-        let delegate: URLSessionDelegate = netWorkManager
-        let realSession = URLSession(configuration: .default, delegate: delegate, delegateQueue: .main)
-        netWorkManager.setURLSession(realSession)
+        let netWorkManager = NetworkManager(configuration: .default, delegateQueue: .main)
         let chatViewModel = ChatViewModel(networkManager: netWorkManager)
         let chatViewController = ChatViewController(chatViewModel: chatViewModel)
         let userNameInputViewController = UserNameInputViewController(chatViewController: chatViewController)

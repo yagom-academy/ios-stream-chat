@@ -10,6 +10,7 @@
 		8A0BE0F426C993FF0049F487 /* ChatViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BE0F326C993FF0049F487 /* ChatViewControllerProtocol.swift */; };
 		8A0BE0F626C994120049F487 /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BE0F526C994120049F487 /* NetworkManagerProtocol.swift */; };
 		8A0BE0F826C994280049F487 /* ChatViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BE0F726C994280049F487 /* ChatViewModelProtocol.swift */; };
+		8A0BE0FA26C9B0570049F487 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BE0F926C9B0570049F487 /* URLSessionProtocol.swift */; };
 		8A3BC6D926C1BCF500CFABB1 /* MyChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6D826C1BCF500CFABB1 /* MyChatTableViewCell.swift */; };
 		8A3BC6DC26C1C63900CFABB1 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6DB26C1C63900CFABB1 /* Chat.swift */; };
 		8A3BC6E026C2505A00CFABB1 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6DF26C2505A00CFABB1 /* ChatViewModel.swift */; };
@@ -34,6 +35,7 @@
 		8A0BE0F326C993FF0049F487 /* ChatViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewControllerProtocol.swift; sourceTree = "<group>"; };
 		8A0BE0F526C994120049F487 /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
 		8A0BE0F726C994280049F487 /* ChatViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModelProtocol.swift; sourceTree = "<group>"; };
+		8A0BE0F926C9B0570049F487 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		8A3BC6D826C1BCF500CFABB1 /* MyChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatTableViewCell.swift; sourceTree = "<group>"; };
 		8A3BC6DB26C1C63900CFABB1 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		8A3BC6DF26C2505A00CFABB1 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				8A0BE0F326C993FF0049F487 /* ChatViewControllerProtocol.swift */,
 				8A0BE0F726C994280049F487 /* ChatViewModelProtocol.swift */,
 				8A0BE0F526C994120049F487 /* NetworkManagerProtocol.swift */,
+				8A0BE0F926C9B0570049F487 /* URLSessionProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				8A3BC6DC26C1C63900CFABB1 /* Chat.swift in Sources */,
 				8A3DB9B926C8FD9A00282D62 /* ChatViewModelDelegate.swift in Sources */,
 				8A3BC6F126C6377200CFABB1 /* StreamData.swift in Sources */,
+				8A0BE0FA26C9B0570049F487 /* URLSessionProtocol.swift in Sources */,
 				8A0BE0F626C994120049F487 /* NetworkManagerProtocol.swift in Sources */,
 				8A3BC6E026C2505A00CFABB1 /* ChatViewModel.swift in Sources */,
 				8A0BE0F826C994280049F487 /* ChatViewModelProtocol.swift in Sources */,
