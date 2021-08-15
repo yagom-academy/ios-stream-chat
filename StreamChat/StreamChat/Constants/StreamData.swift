@@ -18,7 +18,7 @@ enum StreamData {
         "MSG::\(message)::END"
     }
     
-    static func receiveMessage(_ message: String) -> Chat? {
+    static func convertMessageFromStringToChat(_ message: String) -> Chat? {
         let splitedMessage = message.split(separator: ":").map { String($0) }
         if splitedMessage.count == 2, StreamData.ownUserName != splitedMessage[0] {
             return Chat(senderType: Identifier.otherUser,

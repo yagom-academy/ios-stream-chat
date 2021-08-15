@@ -187,7 +187,7 @@ final class ChatViewController: UIViewController {
     private func setDataBindingWithViewModel() {
         chatViewModel.onUpdated = { [weak self] newMessages, oldMessages in
             guard let self = self else { return }
-            let indexPath = IndexPath(row: newMessages.count - 1, section: 0)
+            let indexPath = IndexPath(row: newMessages.count - 1, section: .zero)
             
             if newMessages.count - oldMessages.count > 1 {
                 self.chatTableView.reloadData()
