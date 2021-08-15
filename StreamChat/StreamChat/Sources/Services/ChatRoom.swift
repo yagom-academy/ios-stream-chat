@@ -25,14 +25,13 @@ final class ChatRoom: NSObject {
     private var user: User?
     weak var delegate: ChatRoomDelegate?
 
-    func connect() {
-        Stream.getStreamsToHost(withName: ConnectionSetting.host,
-                                port: ConnectionSetting.port,
-                                inputStream: &inputStream,
-                                outputStream: &outputStream)
-        inputStream?.delegate = self
-        scheduleStreamsToRunLoop()
-        openStreams()
+    override init() {
+        super.init()
+        connect()
+    }
+
+    deinit {
+        disconnect()
     }
 
     func join(with username: String) {
@@ -60,7 +59,17 @@ final class ChatRoom: NSObject {
         write(leavingStreamData)
     }
 
-    func disconnect() {
+    private func connect() {
+        Stream.getStreamsToHost(withName: ConnectionSetting.host,
+                                port: ConnectionSetting.port,
+                                inputStream: &inputStream,
+                                outputStream: &outputStream)
+        inputStream?.delegate = self
+        scheduleStreamsToRunLoop()
+        openStreams()
+    }
+
+    private func disconnect() {
         inputStream?.close()
         outputStream?.close()
     }

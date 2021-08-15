@@ -28,16 +28,15 @@ final class ChatRoomViewController: UIViewController {
 
     // MARK: Properties
 
-    let chatRoomViewModel = ChatRoomViewModel()
+    private let chatRoomViewModel = ChatRoomViewModel()
     private var bottomConstraint: NSLayoutConstraint?
-
     private var lastIndexPath: IndexPath {
         IndexPath(row: chatRoomViewModel.messages.count - 1, section: .zero)
     }
 
     // MARK: Views
 
-    let messagesTableView: UITableView = {
+    private let messagesTableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
         tableView.keyboardDismissMode = .interactive
@@ -49,7 +48,7 @@ final class ChatRoomViewController: UIViewController {
         return tableView
     }()
 
-    let messagesInputBarView = MessageInputBarView()
+    private let messagesInputBarView = MessageInputBarView()
 
     // MARK: Lifecycle
 

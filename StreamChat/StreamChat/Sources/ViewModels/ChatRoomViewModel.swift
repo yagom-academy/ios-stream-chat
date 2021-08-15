@@ -47,13 +47,11 @@ final class ChatRoomViewModel {
     }
 
     func joinChat(with username: String) {
-        chatRoom.connect()
         chatRoom.join(with: username)
     }
 
     func leaveChat() {
         chatRoom.leave()
-        chatRoom.disconnect()
     }
 }
 

@@ -58,7 +58,7 @@ final class JoinChatRoomViewController: UIViewController {
 
     // MARK: Views
 
-    let contentStackView: UIStackView = {
+    private let contentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .center
@@ -70,7 +70,7 @@ final class JoinChatRoomViewController: UIViewController {
         return stackView
     }()
 
-    let welcomeLabel: UILabel = {
+    private let welcomeLabel: UILabel = {
         let label = UILabel()
         label.text = Style.WelcomeLabel.welcomeLabelText
         label.font = UIFont.preferredFont(forTextStyle: Style.WelcomeLabel.font)
@@ -78,7 +78,7 @@ final class JoinChatRoomViewController: UIViewController {
         return label
     }()
 
-    let usernameTextField: UITextField = {
+    private let usernameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = Style.UsernameTextField.placeholderText
         textField.font = UIFont.preferredFont(forTextStyle: Style.UsernameTextField.font)
@@ -89,7 +89,7 @@ final class JoinChatRoomViewController: UIViewController {
         return textField
     }()
 
-    let joinButton: UIButton = {
+    private let joinButton: UIButton = {
         let button = UIButton()
         button.setTitle(Style.JoinButton.title, for: .normal)
         button.titleLabel?.font = UIFont.preferredFont(forTextStyle: Style.JoinButton.font)

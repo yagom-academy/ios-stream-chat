@@ -60,7 +60,7 @@ final class MessageInputBarView: UIView {
         return stackView
     }()
 
-    let inputTextView: UITextView = {
+    private let inputTextView: UITextView = {
         let textView = UITextView()
         textView.font = UIFont.preferredFont(forTextStyle: Style.InputTextView.font)
         textView.layer.cornerRadius = Style.InputTextView.cornerRadius
@@ -69,7 +69,7 @@ final class MessageInputBarView: UIView {
         return textView
     }()
 
-    let sendButton: UIButton = {
+    private let sendButton: UIButton = {
         let button = UIButton()
         button.frame.size = Style.SendButton.frameSize
         button.setImage(Style.SendButton.image, for: .normal)

@@ -32,7 +32,7 @@ final class SystemMessageTableViewCell: UITableViewCell {
 
     // MARK: Views
 
-    let systemMessageLabel: UILabel = {
+    private let systemMessageLabel: UILabel = {
         let label = InsetLabel(top: Style.SystemMessageLabel.topBottomInset,
                                left: Style.SystemMessageLabel.leftRightInset,
                                bottom: Style.SystemMessageLabel.topBottomInset,

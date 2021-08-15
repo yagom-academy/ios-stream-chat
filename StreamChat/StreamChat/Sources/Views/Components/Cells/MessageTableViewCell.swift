@@ -65,7 +65,7 @@ final class MessageTableViewCell: UITableViewCell {
 
     // MARK: Views
 
-    let usernameInitialLabel: UILabel = {
+    private let usernameInitialLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: Style.UsernameInitialLabel.font)
         label.layer.cornerRadius = Style.UsernameInitialLabel.cornerRadius
@@ -78,7 +78,7 @@ final class MessageTableViewCell: UITableViewCell {
         return label
     }()
 
-    let contentStackView: UIStackView = {
+    private let contentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
@@ -87,14 +87,14 @@ final class MessageTableViewCell: UITableViewCell {
         return stackView
     }()
 
-    let usernameLabel: UILabel = {
+    private let usernameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: Style.UsernameLabel.font)
         label.textColor = Style.UsernameLabel.textColor
         return label
     }()
 
-    let messageLabel: UILabel = {
+    private let messageLabel: UILabel = {
         let label = InsetLabel(top: Style.MessageLabel.topBottomInset,
                                left: Style.MessageLabel.leftRightInset,
                                bottom: Style.MessageLabel.topBottomInset,
@@ -106,7 +106,7 @@ final class MessageTableViewCell: UITableViewCell {
         return label
     }()
 
-    let dateTimeLabel: UILabel = {
+    private let dateTimeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: Style.DateTimeLabel.font)
         label.textColor = Style.DateTimeLabel.textColor
