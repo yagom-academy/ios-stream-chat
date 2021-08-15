@@ -117,6 +117,7 @@ final class JoinChatRoomViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         removeKeyboardNotificationObservers()
+        removeKeyboardDismissGestureRecognizer()
     }
 
     // MARK: Set up views
@@ -196,6 +197,11 @@ final class JoinChatRoomViewController: UIViewController {
 
     @objc private func dismissKeyboard() {
         view.endEditing(true)
+    }
+
+    func removeKeyboardDismissGestureRecognizer() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.removeGestureRecognizer(tap)
     }
 
     // MARK: Change layout the size classes

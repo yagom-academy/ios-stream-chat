@@ -181,6 +181,11 @@ final class ChatRoomViewController: UIViewController {
         view.endEditing(true)
     }
 
+    func removeKeyboardDismissGestureRecognizer() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.removeGestureRecognizer(tap)
+    }
+
     // MARK: Data binding
 
     private func bindWithViewModel() {
