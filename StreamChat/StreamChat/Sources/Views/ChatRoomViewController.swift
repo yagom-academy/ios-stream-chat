@@ -231,7 +231,7 @@ extension ChatRoomViewController: UITableViewDataSource {
 
 extension ChatRoomViewController: MessageInputBarViewDelegate {
 
-    func sendButtonTapped(message: String) {
+    func didTapSendButton(message: String) {
         chatRoomViewModel.send(message: message)
     }
 }

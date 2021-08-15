@@ -130,7 +130,7 @@ extension ChatRoom: StreamDelegate {
             }
 
             if let message = constructMessage(with: buffer, length: bytesRead) {
-                delegate?.received(message: message)
+                delegate?.didReceiveMessage(message)
             }
         }
     }
