@@ -16,7 +16,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: scene)
-        let netWorkManager = NetworkManager()
+        
+        let fakeSession = URLSession(configuration: .default, delegate: nil, delegateQueue: .main)
+        let netWorkManager = NetworkManager(session: fakeSession)
+        let delegate: URLSessionDelegate = netWorkManager
+        let realSession = URLSession(configuration: .default, delegate: delegate, delegateQueue: .main)
+        netWorkManager.setURLSession(realSession)
         let chatViewModel = ChatViewModel(networkManager: netWorkManager)
         let chatViewController = ChatViewController(chatViewModel: chatViewModel)
         let userNameInputViewController = UserNameInputViewController(chatViewController: chatViewController)

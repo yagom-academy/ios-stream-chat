@@ -50,13 +50,13 @@ enum StreamData {
         return message
     }
     
-    static func findOutIdentifierOfMessage(message: String, ownUserName: String) -> Identifier {
+    static func findOutIdentifierOfMessage(message: String, ownUserName: String) -> SenderIdentifier {
         let splitedMessage = message.split(separator: ":").map { String($0) }
         if splitedMessage.count == 2, ownUserName != splitedMessage[0] {
-            return Identifier.otherUser
+            return SenderIdentifier.otherUser
         } else if splitedMessage.count == 2, ownUserName == splitedMessage[0] {
-            return Identifier.userSelf
+            return SenderIdentifier.userSelf
         }
-        return Identifier.chatManager
+        return SenderIdentifier.chatManager
     }
 }

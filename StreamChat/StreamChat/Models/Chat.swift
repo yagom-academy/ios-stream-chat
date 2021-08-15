@@ -8,7 +8,7 @@
 import Foundation
 
 struct Chat {
-    let senderType: Identifier
+    let senderType: SenderIdentifier
     let senderName: String
     let message: String
     let date: Date

@@ -65,6 +65,7 @@ final class ChatViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(false)
         self.navigationController?.navigationBar.isHidden = true
         chatViewModel.send(message: StreamData.leaveMessage)
         chatViewModel.closeStreamTask()

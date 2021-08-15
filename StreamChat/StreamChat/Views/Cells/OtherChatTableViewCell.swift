@@ -53,7 +53,7 @@ class OtherChatTableViewCell: UITableViewCell {
     
     // MARK: UI Setting
     
-    private func setUI(senderType: Identifier) {
+    private func setUI(senderType: SenderIdentifier) {
         self.contentView.backgroundColor = .darkGray
         addAllSubviews()
         setConstraintOfUserNameLabel()

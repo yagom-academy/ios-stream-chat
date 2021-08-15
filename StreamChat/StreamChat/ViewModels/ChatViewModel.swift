@@ -56,7 +56,7 @@ final class ChatViewModel {
 }
 
 extension ChatViewModel: ChatViewModelDelegate {
-    func chatViewModelWillAppendChatInMessages(_ message: String) {
+    func chatViewModelWillGetReceivedMessage(_ message: String) {
         guard let ownUserName = ownUserName else { return }
         let senderType = StreamData.findOutIdentifierOfMessage(message: message, ownUserName: ownUserName)
         let senderName = StreamData.findOutSenderNameOfMessage(message: message)

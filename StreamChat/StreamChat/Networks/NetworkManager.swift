@@ -10,19 +10,22 @@ import UIKit
 
 final class NetworkManager: NSObject {
     
-    private var session: URLSession?
+    private var session: URLSession
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
     private var streamTask: URLSessionStreamTask?
     weak var delegate: ChatViewModelDelegate?
     
-    override init() {
-        super.init()
+    init(session: URLSession) {
+        self.session = session
+    }
+    
+    func setURLSession(_ session: URLSession) {
+        self.session = session
     }
     
     func connectServer() {
-        session = URLSession(configuration: .default, delegate: self, delegateQueue: .main)
-        streamTask = session?.streamTask(withHostName: Secret.ipAddress, port: Secret.port)
+        streamTask = session.streamTask(withHostName: Secret.ipAddress, port: Secret.port)
         streamTask?.resume()
         streamTask?.captureStreams()
     }
@@ -64,7 +67,7 @@ extension NetworkManager: StreamDelegate {
                       inputStream.read(data: &data) > 0,
                       let message = String(data: data, encoding: .utf8)
                 else { return }
-                delegate?.chatViewModelWillAppendChatInMessages(message)
+                delegate?.chatViewModelWillGetReceivedMessage(message)
             default: break
             }
         }
