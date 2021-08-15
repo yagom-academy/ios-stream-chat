@@ -57,6 +57,8 @@ final class ChatViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         chatViewModel.send(message: StreamData.leaveMessage)
         chatViewModel.closeStreamTask()
+        chatViewModel.networkManager.connectServer()
+        chatViewModel.resetMessages()
     }
     
     // MARK: NotificationCenter
@@ -190,13 +192,13 @@ final class ChatViewController: UIViewController {
             guard let self = self else { return }
             let indexPath = IndexPath(row: newMessages.count - 1, section: .zero)
             
-            if newMessages.count - oldMessages.count > 1 {
-                self.chatTableView.reloadData()
+            if newMessages.count - oldMessages.count == 1 {
+                self.chatTableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.none)
                 self.scrollTableViewToBottom()
                 return
             }
             
-            self.chatTableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.none)
+            self.chatTableView.reloadData()
             self.scrollTableViewToBottom()
         }
     }

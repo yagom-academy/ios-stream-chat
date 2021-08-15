@@ -34,6 +34,12 @@ final class ChatViewModel {
         return messages[indexPath.row]
     }
     
+    func resetMessages() {
+        messages = []
+    }
+    
+    // MARK: Network function
+    
     func send(message: String) {
         networkManager.send(message: message)
     }
