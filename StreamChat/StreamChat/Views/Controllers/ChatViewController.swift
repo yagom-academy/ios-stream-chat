@@ -8,7 +8,7 @@ import UIKit
 
 final class ChatViewController: UIViewController {
     
-    private let chatViewModel: ChatViewModel
+    private let chatViewModel: ChatViewModelProtocol
     private var typingContainerViewBottomConstraints: NSLayoutConstraint = NSLayoutConstraint()
     private let chatTableView: UITableView = {
         let tableView = UITableView()
@@ -46,7 +46,7 @@ final class ChatViewController: UIViewController {
     
     // MARK: Initializer
     
-    init(chatViewModel: ChatViewModel) {
+    init(chatViewModel: ChatViewModelProtocol) {
         self.chatViewModel = chatViewModel
         super.init(nibName: nil, bundle: nil)
     }

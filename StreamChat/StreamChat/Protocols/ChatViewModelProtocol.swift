@@ -7,6 +7,20 @@
 
 import Foundation
 
-protocol ChatViewModelProtocol {
+protocol ChatViewModelProtocol: ChatViewModelDelegate {
+    var onUpdated: (_ newMessages: [Chat], _ oldMessages: [Chat]) -> Void { get set }
     
+    func getCountOfMessages() -> Int
+    
+    func getMessage(indexPath: IndexPath) -> Chat
+    
+    func resetMessages()
+    
+    func connectServer()
+    
+    func send(message: String)
+    
+    func closeStreamTask()
+    
+    func initializeOwnUserName(_ name: String)
 }
