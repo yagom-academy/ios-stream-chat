@@ -64,7 +64,6 @@ extension NetworkManager: StreamDelegate {
                       inputStream.read(data: &data) > 0,
                       let message = String(data: data, encoding: .utf8)
                 else { return }
-                // TODO: 뷰모델에서 델릭게이트 패턴으로 ownUserName 가져오는 방식으로 리팩터링하기
                 delegate?.chatViewModelWillAppendChatInMessages(message)
             default: break
             }

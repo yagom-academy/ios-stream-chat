@@ -48,7 +48,7 @@ final class ChatViewController: UIViewController {
     
     init(chatViewModel: ChatViewModel) {
         self.chatViewModel = chatViewModel
-        super.init()
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -192,7 +192,7 @@ final class ChatViewController: UIViewController {
     
     @objc func sendButton() {
         guard let text = typingTextField.text, text.isEmpty == false else { return }
-        chatViewModel.insertMessage(chat: Chat(senderType: Identifier.userSelf, senderName: "userSelf", message: text, date: Date()))
+        chatViewModel.send(message: StreamData.convertMessageToSendFormat(text))
         typingTextField.text = nil
     }
     
@@ -227,8 +227,8 @@ final class ChatViewController: UIViewController {
         chatViewModel.connectServer()
     }
     
-    func send(message: String) {
-        chatViewModel.send(message: message)
+    func sendOwnUserName(_ name: String) {
+        chatViewModel.send(message: StreamData.convertMessageToJoinFormat(userName: name))
     }
     
     func initalizeOwnUserName(_ name: String) {

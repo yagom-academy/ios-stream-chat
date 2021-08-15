@@ -27,11 +27,6 @@ final class ChatViewModel {
         return messages.count
     }
     
-    func insertMessage(chat: Chat) {
-        networkManager.send(message: StreamData.convertMessageToSendFormat(chat.message))
-        messages.append(chat)
-    }
-    
     func getMessage(indexPath: IndexPath) -> Chat {
         return messages[indexPath.row]
     }

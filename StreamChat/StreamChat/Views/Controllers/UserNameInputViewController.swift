@@ -33,7 +33,7 @@ final class UserNameInputViewController: UIViewController {
     
     init(chatViewController: ChatViewController) {
         self.chatViewController = chatViewController
-        super.init()
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -52,7 +52,7 @@ final class UserNameInputViewController: UIViewController {
         guard let textFieldText = userNameTextField.text, textFieldText.count > 0 else { return }
         
         chatViewController.initalizeOwnUserName(textFieldText)
-        chatViewController.send(message: StreamData.convertMessageToJoinFormat(userName: textFieldText))
+        chatViewController.sendOwnUserName(textFieldText)
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.pushViewController(self.chatViewController, animated: true)
     }
