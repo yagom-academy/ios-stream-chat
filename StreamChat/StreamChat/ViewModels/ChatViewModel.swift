@@ -37,14 +37,14 @@ final class ChatViewModel {
     func send(message: String) {
         networkManager.send(message: message)
     }
+    
+    func closeStreamTask() {
+        networkManager.closeStreamTask()
+    }
 }
 
 extension ChatViewModel: Receivable {
     func receive(chat: Chat) {
         messages.append(chat)
     }
-}
-
-protocol Receivable: AnyObject {
-    func receive(chat: Chat)
 }

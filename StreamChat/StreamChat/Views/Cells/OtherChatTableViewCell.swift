@@ -10,10 +10,36 @@ import UIKit
 class OtherChatTableViewCell: UITableViewCell {
 
     static let identifier = "OtherChatTableViewCell"
-    private let chatBubbleImageView = UIImageView()
-    private let chatLabel = UILabel()
-    private let dateLabel = UILabel()
-    private let userNameLabel = UILabel()
+    private let chatBubbleImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .systemGray
+        return imageView
+    }()
+    
+    private let chatLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        return label
+    }()
+    
+    private let dateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .systemGray5
+        label.font = UIFont.preferredFont(forTextStyle: .caption2)
+        return label
+    }()
+    
+    private let userNameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .systemGray5
+        label.font = UIFont.preferredFont(forTextStyle: .caption2)
+        return label
+    }()
     
     func configure(chatInformation: Chat) {
         setUI(senderType: chatInformation.senderType)
@@ -28,10 +54,10 @@ class OtherChatTableViewCell: UITableViewCell {
     private func setUI(senderType: Identifier) {
         self.contentView.backgroundColor = .darkGray
         addAllSubviews()
-        setUserNameLabel()
-        setSpeechImageView()
-        setMessageLabel()
-        setDateLabel()
+        setConstraintOfUserNameLabel()
+        setConstraintOfChatBubbleImageView()
+        setConstraintOfChatLabel()
+        setConstraintOfDateLabel()
     }
     
     private func addAllSubviews() {
@@ -39,33 +65,6 @@ class OtherChatTableViewCell: UITableViewCell {
         self.contentView.addSubview(chatBubbleImageView)
         self.chatBubbleImageView.addSubview(chatLabel)
         self.contentView.addSubview(dateLabel)
-    }
-    
-    private func setUserNameLabel() {
-        userNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        userNameLabel.textColor = .systemGray5
-        userNameLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
-        setConstraintOfUserNameLabel()
-    }
-    
-    private func setSpeechImageView() {
-        chatBubbleImageView.translatesAutoresizingMaskIntoConstraints = false
-        chatBubbleImageView.tintColor = .systemGray
-        setConstraintOfChatBubbleImageView()
-    }
-    
-    private func setMessageLabel() {
-        chatLabel.numberOfLines = 0
-        chatLabel.translatesAutoresizingMaskIntoConstraints = false
-        chatLabel.textColor = .white
-        setConstraintOfChatLabel()
-    }
-    
-    private func setDateLabel() {
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.textColor = .systemGray5
-        dateLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
-        setConstraintOfDateLabel()
     }
     
     // MARK: Constraints Setting
@@ -77,7 +76,6 @@ class OtherChatTableViewCell: UITableViewCell {
     }
     
     private func setConstraintOfChatBubbleImageView() {
-        
         NSLayoutConstraint.activate([chatBubbleImageView.topAnchor.constraint(equalTo: self.userNameLabel.bottomAnchor,
                                                                               constant: 3),
                                      chatBubbleImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor,
@@ -87,7 +85,6 @@ class OtherChatTableViewCell: UITableViewCell {
     }
     
     private func setConstraintOfChatLabel() {
-        
         NSLayoutConstraint.activate([ chatLabel.topAnchor.constraint(equalTo: self.chatBubbleImageView.topAnchor,
                                                                      constant: ChatTableViewCellConstants.chatTableViewCellInset / 2),
                                       chatLabel.leadingAnchor.constraint(equalTo: self.chatBubbleImageView.leadingAnchor,
@@ -99,7 +96,6 @@ class OtherChatTableViewCell: UITableViewCell {
     }
     
     private func setConstraintOfDateLabel() {
-        
         NSLayoutConstraint.activate([ dateLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor,
                                                                          constant: ChatTableViewCellConstants.chatTableViewCellInset),
                                       dateLabel.topAnchor.constraint(equalTo: self.chatBubbleImageView.bottomAnchor,

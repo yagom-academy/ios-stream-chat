@@ -10,9 +10,26 @@ import UIKit
 final class MyChatTableViewCell: UITableViewCell {
     
     static let identifier = "MyChatTableViewCell"
-    private let chatBubbleImageView = UIImageView()
-    private let chatLabel = UILabel()
-    private let dateLabel = UILabel()
+    private let chatBubbleImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .yellow
+        return imageView
+    }()
+    private let chatLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        return label
+    }()
+    private let dateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .systemGray5
+        label.font = UIFont.preferredFont(forTextStyle: .caption2)
+        return label
+    }()
   
     func configure(chatInformation: Chat) {
         setUI()
@@ -26,9 +43,9 @@ final class MyChatTableViewCell: UITableViewCell {
     private func setUI() {
         self.contentView.backgroundColor = .darkGray
         addAllSubviews()
-        setSpeechImageView()
-        setMessageLabel()
-        setDateLabel()
+        setConstraintOfChatBubbleImageView()
+        setConstraintOfChatLabel()
+        setConstraintOfDateLabel()
     }
     
     private func addAllSubviews() {
@@ -37,30 +54,9 @@ final class MyChatTableViewCell: UITableViewCell {
         self.contentView.addSubview(dateLabel)
     }
     
-    private func setSpeechImageView() {
-        chatBubbleImageView.translatesAutoresizingMaskIntoConstraints = false
-        chatBubbleImageView.tintColor = .yellow
-        setConstraintOfChatBubbleImageView()
-    }
-    
-    private func setMessageLabel() {
-        chatLabel.numberOfLines = 0
-        chatLabel.translatesAutoresizingMaskIntoConstraints = false
-        chatLabel.textColor = .black
-        setConstraintOfChatLabel()
-    }
-    
-    private func setDateLabel() {
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.textColor = .systemGray5
-        dateLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
-        setConstraintOfDateLabel()
-    }
-    
     // MARK: Constraints Setting
     
     private func setConstraintOfChatBubbleImageView() {
-        
         NSLayoutConstraint.activate([chatBubbleImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor,
                                                                               constant: ChatTableViewCellConstants.chatTableViewCellInset),
                                      chatBubbleImageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor,
@@ -70,7 +66,6 @@ final class MyChatTableViewCell: UITableViewCell {
     }
     
     private func setConstraintOfChatLabel() {
-        
         NSLayoutConstraint.activate([ chatLabel.topAnchor.constraint(equalTo: self.chatBubbleImageView.topAnchor,
                                                                      constant: ChatTableViewCellConstants.chatTableViewCellInset / 2),
                                       chatLabel.leadingAnchor.constraint(equalTo: self.chatBubbleImageView.leadingAnchor,
@@ -82,7 +77,6 @@ final class MyChatTableViewCell: UITableViewCell {
     }
     
     private func setConstraintOfDateLabel() {
-        
         NSLayoutConstraint.activate([ dateLabel.trailingAnchor.constraint(equalTo: self.chatBubbleImageView.trailingAnchor),
                                       dateLabel.topAnchor.constraint(equalTo: self.chatBubbleImageView.bottomAnchor,
                                                                      constant: 3),

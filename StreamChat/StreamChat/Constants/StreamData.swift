@@ -10,7 +10,6 @@ import Foundation
 enum StreamData {
     static var ownUserName: String = ""
     static func joinTheChat(userName: String) -> String {
-        StreamData.ownUserName = userName
         return "USR_NAME::\(userName)::END"
     }
     
@@ -18,21 +17,30 @@ enum StreamData {
         "MSG::\(message)::END"
     }
     
-    static func convertMessageFromStringToChat(_ message: String) -> Chat? {
+    static func findOutSenderNameOfMessage(message: String) -> String {
         let splitedMessage = message.split(separator: ":").map { String($0) }
-        if splitedMessage.count == 2, StreamData.ownUserName != splitedMessage[0] {
-            return Chat(senderType: Identifier.otherUser,
-                        senderName: splitedMessage[0],
-                        message: splitedMessage[1],
-                        date: Date())
-        } else if splitedMessage.count == 2, StreamData.ownUserName == splitedMessage[0] {
-            return nil
+        if splitedMessage.count == 2 {
+            return splitedMessage[0]
         }
-        
-        return Chat(senderType: Identifier.chatManager,
-                    senderName: "chatManager",
-                    message: message,
-                    date: Date())
+        return "chatManager"
+    }
+    
+    static func findOutMessageContent(message: String) -> String {
+        let splitedMessage = message.split(separator: ":").map { String($0) }
+        if splitedMessage.count == 2 {
+            return splitedMessage[1]
+        }
+        return message
+    }
+    
+    static func findOutIdentifierOfMessage(message: String, ownUserName: String) -> Identifier {
+        let splitedMessage = message.split(separator: ":").map { String($0) }
+        if splitedMessage.count == 2, ownUserName != splitedMessage[0] {
+            return Identifier.otherUser
+        } else if splitedMessage.count == 2, ownUserName == splitedMessage[0] {
+            return Identifier.userSelf
+        }
+        return Identifier.chatManager
     }
     
     static func notifyChatJoin(_ message: String) -> String {

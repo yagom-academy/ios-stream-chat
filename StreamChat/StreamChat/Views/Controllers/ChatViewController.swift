@@ -56,6 +56,7 @@ final class ChatViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
         chatViewModel.send(message: StreamData.leaveMessage)
+        chatViewModel.closeStreamTask()
     }
     
     // MARK: NotificationCenter
@@ -178,7 +179,7 @@ final class ChatViewController: UIViewController {
     
     @objc func sendButton() {
         guard let text = typingTextField.text, text.isEmpty == false else { return }
-        chatViewModel.insertMessage(chat: Chat(senderType: Identifier.userSelf, senderName: StreamData.ownUserName, message: text, date: Date()))
+        chatViewModel.insertMessage(chat: Chat(senderType: Identifier.userSelf, senderName: "userSelf", message: text, date: Date()))
         typingTextField.text = nil
     }
     

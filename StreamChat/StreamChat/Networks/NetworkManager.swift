@@ -13,6 +13,7 @@ final class NetworkManager: NSObject {
     private var session: URLSession?
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
+    private var streamTask: URLSessionStreamTask?
     weak var delegate: Receivable?
     
     override init() {
@@ -21,16 +22,20 @@ final class NetworkManager: NSObject {
     
     func connectServer() {
         session = URLSession(configuration: .default, delegate: self, delegateQueue: .main)
-        let task = session?.streamTask(withHostName: Secret.ipAddress, port: Secret.port)
-        task?.resume()
-        task?.captureStreams()
+        streamTask = session?.streamTask(withHostName: Secret.ipAddress, port: Secret.port)
+        streamTask?.resume()
+        streamTask?.captureStreams()
     }
     
     func send(message: String) {
         guard let data = message.data(using: .utf8) else { return }
         outputStream?.write(data: data)
     }
-
+    
+    func closeStreamTask() {
+        streamTask?.closeRead()
+        streamTask?.closeWrite()
+    }
 }
 
 extension NetworkManager: URLSessionStreamDelegate {
@@ -60,13 +65,26 @@ extension NetworkManager: StreamDelegate {
                       let message = String(data: data, encoding: .utf8)
                 else { return }
                 
-                if let receivedMessage = StreamData.receiveMessage(message) {
-                    delegate?.receive(chat: receivedMessage)
-                    return
-                }
+                let messageIdentifier = StreamData.findOutIdentifierOfMessage(message: message, ownUserName: StreamData.ownUserName)
+                let senderName = StreamData.findOutSenderNameOfMessage(message: message)
+                let messageContent = StreamData.findOutMessageContent(message: message)
+                
+                appendMessageIntoMessagesOfChatViewModel(messageIdentifier: messageIdentifier, senderName: senderName, messageContent: messageContent)
                 
             default: break
             }
+        }
+    }
+    
+    private func appendMessageIntoMessagesOfChatViewModel(messageIdentifier: Identifier, senderName: String, messageContent: String) {
+        switch messageIdentifier {
+        case .userSelf:
+            return
+        default:
+            delegate?.receive(chat: Chat(senderType: messageIdentifier,
+                                         senderName: senderName,
+                                         message: messageContent,
+                                         date: Date()))
         }
     }
 }

@@ -38,9 +38,10 @@ class UserNameInputViewController: UIViewController {
     
     @objc func inputUserName() {
         guard let textFieldText = userNameTextField.text, textFieldText.count > 0 else { return }
-        self.chatViewController.chatViewModel.send(message: StreamData.joinTheChat(userName: textFieldText))
+        StreamData.ownUserName = textFieldText
+        chatViewController.chatViewModel.send(message: StreamData.joinTheChat(userName: StreamData.ownUserName))
         self.navigationController?.navigationBar.isHidden = false
-        navigationController?.pushViewController(chatViewController, animated: true)
+        self.navigationController?.pushViewController(self.chatViewController, animated: true)
     }
     
     private func setUI() {
