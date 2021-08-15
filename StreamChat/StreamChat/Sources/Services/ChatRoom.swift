@@ -36,7 +36,7 @@ final class ChatRoom: NSObject {
 
     func join(with username: String) {
         user = User(name: username, senderType: .me)
-        guard let joiningStreamData: Data = StreamDataFactory.makeStreamData(.join(username: username)) else {
+        guard let joiningStreamData: Data = StreamDataFactory.make(.join(username: username)) else {
             Log.logic.error("\(StreamChatError.failedToConvertStringToStreamData(location: #function))")
             return
         }
@@ -44,7 +44,7 @@ final class ChatRoom: NSObject {
     }
 
     func send(message: String) {
-        guard let sendingStreamData: Data = StreamDataFactory.makeStreamData(.send(message: message)) else {
+        guard let sendingStreamData: Data = StreamDataFactory.make(.send(message: message)) else {
             Log.logic.error("\(StreamChatError.failedToConvertStringToStreamData(location: #function))")
             return
         }
@@ -52,7 +52,7 @@ final class ChatRoom: NSObject {
     }
 
     func leave() {
-        guard let leavingStreamData: Data = StreamDataFactory.makeStreamData(.leave) else {
+        guard let leavingStreamData: Data = StreamDataFactory.make(.leave) else {
             Log.logic.error("\(StreamChatError.failedToConvertStringToStreamData(location: #function))")
             return
         }

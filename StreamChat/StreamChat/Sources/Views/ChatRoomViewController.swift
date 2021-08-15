@@ -143,9 +143,9 @@ final class ChatRoomViewController: UIViewController {
         bottomConstraint?.constant = -keyboardFrame.height + Style.Constraint.contentStackViewBottomWhenKeyboardShown
 
         guard let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
-        UIView.animate(withDuration: duration) { [weak self] in
-            self?.view.layoutIfNeeded()
-            self?.scrollToLastMessage()
+        UIView.animate(withDuration: duration) {
+            self.view.layoutIfNeeded()
+            self.scrollToLastMessage()
         }
     }
 
@@ -157,8 +157,8 @@ final class ChatRoomViewController: UIViewController {
 
         guard let userInfo = notification.userInfo,
               let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
-        UIView.animate(withDuration: duration) { [weak self] in
-            self?.view.layoutIfNeeded()
+        UIView.animate(withDuration: duration) {
+            self.view.layoutIfNeeded()
         }
     }
 

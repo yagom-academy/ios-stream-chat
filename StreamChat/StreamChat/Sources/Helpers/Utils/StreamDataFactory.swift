@@ -29,7 +29,7 @@ struct StreamDataFactory {
         static let endOfMessage = "::END"
     }
 
-    static func makeStreamData(_ format: MessageFormat) -> Data? {
+    static func make(_ format: MessageFormat) -> Data? {
         switch format {
         case .join(let username):
             return "\(Prefix.join)\(username)\(Suffix.endOfMessage)".data(using: .utf8)
