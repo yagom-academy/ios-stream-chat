@@ -110,6 +110,10 @@ final class JoinChatRoomViewController: UIViewController {
         setUpNavigationBar()
         setUpSubviews()
         setUpConstraints()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         addKeyboardNotificationObservers()
         addKeyboardDismissGestureRecognizer()
     }

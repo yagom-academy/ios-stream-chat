@@ -59,9 +59,13 @@ final class ChatRoomViewController: UIViewController {
         setUpNavigationBar()
         setUpSubviews()
         setUpConstraints()
+        bindWithViewModel()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         addKeyboardNotificationObservers()
         addKeyboardDismissGestureRecognizer()
-        bindWithViewModel()
     }
 
     override func viewDidLayoutSubviews() {
