@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum TcpError: Error, CustomStringConvertible {
+enum TcpError: Error {
     
     case noDataReceived
     case failedToReadInputStream
 }
 
-extension TcpError {
+extension TcpError: CustomStringConvertible {
     
     var description: String {
         switch self {

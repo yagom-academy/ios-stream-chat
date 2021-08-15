@@ -12,7 +12,7 @@ enum ChattingConstant {
     case enterTheChatRoom(name: String)
     case send(message: String)
     
-    var string: String {
+    var format: String {
         switch self {
         case .enterTheChatRoom(let name):
             return "USR_NAME::\(name)::END"
