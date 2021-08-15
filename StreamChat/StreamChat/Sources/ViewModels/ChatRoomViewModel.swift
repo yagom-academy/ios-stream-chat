@@ -15,16 +15,16 @@ final class ChatRoomViewModel {
 
     // MARK: Properties
 
-    private let chatRoom: ChatRoom
+    private let chatRoomSocket: ChatRoomSocket
     private(set) var messages: [Message] = [] {
         didSet { changed?() }
     }
 
     // MARK: Initializers
 
-    init(chatRoom: ChatRoom) {
-        self.chatRoom = chatRoom
-        self.chatRoom.delegate = self
+    init(chatRoomSocket: ChatRoomSocket) {
+        self.chatRoomSocket = chatRoomSocket
+        self.chatRoomSocket.delegate = self
     }
 
     // MARK: Chat room view model features
@@ -44,21 +44,21 @@ final class ChatRoomViewModel {
     }
 
     func send(message: String) {
-        chatRoom.send(message: message)
+        chatRoomSocket.send(message: message)
     }
 
     func joinChat(with username: String) {
-        chatRoom.join(with: username)
+        chatRoomSocket.join(with: username)
     }
 
     func leaveChat() {
-        chatRoom.leave()
+        chatRoomSocket.leave()
     }
 }
 
-// MARK: - ChatRoomDelegate
+// MARK: - ChatRoomSocketDelegate
 
-extension ChatRoomViewModel: ChatRoomDelegate {
+extension ChatRoomViewModel: ChatRoomSocketDelegate {
 
     func didReceiveMessage(_ message: Message) {
         messages.append(message)

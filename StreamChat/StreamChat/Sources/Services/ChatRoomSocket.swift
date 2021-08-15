@@ -1,5 +1,5 @@
 //
-//  ChatRoom.swift
+//  ChatRoomSocket.swift
 //  StreamChat
 //
 //  Created by Ryan-Son on 2021/08/10.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ChatRoom: NSObject {
+final class ChatRoomSocket: NSObject {
 
     private enum ConnectionSetting {
 
@@ -23,7 +23,7 @@ final class ChatRoom: NSObject {
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
     private var user: User?
-    weak var delegate: ChatRoomDelegate?
+    weak var delegate: ChatRoomSocketDelegate?
 
     override init() {
         super.init()
@@ -99,7 +99,7 @@ final class ChatRoom: NSObject {
 
 // MARK: - StreamDelegate
 
-extension ChatRoom: StreamDelegate {
+extension ChatRoomSocket: StreamDelegate {
 
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
@@ -151,7 +151,7 @@ extension ChatRoom: StreamDelegate {
         let isSystemMessage: Bool = strings.count <= 1
 
         if isSystemMessage {
-            return Message(sender: ChatRoom.system, text: message, dateTime: Date())
+            return Message(sender: ChatRoomSocket.system, text: message, dateTime: Date())
         } else {
             guard let sender = (name == user?.name) ? user : User(name: name, senderType: .someoneElse) else {
                 return nil

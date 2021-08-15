@@ -222,8 +222,8 @@ final class JoinChatRoomViewController: UIViewController {
     // MARK: Join chat room
 
     @objc private func joinButtonTapped() {
-        let chatRoom = ChatRoom()
-        let chatRoomViewModel = ChatRoomViewModel(chatRoom: chatRoom)
+        let chatRoomSocket = ChatRoomSocket()
+        let chatRoomViewModel = ChatRoomViewModel(chatRoomSocket: chatRoomSocket)
         let chatRoomViewController = ChatRoomViewController()
         chatRoomViewController.chatRoomViewModel = chatRoomViewModel
         guard let username = usernameTextField.text,

@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		AA6098E626C98FB6006C8D40 /* StreamDataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6098E526C98FB6006C8D40 /* StreamDataFactory.swift */; };
 		AAA0D8CC26C243BA00127B3F /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = AAA0D8CB26C243BA00127B3F /* .swiftlint.yml */; };
-		AAA0D8D426C25A0100127B3F /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8D326C25A0100127B3F /* ChatRoom.swift */; };
+		AAA0D8D426C25A0100127B3F /* ChatRoomSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8D326C25A0100127B3F /* ChatRoomSocket.swift */; };
 		AAA0D8D726C25C2900127B3F /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8D626C25C2900127B3F /* NetworkConnection.swift */; };
 		AAA0D8DC26C2917300127B3F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8DB26C2917300127B3F /* Message.swift */; };
 		AAA0D8DE26C2922300127B3F /* SenderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8DD26C2922300127B3F /* SenderType.swift */; };
 		AAA0D8E026C2976700127B3F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8DF26C2976700127B3F /* User.swift */; };
 		AAA0D8E626C2ED2800127B3F /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8E526C2ED2800127B3F /* ChatRoomViewModel.swift */; };
-		AAA0D8EA26C2F02F00127B3F /* ChatRoomDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8E926C2F02F00127B3F /* ChatRoomDelegate.swift */; };
+		AAA0D8EA26C2F02F00127B3F /* ChatRoomSocketDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8E926C2F02F00127B3F /* ChatRoomSocketDelegate.swift */; };
 		AAA0D8EE26C3025500127B3F /* JoinChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8ED26C3025500127B3F /* JoinChatRoomViewController.swift */; };
 		AAA0D8F226C3B57E00127B3F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8F126C3B57E00127B3F /* Date+Extension.swift */; };
 		AAA0D8F526C3B9FE00127B3F /* MessageInputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8F426C3B9FE00127B3F /* MessageInputBarView.swift */; };
@@ -35,13 +35,13 @@
 /* Begin PBXFileReference section */
 		AA6098E526C98FB6006C8D40 /* StreamDataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamDataFactory.swift; sourceTree = "<group>"; };
 		AAA0D8CB26C243BA00127B3F /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		AAA0D8D326C25A0100127B3F /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
+		AAA0D8D326C25A0100127B3F /* ChatRoomSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomSocket.swift; sourceTree = "<group>"; };
 		AAA0D8D626C25C2900127B3F /* NetworkConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
 		AAA0D8DB26C2917300127B3F /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		AAA0D8DD26C2922300127B3F /* SenderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderType.swift; sourceTree = "<group>"; };
 		AAA0D8DF26C2976700127B3F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AAA0D8E526C2ED2800127B3F /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
-		AAA0D8E926C2F02F00127B3F /* ChatRoomDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomDelegate.swift; sourceTree = "<group>"; };
+		AAA0D8E926C2F02F00127B3F /* ChatRoomSocketDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomSocketDelegate.swift; sourceTree = "<group>"; };
 		AAA0D8ED26C3025500127B3F /* JoinChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChatRoomViewController.swift; sourceTree = "<group>"; };
 		AAA0D8F126C3B57E00127B3F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		AAA0D8F426C3B9FE00127B3F /* MessageInputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputBarView.swift; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 		AAA0D8D226C259F000127B3F /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				AAA0D8D326C25A0100127B3F /* ChatRoom.swift */,
+				AAA0D8D326C25A0100127B3F /* ChatRoomSocket.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -178,7 +178,7 @@
 		AAA0D8E826C2EFE600127B3F /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				AAA0D8E926C2F02F00127B3F /* ChatRoomDelegate.swift */,
+				AAA0D8E926C2F02F00127B3F /* ChatRoomSocketDelegate.swift */,
 				AAA0D8F826C3FF6D00127B3F /* MessageInputBarViewDelegate.swift */,
 			);
 			path = Protocols;
@@ -339,7 +339,7 @@
 				AA6098E626C98FB6006C8D40 /* StreamDataFactory.swift in Sources */,
 				AAA0D8E626C2ED2800127B3F /* ChatRoomViewModel.swift in Sources */,
 				AAA0D8D726C25C2900127B3F /* NetworkConnection.swift in Sources */,
-				AAA0D8D426C25A0100127B3F /* ChatRoom.swift in Sources */,
+				AAA0D8D426C25A0100127B3F /* ChatRoomSocket.swift in Sources */,
 				AAA0D8E026C2976700127B3F /* User.swift in Sources */,
 				AAA0D8F526C3B9FE00127B3F /* MessageInputBarView.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
@@ -348,7 +348,7 @@
 				AAA0D8FD26C4620A00127B3F /* InsetLabel.swift in Sources */,
 				AAA0D8DC26C2917300127B3F /* Message.swift in Sources */,
 				AAA0D90826C4D07800127B3F /* StreamChatError.swift in Sources */,
-				AAA0D8EA26C2F02F00127B3F /* ChatRoomDelegate.swift in Sources */,
+				AAA0D8EA26C2F02F00127B3F /* ChatRoomSocketDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
