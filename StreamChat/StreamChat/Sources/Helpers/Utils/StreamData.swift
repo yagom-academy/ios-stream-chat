@@ -1,5 +1,5 @@
 //
-//  StreamDataFactory.swift
+//  StreamData.swift
 //  StreamChat
 //
 //  Created by Ryan-Son on 2021/08/16.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StreamDataFactory {
+struct StreamData {
 
     enum MessageFormat {
         case join(username: String)

@@ -36,7 +36,7 @@ final class ChatRoomSocket: NSObject {
 
     func join(with username: String) {
         user = User(name: username, senderType: .me)
-        guard let joiningStreamData: Data = StreamDataFactory.make(.join(username: username)) else {
+        guard let joiningStreamData: Data = StreamData.make(.join(username: username)) else {
             Log.logic.error("\(StreamChatError.failedToConvertStringToStreamData(location: #function))")
             return
         }
@@ -44,7 +44,7 @@ final class ChatRoomSocket: NSObject {
     }
 
     func send(message: String) {
-        guard let sendingStreamData: Data = StreamDataFactory.make(.send(message: message)) else {
+        guard let sendingStreamData: Data = StreamData.make(.send(message: message)) else {
             Log.logic.error("\(StreamChatError.failedToConvertStringToStreamData(location: #function))")
             return
         }
@@ -52,7 +52,7 @@ final class ChatRoomSocket: NSObject {
     }
 
     func leave() {
-        guard let leavingStreamData: Data = StreamDataFactory.make(.leave) else {
+        guard let leavingStreamData: Data = StreamData.make(.leave) else {
             Log.logic.error("\(StreamChatError.failedToConvertStringToStreamData(location: #function))")
             return
         }
@@ -141,7 +141,7 @@ extension ChatRoomSocket: StreamDelegate {
 
     private func constructMessage(with buffer: UnsafeMutablePointer<UInt8>, length: Int) -> Message? {
         guard let strings = String(bytesNoCopy: buffer, length: length, encoding: .utf8, freeWhenDone: true)?
-                .components(separatedBy: StreamDataFactory.Infix.receive),
+                .components(separatedBy: StreamData.Infix.receive),
               let name = strings.first,
               let message = strings.last else {
             Log.logic.error("\(StreamChatError.failedToConvertByteToString)")

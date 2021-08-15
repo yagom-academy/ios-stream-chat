@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA6098E626C98FB6006C8D40 /* StreamDataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6098E526C98FB6006C8D40 /* StreamDataFactory.swift */; };
+		AA6098E626C98FB6006C8D40 /* StreamData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6098E526C98FB6006C8D40 /* StreamData.swift */; };
 		AAA0D8CC26C243BA00127B3F /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = AAA0D8CB26C243BA00127B3F /* .swiftlint.yml */; };
 		AAA0D8D426C25A0100127B3F /* ChatRoomSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8D326C25A0100127B3F /* ChatRoomSocket.swift */; };
 		AAA0D8D726C25C2900127B3F /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0D8D626C25C2900127B3F /* NetworkConnection.swift */; };
@@ -33,7 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA6098E526C98FB6006C8D40 /* StreamDataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamDataFactory.swift; sourceTree = "<group>"; };
+		AA6098E526C98FB6006C8D40 /* StreamData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamData.swift; sourceTree = "<group>"; };
 		AAA0D8CB26C243BA00127B3F /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		AAA0D8D326C25A0100127B3F /* ChatRoomSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomSocket.swift; sourceTree = "<group>"; };
 		AAA0D8D626C25C2900127B3F /* NetworkConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 			children = (
 				AAA0D8F126C3B57E00127B3F /* Date+Extension.swift */,
 				AAA0D90426C4CE0300127B3F /* OSLog+Log.swift */,
-				AA6098E526C98FB6006C8D40 /* StreamDataFactory.swift */,
+				AA6098E526C98FB6006C8D40 /* StreamData.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -336,7 +336,7 @@
 				C7927559262C562B00EF5D3A /* ChatRoomViewController.swift in Sources */,
 				AAA0D8F226C3B57E00127B3F /* Date+Extension.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
-				AA6098E626C98FB6006C8D40 /* StreamDataFactory.swift in Sources */,
+				AA6098E626C98FB6006C8D40 /* StreamData.swift in Sources */,
 				AAA0D8E626C2ED2800127B3F /* ChatRoomViewModel.swift in Sources */,
 				AAA0D8D726C25C2900127B3F /* NetworkConnection.swift in Sources */,
 				AAA0D8D426C25A0100127B3F /* ChatRoomSocket.swift in Sources */,
