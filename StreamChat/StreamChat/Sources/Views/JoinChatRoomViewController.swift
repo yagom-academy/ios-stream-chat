@@ -223,6 +223,7 @@ final class JoinChatRoomViewController: UIViewController {
 
     @objc private func joinButtonTapped() {
         let chatRoomViewController = ChatRoomViewController()
+        chatRoomViewController.chatRoomViewModel = ChatRoomViewModel()
         guard let username = usernameTextField.text,
               !username.isEmpty else {
             showUsernameRequiredAlert()

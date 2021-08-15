@@ -28,10 +28,11 @@ final class ChatRoomViewController: UIViewController {
 
     // MARK: Properties
 
-    private let chatRoomViewModel = ChatRoomViewModel()
+    var chatRoomViewModel: ChatRoomViewModel?
     private var bottomConstraint: NSLayoutConstraint?
-    private var lastIndexPath: IndexPath {
-        IndexPath(row: chatRoomViewModel.messages.count - 1, section: .zero)
+    private var lastIndexPath: IndexPath? {
+        guard let chatRoomViewModel = chatRoomViewModel else { return nil }
+        return IndexPath(row: chatRoomViewModel.messages.count - 1, section: .zero)
     }
 
     // MARK: Views
@@ -74,7 +75,7 @@ final class ChatRoomViewController: UIViewController {
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        chatRoomViewModel.leaveChat()
+        chatRoomViewModel?.leaveChat()
         removeKeyboardNotificationObservers()
     }
 
@@ -120,7 +121,7 @@ final class ChatRoomViewController: UIViewController {
     // MARK: Chat room features
 
     func join(with username: String) {
-        chatRoomViewModel.joinChat(with: username)
+        chatRoomViewModel?.joinChat(with: username)
     }
 
     // MARK: Handling keyboard notifications
@@ -169,7 +170,9 @@ final class ChatRoomViewController: UIViewController {
     // MARK: Positioning table view
 
     private func scrollToLastMessage() {
-        guard !chatRoomViewModel.messages.isEmpty else { return }
+        guard let hasMessage = chatRoomViewModel?.messages.isEmpty,
+              let lastIndexPath = lastIndexPath,
+              !hasMessage else { return }
         messagesTableView.scrollToRow(at: lastIndexPath, at: .bottom, animated: true)
     }
 
@@ -192,9 +195,10 @@ final class ChatRoomViewController: UIViewController {
     // MARK: Data binding
 
     private func bindWithViewModel() {
-        chatRoomViewModel.bind { [weak self] in
-            guard let self = self else { return }
-            self.messagesTableView.insertRows(at: [self.lastIndexPath], with: .none)
+        chatRoomViewModel?.bind { [weak self] in
+            guard let self = self,
+                  let lastIndexPath = self.lastIndexPath else { return }
+            self.messagesTableView.insertRows(at: [lastIndexPath], with: .none)
             self.scrollToLastMessage()
         }
     }
@@ -205,11 +209,12 @@ final class ChatRoomViewController: UIViewController {
 extension ChatRoomViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let chatRoomViewModel = chatRoomViewModel else { return .zero }
         return chatRoomViewModel.messages.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let message = chatRoomViewModel.message(at: indexPath.row) else {
+        guard let message = chatRoomViewModel?.message(at: indexPath.row) else {
             Log.ui.error("\(StreamChatError.messageNotFound)")
             return MessageTableViewCell()
         }
@@ -246,6 +251,6 @@ extension ChatRoomViewController: UITableViewDataSource {
 extension ChatRoomViewController: MessageInputBarViewDelegate {
 
     func didTapSendButton(message: String) {
-        chatRoomViewModel.send(message: message)
+        chatRoomViewModel?.send(message: message)
     }
 }
