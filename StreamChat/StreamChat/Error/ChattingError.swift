@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum ChattingError: Error, CustomStringConvertible {
+enum ChattingError: Error {
     
     case sendingMessagesIsLimitedTo300
     case failToConvertCustomizedBufferToString
 }
 
-extension ChattingError {
+extension ChattingError: CustomStringConvertible {
     
     var description: String {
         switch self {
