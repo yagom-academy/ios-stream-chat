@@ -15,15 +15,16 @@ final class ChatRoomViewModel {
 
     // MARK: Properties
 
-    private let chatRoom = ChatRoom()
+    private let chatRoom: ChatRoom
     private(set) var messages: [Message] = [] {
         didSet { changed?() }
     }
 
     // MARK: Initializers
 
-    init() {
-        chatRoom.delegate = self
+    init(chatRoom: ChatRoom) {
+        self.chatRoom = chatRoom
+        self.chatRoom.delegate = self
     }
 
     // MARK: Chat room view model features
