@@ -114,6 +114,11 @@ final class JoinChatRoomViewController: UIViewController {
         addKeyboardDismissGestureRecognizer()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        removeKeyboardNotificationObservers()
+    }
+
     // MARK: Set up views
 
     private func setDelegates() {
@@ -175,6 +180,11 @@ final class JoinChatRoomViewController: UIViewController {
         UIView.animate(withDuration: duration) { [weak self] in
             self?.view.layoutIfNeeded()
         }
+    }
+
+    private func removeKeyboardNotificationObservers() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     // MARK: Dismiss keyboard by tapping

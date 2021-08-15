@@ -72,6 +72,7 @@ final class ChatRoomViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         chatRoomViewModel.leaveChat()
+        removeKeyboardNotificationObservers()
     }
 
     // MARK: Set delegates
@@ -155,6 +156,11 @@ final class ChatRoomViewController: UIViewController {
         UIView.animate(withDuration: duration) { [weak self] in
             self?.view.layoutIfNeeded()
         }
+    }
+
+    private func removeKeyboardNotificationObservers() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     // MARK: Positioning table view
