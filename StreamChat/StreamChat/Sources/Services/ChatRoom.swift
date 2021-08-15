@@ -18,16 +18,11 @@ final class ChatRoom: NSObject {
         static let maxReadLength = 2400
     }
 
-    private enum DefaultUser {
-
-        static let system = User(name: "SYS", senderType: .system)
-        static let unknown = User(name: "Unknown", senderType: .me)
-    }
+    static let system = User(name: "SYS", senderType: .system)
 
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
-    private let system: User = DefaultUser.system
-    private(set) var user: User = DefaultUser.unknown
+    private var user: User?
     weak var delegate: ChatRoomDelegate?
 
     func connect() {
@@ -147,9 +142,11 @@ extension ChatRoom: StreamDelegate {
         let isSystemMessage: Bool = strings.count <= 1
 
         if isSystemMessage {
-            return Message(sender: system, text: message, dateTime: Date())
+            return Message(sender: ChatRoom.system, text: message, dateTime: Date())
         } else {
-            let sender: User = (name == user.name) ? user : User(name: name, senderType: .someoneElse)
+            guard let sender = (name == user?.name) ? user : User(name: name, senderType: .someoneElse) else {
+                return nil
+            }
             return Message(sender: sender, text: message, dateTime: Date())
         }
     }
