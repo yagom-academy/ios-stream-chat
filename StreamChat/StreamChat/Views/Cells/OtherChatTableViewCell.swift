@@ -41,6 +41,8 @@ class OtherChatTableViewCell: UITableViewCell {
         return label
     }()
     
+    // MARK: Configuare function
+    
     func configure(chatInformation: Chat) {
         setUI(senderType: chatInformation.senderType)
         chatLabel.text = chatInformation.message

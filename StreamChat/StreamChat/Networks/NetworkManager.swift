@@ -14,7 +14,7 @@ final class NetworkManager: NSObject {
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
     private var streamTask: URLSessionStreamTask?
-    weak var delegate: Receivable?
+    weak var delegate: ChatViewModelDelegate?
     
     override init() {
         super.init()
@@ -64,27 +64,10 @@ extension NetworkManager: StreamDelegate {
                       inputStream.read(data: &data) > 0,
                       let message = String(data: data, encoding: .utf8)
                 else { return }
-                
-                let messageIdentifier = StreamData.findOutIdentifierOfMessage(message: message, ownUserName: StreamData.ownUserName)
-                let senderName = StreamData.findOutSenderNameOfMessage(message: message)
-                let messageContent = StreamData.findOutMessageContent(message: message)
-                
-                appendMessageIntoMessagesOfChatViewModel(messageIdentifier: messageIdentifier, senderName: senderName, messageContent: messageContent)
-                
+                // TODO: 뷰모델에서 델릭게이트 패턴으로 ownUserName 가져오는 방식으로 리팩터링하기
+                delegate?.chatViewModelWillAppendChatInMessages(message)
             default: break
             }
-        }
-    }
-    
-    private func appendMessageIntoMessagesOfChatViewModel(messageIdentifier: Identifier, senderName: String, messageContent: String) {
-        switch messageIdentifier {
-        case .userSelf:
-            return
-        default:
-            delegate?.receive(chat: Chat(senderType: messageIdentifier,
-                                         senderName: senderName,
-                                         message: messageContent,
-                                         date: Date()))
         }
     }
 }

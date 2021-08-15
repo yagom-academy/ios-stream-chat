@@ -18,7 +18,7 @@
 		8A3BC6F526C64AE700CFABB1 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6F426C64AE700CFABB1 /* Identifier.swift */; };
 		8A3BC6F726C6570D00CFABB1 /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6F626C6570D00CFABB1 /* AlertTableViewCell.swift */; };
 		8A3BC6FB26C66F6400CFABB1 /* OtherChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6FA26C66F6400CFABB1 /* OtherChatTableViewCell.swift */; };
-		8A3DB9B926C8FD9A00282D62 /* Receivable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3DB9B826C8FD9A00282D62 /* Receivable.swift */; };
+		8A3DB9B926C8FD9A00282D62 /* ChatViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3DB9B826C8FD9A00282D62 /* ChatViewModelDelegate.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
 		C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927556262C562B00EF5D3A /* SceneDelegate.swift */; };
 		C7927559262C562B00EF5D3A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927558262C562B00EF5D3A /* ChatViewController.swift */; };
@@ -39,7 +39,7 @@
 		8A3BC6F426C64AE700CFABB1 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		8A3BC6F626C6570D00CFABB1 /* AlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
 		8A3BC6FA26C66F6400CFABB1 /* OtherChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherChatTableViewCell.swift; sourceTree = "<group>"; };
-		8A3DB9B826C8FD9A00282D62 /* Receivable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receivable.swift; sourceTree = "<group>"; };
+		8A3DB9B826C8FD9A00282D62 /* ChatViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModelDelegate.swift; sourceTree = "<group>"; };
 		C7927551262C562B00EF5D3A /* StreamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7927554262C562B00EF5D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7927556262C562B00EF5D3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		8A3BC6FC26C6761100CFABB1 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				8A3DB9B826C8FD9A00282D62 /* Receivable.swift */,
+				8A3DB9B826C8FD9A00282D62 /* ChatViewModelDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -268,7 +268,7 @@
 				8A3BC6F326C6449B00CFABB1 /* Secret.swift in Sources */,
 				8A3BC6E826C46EAE00CFABB1 /* NetworkManager.swift in Sources */,
 				8A3BC6DC26C1C63900CFABB1 /* Chat.swift in Sources */,
-				8A3DB9B926C8FD9A00282D62 /* Receivable.swift in Sources */,
+				8A3DB9B926C8FD9A00282D62 /* ChatViewModelDelegate.swift in Sources */,
 				8A3BC6F126C6377200CFABB1 /* StreamData.swift in Sources */,
 				8A3BC6E026C2505A00CFABB1 /* ChatViewModel.swift in Sources */,
 				8A3BC6EC26C5A06800CFABB1 /* UserNameInputViewController.swift in Sources */,

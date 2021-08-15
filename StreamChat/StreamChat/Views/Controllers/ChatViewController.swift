@@ -8,7 +8,7 @@ import UIKit
 
 final class ChatViewController: UIViewController {
     
-    let chatViewModel = ChatViewModel()
+    private let chatViewModel: ChatViewModel
     private var typingContainerViewBottomConstraints: NSLayoutConstraint = NSLayoutConstraint()
     private let chatTableView: UITableView = {
         let tableView = UITableView()
@@ -44,6 +44,17 @@ final class ChatViewController: UIViewController {
         return button
     }()
     
+    // MARK: Initializer
+    
+    init(chatViewModel: ChatViewModel) {
+        self.chatViewModel = chatViewModel
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: ViewLifeCycle
     
     override func viewDidLoad() {
@@ -57,7 +68,7 @@ final class ChatViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         chatViewModel.send(message: StreamData.leaveMessage)
         chatViewModel.closeStreamTask()
-        chatViewModel.networkManager.connectServer()
+        connectServer()
         chatViewModel.resetMessages()
     }
     
@@ -208,6 +219,20 @@ final class ChatViewController: UIViewController {
         self.chatTableView.scrollToRow(at: IndexPath(row: chatViewModel.getCountOfMessages()-1, section: .zero),
                                        at: .bottom,
                                        animated: true)
+    }
+    
+    // MARK: ChatViewModel Interface
+    
+    func connectServer() {
+        chatViewModel.connectServer()
+    }
+    
+    func send(message: String) {
+        chatViewModel.send(message: message)
+    }
+    
+    func initalizeOwnUserName(_ name: String) {
+        chatViewModel.initializeOwnUserName(name)
     }
 }
 

@@ -16,7 +16,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: scene)
-        self.window?.rootViewController = UINavigationController(rootViewController: UserNameInputViewController())
+        let netWorkManager = NetworkManager()
+        let chatViewModel = ChatViewModel(networkManager: netWorkManager)
+        let chatViewController = ChatViewController(chatViewModel: chatViewModel)
+        let userNameInputViewController = UserNameInputViewController(chatViewController: chatViewController)
+        self.window?.rootViewController = UINavigationController(rootViewController: userNameInputViewController)
         self.window?.makeKeyAndVisible()
     }
 

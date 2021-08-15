@@ -8,7 +8,8 @@
 import Foundation
 
 final class ChatViewModel {
-    let networkManager = NetworkManager()
+    private let networkManager: NetworkManager
+    private var ownUserName: String?
     var onUpdated: (_ newMessages: [Chat], _ oldMessages: [Chat]) -> Void = { _, _  in }
     
     private var messages: [Chat] = [] {
@@ -17,7 +18,8 @@ final class ChatViewModel {
         }
     }
     
-    init() {
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
         networkManager.delegate = self
     }
     
@@ -40,6 +42,10 @@ final class ChatViewModel {
     
     // MARK: Network function
     
+    func connectServer() {
+        networkManager.connectServer()
+    }
+    
     func send(message: String) {
         networkManager.send(message: message)
     }
@@ -47,10 +53,23 @@ final class ChatViewModel {
     func closeStreamTask() {
         networkManager.closeStreamTask()
     }
+    
+    func initializeOwnUserName(_ name: String) {
+        ownUserName = name
+    }
+    
 }
 
-extension ChatViewModel: Receivable {
-    func receive(chat: Chat) {
+extension ChatViewModel: ChatViewModelDelegate {
+    func chatViewModelWillAppendChatInMessages(_ message: String) {
+        guard let ownUserName = ownUserName else { return }
+        let senderType = StreamData.findOutIdentifierOfMessage(message: message, ownUserName: ownUserName)
+        let senderName = StreamData.findOutSenderNameOfMessage(message: message)
+        let messageContent = StreamData.findOutMessageContent(message: message)
+        let chat = Chat(senderType: senderType,
+                        senderName: senderName,
+                        message: messageContent,
+                        date: Date())
         messages.append(chat)
     }
 }

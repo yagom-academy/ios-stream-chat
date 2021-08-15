@@ -7,8 +7,9 @@
 
 import UIKit
 
-class UserNameInputViewController: UIViewController {
+final class UserNameInputViewController: UIViewController {
 
+    private let chatViewController: ChatViewController
     private let userNameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = " 사용자 이름을 입력하시오."
@@ -28,21 +29,35 @@ class UserNameInputViewController: UIViewController {
         return button
     }()
     
-    private let chatViewController = ChatViewController()
+    // MARK: Initializer
+    
+    init(chatViewController: ChatViewController) {
+        self.chatViewController = chatViewController
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: ViewLifCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        chatViewController.chatViewModel.networkManager.connectServer()
+        chatViewController.connectServer()
     }
     
     @objc func inputUserName() {
         guard let textFieldText = userNameTextField.text, textFieldText.count > 0 else { return }
-        StreamData.ownUserName = textFieldText
-        chatViewController.chatViewModel.send(message: StreamData.convertMessageToJoinFormat(userName: StreamData.ownUserName))
+        
+        chatViewController.initalizeOwnUserName(textFieldText)
+        chatViewController.send(message: StreamData.convertMessageToJoinFormat(userName: textFieldText))
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.pushViewController(self.chatViewController, animated: true)
     }
+    
+    // MARK: UI Setting
     
     private func setUI() {
         self.view.backgroundColor = .white
@@ -60,6 +75,8 @@ class UserNameInputViewController: UIViewController {
     private func setNavigationBar() {
         self.navigationController?.navigationBar.isHidden = true
     }
+    
+    // MARK: Set Constraints
     
     private func setConstraintOfUserNameTextField() {
         NSLayoutConstraint.activate([

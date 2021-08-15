@@ -9,7 +9,6 @@ import Foundation
 
 enum StreamData {
     
-    static var ownUserName: String = ""
     static let leaveMessage = "LEAVE::::END"
     
     // MARK: Convert Function

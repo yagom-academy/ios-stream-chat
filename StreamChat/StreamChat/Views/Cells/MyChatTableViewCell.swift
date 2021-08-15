@@ -32,6 +32,8 @@ final class MyChatTableViewCell: UITableViewCell {
         label.font = UIFont.preferredFont(forTextStyle: .caption2)
         return label
     }()
+    
+    // MARK: Configuare function
   
     func configure(chatInformation: Chat) {
         setUI()
