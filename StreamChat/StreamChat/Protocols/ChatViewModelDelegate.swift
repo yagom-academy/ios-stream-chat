@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ChatViewModelDelegate: AnyObject {
-    func chatViewModelWillAppendChatInMessages(_ message: String)
+    func chatViewModelWillGetReceivedMessage(_ message: String)
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Identifier: String {
+enum SenderIdentifier: String {
     case userSelf
     case otherUser
     case chatManager
