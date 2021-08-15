@@ -18,7 +18,7 @@ final class Chatting {
         tcpSocket.connect(host: host, port: port)
     }
     func enterTheChatRoom() {
-        tcpSocket.send(data: ChattingConstant.enterTheChatRoom(name: userName).string)
+        tcpSocket.send(data: ChattingConstant.enterTheChatRoom(name: userName).format)
     }
     func leaveTheChatRoom() {
         tcpSocket.send(data: ChattingConstant.leaveTheChatRoom)
@@ -27,7 +27,7 @@ final class Chatting {
         if message.count > 300 {
             throw ChattingError.sendingMessagesIsLimitedTo300
         }
-        tcpSocket.send(data: ChattingConstant.send(message: message).string)
+        tcpSocket.send(data: ChattingConstant.send(message: message).format)
     }
     func receivedData() throws -> MessageData {
         let customizedBuffer = try tcpSocket.receive(
