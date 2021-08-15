@@ -8,14 +8,32 @@
 import Foundation
 
 enum StreamData {
+    
     static var ownUserName: String = ""
-    static func joinTheChat(userName: String) -> String {
+    static let leaveMessage = "LEAVE::::END"
+    
+    // MARK: Convert Function
+    
+    static func convertMessageToJoinFormat(userName: String) -> String {
         return "USR_NAME::\(userName)::END"
     }
     
-    static func sendMessage(_ message: String) -> String {
+    static func convertMessageToSendFormat(_ message: String) -> String {
         "MSG::\(message)::END"
     }
+    
+    static func convertDateToString(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_kr")
+        dateFormatter.dateFormat = "M월 d일 a h시 m분"
+        dateFormatter.amSymbol = "오전"
+        dateFormatter.pmSymbol = "오후"
+        dateFormatter.timeZone = TimeZone.current
+
+        return dateFormatter.string(from: date)
+    }
+    
+    // MARK: Find Function
     
     static func findOutSenderNameOfMessage(message: String) -> String {
         let splitedMessage = message.split(separator: ":").map { String($0) }
@@ -41,22 +59,5 @@ enum StreamData {
             return Identifier.userSelf
         }
         return Identifier.chatManager
-    }
-    
-    static func notifyChatJoin(_ message: String) -> String {
-        String(message.split(separator: ":")[1])
-    }
-    
-    static let leaveMessage = "LEAVE::::END"
-    
-    static func convertDateToString(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko_kr")
-        dateFormatter.dateFormat = "M월 d일 a h시 m분"
-        dateFormatter.amSymbol = "오전"
-        dateFormatter.pmSymbol = "오후"
-        dateFormatter.timeZone = TimeZone.current
-
-        return dateFormatter.string(from: date)
     }
 }

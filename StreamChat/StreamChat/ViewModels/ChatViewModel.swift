@@ -26,7 +26,7 @@ final class ChatViewModel {
     }
     
     func insertMessage(chat: Chat) {
-        networkManager.send(message: StreamData.sendMessage(chat.message))
+        networkManager.send(message: StreamData.convertMessageToSendFormat(chat.message))
         messages.append(chat)
     }
     

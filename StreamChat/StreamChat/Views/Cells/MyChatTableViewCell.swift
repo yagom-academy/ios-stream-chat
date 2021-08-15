@@ -16,6 +16,7 @@ final class MyChatTableViewCell: UITableViewCell {
         imageView.tintColor = .yellow
         return imageView
     }()
+    
     private let chatLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -23,6 +24,7 @@ final class MyChatTableViewCell: UITableViewCell {
         label.textColor = .black
         return label
     }()
+    
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

@@ -39,7 +39,7 @@ class UserNameInputViewController: UIViewController {
     @objc func inputUserName() {
         guard let textFieldText = userNameTextField.text, textFieldText.count > 0 else { return }
         StreamData.ownUserName = textFieldText
-        chatViewController.chatViewModel.send(message: StreamData.joinTheChat(userName: StreamData.ownUserName))
+        chatViewController.chatViewModel.send(message: StreamData.convertMessageToJoinFormat(userName: StreamData.ownUserName))
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.pushViewController(self.chatViewController, animated: true)
     }
