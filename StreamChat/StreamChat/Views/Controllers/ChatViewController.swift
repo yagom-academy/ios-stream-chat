@@ -65,9 +65,7 @@ final class ChatViewController: UIViewController {
             guard let userInfo = notification.userInfo else { return }
             guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
             guard let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
-            self.typingContainerViewBottomConstraints.isActive = false
             self.typingContainerViewBottomConstraints.constant = -keyboardFrame.height
-            self.typingContainerViewBottomConstraints.isActive = true
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()
                 self.scrollTableViewToBottom()
@@ -77,9 +75,7 @@ final class ChatViewController: UIViewController {
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { (notification) in
             guard let userInfo = notification.userInfo else { return }
             guard let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
-            self.typingContainerViewBottomConstraints.isActive = false
             self.typingContainerViewBottomConstraints.constant = 0
-            self.typingContainerViewBottomConstraints.isActive = true
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()
                 self.scrollTableViewToBottom()

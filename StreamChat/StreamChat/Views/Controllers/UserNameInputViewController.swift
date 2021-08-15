@@ -45,17 +45,22 @@ class UserNameInputViewController: UIViewController {
     
     private func setUI() {
         self.view.backgroundColor = .white
+        addAllSubviews()
         setNavigationBar()
-        setUserNameTextField()
-        setInputUserNameButton()
+        setConstraintOfUserNameTextField()
+        setConstraintOfInputUserNameButton()
+    }
+    
+    private func addAllSubviews() {
+        self.view.addSubview(userNameTextField)
+        self.view.addSubview(inputUserNameButton)
     }
     
     private func setNavigationBar() {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    private func setUserNameTextField() {
-        self.view.addSubview(userNameTextField)
+    private func setConstraintOfUserNameTextField() {
         NSLayoutConstraint.activate([
             userNameTextField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             userNameTextField.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0),
@@ -64,8 +69,7 @@ class UserNameInputViewController: UIViewController {
         ])
     }
     
-    private func setInputUserNameButton() {
-        self.view.addSubview(inputUserNameButton)
+    private func setConstraintOfInputUserNameButton() {
         NSLayoutConstraint.activate([
             inputUserNameButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             inputUserNameButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0),
