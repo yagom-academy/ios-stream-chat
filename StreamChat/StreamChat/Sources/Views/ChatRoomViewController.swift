@@ -215,7 +215,7 @@ extension ChatRoomViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let message = chatRoomViewModel?.message(at: indexPath.row) else {
-            Log.ui.error("\(StreamChatError.messageNotFound)")
+            Log.ui.error("\(StreamChatError.messageNotFound.localizedDescription)")
             return MessageTableViewCell()
         }
 
@@ -224,9 +224,7 @@ extension ChatRoomViewController: UITableViewDataSource {
             guard let systemMessageCell = tableView.dequeueReusableCell(
                     withIdentifier: SystemMessageTableViewCell.reuseIdentifier,
                     for: indexPath) as? SystemMessageTableViewCell else {
-                Log.ui.error(
-                    "\(StreamChatError.cellTypecastingFailed(toType: SystemMessageTableViewCell.description()))"
-                )
+                Log.ui.error("\(StreamChatError.cellTypecastingFailed(toType: SystemMessageTableViewCell.description()).localizedDescription)")
                 return SystemMessageTableViewCell()
             }
 
@@ -236,7 +234,7 @@ extension ChatRoomViewController: UITableViewDataSource {
             guard let messageCell = tableView.dequeueReusableCell(
                     withIdentifier: MessageTableViewCell.reuseIdentifier,
                     for: indexPath) as? MessageTableViewCell else {
-                Log.ui.error("\(StreamChatError.cellTypecastingFailed(toType: MessageTableViewCell.description()))")
+                Log.ui.error("\(StreamChatError.cellTypecastingFailed(toType: MessageTableViewCell.description()).localizedDescription)")
                 return MessageTableViewCell()
             }
 

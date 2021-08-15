@@ -37,7 +37,7 @@ final class ChatRoomSocket: NSObject {
     func join(with username: String) {
         user = User(name: username, senderType: .me)
         guard let joiningStreamData: Data = StreamData.make(.join(username: username)) else {
-            Log.logic.error("\(StreamChatError.failedToConvertStringToStreamData(location: #function))")
+            Log.logic.error("\(StreamChatError.failedToConvertStringToStreamData(location: #function).localizedDescription)")
             return
         }
         write(joiningStreamData)
@@ -45,7 +45,7 @@ final class ChatRoomSocket: NSObject {
 
     func send(message: String) {
         guard let sendingStreamData: Data = StreamData.make(.send(message: message)) else {
-            Log.logic.error("\(StreamChatError.failedToConvertStringToStreamData(location: #function))")
+            Log.logic.error("\(StreamChatError.failedToConvertStringToStreamData(location: #function).localizedDescription)")
             return
         }
         write(sendingStreamData)
@@ -53,7 +53,7 @@ final class ChatRoomSocket: NSObject {
 
     func leave() {
         guard let leavingStreamData: Data = StreamData.make(.leave) else {
-            Log.logic.error("\(StreamChatError.failedToConvertStringToStreamData(location: #function))")
+            Log.logic.error("\(StreamChatError.failedToConvertStringToStreamData(location: #function).localizedDescription)")
             return
         }
         write(leavingStreamData)
@@ -89,7 +89,7 @@ final class ChatRoomSocket: NSObject {
     private func write(_ streamData: Data) {
         streamData.withUnsafeBytes { rawBufferPointer in
             guard let pointer = rawBufferPointer.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
-                Log.network.error("\(StreamChatError.failedToWriteOnStream)")
+                Log.network.error("\(StreamChatError.failedToWriteOnStream.localizedDescription)")
                 return
             }
             outputStream?.write(pointer, maxLength: streamData.count)
@@ -111,11 +111,11 @@ extension ChatRoomSocket: StreamDelegate {
             leave()
             disconnect()
         case .errorOccurred:
-            Log.network.notice("\(StreamChatError.errorOccurredAtStream)")
+            Log.network.notice("\(StreamChatError.errorOccurredAtStream.localizedDescription)")
         case .hasSpaceAvailable:
             Log.network.info("더 사용할 수 있는 버퍼가 있어요. case: hasSpaceAvailable")
         default:
-            Log.network.notice("\(StreamChatError.unknown(location: #function))")
+            Log.network.notice("\(StreamChatError.unknown(location: #function).localizedDescription)")
         }
     }
 
@@ -129,7 +129,7 @@ extension ChatRoomSocket: StreamDelegate {
             guard let bytesRead = inputStream?.read(buffer, maxLength: ConnectionSetting.maxReadLength) else { return }
 
             if let error = stream.streamError, bytesRead < 0 {
-                Log.network.error("\(StreamChatError.streamDataReadingFailed(error: error))")
+                Log.network.error("\(StreamChatError.streamDataReadingFailed(error: error).localizedDescription)")
                 break
             }
 
@@ -144,7 +144,7 @@ extension ChatRoomSocket: StreamDelegate {
                 .components(separatedBy: StreamData.Infix.receive),
               let name = strings.first,
               let message = strings.last else {
-            Log.logic.error("\(StreamChatError.failedToConvertByteToString)")
+            Log.logic.error("\(StreamChatError.failedToConvertByteToString.localizedDescription)")
             return nil
         }
 

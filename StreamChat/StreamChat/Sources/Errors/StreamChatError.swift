@@ -5,6 +5,8 @@
 //  Created by Ryan-Son on 2021/08/12.
 //
 
+import Foundation
+
 enum StreamChatError: Error {
 
     // MARK: ChatRoom Socket Network
@@ -29,9 +31,9 @@ enum StreamChatError: Error {
     case unknown(location: String)
 }
 
-extension StreamChatError: CustomStringConvertible {
+extension StreamChatError: LocalizedError {
 
-    var description: String {
+    var errorDescription: String? {
         switch self {
         case .failedToConvertStringToStreamData(let location):
             return "문자열을 스트림 데이터로 변환하지 못했습니다. Location: \(location)"
