@@ -37,17 +37,15 @@ struct SocketResponseHandler {
 
         if message.contains(ChatRoom.messageSeperator) {
             let elements = message.components(separatedBy: ChatRoom.messageSeperator)
-            guard let sender = elements.first else { return nil }
-            guard let content = elements.last else { return nil }
+            let sender = elements.first ?? "system"
+            let content = elements.last ?? ""
             return ChatMessage(name: sender, content: content, date: Date())
         } else if message.contains(ChatRoom.joinPostfix) {
-            if let sender = message.components(separatedBy: ChatRoom.joinPostfix).first {
-                return ConnectionMessage(name: sender, content: ChatRoom.joinPostfix)
-            }
+            let sender = message.components(separatedBy: ChatRoom.joinPostfix).first ?? "system"
+            return ConnectionMessage(name: sender, content: ChatRoom.joinPostfix)
         } else if message.contains(ChatRoom.leavePostfix) {
-            if let sender = message.components(separatedBy: ChatRoom.leavePostfix).first {
-                return ConnectionMessage(name: sender, content: ChatRoom.leavePostfix)
-            }
+            let sender = message.components(separatedBy: ChatRoom.leavePostfix).first ?? "system"
+            return ConnectionMessage(name: sender, content: ChatRoom.leavePostfix)
         }
         return nil
     }
