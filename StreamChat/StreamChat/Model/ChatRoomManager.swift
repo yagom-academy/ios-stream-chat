@@ -18,7 +18,7 @@ final class ChatRoomManager: NSObject {
     private let host: String
     private let port: UInt32
     private let maxLength: Int
-    private lazy var socketResponseHandler = SocketResponseHandler(maxBufferSize: maxLength)
+    private let socketResponseHandler: SocketResponseHandler
 
     weak var delegate: ChatRoomManagerDelegate?
 
@@ -26,6 +26,7 @@ final class ChatRoomManager: NSObject {
         self.host = host
         self.port = port
         self.maxLength = maxLength
+        self.socketResponseHandler = SocketResponseHandler(maxBufferSize: maxLength)
         super.init()
         connect()
     }
@@ -39,13 +40,11 @@ final class ChatRoomManager: NSObject {
             inputStream = readStream.takeRetainedValue()
             outputStream = writeStream.takeRetainedValue()
         }
-        if let inputStream = inputStream, let outputStream = outputStream {
-            inputStream.delegate = self
-            inputStream.schedule(in: .main, forMode: .default)
-            outputStream.schedule(in: .main, forMode: .default)
-            inputStream.open()
-            outputStream.open()
-        }
+        inputStream?.delegate = self
+        inputStream?.schedule(in: .main, forMode: .default)
+        outputStream?.schedule(in: .main, forMode: .default)
+        inputStream?.open()
+        outputStream?.open()
     }
 
     private func writeOnOutputStream(_ data: Data) {
