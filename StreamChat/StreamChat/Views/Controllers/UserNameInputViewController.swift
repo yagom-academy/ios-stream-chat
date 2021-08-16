@@ -8,8 +8,7 @@
 import UIKit
 
 final class UserNameInputViewController: UIViewController {
-
-    private let chatViewController: ChatViewController
+    private let chatViewController: ChatViewControllerProtocol
     private let userNameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = " 사용자 이름을 입력하시오."
@@ -31,7 +30,7 @@ final class UserNameInputViewController: UIViewController {
     
     // MARK: Initializer
     
-    init(chatViewController: ChatViewController) {
+    init(chatViewController: ChatViewControllerProtocol) {
         self.chatViewController = chatViewController
         super.init(nibName: nil, bundle: nil)
     }

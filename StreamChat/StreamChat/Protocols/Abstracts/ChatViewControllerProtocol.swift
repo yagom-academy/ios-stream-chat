@@ -9,7 +9,9 @@ import UIKit
 
 protocol ChatViewControllerProtocol: UIViewController {
     func connectServer()
+    
     func sendOwnUserName(_ name: String)
+    
     func initalizeOwnUserName(_ name: String)
 }
 

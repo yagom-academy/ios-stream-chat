@@ -21,7 +21,7 @@ protocol ChatViewModelProtocol: ChatViewModelDelegate {
     func send(message: String)
     
     func closeStreamTask()
-    
+
     func initializeOwnUserName(_ name: String)
 }
 

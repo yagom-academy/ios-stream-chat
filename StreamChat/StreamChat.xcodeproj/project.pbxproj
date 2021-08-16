@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A0BE0F426C993FF0049F487 /* ChatViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BE0F326C993FF0049F487 /* ChatViewControllerProtocol.swift */; };
-		8A0BE0F626C994120049F487 /* URLSessionConfigurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BE0F526C994120049F487 /* URLSessionConfigurationProtocol.swift */; };
 		8A0BE0F826C994280049F487 /* ChatViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BE0F726C994280049F487 /* ChatViewModelProtocol.swift */; };
-		8A0BE0FA26C9B0570049F487 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BE0F926C9B0570049F487 /* URLSessionProtocol.swift */; };
 		8A3BC6D926C1BCF500CFABB1 /* MyChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6D826C1BCF500CFABB1 /* MyChatTableViewCell.swift */; };
 		8A3BC6DC26C1C63900CFABB1 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6DB26C1C63900CFABB1 /* Chat.swift */; };
 		8A3BC6E026C2505A00CFABB1 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6DF26C2505A00CFABB1 /* ChatViewModel.swift */; };
@@ -18,7 +16,7 @@
 		8A3BC6E826C46EAE00CFABB1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6E726C46EAE00CFABB1 /* NetworkManager.swift */; };
 		8A3BC6EC26C5A06800CFABB1 /* UserNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6EB26C5A06800CFABB1 /* UserNameInputViewController.swift */; };
 		8A3BC6F126C6377200CFABB1 /* StreamData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6F026C6377200CFABB1 /* StreamData.swift */; };
-		8A3BC6F326C6449B00CFABB1 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6F226C6449B00CFABB1 /* Secret.swift */; };
+		8A3BC6F326C6449B00CFABB1 /* NetworkAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6F226C6449B00CFABB1 /* NetworkAddress.swift */; };
 		8A3BC6F526C64AE700CFABB1 /* SenderIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6F426C64AE700CFABB1 /* SenderIdentifier.swift */; };
 		8A3BC6F726C6570D00CFABB1 /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6F626C6570D00CFABB1 /* AlertTableViewCell.swift */; };
 		8A3BC6FB26C66F6400CFABB1 /* OtherChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6FA26C66F6400CFABB1 /* OtherChatTableViewCell.swift */; };
@@ -33,9 +31,7 @@
 
 /* Begin PBXFileReference section */
 		8A0BE0F326C993FF0049F487 /* ChatViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewControllerProtocol.swift; sourceTree = "<group>"; };
-		8A0BE0F526C994120049F487 /* URLSessionConfigurationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionConfigurationProtocol.swift; sourceTree = "<group>"; };
 		8A0BE0F726C994280049F487 /* ChatViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModelProtocol.swift; sourceTree = "<group>"; };
-		8A0BE0F926C9B0570049F487 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		8A3BC6D826C1BCF500CFABB1 /* MyChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatTableViewCell.swift; sourceTree = "<group>"; };
 		8A3BC6DB26C1C63900CFABB1 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		8A3BC6DF26C2505A00CFABB1 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
@@ -43,7 +39,7 @@
 		8A3BC6E726C46EAE00CFABB1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8A3BC6EB26C5A06800CFABB1 /* UserNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameInputViewController.swift; sourceTree = "<group>"; };
 		8A3BC6F026C6377200CFABB1 /* StreamData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamData.swift; sourceTree = "<group>"; };
-		8A3BC6F226C6449B00CFABB1 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		8A3BC6F226C6449B00CFABB1 /* NetworkAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAddress.swift; sourceTree = "<group>"; };
 		8A3BC6F426C64AE700CFABB1 /* SenderIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderIdentifier.swift; sourceTree = "<group>"; };
 		8A3BC6F626C6570D00CFABB1 /* AlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
 		8A3BC6FA26C66F6400CFABB1 /* OtherChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherChatTableViewCell.swift; sourceTree = "<group>"; };
@@ -69,6 +65,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A0BE0FD26CA52460049F487 /* Abstracts */ = {
+			isa = PBXGroup;
+			children = (
+				8A0BE0F326C993FF0049F487 /* ChatViewControllerProtocol.swift */,
+				8A0BE0F726C994280049F487 /* ChatViewModelProtocol.swift */,
+			);
+			path = Abstracts;
+			sourceTree = "<group>";
+		};
 		8A3BC6D626C1BB1200CFABB1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,7 +105,7 @@
 			children = (
 				8A3BC6E226C2539C00CFABB1 /* ChatTableViewCellConstants.swift */,
 				8A3BC6F026C6377200CFABB1 /* StreamData.swift */,
-				8A3BC6F226C6449B00CFABB1 /* Secret.swift */,
+				8A3BC6F226C6449B00CFABB1 /* NetworkAddress.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -136,10 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				8A3DB9B826C8FD9A00282D62 /* ChatViewModelDelegate.swift */,
-				8A0BE0F326C993FF0049F487 /* ChatViewControllerProtocol.swift */,
-				8A0BE0F726C994280049F487 /* ChatViewModelProtocol.swift */,
-				8A0BE0F526C994120049F487 /* URLSessionConfigurationProtocol.swift */,
-				8A0BE0F926C9B0570049F487 /* URLSessionProtocol.swift */,
+				8A0BE0FD26CA52460049F487 /* Abstracts */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -277,14 +279,12 @@
 				8A3BC6D926C1BCF500CFABB1 /* MyChatTableViewCell.swift in Sources */,
 				8A3BC6F726C6570D00CFABB1 /* AlertTableViewCell.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
-				8A3BC6F326C6449B00CFABB1 /* Secret.swift in Sources */,
+				8A3BC6F326C6449B00CFABB1 /* NetworkAddress.swift in Sources */,
 				8A3BC6E826C46EAE00CFABB1 /* NetworkManager.swift in Sources */,
 				8A0BE0F426C993FF0049F487 /* ChatViewControllerProtocol.swift in Sources */,
 				8A3BC6DC26C1C63900CFABB1 /* Chat.swift in Sources */,
 				8A3DB9B926C8FD9A00282D62 /* ChatViewModelDelegate.swift in Sources */,
 				8A3BC6F126C6377200CFABB1 /* StreamData.swift in Sources */,
-				8A0BE0FA26C9B0570049F487 /* URLSessionProtocol.swift in Sources */,
-				8A0BE0F626C994120049F487 /* URLSessionConfigurationProtocol.swift in Sources */,
 				8A3BC6E026C2505A00CFABB1 /* ChatViewModel.swift in Sources */,
 				8A0BE0F826C994280049F487 /* ChatViewModelProtocol.swift in Sources */,
 				8A3BC6EC26C5A06800CFABB1 /* UserNameInputViewController.swift in Sources */,

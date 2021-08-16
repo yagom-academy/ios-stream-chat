@@ -8,7 +8,6 @@
 import Foundation
 
 enum StreamData {
-    
     static let leaveMessage = "LEAVE::::END"
     
     // MARK: Convert Function

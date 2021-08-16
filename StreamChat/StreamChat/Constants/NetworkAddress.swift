@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Secret {
+enum NetworkAddress {
     static let ipAddress = "15.165.55.224"
     static let port = 5080
 }

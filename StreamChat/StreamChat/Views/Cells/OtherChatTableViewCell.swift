@@ -8,7 +8,6 @@
 import UIKit
 
 class OtherChatTableViewCell: UITableViewCell {
-
     static let identifier = "OtherChatTableViewCell"
     private let chatBubbleImageView: UIImageView = {
         let imageView = UIImageView()
@@ -89,18 +88,18 @@ class OtherChatTableViewCell: UITableViewCell {
     private func setConstraintOfChatLabel() {
         NSLayoutConstraint.activate([ chatLabel.topAnchor.constraint(equalTo: self.chatBubbleImageView.topAnchor,
                                                                      constant: ChatTableViewCellConstants.chatTableViewCellInset / 2),
-                                      chatLabel.leadingAnchor.constraint(equalTo: self.chatBubbleImageView.leadingAnchor,
+                                      chatLabel.leadingAnchor.constraint(equalTo: chatBubbleImageView.leadingAnchor,
                                                                          constant: ChatTableViewCellConstants.chatTableViewCellInset),
-                                      chatLabel.trailingAnchor.constraint(equalTo: self.chatBubbleImageView.trailingAnchor,
+                                      chatLabel.trailingAnchor.constraint(equalTo: chatBubbleImageView.trailingAnchor,
                                                                           constant: -ChatTableViewCellConstants.chatTableViewCellInset + 5),
-                                      chatLabel.heightAnchor.constraint(equalTo: self.chatBubbleImageView.heightAnchor,
+                                      chatLabel.heightAnchor.constraint(equalTo: chatBubbleImageView.heightAnchor,
                                                                         constant: -ChatTableViewCellConstants.chatTableViewCellInset) ])
     }
     
     private func setConstraintOfDateLabel() {
         NSLayoutConstraint.activate([ dateLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor,
                                                                          constant: ChatTableViewCellConstants.chatTableViewCellInset),
-                                      dateLabel.topAnchor.constraint(equalTo: self.chatBubbleImageView.bottomAnchor,
+                                      dateLabel.topAnchor.constraint(equalTo: chatBubbleImageView.bottomAnchor,
                                                                      constant: 3),
                                       dateLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
                                                                         constant: -ChatTableViewCellConstants.chatTableViewCellInset) ])

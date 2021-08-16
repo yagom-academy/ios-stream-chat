@@ -5,11 +5,9 @@
 //  Created by 최정민 on 2021/08/12.
 //
 
-import Foundation
 import UIKit
 
 final class NetworkManager: NSObject {
-    
     private var session: URLSession!
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
@@ -18,15 +16,11 @@ final class NetworkManager: NSObject {
     
     init(configuration: URLSessionConfiguration, delegateQueue: OperationQueue?) {
         super.init()
-        self.session = URLSession.init(configuration: configuration, delegate: self, delegateQueue: delegateQueue)
-    }
-    
-    func setURLSession(_ session: URLSession) {
-        self.session = session
+        session = URLSession.init(configuration: configuration, delegate: self, delegateQueue: delegateQueue)
     }
     
     func connectServer() {
-        streamTask = session.streamTask(withHostName: Secret.ipAddress, port: Secret.port)
+        streamTask = session.streamTask(withHostName: NetworkAddress.ipAddress, port: NetworkAddress.port)
         streamTask?.resume()
         streamTask?.captureStreams()
     }

@@ -7,7 +7,6 @@
 import UIKit
 
 final class ChatViewController: UIViewController {
-    
     private let chatViewModel: ChatViewModelProtocol
     private var typingContainerViewBottomConstraints: NSLayoutConstraint = NSLayoutConstraint()
     private let chatTableView: UITableView = {
@@ -217,7 +216,7 @@ final class ChatViewController: UIViewController {
     
     private func scrollTableViewToBottom() {
         guard chatViewModel.getCountOfMessages() > 0 else { return }
-        self.chatTableView.scrollToRow(at: IndexPath(row: chatViewModel.getCountOfMessages()-1, section: .zero),
+        chatTableView.scrollToRow(at: IndexPath(row: chatViewModel.getCountOfMessages()-1, section: .zero),
                                        at: .bottom,
                                        animated: true)
     }
