@@ -104,25 +104,25 @@ extension StreamChat: StreamDelegate {
             print("unknown Event")
         }
     }
-    
+
     private func processedMessagedString(buffer: UnsafeMutablePointer<UInt8>, length: Int) {
         guard let stringArray = String(bytesNoCopy: buffer,
                                        length: length,
                                        encoding: .utf8,
                                        freeWhenDone: true)?.components(separatedBy: StreamDataFormat.shared.divisionPoint) else { return }
-        
+
         if stringArray.count == receiveMessageCount {
             guard let username = stringArray.first,
                   let message = stringArray.last else { return }
 
-            // TODO: 메시지 수신 오브젝트 생성 및 출력
+            // TODO: - 메시지 수신 오브젝트 생성 및 출력
             print(StreamDataFormat.shared.receiveMessage(username: username, message: message))
         } else {
             guard let stringNotification = stringArray.first?.components(separatedBy: StreamDataFormat.shared.divisionSpaceNotifi),
                   let username = stringNotification.first,
                   let status = stringNotification.last else { return }
 
-            // TODO: 타인의 채팅 참가, 중간 여부에 따른 알림 생성 및 출력
+            // TODO: - 타인의 채팅 참가, 중간 여부에 따른 알림 생성 및 출력
             print(StreamDataFormat.shared.othreUserChatStatus(username: username, status: status))
         }
     }

@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		70136AEF26CA161C006BB174 /* StreamDataFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70136AEE26CA161C006BB174 /* StreamDataFormat.swift */; };
+		70136AF226CA1F46006BB174 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 70136AF126CA1F46006BB174 /* SnapKit */; };
 		7072F72926C50A3400826FF7 /* StreamInfomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072F72826C50A3400826FF7 /* StreamInfomation.swift */; };
 		70A60B9C26C4CBFE00C08915 /* StreamChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A60B9B26C4CBFE00C08915 /* StreamChat.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
@@ -35,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70136AF226CA1F46006BB174 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,12 +117,16 @@
 				C792754D262C562B00EF5D3A /* Sources */,
 				C792754E262C562B00EF5D3A /* Frameworks */,
 				C792754F262C562B00EF5D3A /* Resources */,
+				70136AF326CA1F54006BB174 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = StreamChat;
+			packageProductDependencies = (
+				70136AF126CA1F46006BB174 /* SnapKit */,
+			);
 			productName = StreamChat;
 			productReference = C7927551262C562B00EF5D3A /* StreamChat.app */;
 			productType = "com.apple.product-type.application";
@@ -148,6 +154,9 @@
 				Base,
 			);
 			mainGroup = C7927548262C562B00EF5D3A;
+			packageReferences = (
+				70136AF026CA1F46006BB174 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = C7927552262C562B00EF5D3A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -168,6 +177,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		70136AF326CA1F54006BB174 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "// xcode run script\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C792754D262C562B00EF5D3A /* Sources */ = {
@@ -371,6 +400,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		70136AF026CA1F46006BB174 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		70136AF126CA1F46006BB174 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70136AF026CA1F46006BB174 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C7927549262C562B00EF5D3A /* Project object */;
 }
