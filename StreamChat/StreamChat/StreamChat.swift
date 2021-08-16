@@ -11,8 +11,13 @@ final class StreamChat: NSObject {
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
 
-    private var username = ""
     private let maxReadLength = 4096
+    private let maxSendMessageLength = 300
+    private var username: String
+
+    init(username: String) {
+        self.username = username
+    }
 
     func setupNetworkCommunication() {
         var readStream: Unmanaged<CFReadStream>?
@@ -52,7 +57,7 @@ final class StreamChat: NSObject {
     }
 
     func sendChat(message: String) {
-        if message.count < 300 {
+        if message.count < maxSendMessageLength {
             let data = "MSG::\(message)::END"
 
             stringToOutputStreamData(string: data)
