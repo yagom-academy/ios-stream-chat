@@ -24,3 +24,6 @@ protocol ChatViewModelProtocol: ChatViewModelDelegate {
     
     func initializeOwnUserName(_ name: String)
 }
+
+extension ChatViewModel: ChatViewModelProtocol {
+}
