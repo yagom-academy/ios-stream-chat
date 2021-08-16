@@ -13,6 +13,7 @@ final class StreamChat: NSObject {
 
     private let maxReadLength = 4096
     private let maxSendMessageLength = 300
+    private let receiveMessageCount = 2
     private var username: String
 
     init(username: String) {
@@ -50,7 +51,7 @@ final class StreamChat: NSObject {
     }
 
     func joinChat(username: String) {
-        let data = "USR_NAME::\(username)::END"
+        let data = StreamDataFormat.shared.join(data: username)
         self.username = username
 
         stringToOutputStreamData(string: data)
@@ -58,7 +59,7 @@ final class StreamChat: NSObject {
 
     func sendChat(message: String) {
         if message.count < maxSendMessageLength {
-            let data = "MSG::\(message)::END"
+            let data = StreamDataFormat.shared.sendMessage(data: message)
 
             stringToOutputStreamData(string: data)
         } else {
@@ -83,7 +84,7 @@ final class StreamChat: NSObject {
     }
 
     func stopChat() {
-        let data = "LEAVE::::END"
+        let data = StreamDataFormat.shared.leave()
 
         stringToOutputStreamData(string: data)
         inputStream?.close()
@@ -108,19 +109,21 @@ extension StreamChat: StreamDelegate {
         guard let stringArray = String(bytesNoCopy: buffer,
                                        length: length,
                                        encoding: .utf8,
-                                       freeWhenDone: true)?.components(separatedBy: "::") else { return }
+                                       freeWhenDone: true)?.components(separatedBy: StreamDataFormat.shared.divisionPoint) else { return }
         
-        if stringArray.count == 2 {
-            guard let name = stringArray.first,
+        if stringArray.count == receiveMessageCount {
+            guard let username = stringArray.first,
                   let message = stringArray.last else { return }
 
-            print("\(name) : \(message)")
+            // TODO: 메시지 수신 오브젝트 생성 및 출력
+            print(StreamDataFormat.shared.receiveMessage(username: username, message: message))
         } else {
-            guard let stringNotification = stringArray.first?.components(separatedBy: " "),
-                  let name = stringNotification.first,
-                  let joinStatus = stringNotification.last else { return }
+            guard let stringNotification = stringArray.first?.components(separatedBy: StreamDataFormat.shared.divisionSpaceNotifi),
+                  let username = stringNotification.first,
+                  let status = stringNotification.last else { return }
 
-            print("\(name) has \(joinStatus)")
+            // TODO: 타인의 채팅 참가, 중간 여부에 따른 알림 생성 및 출력
+            print(StreamDataFormat.shared.othreUserChatStatus(username: username, status: status))
         }
     }
 }
