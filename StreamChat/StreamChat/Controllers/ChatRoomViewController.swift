@@ -38,6 +38,7 @@ class ChatRoomViewController: UIViewController {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         textField.backgroundColor = .white
         return textField
     }()
@@ -50,6 +51,9 @@ class ChatRoomViewController: UIViewController {
         button.setTitle("전송", for: .normal)
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 3
+        button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        button.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
         return button
     }()
     
