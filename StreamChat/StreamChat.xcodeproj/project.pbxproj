@@ -12,7 +12,7 @@
 		C6800D9326C173C900EE1778 /* TcpSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6800D9226C173C900EE1778 /* TcpSocket.swift */; };
 		C6AA33EB26C3904200F26969 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA33EA26C3904200F26969 /* MessageData.swift */; };
 		C6AA33ED26C39D6400F26969 /* TcpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA33EC26C39D6400F26969 /* TcpError.swift */; };
-		C6B471D226C2E7480062B3CF /* ReceivedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B471D126C2E7480062B3CF /* ReceivedData.swift */; };
+		C6B471D226C2E7480062B3CF /* MessageDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B471D126C2E7480062B3CF /* MessageDataManager.swift */; };
 		C6E5676426C2B0DE001782DC /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5676326C2B0DE001782DC /* Chatting.swift */; };
 		C6E5676626C2B35D001782DC /* ChattingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5676526C2B35D001782DC /* ChattingError.swift */; };
 		C6E5677426C2CFA8001782DC /* StreamChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5677326C2CFA8001782DC /* StreamChatTests.swift */; };
@@ -43,7 +43,7 @@
 		C6800D9226C173C900EE1778 /* TcpSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpSocket.swift; sourceTree = "<group>"; };
 		C6AA33EA26C3904200F26969 /* MessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
 		C6AA33EC26C39D6400F26969 /* TcpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpError.swift; sourceTree = "<group>"; };
-		C6B471D126C2E7480062B3CF /* ReceivedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedData.swift; sourceTree = "<group>"; };
+		C6B471D126C2E7480062B3CF /* MessageDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDataManager.swift; sourceTree = "<group>"; };
 		C6E5676326C2B0DE001782DC /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
 		C6E5676526C2B35D001782DC /* ChattingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingError.swift; sourceTree = "<group>"; };
 		C6E5677126C2CFA8001782DC /* StreamChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,7 +88,7 @@
 		C6B471D426C2F0920062B3CF /* Receive */ = {
 			isa = PBXGroup;
 			children = (
-				C6B471D126C2E7480062B3CF /* ReceivedData.swift */,
+				C6B471D126C2E7480062B3CF /* MessageDataManager.swift */,
 				C6AA33EA26C3904200F26969 /* MessageData.swift */,
 			);
 			path = Receive;
@@ -350,7 +350,7 @@
 				C6E5677D26C2D363001782DC /* ChattingConstant.swift in Sources */,
 				C6E5676626C2B35D001782DC /* ChattingError.swift in Sources */,
 				C6AA33ED26C39D6400F26969 /* TcpError.swift in Sources */,
-				C6B471D226C2E7480062B3CF /* ReceivedData.swift in Sources */,
+				C6B471D226C2E7480062B3CF /* MessageDataManager.swift in Sources */,
 				C7927559262C562B00EF5D3A /* ViewController.swift in Sources */,
 				C6AA33EB26C3904200F26969 /* MessageData.swift in Sources */,
 				C6800D9326C173C900EE1778 /* TcpSocket.swift in Sources */,

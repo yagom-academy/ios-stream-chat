@@ -36,9 +36,8 @@ final class Chatting {
                                           encoding: String.Encoding.utf8) else {
             throw ChattingError.failToConvertCustomizedBufferToString
         }
-        let data = ReceivedData(receivedString: receivedString)
         
-        return data.processedData()
+        return MessageDataManager().convertStringToMessageData(receivedString: receivedString)
     }
     func disconnect() {
         tcpSocket.disconnect()
