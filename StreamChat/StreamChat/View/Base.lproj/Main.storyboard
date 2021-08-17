@@ -6,6 +6,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="TimesNewRoman.ttf">
+            <string>.SFUI-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Start View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -18,25 +23,39 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p6I-nQ-7Hk">
                                 <rect key="frame" x="87" y="244" width="240" height="128"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="사용자 이름 (10글자)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lgz-Q1-Xyd">
-                                <rect key="frame" x="110" y="392" width="194" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="사용자 이름 (10글자 이하)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lgz-Q1-Xyd">
+                                <rect key="frame" x="90" y="402" width="234" height="34"/>
                                 <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="d0e-c0-oDd">
+                                <rect key="frame" x="90" y="441" width="234" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name=".SFUI-Regular" family=".AppleSystemUIFont" pointSize="15"/>
+                                <state key="normal" title="채팅방 입장">
+                                    <color key="titleColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.90196078431372551" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="p6I-nQ-7Hk" secondAttribute="bottom" constant="490" id="5rO-dq-2Ci"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lgz-Q1-Xyd" secondAttribute="trailing" constant="110" id="9D0-rT-ZwW"/>
-                            <constraint firstItem="Lgz-Q1-Xyd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="110" id="AUp-LR-9f0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lgz-Q1-Xyd" secondAttribute="trailing" constant="90" id="9D0-rT-ZwW"/>
+                            <constraint firstItem="Lgz-Q1-Xyd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="90" id="AUp-LR-9f0"/>
                             <constraint firstItem="p6I-nQ-7Hk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="Bzp-fo-Nw6"/>
+                            <constraint firstItem="d0e-c0-oDd" firstAttribute="top" secondItem="Lgz-Q1-Xyd" secondAttribute="bottom" constant="5" id="Gvg-OU-5lG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d0e-c0-oDd" secondAttribute="trailing" constant="90" id="MCx-5v-be4"/>
                             <constraint firstItem="p6I-nQ-7Hk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="VNF-Gi-OAz"/>
-                            <constraint firstItem="Lgz-Q1-Xyd" firstAttribute="top" secondItem="p6I-nQ-7Hk" secondAttribute="bottom" constant="20" id="i2k-sV-tyb"/>
+                            <constraint firstItem="d0e-c0-oDd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="90" id="eQR-BB-Mtx"/>
+                            <constraint firstItem="Lgz-Q1-Xyd" firstAttribute="top" secondItem="p6I-nQ-7Hk" secondAttribute="bottom" constant="30" id="i2k-sV-tyb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="p6I-nQ-7Hk" secondAttribute="trailing" constant="87" id="pNH-f2-wJI"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="enterChatRoomButton" destination="d0e-c0-oDd" id="elY-pr-NXL"/>
                         <outlet property="logoImageView" destination="p6I-nQ-7Hk" id="knB-OW-UNi"/>
                         <outlet property="userNameTextField" destination="Lgz-Q1-Xyd" id="4NQ-pM-HYu"/>
                     </connections>

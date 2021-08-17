@@ -11,6 +11,9 @@
 		C6800D9326C173C900EE1778 /* TcpSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6800D9226C173C900EE1778 /* TcpSocket.swift */; };
 		C680194E26CB422400A190DB /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680194D26CB422400A190DB /* StartViewController.swift */; };
 		C680195126CB428E00A190DB /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680195026CB428E00A190DB /* StartViewModel.swift */; };
+		C680195426CB714000A190DB /* ViewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680195326CB714000A190DB /* ViewImage.swift */; };
+		C680195626CB719700A190DB /* ViewColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680195526CB719700A190DB /* ViewColor.swift */; };
+		C680195826CB746700A190DB /* ViewSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680195726CB746700A190DB /* ViewSize.swift */; };
 		C6AA33EB26C3904200F26969 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA33EA26C3904200F26969 /* MessageData.swift */; };
 		C6AA33ED26C39D6400F26969 /* TcpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA33EC26C39D6400F26969 /* TcpError.swift */; };
 		C6B471D226C2E7480062B3CF /* ReceivedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B471D126C2E7480062B3CF /* ReceivedData.swift */; };
@@ -42,6 +45,9 @@
 		C6800D9226C173C900EE1778 /* TcpSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpSocket.swift; sourceTree = "<group>"; };
 		C680194D26CB422400A190DB /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		C680195026CB428E00A190DB /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
+		C680195326CB714000A190DB /* ViewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewImage.swift; sourceTree = "<group>"; };
+		C680195526CB719700A190DB /* ViewColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewColor.swift; sourceTree = "<group>"; };
+		C680195726CB746700A190DB /* ViewSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSize.swift; sourceTree = "<group>"; };
 		C6AA33EA26C3904200F26969 /* MessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
 		C6AA33EC26C39D6400F26969 /* TcpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpError.swift; sourceTree = "<group>"; };
 		C6B471D126C2E7480062B3CF /* ReceivedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedData.swift; sourceTree = "<group>"; };
@@ -91,6 +97,16 @@
 				C680195026CB428E00A190DB /* StartViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C680195226CB712D00A190DB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C680195326CB714000A190DB /* ViewImage.swift */,
+				C680195526CB719700A190DB /* ViewColor.swift */,
+				C680195726CB746700A190DB /* ViewSize.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C6B471D426C2F0920062B3CF /* Receive */ = {
@@ -154,6 +170,7 @@
 		C6E5677B26C2D33D001782DC /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				C680195226CB712D00A190DB /* View */,
 				C6E5677C26C2D363001782DC /* ChattingConstant.swift */,
 			);
 			path = Constants;
@@ -355,14 +372,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C680195626CB719700A190DB /* ViewColor.swift in Sources */,
 				C6E5677D26C2D363001782DC /* ChattingConstant.swift in Sources */,
 				C6E5676626C2B35D001782DC /* ChattingError.swift in Sources */,
 				C6AA33ED26C39D6400F26969 /* TcpError.swift in Sources */,
 				C6B471D226C2E7480062B3CF /* ReceivedData.swift in Sources */,
+				C680195826CB746700A190DB /* ViewSize.swift in Sources */,
 				C680194E26CB422400A190DB /* StartViewController.swift in Sources */,
 				C6AA33EB26C3904200F26969 /* MessageData.swift in Sources */,
 				C6800D9326C173C900EE1778 /* TcpSocket.swift in Sources */,
 				C6E5676426C2B0DE001782DC /* Chatting.swift in Sources */,
+				C680195426CB714000A190DB /* ViewImage.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
 				C680195126CB428E00A190DB /* StartViewModel.swift in Sources */,

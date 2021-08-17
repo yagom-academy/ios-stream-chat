@@ -8,13 +8,14 @@
 import UIKit
 
 class StartViewController: UIViewController {
-
+    
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var enterChatRoomButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        logoImageView.image = UIImage(named: "Logo.png")
+        logoImageView.image = ViewImage.logo
     }
 }
