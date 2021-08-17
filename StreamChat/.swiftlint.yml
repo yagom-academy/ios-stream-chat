@@ -6,3 +6,4 @@ included:
 excluded:
 - StreamChatTests/
 - AppDelegate/
+- SceneDelegate/

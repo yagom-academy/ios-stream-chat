@@ -20,6 +20,9 @@ class ChatRoomViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(SenderMessageViewCell.self, forCellReuseIdentifier: SenderMessageViewCell.identifier)
         tableView.register(ReceiverMessageCell.self, forCellReuseIdentifier: ReceiverMessageCell.identifier)
+        tableView.keyboardDismissMode = .onDrag
+        tableView.separatorStyle = .none
+        tableView.allowsSelection = false
         return tableView
     }()
     
@@ -49,7 +52,6 @@ class ChatRoomViewController: UIViewController {
         return button
     }()
     
-    
     // MARK: - Methods
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +67,34 @@ class ChatRoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpChatRoomView()
+        chatMessageView.dataSource = self
+        changeLayoutWhenKeyboardShowsAndHides()
+    }
+    
+    private func changeLayoutWhenKeyboardShowsAndHides() {
+        NotificationCenter.default.addObserver(self, selector: #selector(setViewLayoutWhenKeyboardShows), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setViewLayoutWhenKeyboardHides), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func setViewLayoutWhenKeyboardShows(_ notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        
+        if self.view.bounds.origin.y == 0 {
+            self.view.bounds.origin.y += keyboardFrame.height
+        }
+        
+        guard let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
+        
+        UIView.animate(withDuration: duration) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc private func setViewLayoutWhenKeyboardHides(_ notification: Notification) {
+        if self.view.bounds.origin.y != 0 {
+            self.view.bounds.origin.y = 0
+        }
     }
     
     private func setUpChatRoomView() {
