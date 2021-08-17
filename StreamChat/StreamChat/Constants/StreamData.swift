@@ -34,7 +34,7 @@ enum StreamData {
     // MARK: Find Function
     
     static func findOutSenderNameOfMessage(message: String) -> String {
-        let splitedMessage = message.split(separator: ":").map { String($0) }
+        let splitedMessage = splitMessage(message)
         if splitedMessage.count == 2 {
             return splitedMessage[0]
         }
@@ -42,7 +42,7 @@ enum StreamData {
     }
     
     static func findOutMessageContent(message: String) -> String {
-        let splitedMessage = message.split(separator: ":").map { String($0) }
+        let splitedMessage = splitMessage(message)
         if splitedMessage.count == 2 {
             return splitedMessage[1]
         }
@@ -50,12 +50,18 @@ enum StreamData {
     }
     
     static func findOutIdentifierOfMessage(message: String, ownUserName: String) -> SenderIdentifier {
-        let splitedMessage = message.split(separator: ":").map { String($0) }
+        let splitedMessage = splitMessage(message)
         if splitedMessage.count == 2, ownUserName != splitedMessage[0] {
             return SenderIdentifier.otherUser
         } else if splitedMessage.count == 2, ownUserName == splitedMessage[0] {
             return SenderIdentifier.userSelf
         }
         return SenderIdentifier.chatManager
+    }
+}
+
+extension StreamData {
+    private static func splitMessage(_ message: String) -> [String] {
+        message.split(separator: ":").map { String($0) }
     }
 }

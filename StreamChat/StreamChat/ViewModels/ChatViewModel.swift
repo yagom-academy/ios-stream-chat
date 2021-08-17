@@ -8,7 +8,7 @@
 import Foundation
 
 final class ChatViewModel {
-    private let networkManager: NetworkManager
+    private let networkManager: NetworkManagerProtocol
     private var ownUserName: String?
     var onUpdated: (_ newMessages: [Chat], _ oldMessages: [Chat]) -> Void = { _, _  in }
     

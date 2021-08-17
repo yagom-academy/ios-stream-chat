@@ -67,7 +67,7 @@ final class AlertTableViewCell: UITableViewCell {
     }
     
     private func setConstraintOfChatLabel() {
-        NSLayoutConstraint.activate([chatLabel.centerXAnchor.constraint(equalTo: self.chatContainerView.centerXAnchor),
+        NSLayoutConstraint.activate([chatLabel.centerXAnchor.constraint(equalTo: chatContainerView.centerXAnchor),
                                      chatLabel.centerYAnchor.constraint(equalTo: chatContainerView.centerYAnchor),
                                      chatLabel.topAnchor.constraint(equalTo: chatContainerView.topAnchor,
                                                                     constant: 3),

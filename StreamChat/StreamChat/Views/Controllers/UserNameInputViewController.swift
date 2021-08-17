@@ -90,8 +90,8 @@ final class UserNameInputViewController: UIViewController {
         NSLayoutConstraint.activate([
             inputUserNameButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             inputUserNameButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0),
-            inputUserNameButton.leadingAnchor.constraint(equalTo: self.userNameTextField.trailingAnchor, constant: 10),
-            inputUserNameButton.heightAnchor.constraint(equalTo: self.userNameTextField.heightAnchor)
+            inputUserNameButton.leadingAnchor.constraint(equalTo: userNameTextField.trailingAnchor, constant: 10),
+            inputUserNameButton.heightAnchor.constraint(equalTo: userNameTextField.heightAnchor)
         ])
     }
 }

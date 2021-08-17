@@ -111,8 +111,8 @@ final class ChatViewController: UIViewController {
     private func addAllSubviews() {
         self.view.addSubview(chatTableView)
         self.view.addSubview(typingContainerView)
-        self.typingContainerView.addSubview(typingTextField)
-        self.typingContainerView.addSubview(messageSendButton)
+        typingContainerView.addSubview(typingTextField)
+        typingContainerView.addSubview(messageSendButton)
     }
     
     private func setNavigationBar() {
@@ -164,7 +164,7 @@ final class ChatViewController: UIViewController {
     
     private func setConstraintOfTypingContainerView() {
         typingContainerViewBottomConstraints = typingContainerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
-        NSLayoutConstraint.activate([typingContainerView.topAnchor.constraint(equalTo: self.chatTableView.bottomAnchor, constant: 0),
+        NSLayoutConstraint.activate([typingContainerView.topAnchor.constraint(equalTo: chatTableView.bottomAnchor, constant: 0),
                                      typingContainerView.heightAnchor.constraint(equalToConstant: 70),
                                      typingContainerView.widthAnchor.constraint(equalTo: self.view.widthAnchor)])
         typingContainerViewBottomConstraints.isActive = true
@@ -172,19 +172,19 @@ final class ChatViewController: UIViewController {
     
     private func setConstraintOfTypingTextField() {
         NSLayoutConstraint.activate([
-            typingTextField.topAnchor.constraint(equalTo: self.typingContainerView.topAnchor, constant: 10),
-            typingTextField.leadingAnchor.constraint(equalTo: self.typingContainerView.leadingAnchor, constant: 10),
-            typingTextField.bottomAnchor.constraint(equalTo: self.typingContainerView.bottomAnchor, constant: -20),
-            typingTextField.trailingAnchor.constraint(equalTo: self.typingContainerView.trailingAnchor, constant: -70)
+            typingTextField.topAnchor.constraint(equalTo: typingContainerView.topAnchor, constant: 10),
+            typingTextField.leadingAnchor.constraint(equalTo: typingContainerView.leadingAnchor, constant: 10),
+            typingTextField.bottomAnchor.constraint(equalTo: typingContainerView.bottomAnchor, constant: -20),
+            typingTextField.trailingAnchor.constraint(equalTo: typingContainerView.trailingAnchor, constant: -70)
         ])
     }
     
     private func setConstraintOfMessageSendButton() {
         NSLayoutConstraint.activate([
-            messageSendButton.topAnchor.constraint(equalTo: self.typingContainerView.topAnchor, constant: 10),
-            messageSendButton.leadingAnchor.constraint(equalTo: self.typingTextField.trailingAnchor, constant: 10),
-            messageSendButton.bottomAnchor.constraint(equalTo: self.typingTextField.bottomAnchor),
-            messageSendButton.trailingAnchor.constraint(equalTo: self.typingContainerView.trailingAnchor, constant: -15)
+            messageSendButton.topAnchor.constraint(equalTo: typingContainerView.topAnchor, constant: 10),
+            messageSendButton.leadingAnchor.constraint(equalTo: typingTextField.trailingAnchor, constant: 10),
+            messageSendButton.bottomAnchor.constraint(equalTo: typingTextField.bottomAnchor),
+            messageSendButton.trailingAnchor.constraint(equalTo: typingContainerView.trailingAnchor, constant: -15)
         ])
     }
     

@@ -71,13 +71,13 @@ class OtherChatTableViewCell: UITableViewCell {
     // MARK: Constraints Setting
     
     private func setConstraintOfUserNameLabel() {
-        NSLayoutConstraint.activate([ userNameLabel.leadingAnchor.constraint(equalTo: self.chatBubbleImageView.leadingAnchor),
+        NSLayoutConstraint.activate([ userNameLabel.leadingAnchor.constraint(equalTo: chatBubbleImageView.leadingAnchor),
                                       userNameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor,
                                                                      constant: ChatTableViewCellConstants.chatTableViewCellInset)])
     }
     
     private func setConstraintOfChatBubbleImageView() {
-        NSLayoutConstraint.activate([chatBubbleImageView.topAnchor.constraint(equalTo: self.userNameLabel.bottomAnchor,
+        NSLayoutConstraint.activate([chatBubbleImageView.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor,
                                                                               constant: 3),
                                      chatBubbleImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor,
                                                                                   constant: ChatTableViewCellConstants.chatTableViewCellInset),
@@ -86,7 +86,7 @@ class OtherChatTableViewCell: UITableViewCell {
     }
     
     private func setConstraintOfChatLabel() {
-        NSLayoutConstraint.activate([ chatLabel.topAnchor.constraint(equalTo: self.chatBubbleImageView.topAnchor,
+        NSLayoutConstraint.activate([ chatLabel.topAnchor.constraint(equalTo: chatBubbleImageView.topAnchor,
                                                                      constant: ChatTableViewCellConstants.chatTableViewCellInset / 2),
                                       chatLabel.leadingAnchor.constraint(equalTo: chatBubbleImageView.leadingAnchor,
                                                                          constant: ChatTableViewCellConstants.chatTableViewCellInset),

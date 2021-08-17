@@ -53,7 +53,7 @@ final class MyChatTableViewCell: UITableViewCell {
     
     private func addAllSubviews() {
         self.contentView.addSubview(chatBubbleImageView)
-        self.chatBubbleImageView.addSubview(chatLabel)
+        chatBubbleImageView.addSubview(chatLabel)
         self.contentView.addSubview(dateLabel)
     }
     
@@ -69,7 +69,7 @@ final class MyChatTableViewCell: UITableViewCell {
     }
     
     private func setConstraintOfChatLabel() {
-        NSLayoutConstraint.activate([ chatLabel.topAnchor.constraint(equalTo: self.chatBubbleImageView.topAnchor,
+        NSLayoutConstraint.activate([ chatLabel.topAnchor.constraint(equalTo: chatBubbleImageView.topAnchor,
                                                                      constant: ChatTableViewCellConstants.chatTableViewCellInset / 2),
                                       chatLabel.leadingAnchor.constraint(equalTo: chatBubbleImageView.leadingAnchor,
                                                                          constant: ChatTableViewCellConstants.chatTableViewCellInset - 5),
@@ -80,7 +80,7 @@ final class MyChatTableViewCell: UITableViewCell {
     }
     
     private func setConstraintOfDateLabel() {
-        NSLayoutConstraint.activate([ dateLabel.trailingAnchor.constraint(equalTo: self.chatBubbleImageView.trailingAnchor),
+        NSLayoutConstraint.activate([ dateLabel.trailingAnchor.constraint(equalTo: chatBubbleImageView.trailingAnchor),
                                       dateLabel.topAnchor.constraint(equalTo: chatBubbleImageView.bottomAnchor,
                                                                      constant: 3),
                                       dateLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
