@@ -18,18 +18,27 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p6I-nQ-7Hk">
                                 <rect key="frame" x="87" y="244" width="240" height="128"/>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="사용자 이름 (10글자)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lgz-Q1-Xyd">
+                                <rect key="frame" x="110" y="392" width="194" height="34"/>
+                                <nil key="textColor"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.90196078431372551" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="p6I-nQ-7Hk" secondAttribute="bottom" constant="490" id="5rO-dq-2Ci"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lgz-Q1-Xyd" secondAttribute="trailing" constant="110" id="9D0-rT-ZwW"/>
+                            <constraint firstItem="Lgz-Q1-Xyd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="110" id="AUp-LR-9f0"/>
                             <constraint firstItem="p6I-nQ-7Hk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="Bzp-fo-Nw6"/>
                             <constraint firstItem="p6I-nQ-7Hk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="VNF-Gi-OAz"/>
+                            <constraint firstItem="Lgz-Q1-Xyd" firstAttribute="top" secondItem="p6I-nQ-7Hk" secondAttribute="bottom" constant="20" id="i2k-sV-tyb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="p6I-nQ-7Hk" secondAttribute="trailing" constant="87" id="pNH-f2-wJI"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="logoImageView" destination="p6I-nQ-7Hk" id="knB-OW-UNi"/>
+                        <outlet property="userNameTextField" destination="Lgz-Q1-Xyd" id="4NQ-pM-HYu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

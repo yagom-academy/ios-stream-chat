@@ -10,6 +10,7 @@ import UIKit
 class StartViewController: UIViewController {
 
     @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var userNameTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
