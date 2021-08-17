@@ -1,5 +1,5 @@
 //
-//  Integers.swift
+//  MessageIntegers.swift
 //  StreamChat
 //
 //  Created by 강경 on 2021/08/15.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Integers {
+struct MessageIntegers {
     static let suitableForChatMessageData = 2
     static let maximumNumberOfMessageCharacters = 300
 }

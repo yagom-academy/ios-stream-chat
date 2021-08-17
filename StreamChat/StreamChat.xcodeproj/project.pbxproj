@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C623183D26C948AA0026C82F /* Integers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C623183C26C948AA0026C82F /* Integers.swift */; };
+		C623183D26C948AA0026C82F /* MessageIntegers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C623183C26C948AA0026C82F /* MessageIntegers.swift */; };
 		C6800D9126C1506400EE1778 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C6800D9026C1506400EE1778 /* .swiftlint.yml */; };
 		C6800D9326C173C900EE1778 /* TcpSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6800D9226C173C900EE1778 /* TcpSocket.swift */; };
 		C6AA33EB26C3904200F26969 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA33EA26C3904200F26969 /* MessageData.swift */; };
@@ -38,7 +38,7 @@
 /* Begin PBXFileReference section */
 		6BB33274245B6C44B64809A1 /* Pods-StreamChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.release.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.release.xcconfig"; sourceTree = "<group>"; };
 		C519B3CCF728D5E130A3795A /* Pods-StreamChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.debug.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.debug.xcconfig"; sourceTree = "<group>"; };
-		C623183C26C948AA0026C82F /* Integers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Integers.swift; sourceTree = "<group>"; };
+		C623183C26C948AA0026C82F /* MessageIntegers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageIntegers.swift; sourceTree = "<group>"; };
 		C6800D9026C1506400EE1778 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C6800D9226C173C900EE1778 /* TcpSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpSocket.swift; sourceTree = "<group>"; };
 		C6AA33EA26C3904200F26969 /* MessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				C6E5677C26C2D363001782DC /* ChattingConstant.swift */,
-				C623183C26C948AA0026C82F /* Integers.swift */,
+				C623183C26C948AA0026C82F /* MessageIntegers.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -356,7 +356,7 @@
 				C6800D9326C173C900EE1778 /* TcpSocket.swift in Sources */,
 				C6E5676426C2B0DE001782DC /* Chatting.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
-				C623183D26C948AA0026C82F /* Integers.swift in Sources */,
+				C623183D26C948AA0026C82F /* MessageIntegers.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

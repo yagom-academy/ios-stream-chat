@@ -19,7 +19,7 @@ final class MessageDataManager {
     private func isTypeOfChat(string: String) -> Bool {
         let stringArray = string.components(separatedBy: "::")
         
-        if stringArray.count == 2 {
+        if stringArray.count == MessageIntegers.suitableForChatMessageData {
             return true
         } else {
             return false
