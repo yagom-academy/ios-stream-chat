@@ -9,6 +9,7 @@ import XCTest
 
 class StreamChatTests: XCTestCase {
     var sut_chatroom: ChatRoom!
+    var mock_networkmanager: ChatNetworkManager!
     var mock_urlsession: URLSessionProtocol!
     var mock_streamtask: MockStreamTask!
     
@@ -18,7 +19,10 @@ class StreamChatTests: XCTestCase {
         let configuration = URLSessionConfiguration.default
         configuration.requestCachePolicy = .reloadIgnoringCacheData
         mock_urlsession = MockURLSession(configuration: configuration, delegate: nil, delegateQueue: nil)
-        sut_chatroom = ChatRoom(urlSession: mock_urlsession)
+        mock_networkmanager = ChatNetworkManager(urlSession: mock_urlsession)
+        mock_streamtask = MockStreamTask()
+        mock_networkmanager.streamTask = mock_streamtask
+        sut_chatroom = ChatRoom(chatNetworkManager: mock_networkmanager)
         
     }
 
@@ -31,7 +35,7 @@ class StreamChatTests: XCTestCase {
         // given
         let expectation = XCTestExpectation()
         let name = "James"
-        mock_streamtask = MockStreamTask()
+        
         
         // when
         mock_streamtask.resultHandler = {
