@@ -14,6 +14,7 @@ class StreamChatTests: XCTestCase {
     
     override func setUp() {
         let configuration = URLSessionConfiguration.default
+        configuration.protocolClasses = [MockURLProtocol.self]
         let delegateQueue = OperationQueue.main
         networkManager = NetworkManager(configuration: configuration, delegateQueue: delegateQueue)
     }

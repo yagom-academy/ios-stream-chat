@@ -8,7 +8,7 @@
 import Foundation
 
 final class ChatViewModel {
-    private let networkManager: NetworkManagerProtocol
+    private var networkManager: NetworkManagerProtocol
     private var ownUserName: String?
     var onUpdated: (_ newMessages: [Chat], _ oldMessages: [Chat]) -> Void = { _, _  in }
     
@@ -18,9 +18,9 @@ final class ChatViewModel {
         }
     }
     
-    init(networkManager: NetworkManager) {
+    init(networkManager: NetworkManagerProtocol) {
         self.networkManager = networkManager
-        networkManager.delegate = self
+        self.networkManager.delegate = self
     }
     
     func getCountOfMessages() -> Int {

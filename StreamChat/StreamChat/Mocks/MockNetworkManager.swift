@@ -8,6 +8,8 @@
 import Foundation
 
 class MockNetworkManager: NetworkManagerProtocol {
+    weak var delegate: ChatViewModelDelegate?
+    
     func connectServer() {
         
     }
