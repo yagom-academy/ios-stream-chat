@@ -12,10 +12,16 @@ final class Chatting {
     let tcpSocket = TcpSocket()
     let userName: String
     
-    init(userName: String, host: String, port: Int) {
+    init(userName: String, host: String, port: Int) throws {
         self.userName = userName
-        
+        if !isStringAppropriateForStreamConnecting(string: userName) {
+            throw ChattingError.unavailableCharactersWereUsed
+        }
+
         tcpSocket.connect(host: host, port: port)
+    }
+    func setUser(name: String) {
+        
     }
     func enterTheChatRoom() {
         tcpSocket.send(data: ChattingConstant.enterTheChatRoom(name: userName).string)
@@ -42,5 +48,13 @@ final class Chatting {
     }
     func disconnect() {
         tcpSocket.disconnect()
+    }
+    private func isStringAppropriateForStreamConnecting(string: String) -> Bool {
+        let inappropriateStrings = ["END"]
+        for inappropriateString in inappropriateStrings where string == inappropriateString {
+            return false
+        }
+        
+        return true
     }
 }
