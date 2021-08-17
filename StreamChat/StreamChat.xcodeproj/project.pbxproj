@@ -13,6 +13,12 @@
 		8A0BE10E26CA84020049F487 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BE10D26CA84020049F487 /* MockURLProtocol.swift */; };
 		8A0BE11126CBABA20049F487 /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BE11026CBABA20049F487 /* NetworkManagerProtocol.swift */; };
 		8A0BE11326CBF8B30049F487 /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BE11226CBF8B30049F487 /* MockNetworkManager.swift */; };
+		8A0BE11526CC32BA0049F487 /* URLSessionStreamTaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BE11426CC32BA0049F487 /* URLSessionStreamTaskProtocol.swift */; };
+		8A0BE11726CC332A0049F487 /* MockURLSessionStreamTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BE11626CC332A0049F487 /* MockURLSessionStreamTask.swift */; };
+		8A0BE11926CC35B50049F487 /* InputStreamProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BE11826CC35B50049F487 /* InputStreamProtocol.swift */; };
+		8A0BE11B26CC35DA0049F487 /* OutputStreamProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BE11A26CC35DA0049F487 /* OutputStreamProtocol.swift */; };
+		8A0BE11D26CC42CF0049F487 /* MockInputStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BE11C26CC42CF0049F487 /* MockInputStream.swift */; };
+		8A0BE11F26CC42E00049F487 /* MockOutputStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BE11E26CC42E00049F487 /* MockOutputStream.swift */; };
 		8A3BC6D926C1BCF500CFABB1 /* MyChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6D826C1BCF500CFABB1 /* MyChatTableViewCell.swift */; };
 		8A3BC6DC26C1C63900CFABB1 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6DB26C1C63900CFABB1 /* Chat.swift */; };
 		8A3BC6E026C2505A00CFABB1 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BC6DF26C2505A00CFABB1 /* ChatViewModel.swift */; };
@@ -52,6 +58,12 @@
 		8A0BE10D26CA84020049F487 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		8A0BE11026CBABA20049F487 /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
 		8A0BE11226CBF8B30049F487 /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
+		8A0BE11426CC32BA0049F487 /* URLSessionStreamTaskProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionStreamTaskProtocol.swift; sourceTree = "<group>"; };
+		8A0BE11626CC332A0049F487 /* MockURLSessionStreamTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionStreamTask.swift; sourceTree = "<group>"; };
+		8A0BE11826CC35B50049F487 /* InputStreamProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStreamProtocol.swift; sourceTree = "<group>"; };
+		8A0BE11A26CC35DA0049F487 /* OutputStreamProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputStreamProtocol.swift; sourceTree = "<group>"; };
+		8A0BE11C26CC42CF0049F487 /* MockInputStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockInputStream.swift; sourceTree = "<group>"; };
+		8A0BE11E26CC42E00049F487 /* MockOutputStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOutputStream.swift; sourceTree = "<group>"; };
 		8A3BC6D826C1BCF500CFABB1 /* MyChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatTableViewCell.swift; sourceTree = "<group>"; };
 		8A3BC6DB26C1C63900CFABB1 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		8A3BC6DF26C2505A00CFABB1 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
@@ -98,6 +110,9 @@
 				8A0BE0F326C993FF0049F487 /* ChatViewControllerProtocol.swift */,
 				8A0BE0F726C994280049F487 /* ChatViewModelProtocol.swift */,
 				8A0BE11026CBABA20049F487 /* NetworkManagerProtocol.swift */,
+				8A0BE11426CC32BA0049F487 /* URLSessionStreamTaskProtocol.swift */,
+				8A0BE11826CC35B50049F487 /* InputStreamProtocol.swift */,
+				8A0BE11A26CC35DA0049F487 /* OutputStreamProtocol.swift */,
 			);
 			path = Abstracts;
 			sourceTree = "<group>";
@@ -116,6 +131,9 @@
 			children = (
 				8A0BE10D26CA84020049F487 /* MockURLProtocol.swift */,
 				8A0BE11226CBF8B30049F487 /* MockNetworkManager.swift */,
+				8A0BE11626CC332A0049F487 /* MockURLSessionStreamTask.swift */,
+				8A0BE11C26CC42CF0049F487 /* MockInputStream.swift */,
+				8A0BE11E26CC42E00049F487 /* MockOutputStream.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -362,12 +380,15 @@
 			files = (
 				8A3BC6FB26C66F6400CFABB1 /* OtherChatTableViewCell.swift in Sources */,
 				C7927559262C562B00EF5D3A /* ChatViewController.swift in Sources */,
+				8A0BE11F26CC42E00049F487 /* MockOutputStream.swift in Sources */,
 				8A3BC6E326C2539C00CFABB1 /* ChatTableViewCellConstants.swift in Sources */,
 				8A0BE10E26CA84020049F487 /* MockURLProtocol.swift in Sources */,
+				8A0BE11B26CC35DA0049F487 /* OutputStreamProtocol.swift in Sources */,
 				8A3BC6D926C1BCF500CFABB1 /* MyChatTableViewCell.swift in Sources */,
 				8A3BC6F726C6570D00CFABB1 /* AlertTableViewCell.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
 				8A3BC6F326C6449B00CFABB1 /* NetworkAddress.swift in Sources */,
+				8A0BE11726CC332A0049F487 /* MockURLSessionStreamTask.swift in Sources */,
 				8A3BC6E826C46EAE00CFABB1 /* NetworkManager.swift in Sources */,
 				8A0BE0F426C993FF0049F487 /* ChatViewControllerProtocol.swift in Sources */,
 				8A3BC6DC26C1C63900CFABB1 /* Chat.swift in Sources */,
@@ -377,9 +398,12 @@
 				8A0BE11326CBF8B30049F487 /* MockNetworkManager.swift in Sources */,
 				8A0BE0F826C994280049F487 /* ChatViewModelProtocol.swift in Sources */,
 				8A0BE11126CBABA20049F487 /* NetworkManagerProtocol.swift in Sources */,
+				8A0BE11926CC35B50049F487 /* InputStreamProtocol.swift in Sources */,
 				8A3BC6EC26C5A06800CFABB1 /* UserNameInputViewController.swift in Sources */,
 				8A3BC6F526C64AE700CFABB1 /* SenderIdentifier.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
+				8A0BE11526CC32BA0049F487 /* URLSessionStreamTaskProtocol.swift in Sources */,
+				8A0BE11D26CC42CF0049F487 /* MockInputStream.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

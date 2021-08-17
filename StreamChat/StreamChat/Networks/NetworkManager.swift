@@ -8,19 +8,28 @@
 import UIKit
 
 final class NetworkManager: NSObject {
-    private var session: URLSession!
-    var inputStream: InputStream?
-    private var outputStream: OutputStream?
-    private var streamTask: URLSessionStreamTask?
+    private var inputStream: InputStreamProtocol?
+    private var outputStream: outputStreamProtocol?
+    private var streamTask: URLSessionStreamTaskProtocol?
     weak var delegate: ChatViewModelDelegate?
     
-    init(configuration: URLSessionConfiguration, delegateQueue: OperationQueue?) {
+    init(streamTask: URLSessionStreamTaskProtocol,
+         inputStream: InputStreamProtocol,
+         outputStream: outputStreamProtocol) {
+        self.streamTask = streamTask
+        self.inputStream = inputStream
+        self.outputStream = outputStream
+    }
+    
+    override init() {
         super.init()
-        session = URLSession.init(configuration: configuration, delegate: self, delegateQueue: delegateQueue)
+    }
+    
+    func setStreamTask(_ streamTask: URLSessionStreamTaskProtocol) {
+        self.streamTask = streamTask
     }
     
     func connectServer() {
-        streamTask = session.streamTask(withHostName: NetworkAddress.ipAddress, port: NetworkAddress.port)
         streamTask?.resume()
         streamTask?.captureStreams()
     }
@@ -54,7 +63,7 @@ extension NetworkManager: URLSessionStreamDelegate {
 
 extension NetworkManager: StreamDelegate {
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
-        if inputStream == aStream {
+        if inputStream as? Stream == aStream {
             switch eventCode {
             case .hasBytesAvailable:
                 var data = Data()
@@ -70,7 +79,6 @@ extension NetworkManager: StreamDelegate {
 }
 
 extension OutputStream {
-    @discardableResult
     func write(data: Data) -> Int {
         let count = data.count
         return data.withUnsafeBytes {
