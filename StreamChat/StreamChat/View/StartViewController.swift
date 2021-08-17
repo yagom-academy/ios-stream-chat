@@ -32,7 +32,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
             try startViewModel.enterTheChatRoom(userName: userName)
         } catch {
             putUpInappropriateNameErrorAlert(error: error)
-            userNameTextField.text = ""
+            userNameTextField.text = nil
         }
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,

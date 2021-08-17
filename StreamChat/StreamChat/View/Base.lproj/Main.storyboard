@@ -78,11 +78,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PK2-fX-YJD">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PK2-fX-YJD">
                                 <rect key="frame" x="0.0" y="88" width="414" height="724"/>
                                 <color key="backgroundColor" name="KakaoSkyblue"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="92" id="T0B-qg-lSr">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeftCell" rowHeight="92" id="T0B-qg-lSr" customClass="BubbleCell" customModule="StreamChat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T0B-qg-lSr" id="b9b-0L-XBk">
@@ -90,28 +90,33 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble_left" translatesAutoresizingMaskIntoConstraints="NO" id="03x-X7-UGZ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="49.5" height="92"/>
+                                                    <rect key="frame" x="0.0" y="3" width="82.5" height="86"/>
+                                                    <color key="tintColor" name="White"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upv-HM-BLg">
-                                                    <rect key="frame" x="8" y="0.0" width="41.5" height="92"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upv-HM-BLg">
+                                                    <rect key="frame" x="35" y="11" width="35.5" height="70"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" name="KakaoSkyblue"/>
                                             <constraints>
-                                                <constraint firstItem="upv-HM-BLg" firstAttribute="trailing" secondItem="03x-X7-UGZ" secondAttribute="trailing" id="G72-IU-oYI"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="upv-HM-BLg" secondAttribute="trailing" constant="50" id="NXM-bO-QLf"/>
-                                                <constraint firstItem="upv-HM-BLg" firstAttribute="leading" secondItem="03x-X7-UGZ" secondAttribute="leading" constant="8" id="PM7-7N-YaH"/>
+                                                <constraint firstItem="upv-HM-BLg" firstAttribute="trailing" secondItem="03x-X7-UGZ" secondAttribute="trailing" constant="-12" id="G72-IU-oYI"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="upv-HM-BLg" secondAttribute="trailing" constant="20" id="NXM-bO-QLf"/>
+                                                <constraint firstItem="upv-HM-BLg" firstAttribute="leading" secondItem="03x-X7-UGZ" secondAttribute="leading" constant="35" id="PM7-7N-YaH"/>
                                                 <constraint firstItem="03x-X7-UGZ" firstAttribute="leading" secondItem="b9b-0L-XBk" secondAttribute="leading" id="S8T-wV-X9X"/>
-                                                <constraint firstItem="upv-HM-BLg" firstAttribute="bottom" secondItem="03x-X7-UGZ" secondAttribute="bottom" id="WsK-1T-HoI"/>
-                                                <constraint firstItem="03x-X7-UGZ" firstAttribute="top" secondItem="b9b-0L-XBk" secondAttribute="top" id="d36-RR-DOL"/>
-                                                <constraint firstAttribute="bottom" secondItem="03x-X7-UGZ" secondAttribute="bottom" id="fbF-i1-I56"/>
-                                                <constraint firstItem="upv-HM-BLg" firstAttribute="top" secondItem="03x-X7-UGZ" secondAttribute="top" id="h7j-lq-mk9"/>
+                                                <constraint firstItem="upv-HM-BLg" firstAttribute="bottom" secondItem="03x-X7-UGZ" secondAttribute="bottom" constant="-8" id="WsK-1T-HoI"/>
+                                                <constraint firstItem="03x-X7-UGZ" firstAttribute="top" secondItem="b9b-0L-XBk" secondAttribute="top" constant="3" id="d36-RR-DOL"/>
+                                                <constraint firstAttribute="bottom" secondItem="03x-X7-UGZ" secondAttribute="bottom" constant="3" id="fbF-i1-I56"/>
+                                                <constraint firstItem="upv-HM-BLg" firstAttribute="top" secondItem="03x-X7-UGZ" secondAttribute="top" constant="8" id="h7j-lq-mk9"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="upv-HM-BLg" id="aBs-N4-GZ9"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="109" id="7dO-oS-AaA">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RightCell" rowHeight="109" id="7dO-oS-AaA" customClass="BubbleCell" customModule="StreamChat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="116.5" width="414" height="109"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7dO-oS-AaA" id="XNT-C0-d4n">
@@ -119,26 +124,31 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble_right" translatesAutoresizingMaskIntoConstraints="NO" id="nKI-K3-duB">
-                                                    <rect key="frame" x="364.5" y="0.0" width="49.5" height="109"/>
+                                                    <rect key="frame" x="331.5" y="3" width="82.5" height="103"/>
+                                                    <color key="tintColor" name="KakaoLightYellow"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZn-CX-tGD">
-                                                    <rect key="frame" x="364.5" y="0.0" width="41.5" height="109"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZn-CX-tGD">
+                                                    <rect key="frame" x="343.5" y="11" width="35.5" height="87"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" name="KakaoSkyblue"/>
                                             <constraints>
-                                                <constraint firstItem="RZn-CX-tGD" firstAttribute="leading" secondItem="nKI-K3-duB" secondAttribute="leading" id="6ZF-TS-Mif"/>
-                                                <constraint firstItem="RZn-CX-tGD" firstAttribute="top" secondItem="nKI-K3-duB" secondAttribute="top" id="SGq-pB-69A"/>
+                                                <constraint firstItem="RZn-CX-tGD" firstAttribute="leading" secondItem="nKI-K3-duB" secondAttribute="leading" constant="12" id="6ZF-TS-Mif"/>
+                                                <constraint firstItem="RZn-CX-tGD" firstAttribute="top" secondItem="nKI-K3-duB" secondAttribute="top" constant="8" id="SGq-pB-69A"/>
                                                 <constraint firstAttribute="trailing" secondItem="nKI-K3-duB" secondAttribute="trailing" id="TB2-f1-4NS"/>
-                                                <constraint firstItem="RZn-CX-tGD" firstAttribute="trailing" secondItem="nKI-K3-duB" secondAttribute="trailing" constant="-8" id="ULb-Xp-hqx"/>
-                                                <constraint firstItem="RZn-CX-tGD" firstAttribute="bottom" secondItem="nKI-K3-duB" secondAttribute="bottom" id="XnV-UO-o8e"/>
-                                                <constraint firstAttribute="bottom" secondItem="nKI-K3-duB" secondAttribute="bottom" id="Y8n-Ja-gYL"/>
-                                                <constraint firstItem="nKI-K3-duB" firstAttribute="top" secondItem="XNT-C0-d4n" secondAttribute="top" id="vHf-LM-cFI"/>
-                                                <constraint firstItem="RZn-CX-tGD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XNT-C0-d4n" secondAttribute="leading" constant="50" id="vUO-Yh-Mym"/>
+                                                <constraint firstItem="RZn-CX-tGD" firstAttribute="trailing" secondItem="nKI-K3-duB" secondAttribute="trailing" constant="-35" id="ULb-Xp-hqx"/>
+                                                <constraint firstItem="RZn-CX-tGD" firstAttribute="bottom" secondItem="nKI-K3-duB" secondAttribute="bottom" constant="-8" id="XnV-UO-o8e"/>
+                                                <constraint firstAttribute="bottom" secondItem="nKI-K3-duB" secondAttribute="bottom" constant="3" id="Y8n-Ja-gYL"/>
+                                                <constraint firstItem="nKI-K3-duB" firstAttribute="top" secondItem="XNT-C0-d4n" secondAttribute="top" constant="3" id="vHf-LM-cFI"/>
+                                                <constraint firstItem="RZn-CX-tGD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XNT-C0-d4n" secondAttribute="leading" constant="20" id="vUO-Yh-Mym"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="RZn-CX-tGD" id="NTx-KT-w91"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -147,15 +157,19 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PFH-p6-4hp">
                                         <rect key="frame" x="8" y="8" width="344" height="34"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGE-Aj-Xuf">
                                         <rect key="frame" x="360" y="10" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="sendMessage" destination="9W3-64-xXM" eventType="touchUpInside" id="F5i-Hc-sbx"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="White"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="oGE-Aj-Xuf" secondAttribute="trailing" constant="8" id="PTx-e8-nc9"/>
                                     <constraint firstItem="oGE-Aj-Xuf" firstAttribute="leading" secondItem="PFH-p6-4hp" secondAttribute="trailing" constant="8" id="aT8-hh-E82"/>
@@ -179,6 +193,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DoI-Sn-tqD"/>
+                    <connections>
+                        <outlet property="bottomConstraint" destination="hly-FZ-MJX" id="3e8-NV-ify"/>
+                        <outlet property="messageField" destination="PFH-p6-4hp" id="17o-fn-Aao"/>
+                        <outlet property="tableView" destination="PK2-fX-YJD" id="f8w-Eg-Rzt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JP0-Ez-7C8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -204,8 +223,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bubble_left" width="21.5" height="20"/>
-        <image name="bubble_right" width="21.5" height="20"/>
+        <image name="bubble_left" width="65" height="36"/>
+        <image name="bubble_right" width="65" height="36"/>
+        <namedColor name="KakaoLightYellow">
+            <color red="0.99599999189376831" green="0.94099998474121094" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="KakaoSkyblue">
             <color red="0.60799998044967651" green="0.73299998044967651" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -218,8 +240,8 @@
         <namedColor name="White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
