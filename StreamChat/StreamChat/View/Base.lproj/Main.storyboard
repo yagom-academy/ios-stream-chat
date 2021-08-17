@@ -25,7 +25,6 @@
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="사용자 이름 (10글자 이하)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lgz-Q1-Xyd">
                                 <rect key="frame" x="90" y="402" width="234" height="34"/>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -37,6 +36,9 @@
                                 <state key="normal" title="채팅방 입장">
                                     <color key="titleColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickEnterChatRoomButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FBL-un-BYd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

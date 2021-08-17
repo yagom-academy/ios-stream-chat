@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+class StartViewModel {
+    private let host = ChattingConstant.host
+    private let port = ChattingConstant.port
+    
+    func enterTheChatRoom(userName: String) throws {
+        let chatting = try Chatting(userName: userName, host: host, port: port)
+        chatting.enterTheChatRoom()
+    }
+}

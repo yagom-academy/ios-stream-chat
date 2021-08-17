@@ -12,6 +12,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var enterChatRoomButton: UIButton!
+    private let startViewModel = StartViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,17 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         userNameTextField.delegate = self
         enterChatRoomButton.isEnabled = false
     }
-    
+    @IBAction func clickEnterChatRoomButton(_ sender: Any) {
+        guard let userName: String = userNameTextField.text else {
+            return
+        }
+        do {
+            try startViewModel.enterTheChatRoom(userName: userName)
+        } catch {
+            putUpInappropriateNameErrorAlert(error: error)
+            userNameTextField.text = ""
+        }
+    }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
         let text = (userNameTextField.text! as NSString).replacingCharacters(in: range,
@@ -36,5 +47,12 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         }
         
         return true
+    }
+    private func putUpInappropriateNameErrorAlert(error: Error) {
+        let alert = UIAlertController(title: "", message: "\(error)",
+                                      preferredStyle: UIAlertController.Style.alert)
+        let actionOfOk = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(actionOfOk)
+        present(alert, animated: false, completion: nil)
     }
 }
