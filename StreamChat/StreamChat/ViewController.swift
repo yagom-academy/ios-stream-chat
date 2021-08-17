@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     private func setupTableView() {
         view.addSubview(tableView)
         tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(MessageCell.self, forCellReuseIdentifier: MessageCell.reuseIfentifier)
 
         tableView.backgroundColor = .systemBackground
         tableView.snp.makeConstraints { tableView in
@@ -49,13 +51,13 @@ extension ViewController: UITableViewDelegate {
 // MARK: - TableView DataSource
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        0
+        2
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as? TableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MessageCell.reuseIfentifier,
+                                                       for: indexPath) as? MessageCell else { return UITableViewCell() }
 
         return cell
     }
-
 }

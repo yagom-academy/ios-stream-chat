@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		70136AEF26CA161C006BB174 /* StreamDataFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70136AEE26CA161C006BB174 /* StreamDataFormat.swift */; };
 		70136AF226CA1F46006BB174 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 70136AF126CA1F46006BB174 /* SnapKit */; };
-		706AEF9F26CB5AA10032F719 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706AEF9E26CB5AA10032F719 /* TableViewCell.swift */; };
+		706AEF9F26CB5AA10032F719 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706AEF9E26CB5AA10032F719 /* MessageCell.swift */; };
 		706AEFA126CB89470032F719 /* SendMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706AEFA026CB89470032F719 /* SendMessageView.swift */; };
 		7072F72926C50A3400826FF7 /* StreamInfomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072F72826C50A3400826FF7 /* StreamInfomation.swift */; };
 		70A60B9C26C4CBFE00C08915 /* StreamChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A60B9B26C4CBFE00C08915 /* StreamChat.swift */; };
@@ -22,7 +22,7 @@
 
 /* Begin PBXFileReference section */
 		70136AEE26CA161C006BB174 /* StreamDataFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamDataFormat.swift; sourceTree = "<group>"; };
-		706AEF9E26CB5AA10032F719 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		706AEF9E26CB5AA10032F719 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		706AEFA026CB89470032F719 /* SendMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageView.swift; sourceTree = "<group>"; };
 		7072F72826C50A3400826FF7 /* StreamInfomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamInfomation.swift; sourceTree = "<group>"; };
 		70A60B9B26C4CBFE00C08915 /* StreamChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamChat.swift; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 		7072F71726C4FFD400826FF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				706AEF9E26CB5AA10032F719 /* TableViewCell.swift */,
+				706AEF9E26CB5AA10032F719 /* MessageCell.swift */,
 				706AEFA026CB89470032F719 /* SendMessageView.swift */,
 			);
 			name = View;
@@ -223,7 +223,7 @@
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
 				70136AEF26CA161C006BB174 /* StreamDataFormat.swift in Sources */,
-				706AEF9F26CB5AA10032F719 /* TableViewCell.swift in Sources */,
+				706AEF9F26CB5AA10032F719 /* MessageCell.swift in Sources */,
 				70A60B9C26C4CBFE00C08915 /* StreamChat.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
