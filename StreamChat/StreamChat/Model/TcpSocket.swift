@@ -23,12 +23,21 @@ final class TcpSocket: NSObject {
         outputStream?.write(data, maxLength: data.count)
     }
     func receive(totalSizeOfBuffer: Int) throws -> Data {
-        var buffer = [UInt8](repeating: 0, count: totalSizeOfBuffer)
-        guard let bufferOfReaded = inputStream?.read(&buffer, maxLength: totalSizeOfBuffer) else {
+        var initializedBuffer = [UInt8](repeating: 0, count: totalSizeOfBuffer)
+        guard let bufferOfReaded = inputStream?.read(&initializedBuffer,
+                                                     maxLength: totalSizeOfBuffer) else {
             throw TcpError.failedToReadInputStream
         }
 
-        let differenceOfBufferBytes = totalSizeOfBuffer - bufferOfReaded
+        return try customizedBufferData(buffer: initializedBuffer,
+                                        differenceOfBufferBytes: totalSizeOfBuffer - bufferOfReaded)
+    }
+    func disconnect() {
+        inputStream?.close()
+        outputStream?.close()
+    }
+    private func customizedBufferData(buffer: [UInt8],
+                                      differenceOfBufferBytes: Int) throws -> Data {
         if differenceOfBufferBytes > 0 {
             let countToDrop = differenceOfBufferBytes
             let customizedBuffer = buffer.dropLast(countToDrop)
@@ -37,9 +46,5 @@ final class TcpSocket: NSObject {
         } else {
             throw TcpError.noDataReceived
         }
-    }
-    func disconnect() {
-        inputStream?.close()
-        outputStream?.close()
     }
 }
