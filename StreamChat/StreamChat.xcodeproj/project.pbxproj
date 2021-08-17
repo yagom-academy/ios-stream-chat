@@ -13,6 +13,7 @@
 		706AEFA126CB89470032F719 /* SendMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706AEFA026CB89470032F719 /* SendMessageView.swift */; };
 		7072F72926C50A3400826FF7 /* StreamInfomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072F72826C50A3400826FF7 /* StreamInfomation.swift */; };
 		70A60B9C26C4CBFE00C08915 /* StreamChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A60B9B26C4CBFE00C08915 /* StreamChat.swift */; };
+		70E8D7B726CBB74A008FD6CC /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E8D7B626CBB74A008FD6CC /* Chat.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
 		C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927556262C562B00EF5D3A /* SceneDelegate.swift */; };
 		C7927559262C562B00EF5D3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927558262C562B00EF5D3A /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 		706AEFA026CB89470032F719 /* SendMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageView.swift; sourceTree = "<group>"; };
 		7072F72826C50A3400826FF7 /* StreamInfomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamInfomation.swift; sourceTree = "<group>"; };
 		70A60B9B26C4CBFE00C08915 /* StreamChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamChat.swift; sourceTree = "<group>"; };
+		70E8D7B626CBB74A008FD6CC /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		C7927551262C562B00EF5D3A /* StreamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7927554262C562B00EF5D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7927556262C562B00EF5D3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				70A60B9B26C4CBFE00C08915 /* StreamChat.swift */,
 				7072F72826C50A3400826FF7 /* StreamInfomation.swift */,
 				70136AEE26CA161C006BB174 /* StreamDataFormat.swift */,
+				70E8D7B626CBB74A008FD6CC /* Chat.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				C7927559262C562B00EF5D3A /* ViewController.swift in Sources */,
 				706AEFA126CB89470032F719 /* SendMessageView.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
+				70E8D7B726CBB74A008FD6CC /* Chat.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
 				70136AEF26CA161C006BB174 /* StreamDataFormat.swift in Sources */,
 				706AEF9F26CB5AA10032F719 /* MessageCell.swift in Sources */,

@@ -15,6 +15,9 @@ final class StreamChat: NSObject {
     private let maxSendMessageLength = 300
     private let receiveMessageCount = 2
     private var username: String
+    private var chats: [Chat] = [Chat(username: "우디", message: "메시지지롱", isSendMessage: true, date: Date()),
+                                 Chat(username: "스티븐", message: "그저 디코에서 보였을 뿐", isSendMessage: false, date: Date()),
+                                 Chat(username: "우디", message: "잘 됐으면", isSendMessage: true, date: Date())]
 
     init(username: String) {
         self.username = username
@@ -62,12 +65,16 @@ final class StreamChat: NSObject {
             let data = StreamDataFormat.shared.sendMessage(data: message)
 
             stringToOutputStreamData(string: data)
+            chats.append(Chat(username: username,
+                              message: message,
+                              isSendMessage: true,
+                              date: Date()))
         } else {
             print("message limit over")
         }
     }
 
-    private func readChat(stream: InputStream) {
+    private func receiveChat(stream: InputStream) {
         let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxReadLength)
 
         while stream.hasBytesAvailable {
@@ -90,6 +97,14 @@ final class StreamChat: NSObject {
         inputStream?.close()
         outputStream?.close()
     }
+
+    func countChats() -> Int {
+        return chats.count
+    }
+
+    func readChats(at index: Int) -> Chat {
+        return chats[index]
+    }
 }
 
 extension StreamChat: StreamDelegate {
@@ -97,7 +112,7 @@ extension StreamChat: StreamDelegate {
         switch eventCode {
         case .hasBytesAvailable:
             guard let inputStream = aStream as? InputStream else { return }
-            readChat(stream: inputStream)
+            receiveChat(stream: inputStream)
         case .endEncountered:
             stopChat()
         default:

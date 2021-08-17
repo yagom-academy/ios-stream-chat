@@ -8,6 +8,8 @@
 import UIKit
 
 final class SendMessageView: UIView {
+    var delegate: ViewControllerDelegate?
+
     private let messageTextfield: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .systemPink
@@ -20,12 +22,12 @@ final class SendMessageView: UIView {
         return textField
     }()
 
-    private let sendButton: UIButton = {
+    let sendButton: UIButton = {
         let button = UIButton()
         button.setTitle("Send", for: .normal)
         button.backgroundColor = .systemGreen
         button.translatesAutoresizingMaskIntoConstraints = false
-
+        button.addTarget(self, action: #selector(didTapSendButton), for: .touchDown)
         return button
     }()
 
@@ -61,4 +63,10 @@ final class SendMessageView: UIView {
         }
     }
 
+    @objc func didTapSendButton() {
+        guard let text = messageTextfield.text,
+              text.isEmpty == false else { return }
+        delegate?.sendMessage(message: text)
+        messageTextfield.text = nil
+    }
 }
