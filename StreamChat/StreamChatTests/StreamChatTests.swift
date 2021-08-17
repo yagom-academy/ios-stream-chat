@@ -53,7 +53,7 @@ final class StreamChatTests: XCTestCase {
             try chatting.send(message: messageToSend)
         } catch {
             let stringOfError: String = "\(error)"
-            XCTAssertEqual(stringOfError, ChattingError.sendingMessagesIsLimitedTo300.description)
+            XCTAssertEqual(stringOfError, ChattingError.sendingMessageIsLimitedToMaximum.description)
         }
         
         chatting.leaveTheChatRoom()

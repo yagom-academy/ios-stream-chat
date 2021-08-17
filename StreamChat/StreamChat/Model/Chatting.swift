@@ -21,11 +21,11 @@ final class Chatting {
         tcpSocket.send(data: ChattingConstant.enterTheChatRoom(name: userName).format)
     }
     func leaveTheChatRoom() {
-        tcpSocket.send(data: ChattingConstant.leaveTheChatRoom)
+        tcpSocket.send(data: ChattingConstant.leaveTheChatRoom.format)
     }
     func send(message: String) throws {
-        if message.count > Integers.maximumNumberOfMessageCharacters {
-            throw ChattingError.sendingMessagesIsLimitedTo300
+        if message.count > MessageIntegers.maximumNumberOfMessageCharacters {
+            throw ChattingError.sendingMessageIsLimitedToMaximum
         }
         tcpSocket.send(data: ChattingConstant.send(message: message).format)
     }
@@ -36,9 +36,8 @@ final class Chatting {
                                           encoding: String.Encoding.utf8) else {
             throw ChattingError.failToConvertCustomizedBufferToString
         }
-        let data = ReceivedData(receivedString: receivedString)
         
-        return data.processedData()
+        return MessageDataManager().convertStringToMessageData(receivedString: receivedString)
     }
     func disconnect() {
         tcpSocket.disconnect()
