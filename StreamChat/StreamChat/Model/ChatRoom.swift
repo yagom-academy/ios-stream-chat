@@ -35,4 +35,8 @@ final class ChatRoom: NSObject {
         }
         chatNetworkManager.write(data: data)
     }
+    
+    func leaveChat() {
+        chatNetworkManager.closeStream()
+    }
 }

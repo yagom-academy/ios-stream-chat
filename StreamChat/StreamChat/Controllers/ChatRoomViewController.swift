@@ -11,10 +11,17 @@ class ChatRoomViewController: UIViewController {
     
     let chatRoom = ChatRoom(chatNetworkManager: ChatNetworkManager())
     var username = ""
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         chatRoom.joinChat(username: username)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        chatRoom.leaveChat()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
