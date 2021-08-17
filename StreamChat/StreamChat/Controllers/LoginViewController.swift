@@ -76,6 +76,8 @@ extension LoginViewController: UITextFieldDelegate {
         if let userName = loginTextField.text {
             chatRoomViewController.username = userName
         }
+        loginTextField.text = nil
+        loginTextField.resignFirstResponder()
         navigationController?.pushViewController(chatRoomViewController, animated: false)
         return true
     }
