@@ -14,6 +14,9 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var enterChatRoomButton: UIButton!
     private let startViewModel = StartViewModel()
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +45,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
             enterChatRoomButton.isEnabled = false
         } else {
             enterChatRoomButton.titleLabel?.textColor = ViewColor.white
-            enterChatRoomButton.backgroundColor = ViewColor.brown
+            enterChatRoomButton.backgroundColor = ViewColor.nomalBrown
             enterChatRoomButton.isEnabled = true
         }
         

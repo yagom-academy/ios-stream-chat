@@ -10,6 +10,9 @@ import UIKit
 struct ViewColor {
     static let lightGray = UIColor(named: "LightGray")
     static let white = UIColor(named: "White")
-    static let brown = UIColor(named: "KakaoBrown")
-    static let yellow = UIColor(named: "KakaoYellow")
+    static let nomalBrown = UIColor(named: "KakaoBrown")
+    static let nomalYellow = UIColor(named: "KakaoYellow")
+    static let chatRoomBackground = UIColor(named: "KakaoSkyblue")
+    static let myChatMessage = UIColor(named: "KakaoLightYellow")
+    static let friendsChatMessage = UIColor(named: "White")
 }
