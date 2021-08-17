@@ -37,6 +37,11 @@ final class ChatRoom: NSObject {
     }
     
     func leaveChat() {
+        guard let data = "LEAVE::::END".data(using: .utf8) else {
+            
+            return
+        }
+        chatNetworkManager.write(data: data)
         chatNetworkManager.closeStream()
     }
 }
