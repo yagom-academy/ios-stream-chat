@@ -27,7 +27,7 @@ final class SendMessageView: UIView {
         button.setTitle("Send", for: .normal)
         button.backgroundColor = .systemGreen
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(didTapSendButton), for: .touchDown)
+        button.addTarget(self, action: #selector(didTapSendButton), for: .touchUpInside)
         return button
     }()
 

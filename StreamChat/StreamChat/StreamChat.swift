@@ -15,9 +15,9 @@ final class StreamChat: NSObject {
     private let maxSendMessageLength = 300
     private let receiveMessageCount = 2
     private var username: String
-    private var chats: [Chat] = [Chat(username: "우디", message: "메시지지롱", isSendMessage: true, date: Date()),
-                                 Chat(username: "스티븐", message: "그저 디코에서 보였을 뿐", isSendMessage: false, date: Date()),
-                                 Chat(username: "우디", message: "잘 됐으면", isSendMessage: true, date: Date())]
+    private var chats: [Chat] = [Chat(username: "우디", message: "메시지지롱", identifier: .my, date: Date()),
+                                 Chat(username: "스티븐", message: "그저 디코에서 보였을 뿐", identifier: .other, date: Date()),
+                                 Chat(username: "우디", message: "잘 됐으면", identifier: .my, date: Date())]
 
     init(username: String) {
         self.username = username
@@ -67,7 +67,7 @@ final class StreamChat: NSObject {
             stringToOutputStreamData(string: data)
             chats.append(Chat(username: username,
                               message: message,
-                              isSendMessage: true,
+                              identifier: .my,
                               date: Date()))
         } else {
             print("message limit over")

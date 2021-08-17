@@ -7,9 +7,15 @@
 
 import Foundation
 
+enum Identifier {
+    case my
+    case other
+    case notification
+}
+
 struct Chat {
     let username: String
     let message: String
-    let isSendMessage: Bool
+    let identifier: Identifier
     let date: Date
 }
