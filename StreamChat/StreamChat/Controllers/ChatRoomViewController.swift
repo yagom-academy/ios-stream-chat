@@ -2,7 +2,7 @@
 //  ChatRoomViewController.swift
 //  StreamChat
 //
-//  Created by 황인우 on 2021/08/17.
+//  Created by James on 2021/08/17.
 //
 
 import UIKit
@@ -12,14 +12,15 @@ class ChatRoomViewController: UIViewController {
     // MARK: - Properties
     
     var username = ""
-    
+    private var chatList: [Message] = []
     private let chatRoom = ChatRoom(chatNetworkManager: ChatNetworkManager())
     
     private let chatMessageView: UITableView = {
         let tableView = UITableView()
+        tableView.backgroundColor = .white
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(SenderMessageViewCell.self, forCellReuseIdentifier: SenderMessageViewCell.identifier)
-        tableView.register(ReceiverMessageCell.self, forCellReuseIdentifier: ReceiverMessageCell.identifier)
+        tableView.register(OthersMessageViewCell.self, forCellReuseIdentifier: OthersMessageViewCell.identifier)
+        tableView.register(MyMessageViewCell.self, forCellReuseIdentifier: MyMessageViewCell.identifier)
         tableView.keyboardDismissMode = .onDrag
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
@@ -97,6 +98,19 @@ class ChatRoomViewController: UIViewController {
         }
     }
     
+    @objc private func sendMessage(_ sender: UIButton) {
+        guard let text = messageInputTextField.text,
+              text.isEmpty == false else { return }
+        chatList.append(Message(content: text, senderUsername: self.username, messageSender: .myself))
+        chatRoom.send(text)
+        messageInputTextField.text = nil
+        
+        let indexPath = IndexPath(row: chatList.count - 1, section: 0)
+        
+        chatMessageView.insertRows(at: [indexPath], with: .none)
+        chatMessageView.scrollToRow(at: indexPath, at: .middle, animated: true)
+    }
+    
     private func setUpChatRoomView() {
         self.view.addSubview(messageInputView)
         messageInputView.addSubview(messageInputTextField)
@@ -123,5 +137,29 @@ class ChatRoomViewController: UIViewController {
             chatMessageView.bottomAnchor.constraint(equalTo: self.messageInputView.topAnchor)
             
         ])
+    }
+}
+extension ChatRoomViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return chatList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let message = chatList[indexPath.row]
+        let messageIdentifier = message.messageSender == .myself ? MyMessageViewCell.identifier : OthersMessageViewCell.identifier
+        if message.messageSender == .myself {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: messageIdentifier, for: indexPath) as? MyMessageViewCell else {
+                return UITableViewCell()
+            }
+            cell.changeLabelText(message.content)
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: messageIdentifier, for: indexPath) as? OthersMessageViewCell else {
+                return UITableViewCell()
+            }
+            cell.changeLabelText(message.content)
+            return cell
+        }
+        
     }
 }

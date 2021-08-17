@@ -16,8 +16,8 @@
 		EAA925C926CB5142003D1D8F /* ChatNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA925C826CB5142003D1D8F /* ChatNetworkManager.swift */; };
 		EAA925CB26CB548D003D1D8F /* ChatNetworkManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA925CA26CB548D003D1D8F /* ChatNetworkManageable.swift */; };
 		EAA925CD26CBB7FD003D1D8F /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA925CC26CBB7FD003D1D8F /* ChatRoomViewController.swift */; };
-		EAA925CF26CBCBC9003D1D8F /* ReceiverMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA925CE26CBCBC9003D1D8F /* ReceiverMessageCell.swift */; };
-		EAA925D126CBD32C003D1D8F /* SenderMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA925D026CBD32C003D1D8F /* SenderMessageViewCell.swift */; };
+		EAA925CF26CBCBC9003D1D8F /* MyMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA925CE26CBCBC9003D1D8F /* MyMessageViewCell.swift */; };
+		EAA925D126CBD32C003D1D8F /* OthersMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA925D026CBD32C003D1D8F /* OthersMessageViewCell.swift */; };
 		EAEB958026C559C4001A500D /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB957F26C559C4001A500D /* ChatRoom.swift */; };
 		EAEB958726C56307001A500D /* StreamInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB958626C56307001A500D /* StreamInformation.swift */; };
 		EAEB958926C580F0001A500D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB958826C580F0001A500D /* Message.swift */; };
@@ -54,8 +54,8 @@
 		EAA925C826CB5142003D1D8F /* ChatNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNetworkManager.swift; sourceTree = "<group>"; };
 		EAA925CA26CB548D003D1D8F /* ChatNetworkManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNetworkManageable.swift; sourceTree = "<group>"; };
 		EAA925CC26CBB7FD003D1D8F /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
-		EAA925CE26CBCBC9003D1D8F /* ReceiverMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverMessageCell.swift; sourceTree = "<group>"; };
-		EAA925D026CBD32C003D1D8F /* SenderMessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderMessageViewCell.swift; sourceTree = "<group>"; };
+		EAA925CE26CBCBC9003D1D8F /* MyMessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageViewCell.swift; sourceTree = "<group>"; };
+		EAA925D026CBD32C003D1D8F /* OthersMessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersMessageViewCell.swift; sourceTree = "<group>"; };
 		EAEB957F26C559C4001A500D /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		EAEB958626C56307001A500D /* StreamInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamInformation.swift; sourceTree = "<group>"; };
 		EAEB958826C580F0001A500D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -137,8 +137,8 @@
 		EAEB958226C55C3F001A500D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EAA925CE26CBCBC9003D1D8F /* ReceiverMessageCell.swift */,
-				EAA925D026CBD32C003D1D8F /* SenderMessageViewCell.swift */,
+				EAA925CE26CBCBC9003D1D8F /* MyMessageViewCell.swift */,
+				EAA925D026CBD32C003D1D8F /* OthersMessageViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -308,13 +308,13 @@
 				EAA925C926CB5142003D1D8F /* ChatNetworkManager.swift in Sources */,
 				EAA925CD26CBB7FD003D1D8F /* ChatRoomViewController.swift in Sources */,
 				EAEB958726C56307001A500D /* StreamInformation.swift in Sources */,
-				EAA925D126CBD32C003D1D8F /* SenderMessageViewCell.swift in Sources */,
+				EAA925D126CBD32C003D1D8F /* OthersMessageViewCell.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
 				EAEB958B26C58138001A500D /* MessageSender.swift in Sources */,
 				EAEB958926C580F0001A500D /* Message.swift in Sources */,
 				EAEB958026C559C4001A500D /* ChatRoom.swift in Sources */,
 				EAEB95CC26C65C95001A500D /* StreamError.swift in Sources */,
-				EAA925CF26CBCBC9003D1D8F /* ReceiverMessageCell.swift in Sources */,
+				EAA925CF26CBCBC9003D1D8F /* MyMessageViewCell.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
