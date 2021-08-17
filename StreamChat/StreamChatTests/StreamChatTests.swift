@@ -16,7 +16,6 @@ class StreamChatTests: XCTestCase {
         let configuration = URLSessionConfiguration.default
         let delegateQueue = OperationQueue.main
         networkManager = NetworkManager(configuration: configuration, delegateQueue: delegateQueue)
-        expectation = expectation(description: "Expectation")
     }
 
     override func setUpWithError() throws {
@@ -39,8 +38,12 @@ class StreamChatTests: XCTestCase {
         }
     }
     
-    func test_get_성공() throws {
-        
-    }
+    func test_connectServer_성공() throws {
 
+        guard let inputStream = networkManager.inputStream else {
+            return
+        }
+        networkManager.stream(inputStream, handle: .hasBytesAvailable)
+       
+    }
 }

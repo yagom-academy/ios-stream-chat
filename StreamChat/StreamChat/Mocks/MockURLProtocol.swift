@@ -9,7 +9,7 @@ import Foundation
 
 class MockURLProtocol: URLProtocol {
     
-    static var requestHandler: ((URLRequest) throws -> (HTTPURLResponse, Data?))?
+    static var requestHandler: (() throws -> (Data?))?
     
     override class func canInit(with request: URLRequest) -> Bool {
         // To check if this protocol can handle the given request.
@@ -33,11 +33,11 @@ class MockURLProtocol: URLProtocol {
         do {
             // 2. Call handler with received request and capture the tuple of response and data.
             // 📌 2 단계 : 수신된 request로 requestHandler 클로저를 호출하고 (reponse, data)를 캡쳐한다.
-            let (response, data) = try handler(request) //request가 뭐임? URLProtocol로부터 상속된 프로퍼티임
+            let data = try handler() // request가 뭐임? URLProtocol로부터 상속된 프로퍼티임
             
             // 3. Send received response to the client.
             // 📌 3 단계 : 클라이언트에게 수신 받은 response를 보낸다.
-            client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+//            client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
             
             if let data = data {
                 // 4. Send received data to the client.

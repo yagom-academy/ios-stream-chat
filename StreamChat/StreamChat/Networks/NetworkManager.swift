@@ -9,7 +9,7 @@ import UIKit
 
 final class NetworkManager: NSObject {
     private var session: URLSession!
-    private var inputStream: InputStream?
+    var inputStream: InputStream?
     private var outputStream: OutputStream?
     private var streamTask: URLSessionStreamTask?
     weak var delegate: ChatViewModelDelegate?
