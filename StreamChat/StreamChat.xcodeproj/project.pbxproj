@@ -22,6 +22,8 @@
 		EAA925D526CC16BC003D1D8F /* ChatReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA925D426CC16BC003D1D8F /* ChatReadable.swift */; };
 		EAC1E7ED26CD3BE300A00CE5 /* SystemMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1E7EC26CD3BE300A00CE5 /* SystemMessageViewCell.swift */; };
 		EAC1E7F326CD5DC300A00CE5 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1E7F226CD5DC300A00CE5 /* Date+Extension.swift */; };
+		EAC1E7F526CD72A200A00CE5 /* MockChatNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1E7F426CD72A200A00CE5 /* MockChatNetworkManager.swift */; };
+		EAC1E7F726CD786900A00CE5 /* URLSessionStreamTaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1E7F626CD786900A00CE5 /* URLSessionStreamTaskProtocol.swift */; };
 		EAEB958026C559C4001A500D /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB957F26C559C4001A500D /* ChatRoom.swift */; };
 		EAEB958726C56307001A500D /* StreamInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB958626C56307001A500D /* StreamInformation.swift */; };
 		EAEB958926C580F0001A500D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB958826C580F0001A500D /* Message.swift */; };
@@ -63,6 +65,8 @@
 		EAA925D426CC16BC003D1D8F /* ChatReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatReadable.swift; sourceTree = "<group>"; };
 		EAC1E7EC26CD3BE300A00CE5 /* SystemMessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessageViewCell.swift; sourceTree = "<group>"; };
 		EAC1E7F226CD5DC300A00CE5 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		EAC1E7F426CD72A200A00CE5 /* MockChatNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChatNetworkManager.swift; sourceTree = "<group>"; };
+		EAC1E7F626CD786900A00CE5 /* URLSessionStreamTaskProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionStreamTaskProtocol.swift; sourceTree = "<group>"; };
 		EAEB957F26C559C4001A500D /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		EAEB958626C56307001A500D /* StreamInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamInformation.swift; sourceTree = "<group>"; };
 		EAEB958826C580F0001A500D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 				EAEB95D226C66F57001A500D /* MockURLSession.swift */,
 				EAEB95D426C67010001A500D /* MockStreamTask.swift */,
 				EAEB95D626C68379001A500D /* DummyData.swift */,
+				EAC1E7F426CD72A200A00CE5 /* MockChatNetworkManager.swift */,
 			);
 			path = StreamChatTests;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 			children = (
 				EAEB95D026C66DC7001A500D /* URLSessionProtocol.swift */,
 				EAA925CA26CB548D003D1D8F /* ChatNetworkManageable.swift */,
+				EAC1E7F626CD786900A00CE5 /* URLSessionStreamTaskProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -339,6 +345,7 @@
 				EAA925D326CC147D003D1D8F /* NetworkError.swift in Sources */,
 				EAA925CB26CB548D003D1D8F /* ChatNetworkManageable.swift in Sources */,
 				EAEB95CA26C65BAF001A500D /* ConnectionConfiguration.swift in Sources */,
+				EAC1E7F726CD786900A00CE5 /* URLSessionStreamTaskProtocol.swift in Sources */,
 				C7927559262C562B00EF5D3A /* LoginViewController.swift in Sources */,
 				EAA925C926CB5142003D1D8F /* ChatNetworkManager.swift in Sources */,
 				EAC1E7ED26CD3BE300A00CE5 /* SystemMessageViewCell.swift in Sources */,
@@ -363,6 +370,7 @@
 				EAEB95D526C67010001A500D /* MockStreamTask.swift in Sources */,
 				EAEB95D326C66F57001A500D /* MockURLSession.swift in Sources */,
 				EAEB95C226C64A1F001A500D /* StreamChatTests.swift in Sources */,
+				EAC1E7F526CD72A200A00CE5 /* MockChatNetworkManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
