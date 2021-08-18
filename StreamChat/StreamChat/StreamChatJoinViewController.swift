@@ -9,8 +9,6 @@ import UIKit
 import SnapKit
 
 final class StreamChatJoinViewController: UIViewController {
-    let streamChatViewController = StreamChatViewController()
-
     private let usernameTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .systemGray4
@@ -57,6 +55,8 @@ final class StreamChatJoinViewController: UIViewController {
 
     @objc func didTapJoinButton() {
         if let text = usernameTextField.text, text.isEmpty == false, text.count <= 10 {
+            let streamChatViewController = StreamChatViewController()
+            
             self.navigationController?.pushViewController(streamChatViewController, animated: true)
             StreamChat.shared.setupNetworkCommunication()
             StreamChat.shared.joinChat(username: text)
