@@ -12,10 +12,10 @@ class MyMessageViewCell: UITableViewCell {
     
     private let mySpeechBubble: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "bubble_right")
+        imageView.image = UIImage(named: "bubble_right")?.withRenderingMode(.alwaysTemplate)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleToFill
-        imageView.image?.withTintColor(UIColor(red: 0, green: 0.3804, blue: 0.9176, alpha: 1.0))
+        imageView.tintColor = UIColor(red: 0, green: 0.3804, blue: 0.9176, alpha: 1.0)
         return imageView
     }()
     
