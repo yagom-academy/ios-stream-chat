@@ -29,6 +29,17 @@ class MyMessageViewCell: UITableViewCell {
         return label
     }()
     
+    private let messageSentDateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.preferredFont(forTextStyle: .caption1)
+        label.adjustsFontForContentSizeCategory = true
+        label.textColor = .systemGray3
+        label.numberOfLines = 1
+        label.textAlignment = .right
+        return label
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUpMessageCell()
@@ -41,20 +52,29 @@ class MyMessageViewCell: UITableViewCell {
         self.contentView.backgroundColor = .white
         mySpeechBubble.addSubview(speechBubbleLabel)
         self.contentView.addSubview(mySpeechBubble)
+        self.contentView.addSubview(messageSentDateLabel)
         NSLayoutConstraint.activate([
             mySpeechBubble.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 5),
             mySpeechBubble.leadingAnchor.constraint(greaterThanOrEqualTo: self.contentView.leadingAnchor, constant: 50),
-            mySpeechBubble.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            mySpeechBubble.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            mySpeechBubble.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -8),
             
             speechBubbleLabel.topAnchor.constraint(equalTo: mySpeechBubble.topAnchor, constant: 8),
             speechBubbleLabel.leadingAnchor.constraint(equalTo: mySpeechBubble.leadingAnchor, constant: 8),
             speechBubbleLabel.trailingAnchor.constraint(equalTo: mySpeechBubble.trailingAnchor, constant: -8),
-            speechBubbleLabel.bottomAnchor.constraint(equalTo: mySpeechBubble.bottomAnchor, constant: -8)
+            speechBubbleLabel.bottomAnchor.constraint(equalTo: mySpeechBubble.bottomAnchor, constant: -8),
+            
+            messageSentDateLabel.topAnchor.constraint(equalTo: mySpeechBubble.bottomAnchor, constant: 5),
+            messageSentDateLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            messageSentDateLabel.trailingAnchor.constraint(equalTo: mySpeechBubble.trailingAnchor),
+            messageSentDateLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -5)
         ])
     }
     
     func changeLabelText(_ text: String) {
         speechBubbleLabel.text = text
+    }
+    
+    func setDateLabelText(_ text: String) {
+        messageSentDateLabel.text = text
     }
 }

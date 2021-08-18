@@ -236,12 +236,14 @@ extension ChatRoomViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.changeLabelText("\(message.senderUsername) \(message.content)")
+            cell.setDateLabelText(Date().formattedString)
             return cell
         } else if message.messageSender == .someoneElse {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: OthersMessageViewCell.identifier, for: indexPath) as? OthersMessageViewCell else {
                 return UITableViewCell()
             }
             cell.changeLabelText("\(message.senderUsername) \(message.content)")
+            cell.setDateLabelText(Date().formattedString)
             return cell
         } else if message.messageSender == .system {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SystemMessageViewCell.identifier, for: indexPath) as? SystemMessageViewCell else {
