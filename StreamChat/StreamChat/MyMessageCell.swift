@@ -48,7 +48,8 @@ final class MyMessageCell: UITableViewCell {
 
         messageLable.snp.makeConstraints { label in
             label.top.bottom.equalTo(messageView).inset(5)
-            label.leading.trailing.equalTo(messageView).inset(10)
+            label.leading.equalTo(messageView).inset(10)
+            label.trailing.equalTo(messageView).inset(13)
         }
 
         timeLabel.snp.makeConstraints { label in

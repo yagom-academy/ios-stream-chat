@@ -12,8 +12,6 @@ final class NotificationCell: UITableViewCell {
 
     private let notificationLable: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .systemGray3
-        label.layer.cornerRadius = 10
         return label
     }()
 

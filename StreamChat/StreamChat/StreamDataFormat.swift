@@ -12,6 +12,7 @@ struct StreamDataFormat {
 
     let divisionPoint = "::"
     let divisionSpaceNotifi = " "
+    let emptyUsername = ""
 
     func join(data: String) -> String {
         return "USR_NAME::\(data)::END"
@@ -21,15 +22,15 @@ struct StreamDataFormat {
         return "MSG::\(data)::END"
     }
 
-    func leave() -> String {
-        return "LEAVE::::END"
-    }
-
     func receiveMessage(username: String, message: String) -> String {
         return "\(username) : \(message)"
     }
 
-    func othreUserChatStatus(username: String, status: String) -> String {
+    func notificationMessage(username: String, status: String) -> String {
         return "\(username) has \(status)"
+    }
+
+    func leave() -> String {
+        return "LEAVE::::END"
     }
 }

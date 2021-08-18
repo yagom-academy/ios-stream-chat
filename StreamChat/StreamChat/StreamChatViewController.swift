@@ -20,6 +20,12 @@ final class StreamChatViewController: UIViewController {
         setupSendMessageView()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        StreamChat.shared.stopChat()
+    }
+
     private func setupTableView() {
         view.addSubview(tableView)
         tableView.dataSource = self

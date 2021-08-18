@@ -60,10 +60,9 @@ final class StreamChatJoinViewController: UIViewController {
             self.navigationController?.pushViewController(streamChatViewController, animated: true)
             StreamChat.shared.setupNetworkCommunication()
             StreamChat.shared.joinChat(username: text)
+            usernameTextField.text = nil
         } else {
             print("10글자!")
         }
-
     }
-
 }

@@ -16,7 +16,7 @@ final class StreamChat: NSObject {
     private let maxReadLength = 4096
     private let maxSendMessageLength = 300
     private let receiveMessageCount = 2
-    private var username = ""
+    private var myUsername = StreamDataFormat.shared.emptyUsername
     private var chats: [Chat] = []
 
     var delegate: StreamChatDelegate?
@@ -52,7 +52,7 @@ final class StreamChat: NSObject {
     }
 
     func joinChat(username: String) {
-        self.username = username
+        self.myUsername = username
         let data = StreamDataFormat.shared.join(data: username)
         stringToOutputStreamData(string: data)
     }
@@ -61,7 +61,7 @@ final class StreamChat: NSObject {
         if message.count < maxSendMessageLength {
             let data = StreamDataFormat.shared.sendMessage(data: message)
 
-            chats.append(Chat(username: username,
+            chats.append(Chat(username: myUsername,
                               message: message,
                               identifier: .my,
                               date: Date()))
@@ -93,6 +93,9 @@ final class StreamChat: NSObject {
         stringToOutputStreamData(string: data)
         inputStream?.close()
         outputStream?.close()
+
+        self.chats = []
+        self.myUsername = StreamDataFormat.shared.emptyUsername
     }
 
     func countChats() -> Int {
@@ -125,13 +128,9 @@ extension StreamChat: StreamDelegate {
                 .components(separatedBy: StreamDataFormat.shared.divisionPoint) else { return }
 
         if stringArray.count == receiveMessageCount {
-            print("receive Message")
             guard let username = stringArray.first,
                   let message = stringArray.last,
-                  self.username != username else { return }
-
-            print("username: \(username)")
-            print("message: \(message)")
+                  self.myUsername != username else { return }
 
             chats.append(Chat(username: username,
                               message: message,
@@ -142,9 +141,10 @@ extension StreamChat: StreamDelegate {
                     .components(separatedBy: StreamDataFormat.shared.divisionSpaceNotifi),
                   let username = stringNotification.first,
                   let status = stringNotification.last,
-                  self.username != username else { return }
+                  self.myUsername != username else { return }
 
-            let notificationMessage = "\(username) has \(status)"
+            let notificationMessage = StreamDataFormat.shared.notificationMessage(username: username,
+                                                                                  status: status)
             chats.append(Chat(username: username,
                               message: notificationMessage,
                               identifier: .notification,
