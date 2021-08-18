@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C623183D26C948AA0026C82F /* MessageIntegers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C623183C26C948AA0026C82F /* MessageIntegers.swift */; };
+		C6800D9126C1506400EE1778 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C6800D9026C1506400EE1778 /* .swiftlint.yml */; };
+		C6800D9326C173C900EE1778 /* TcpSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6800D9226C173C900EE1778 /* TcpSocket.swift */; };
+		C6AA33EB26C3904200F26969 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA33EA26C3904200F26969 /* MessageData.swift */; };
+		C6AA33ED26C39D6400F26969 /* TcpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA33EC26C39D6400F26969 /* TcpError.swift */; };
+		C6B471D226C2E7480062B3CF /* MessageDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B471D126C2E7480062B3CF /* MessageDataManager.swift */; };
+		C6E5676426C2B0DE001782DC /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5676326C2B0DE001782DC /* Chatting.swift */; };
+		C6E5676626C2B35D001782DC /* ChattingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5676526C2B35D001782DC /* ChattingError.swift */; };
+		C6E5677426C2CFA8001782DC /* StreamChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5677326C2CFA8001782DC /* StreamChatTests.swift */; };
+		C6E5677D26C2D363001782DC /* ChattingConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5677C26C2D363001782DC /* ChattingConstant.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
 		C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927556262C562B00EF5D3A /* SceneDelegate.swift */; };
 		C7927559262C562B00EF5D3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927558262C562B00EF5D3A /* ViewController.swift */; };
@@ -15,7 +25,31 @@
 		C7927561262C562E00EF5D3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C792755F262C562E00EF5D3A /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C6E5677626C2CFA8001782DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7927549262C562B00EF5D3A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C7927550262C562B00EF5D3A;
+			remoteInfo = StreamChat;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		6BB33274245B6C44B64809A1 /* Pods-StreamChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.release.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.release.xcconfig"; sourceTree = "<group>"; };
+		C519B3CCF728D5E130A3795A /* Pods-StreamChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.debug.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.debug.xcconfig"; sourceTree = "<group>"; };
+		C623183C26C948AA0026C82F /* MessageIntegers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageIntegers.swift; sourceTree = "<group>"; };
+		C6800D9026C1506400EE1778 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		C6800D9226C173C900EE1778 /* TcpSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpSocket.swift; sourceTree = "<group>"; };
+		C6AA33EA26C3904200F26969 /* MessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
+		C6AA33EC26C39D6400F26969 /* TcpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpError.swift; sourceTree = "<group>"; };
+		C6B471D126C2E7480062B3CF /* MessageDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDataManager.swift; sourceTree = "<group>"; };
+		C6E5676326C2B0DE001782DC /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
+		C6E5676526C2B35D001782DC /* ChattingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingError.swift; sourceTree = "<group>"; };
+		C6E5677126C2CFA8001782DC /* StreamChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6E5677326C2CFA8001782DC /* StreamChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamChatTests.swift; sourceTree = "<group>"; };
+		C6E5677526C2CFA8001782DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6E5677C26C2D363001782DC /* ChattingConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingConstant.swift; sourceTree = "<group>"; };
 		C7927551262C562B00EF5D3A /* StreamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7927554262C562B00EF5D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7927556262C562B00EF5D3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,6 +61,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C6E5676E26C2CFA8001782DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C792754E262C562B00EF5D3A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -37,11 +78,89 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2EDCB91025CA5F9B569CF86A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C6B471D426C2F0920062B3CF /* Receive */ = {
+			isa = PBXGroup;
+			children = (
+				C6B471D126C2E7480062B3CF /* MessageDataManager.swift */,
+				C6AA33EA26C3904200F26969 /* MessageData.swift */,
+			);
+			path = Receive;
+			sourceTree = "<group>";
+		};
+		C6E5676726C2CDFF001782DC /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				C6E5676526C2B35D001782DC /* ChattingError.swift */,
+				C6AA33EC26C39D6400F26969 /* TcpError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		C6E5676826C2CE17001782DC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C792755A262C562B00EF5D3A /* Main.storyboard */,
+				C7927558262C562B00EF5D3A /* ViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C6E5676926C2CE5F001782DC /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				C7927554262C562B00EF5D3A /* AppDelegate.swift */,
+				C7927556262C562B00EF5D3A /* SceneDelegate.swift */,
+				C792755D262C562E00EF5D3A /* Assets.xcassets */,
+				C792755F262C562E00EF5D3A /* LaunchScreen.storyboard */,
+				C7927562262C562E00EF5D3A /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		C6E5676C26C2CEFD001782DC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C6B471D426C2F0920062B3CF /* Receive */,
+				C6E5676326C2B0DE001782DC /* Chatting.swift */,
+				C6800D9226C173C900EE1778 /* TcpSocket.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C6E5677226C2CFA8001782DC /* StreamChatTests */ = {
+			isa = PBXGroup;
+			children = (
+				C6E5677326C2CFA8001782DC /* StreamChatTests.swift */,
+				C6E5677526C2CFA8001782DC /* Info.plist */,
+			);
+			path = StreamChatTests;
+			sourceTree = "<group>";
+		};
+		C6E5677B26C2D33D001782DC /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				C6E5677C26C2D363001782DC /* ChattingConstant.swift */,
+				C623183C26C948AA0026C82F /* MessageIntegers.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		C7927548262C562B00EF5D3A = {
 			isa = PBXGroup;
 			children = (
+				C6800D9026C1506400EE1778 /* .swiftlint.yml */,
 				C7927553262C562B00EF5D3A /* StreamChat */,
+				C6E5677226C2CFA8001782DC /* StreamChatTests */,
 				C7927552262C562B00EF5D3A /* Products */,
+				EF20CA94484C58CC353BE1A0 /* Pods */,
+				2EDCB91025CA5F9B569CF86A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -49,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				C7927551262C562B00EF5D3A /* StreamChat.app */,
+				C6E5677126C2CFA8001782DC /* StreamChatTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,27 +176,54 @@
 		C7927553262C562B00EF5D3A /* StreamChat */ = {
 			isa = PBXGroup;
 			children = (
-				C7927554262C562B00EF5D3A /* AppDelegate.swift */,
-				C7927556262C562B00EF5D3A /* SceneDelegate.swift */,
-				C7927558262C562B00EF5D3A /* ViewController.swift */,
-				C792755A262C562B00EF5D3A /* Main.storyboard */,
-				C792755D262C562E00EF5D3A /* Assets.xcassets */,
-				C792755F262C562E00EF5D3A /* LaunchScreen.storyboard */,
-				C7927562262C562E00EF5D3A /* Info.plist */,
+				C6E5676C26C2CEFD001782DC /* Model */,
+				C6E5676826C2CE17001782DC /* View */,
+				C6E5676726C2CDFF001782DC /* Error */,
+				C6E5677B26C2D33D001782DC /* Constants */,
+				C6E5676926C2CE5F001782DC /* SupportingFiles */,
 			);
 			path = StreamChat;
+			sourceTree = "<group>";
+		};
+		EF20CA94484C58CC353BE1A0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C519B3CCF728D5E130A3795A /* Pods-StreamChat.debug.xcconfig */,
+				6BB33274245B6C44B64809A1 /* Pods-StreamChat.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C6E5677026C2CFA8001782DC /* StreamChatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6E5677826C2CFA8001782DC /* Build configuration list for PBXNativeTarget "StreamChatTests" */;
+			buildPhases = (
+				C6E5676D26C2CFA8001782DC /* Sources */,
+				C6E5676E26C2CFA8001782DC /* Frameworks */,
+				C6E5676F26C2CFA8001782DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C6E5677726C2CFA8001782DC /* PBXTargetDependency */,
+			);
+			name = StreamChatTests;
+			productName = StreamChatTests;
+			productReference = C6E5677126C2CFA8001782DC /* StreamChatTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C7927550262C562B00EF5D3A /* StreamChat */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7927565262C562E00EF5D3A /* Build configuration list for PBXNativeTarget "StreamChat" */;
 			buildPhases = (
+				A593F61F6FB8316CFC05B945 /* [CP] Check Pods Manifest.lock */,
 				C792754D262C562B00EF5D3A /* Sources */,
 				C792754E262C562B00EF5D3A /* Frameworks */,
 				C792754F262C562B00EF5D3A /* Resources */,
+				C6800D8F26C1500100EE1778 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -93,9 +240,13 @@
 		C7927549262C562B00EF5D3A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					C6E5677026C2CFA8001782DC = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = C7927550262C562B00EF5D3A;
+					};
 					C7927550262C562B00EF5D3A = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -115,15 +266,24 @@
 			projectRoot = "";
 			targets = (
 				C7927550262C562B00EF5D3A /* StreamChat */,
+				C6E5677026C2CFA8001782DC /* StreamChatTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C6E5676F26C2CFA8001782DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C792754F262C562B00EF5D3A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6800D9126C1506400EE1778 /* .swiftlint.yml in Resources */,
 				C7927561262C562E00EF5D3A /* LaunchScreen.storyboard in Resources */,
 				C792755E262C562E00EF5D3A /* Assets.xcassets in Resources */,
 				C792755C262C562B00EF5D3A /* Main.storyboard in Resources */,
@@ -132,18 +292,84 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A593F61F6FB8316CFC05B945 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StreamChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6800D8F26C1500100EE1778 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		C6E5676D26C2CFA8001782DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6E5677426C2CFA8001782DC /* StreamChatTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C792754D262C562B00EF5D3A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6E5677D26C2D363001782DC /* ChattingConstant.swift in Sources */,
+				C6E5676626C2B35D001782DC /* ChattingError.swift in Sources */,
+				C6AA33ED26C39D6400F26969 /* TcpError.swift in Sources */,
+				C6B471D226C2E7480062B3CF /* MessageDataManager.swift in Sources */,
 				C7927559262C562B00EF5D3A /* ViewController.swift in Sources */,
+				C6AA33EB26C3904200F26969 /* MessageData.swift in Sources */,
+				C6800D9326C173C900EE1778 /* TcpSocket.swift in Sources */,
+				C6E5676426C2B0DE001782DC /* Chatting.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
+				C623183D26C948AA0026C82F /* MessageIntegers.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C6E5677726C2CFA8001782DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C7927550262C562B00EF5D3A /* StreamChat */;
+			targetProxy = C6E5677626C2CFA8001782DC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C792755A262C562B00EF5D3A /* Main.storyboard */ = {
@@ -165,6 +391,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C6E5677926C2CFA8001782DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = StreamChatTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = KangKyung.StreamChatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StreamChat.app/StreamChat";
+			};
+			name = Debug;
+		};
+		C6E5677A26C2CFA8001782DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = StreamChatTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = KangKyung.StreamChatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StreamChat.app/StreamChat";
+			};
+			name = Release;
+		};
 		C7927563262C562E00EF5D3A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -283,11 +549,12 @@
 		};
 		C7927566262C562E00EF5D3A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C519B3CCF728D5E130A3795A /* Pods-StreamChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = StreamChat/Info.plist;
+				INFOPLIST_FILE = StreamChat/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,11 +568,12 @@
 		};
 		C7927567262C562E00EF5D3A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BB33274245B6C44B64809A1 /* Pods-StreamChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = StreamChat/Info.plist;
+				INFOPLIST_FILE = StreamChat/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,6 +588,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C6E5677826C2CFA8001782DC /* Build configuration list for PBXNativeTarget "StreamChatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6E5677926C2CFA8001782DC /* Debug */,
+				C6E5677A26C2CFA8001782DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C792754C262C562B00EF5D3A /* Build configuration list for PBXProject "StreamChat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
