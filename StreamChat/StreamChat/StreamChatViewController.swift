@@ -8,6 +8,7 @@ import UIKit
 import SnapKit
 
 final class StreamChatViewController: UIViewController {
+    private var bottomConstraint = NSLayoutConstraint()
     private let tableView = UITableView()
     private let sendMessageView = SendMessageView()
 
@@ -17,6 +18,8 @@ final class StreamChatViewController: UIViewController {
         StreamChat.shared.delegate = self
         view.backgroundColor = .systemBackground
         self.navigationController?.isNavigationBarHidden = false
+        setupKeyboardWillShow()
+        setupKeyboardWillHide()
         setupTableView()
         setupSendMessageView()
     }
@@ -26,6 +29,44 @@ final class StreamChatViewController: UIViewController {
 
         StreamChat.shared.stopChat()
         self.navigationController?.isNavigationBarHidden = true
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
+    private func setupKeyboardWillShow() {
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification,
+                                               object: nil, queue: .main) { notification in
+            guard let userInfo = notification.userInfo else { return }
+
+            guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+                  let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
+
+            self.bottomConstraint.constant = -keyboardFrame.height + 35
+
+            UIView.animate(withDuration: duration) {
+                self.view.layoutIfNeeded()
+                self.scrollToBottom()
+            }
+        }
+    }
+
+    private func setupKeyboardWillHide() {
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification,
+                                               object: nil, queue: .main) { notification in
+            guard let userInfo = notification.userInfo else { return }
+
+            guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+                  let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
+
+            self.bottomConstraint.constant = 0
+
+            UIView.animate(withDuration: duration) {
+                self.view.setNeedsLayout()
+                self.scrollToBottom()
+            }
+        }
     }
 
     private func setupTableView() {
@@ -52,8 +93,20 @@ final class StreamChatViewController: UIViewController {
             sendView.top.equalTo(tableView.snp.bottom)
             sendView.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+
+        bottomConstraint = sendMessageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+                                                                   constant: .zero)
+        bottomConstraint.isActive = true
     }
 
+    private func scrollToBottom() {
+        let lastRow: Int = StreamChat.shared.countChats() - 1
+
+        if lastRow > 0 {
+            let indexPath: IndexPath = IndexPath(row: lastRow, section: 0)
+            tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
+        }
+    }
 }
 
 // MARK: - TableView DataSource

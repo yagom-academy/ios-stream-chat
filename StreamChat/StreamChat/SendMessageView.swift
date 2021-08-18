@@ -59,7 +59,7 @@ final class SendMessageView: UIView {
         self.addSubview(messageTextfield)
 
         messageTextfield.snp.makeConstraints { textfield in
-            textfield.top.leading.bottom.equalTo(self.safeAreaLayoutGuide).inset(10)
+            textfield.top.leading.bottom.equalTo(self).inset(10)
             textfield.trailing.equalTo(sendButton.snp.leading)
         }
     }
