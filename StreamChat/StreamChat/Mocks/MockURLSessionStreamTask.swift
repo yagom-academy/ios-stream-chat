@@ -8,9 +8,9 @@
 import Foundation
 
 final class MockURLSessionStreamTask: URLSessionStreamTaskProtocol {
-    static var setUrlSessionStreamDelegate: (InputStreamProtocol, outputStreamProtocol) -> Void = {_, _ in}
+    static var setUrlSessionStreamDelegate: (InputStreamProtocol, OutputStreamProtocol) -> Void = {_, _ in}
     static var inputStream: InputStreamProtocol?
-    static var outputStream: outputStreamProtocol?
+    static var outputStream: OutputStreamProtocol?
     
     func resume() {
         UnitTestVariables.serverConnectionTestList.append(UnitTestConstants.resumeCall)

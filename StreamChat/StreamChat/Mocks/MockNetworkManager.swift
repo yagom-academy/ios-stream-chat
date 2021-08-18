@@ -11,7 +11,7 @@ class MockNetworkManager: NetworkManagerProtocol {
     weak var delegate: ChatViewModelDelegate?
     
     func setUrlSessionStreamDelegate(inputStream: InputStreamProtocol,
-                                     outputStream: outputStreamProtocol) {
+                                     outputStream: OutputStreamProtocol) {
         
     }
     

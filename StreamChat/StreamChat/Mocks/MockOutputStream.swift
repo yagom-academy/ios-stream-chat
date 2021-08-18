@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class MockOutputStream: outputStreamProtocol {
+final class MockOutputStream: OutputStreamProtocol {
     weak var delegate: StreamDelegate?
     
     func open() {

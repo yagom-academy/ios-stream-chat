@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol outputStreamProtocol {
+protocol OutputStreamProtocol {
     var delegate: StreamDelegate? { get set }
     
     func open()
@@ -21,5 +21,5 @@ protocol outputStreamProtocol {
     
 }
 
-extension OutputStream: outputStreamProtocol {
+extension OutputStream: OutputStreamProtocol {
 }

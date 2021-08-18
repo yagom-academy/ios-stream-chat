@@ -12,7 +12,7 @@ class StreamChatTests: XCTestCase {
     var networkManager: NetworkManager!
     var expectation: XCTestExpectation!
     var inputStream: InputStreamProtocol!
-    var outputStream: outputStreamProtocol!
+    var outputStream: OutputStreamProtocol!
     var streamTask: URLSessionStreamTaskProtocol!
     
     override func setUp() {
