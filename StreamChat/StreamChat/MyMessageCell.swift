@@ -12,7 +12,7 @@ final class MyMessageCell: UITableViewCell {
 
     let messageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "bubble_right")
+        imageView.image = UIImage(named: "bubble_right")?.withRenderingMode(.alwaysTemplate)
         imageView.contentMode = .scaleToFill
         imageView.tintColor = .systemGreen
         return imageView
@@ -21,6 +21,7 @@ final class MyMessageCell: UITableViewCell {
     let messageLable: UILabel = {
         let label = UILabel()
         label.text = "placeholder send Message"
+        label.textColor = .white
         label.numberOfLines = 0
         return label
     }()
