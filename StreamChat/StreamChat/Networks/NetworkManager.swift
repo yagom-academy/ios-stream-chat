@@ -57,16 +57,11 @@ final class NetworkManager: NSObject {
         streamTask?.closeRead()
         streamTask?.closeWrite()
     }
-}
-
-extension NetworkManager: URLSessionStreamDelegate {
-    func urlSession(_ session: URLSession, streamTask: URLSessionStreamTask, didBecome inputStream: InputStream, outputStream: OutputStream) {
-        setUrlSessionStreamDelegate(inputStream: inputStream, outputStream: outputStream)
-    }
-}
-
-extension NetworkManager: StreamDelegate {
-    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+    
+    func reactToStreamEvent(_ aStream: Stream,
+                            handle eventCode: Stream.Event,
+                            inputStream: InputStreamProtocol?,
+                            delegate: NetworkManagerDelegate?) {
         if (aStream as? InputStream) != nil {
             switch eventCode {
             case .hasBytesAvailable:
@@ -79,6 +74,21 @@ extension NetworkManager: StreamDelegate {
             default: break
             }
         }
+    }
+}
+
+extension NetworkManager: URLSessionStreamDelegate {
+    func urlSession(_ session: URLSession, streamTask: URLSessionStreamTask, didBecome inputStream: InputStream, outputStream: OutputStream) {
+        setUrlSessionStreamDelegate(inputStream: inputStream, outputStream: outputStream)
+    }
+}
+
+extension NetworkManager: StreamDelegate {
+    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+        reactToStreamEvent(aStream,
+                           handle: eventCode,
+                           inputStream: inputStream,
+                           delegate: delegate)
     }
 }
 
