@@ -12,10 +12,10 @@ class OthersMessageViewCell: UITableViewCell {
     
     private let otherSpeechBubble: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "bubble_left")
+        imageView.image = UIImage(named: "bubble_left")?.withRenderingMode(.alwaysTemplate)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleToFill
-        imageView.image?.withTintColor(UIColor(red: 0, green: 0.8275, blue: 0.3294, alpha: 1.0))
+        imageView.tintColor = UIColor(red: 0, green: 0.7294, blue: 0.2039, alpha: 1.0)
         return imageView
     }()
     
@@ -45,7 +45,7 @@ class OthersMessageViewCell: UITableViewCell {
             otherSpeechBubble.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 5),
             otherSpeechBubble.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             otherSpeechBubble.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            otherSpeechBubble.trailingAnchor.constraint(greaterThanOrEqualTo: self.contentView.trailingAnchor, constant: -50),
+            otherSpeechBubble.trailingAnchor.constraint(lessThanOrEqualTo: self.contentView.trailingAnchor, constant: -50),
             
             speechBubbleLabel.topAnchor.constraint(equalTo: otherSpeechBubble.topAnchor, constant: 8),
             speechBubbleLabel.leadingAnchor.constraint(equalTo: otherSpeechBubble.leadingAnchor, constant: 8),
