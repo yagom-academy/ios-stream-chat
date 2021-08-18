@@ -22,18 +22,16 @@ final class ChatNetworkManager: NSObject, ChatNetworkManageable {
         urlSession = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
         self.streamTask = urlSession.streamTask(withHostName: StreamInformation.host, port: StreamInformation.portNumber)
         streamTask?.resume()
-        read(from: streamTask)
     }
     
-    func read(from streamTask: URLSessionStreamTask?) {
-        streamTask?.readData(ofMinLength: ConnectionConfiguration.minimumReadLength, maxLength: ConnectionConfiguration.maximumReadLength, timeout: ConnectionConfiguration.timeOut) { [weak self] data, _, error in
+    func read(completionHandler: @escaping (Result<Data, NetworkError>) -> Void) {
+        streamTask?.readData(ofMinLength: ConnectionConfiguration.minimumReadLength, maxLength: ConnectionConfiguration.maximumReadLength, timeout: ConnectionConfiguration.timeOut) { data, _, error in
 
-            defer {
-                self?.read(from: streamTask)
-            }
             guard let data = data else {
                 return
             }
+            
+            completionHandler(.success(data))
             
             // MARK: - Read Log
             NSLog(String(data: data, encoding: .utf8) ?? "no message could be read")
