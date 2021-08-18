@@ -20,10 +20,14 @@
 		C6AA33EB26C3904200F26969 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA33EA26C3904200F26969 /* MessageData.swift */; };
 		C6AA33ED26C39D6400F26969 /* TcpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA33EC26C39D6400F26969 /* TcpError.swift */; };
 		C6B471D226C2E7480062B3CF /* ReceivedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B471D126C2E7480062B3CF /* ReceivedData.swift */; };
+		C6BEA87F26CCB5D400524987 /* BubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BEA87E26CCB5D400524987 /* BubbleCell.swift */; };
+		C6BEA88126CCB60600524987 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BEA88026CCB60600524987 /* Chat.swift */; };
+		C6BEA88326CCB76D00524987 /* ChattingViewConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BEA88226CCB76D00524987 /* ChattingViewConstant.swift */; };
+		C6BEA88626CCBD1100524987 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BEA88526CCBD1100524987 /* DateFormatter.swift */; };
 		C6E5676426C2B0DE001782DC /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5676326C2B0DE001782DC /* Chatting.swift */; };
 		C6E5676626C2B35D001782DC /* ChattingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5676526C2B35D001782DC /* ChattingError.swift */; };
 		C6E5677426C2CFA8001782DC /* StreamChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5677326C2CFA8001782DC /* StreamChatTests.swift */; };
-		C6E5677D26C2D363001782DC /* ChattingConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5677C26C2D363001782DC /* ChattingConstant.swift */; };
+		C6E5677D26C2D363001782DC /* StreamConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5677C26C2D363001782DC /* StreamConstant.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
 		C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927556262C562B00EF5D3A /* SceneDelegate.swift */; };
 		C792755C262C562B00EF5D3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C792755A262C562B00EF5D3A /* Main.storyboard */; };
@@ -57,12 +61,16 @@
 		C6AA33EA26C3904200F26969 /* MessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
 		C6AA33EC26C39D6400F26969 /* TcpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpError.swift; sourceTree = "<group>"; };
 		C6B471D126C2E7480062B3CF /* ReceivedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedData.swift; sourceTree = "<group>"; };
+		C6BEA87E26CCB5D400524987 /* BubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleCell.swift; sourceTree = "<group>"; };
+		C6BEA88026CCB60600524987 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		C6BEA88226CCB76D00524987 /* ChattingViewConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewConstant.swift; sourceTree = "<group>"; };
+		C6BEA88526CCBD1100524987 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		C6E5676326C2B0DE001782DC /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
 		C6E5676526C2B35D001782DC /* ChattingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingError.swift; sourceTree = "<group>"; };
 		C6E5677126C2CFA8001782DC /* StreamChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E5677326C2CFA8001782DC /* StreamChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamChatTests.swift; sourceTree = "<group>"; };
 		C6E5677526C2CFA8001782DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6E5677C26C2D363001782DC /* ChattingConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingConstant.swift; sourceTree = "<group>"; };
+		C6E5677C26C2D363001782DC /* StreamConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamConstant.swift; sourceTree = "<group>"; };
 		C7927551262C562B00EF5D3A /* StreamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7927554262C562B00EF5D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7927556262C562B00EF5D3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +133,14 @@
 			path = Receive;
 			sourceTree = "<group>";
 		};
+		C6BEA88426CCBD0100524987 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C6BEA88526CCBD1100524987 /* DateFormatter.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		C6E5676726C2CDFF001782DC /* Error */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +156,7 @@
 				C792755A262C562B00EF5D3A /* Main.storyboard */,
 				C680194D26CB422400A190DB /* StartViewController.swift */,
 				C6A2B88526CBC55F00948CD0 /* ChattingViewController.swift */,
+				C6BEA87E26CCB5D400524987 /* BubbleCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -162,6 +179,7 @@
 				C6B471D426C2F0920062B3CF /* Receive */,
 				C6E5676326C2B0DE001782DC /* Chatting.swift */,
 				C6800D9226C173C900EE1778 /* TcpSocket.swift */,
+				C6BEA88026CCB60600524987 /* Chat.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -179,8 +197,9 @@
 			isa = PBXGroup;
 			children = (
 				C680195226CB712D00A190DB /* View */,
-				C6E5677C26C2D363001782DC /* ChattingConstant.swift */,
+				C6E5677C26C2D363001782DC /* StreamConstant.swift */,
 				C623183C26C948AA0026C82F /* Integers.swift */,
+				C6BEA88226CCB76D00524987 /* ChattingViewConstant.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -209,6 +228,7 @@
 		C7927553262C562B00EF5D3A /* StreamChat */ = {
 			isa = PBXGroup;
 			children = (
+				C6BEA88426CCBD0100524987 /* Extension */,
 				C6E5676C26C2CEFD001782DC /* Model */,
 				C6E5676826C2CE17001782DC /* View */,
 				C680194F26CB427800A190DB /* ViewModel */,
@@ -382,18 +402,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				C680195626CB719700A190DB /* ViewColor.swift in Sources */,
-				C6E5677D26C2D363001782DC /* ChattingConstant.swift in Sources */,
+				C6E5677D26C2D363001782DC /* StreamConstant.swift in Sources */,
+				C6BEA88126CCB60600524987 /* Chat.swift in Sources */,
+				C6BEA88626CCBD1100524987 /* DateFormatter.swift in Sources */,
 				C6E5676626C2B35D001782DC /* ChattingError.swift in Sources */,
 				C6AA33ED26C39D6400F26969 /* TcpError.swift in Sources */,
 				C6B471D226C2E7480062B3CF /* ReceivedData.swift in Sources */,
 				C680195826CB746700A190DB /* ViewSize.swift in Sources */,
 				C680194E26CB422400A190DB /* StartViewController.swift in Sources */,
+				C6BEA88326CCB76D00524987 /* ChattingViewConstant.swift in Sources */,
 				C6AA33EB26C3904200F26969 /* MessageData.swift in Sources */,
 				C6A2B88626CBC55F00948CD0 /* ChattingViewController.swift in Sources */,
 				C6800D9326C173C900EE1778 /* TcpSocket.swift in Sources */,
 				C6A2B88826CBCCE500948CD0 /* ChattingViewModel.swift in Sources */,
 				C6E5676426C2B0DE001782DC /* Chatting.swift in Sources */,
 				C680195426CB714000A190DB /* ViewImage.swift in Sources */,
+				C6BEA87F26CCB5D400524987 /* BubbleCell.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
 				C623183D26C948AA0026C82F /* Integers.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,

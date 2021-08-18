@@ -7,21 +7,12 @@
 
 import UIKit
 
-class BubbleCell: UITableViewCell {
-    @IBOutlet weak var label: UILabel!
-}
-
-struct Chat {
-    
-    let message: String
-    let isMyMessage: Bool = Bool.random()
-}
-
-class ChattingViewController: UIViewController {
+final class ChattingViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    private let dateFormatter = DateFormatter()
     private var chats: [Chat] = []
     
     override func viewDidLoad() {
@@ -38,7 +29,8 @@ class ChattingViewController: UIViewController {
             else {
                 return
             }
-            self.bottomConstraint.constant = keyboardFrame.height - 25
+            self.bottomConstraint.constant = keyboardFrame.height -
+                ChattingViewConstant.lengthOfKeyboard
             
             guard let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey]
                     as? TimeInterval else {
@@ -48,7 +40,6 @@ class ChattingViewController: UIViewController {
                 self.view.layoutIfNeeded()
             }
         }
-        
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification,
                                                object: nil, queue: .main) { (notification) in
             guard let userInfo = notification.userInfo,
@@ -56,7 +47,7 @@ class ChattingViewController: UIViewController {
                     TimeInterval else {
                 return
             }
-            self.bottomConstraint.constant = 8
+            self.bottomConstraint.constant = ChattingViewConstant.lengthOfChatInputWindow
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()
             }
@@ -67,7 +58,9 @@ class ChattingViewController: UIViewController {
               text.isEmpty == false else {
             return
         }
-        chats.append(Chat(message: text))
+        let currentDate = Date()
+        chats.append(Chat(user: "test", message: text,
+                          writtenDate: dateFormatter.convertToStringForChat(date: currentDate)))
         messageField.text = nil
         
         let indexPath = IndexPath(row: chats.count - 1, section: 0)
@@ -90,7 +83,9 @@ extension ChattingViewController: UITableViewDataSource {
                                                  for: indexPath) as? BubbleCell else {
             return UITableViewCell()
         }
-        cell.label.text = chat.message
+        cell.message.text = chat.message
+        cell.writtenDateLabel.textColor = ViewColor.chatTime
+        cell.writtenDateLabel.text = chat.writtenDate
         
         return cell
     }

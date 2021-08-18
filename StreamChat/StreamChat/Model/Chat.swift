@@ -1,0 +1,16 @@
+//
+//  Chat.swift
+//  StreamChat
+//
+//  Created by 강경 on 2021/08/18.
+//
+
+import Foundation
+
+struct Chat {
+    
+    let user: String
+    let message: String
+    let writtenDate: String
+    let isMyMessage: Bool = Bool.random()
+}

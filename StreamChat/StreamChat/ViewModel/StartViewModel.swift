@@ -8,8 +8,8 @@
 import Foundation
 
 class StartViewModel {
-    private let host = ChattingConstant.host
-    private let port = ChattingConstant.port
+    private let host = StreamConstant.host
+    private let port = StreamConstant.port
     
     func enterTheChatRoom(userName: String) throws {
         let chatting = try Chatting(userName: userName, host: host, port: port)

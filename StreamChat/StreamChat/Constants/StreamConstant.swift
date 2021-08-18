@@ -1,5 +1,5 @@
 //
-//  ChattingConstant.swift
+//  StreamConstant.swift
 //  StreamChat
 //
 //  Created by 강경 on 2021/08/11.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ChattingConstant {
+enum StreamConstant {
     
     case enterTheChatRoom(name: String)
     case send(message: String)

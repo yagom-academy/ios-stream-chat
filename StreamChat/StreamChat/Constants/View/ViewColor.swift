@@ -13,6 +13,7 @@ struct ViewColor {
     static let nomalBrown = UIColor(named: "KakaoBrown")
     static let nomalYellow = UIColor(named: "KakaoYellow")
     static let chatRoomBackground = UIColor(named: "KakaoSkyblue")
+    static let chatTime = UIColor(named: "KakaoDarkGray")
     static let myChatMessage = UIColor(named: "KakaoLightYellow")
     static let friendsChatMessage = UIColor(named: "White")
 }

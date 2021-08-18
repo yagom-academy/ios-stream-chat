@@ -10,8 +10,8 @@ import XCTest
 
 final class StreamChatTests: XCTestCase {
     
-    let host = ChattingConstant.host
-    let port = ChattingConstant.port
+    let host = StreamConstant.host
+    let port = StreamConstant.port
     let userName = "TestName"
     let actName = "act"
     let observerName = "observer"

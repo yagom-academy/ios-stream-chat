@@ -90,30 +90,39 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble_left" translatesAutoresizingMaskIntoConstraints="NO" id="03x-X7-UGZ">
-                                                    <rect key="frame" x="0.0" y="3" width="82.5" height="86"/>
+                                                    <rect key="frame" x="0.0" y="3" width="76.5" height="86"/>
                                                     <color key="tintColor" name="White"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upv-HM-BLg">
-                                                    <rect key="frame" x="35" y="11" width="35.5" height="70"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <rect key="frame" x="35" y="11" width="29.5" height="70"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1E8-Ri-Yfv">
+                                                    <rect key="frame" x="80.5" y="78.5" width="41" height="10.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="9"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" name="KakaoSkyblue"/>
                                             <constraints>
+                                                <constraint firstItem="1E8-Ri-Yfv" firstAttribute="trailing" secondItem="upv-HM-BLg" secondAttribute="trailing" constant="57" id="0tR-9t-pWJ"/>
+                                                <constraint firstItem="1E8-Ri-Yfv" firstAttribute="bottom" secondItem="03x-X7-UGZ" secondAttribute="bottom" id="6ua-MD-DJt"/>
                                                 <constraint firstItem="upv-HM-BLg" firstAttribute="trailing" secondItem="03x-X7-UGZ" secondAttribute="trailing" constant="-12" id="G72-IU-oYI"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="upv-HM-BLg" secondAttribute="trailing" constant="20" id="NXM-bO-QLf"/>
                                                 <constraint firstItem="upv-HM-BLg" firstAttribute="leading" secondItem="03x-X7-UGZ" secondAttribute="leading" constant="35" id="PM7-7N-YaH"/>
                                                 <constraint firstItem="03x-X7-UGZ" firstAttribute="leading" secondItem="b9b-0L-XBk" secondAttribute="leading" id="S8T-wV-X9X"/>
                                                 <constraint firstItem="upv-HM-BLg" firstAttribute="bottom" secondItem="03x-X7-UGZ" secondAttribute="bottom" constant="-8" id="WsK-1T-HoI"/>
                                                 <constraint firstItem="03x-X7-UGZ" firstAttribute="top" secondItem="b9b-0L-XBk" secondAttribute="top" constant="3" id="d36-RR-DOL"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1E8-Ri-Yfv" secondAttribute="trailing" constant="100" id="eg5-OL-sVo"/>
                                                 <constraint firstAttribute="bottom" secondItem="03x-X7-UGZ" secondAttribute="bottom" constant="3" id="fbF-i1-I56"/>
                                                 <constraint firstItem="upv-HM-BLg" firstAttribute="top" secondItem="03x-X7-UGZ" secondAttribute="top" constant="8" id="h7j-lq-mk9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="label" destination="upv-HM-BLg" id="aBs-N4-GZ9"/>
+                                            <outlet property="message" destination="upv-HM-BLg" id="8hl-tm-5cH"/>
+                                            <outlet property="writtenDateLabel" destination="1E8-Ri-Yfv" id="rT2-9p-ZYq"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RightCell" rowHeight="109" id="7dO-oS-AaA" customClass="BubbleCell" customModule="StreamChat" customModuleProvider="target">
@@ -124,12 +133,18 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble_right" translatesAutoresizingMaskIntoConstraints="NO" id="nKI-K3-duB">
-                                                    <rect key="frame" x="331.5" y="3" width="82.5" height="103"/>
+                                                    <rect key="frame" x="337.5" y="3" width="76.5" height="103"/>
                                                     <color key="tintColor" name="KakaoLightYellow"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZn-CX-tGD">
-                                                    <rect key="frame" x="343.5" y="11" width="35.5" height="87"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <rect key="frame" x="349.5" y="11" width="29.5" height="87"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXt-Rg-ENc">
+                                                    <rect key="frame" x="292.5" y="95.5" width="41" height="10.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="9"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -137,17 +152,20 @@
                                             <color key="backgroundColor" name="KakaoSkyblue"/>
                                             <constraints>
                                                 <constraint firstItem="RZn-CX-tGD" firstAttribute="leading" secondItem="nKI-K3-duB" secondAttribute="leading" constant="12" id="6ZF-TS-Mif"/>
+                                                <constraint firstItem="UXt-Rg-ENc" firstAttribute="bottom" secondItem="nKI-K3-duB" secondAttribute="bottom" id="77D-HE-Lsf"/>
+                                                <constraint firstItem="UXt-Rg-ENc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XNT-C0-d4n" secondAttribute="leading" constant="100" id="K9G-Ns-fmt"/>
                                                 <constraint firstItem="RZn-CX-tGD" firstAttribute="top" secondItem="nKI-K3-duB" secondAttribute="top" constant="8" id="SGq-pB-69A"/>
                                                 <constraint firstAttribute="trailing" secondItem="nKI-K3-duB" secondAttribute="trailing" id="TB2-f1-4NS"/>
+                                                <constraint firstItem="UXt-Rg-ENc" firstAttribute="leading" secondItem="RZn-CX-tGD" secondAttribute="leading" constant="-57" id="Tfk-Fa-CgR"/>
                                                 <constraint firstItem="RZn-CX-tGD" firstAttribute="trailing" secondItem="nKI-K3-duB" secondAttribute="trailing" constant="-35" id="ULb-Xp-hqx"/>
                                                 <constraint firstItem="RZn-CX-tGD" firstAttribute="bottom" secondItem="nKI-K3-duB" secondAttribute="bottom" constant="-8" id="XnV-UO-o8e"/>
                                                 <constraint firstAttribute="bottom" secondItem="nKI-K3-duB" secondAttribute="bottom" constant="3" id="Y8n-Ja-gYL"/>
                                                 <constraint firstItem="nKI-K3-duB" firstAttribute="top" secondItem="XNT-C0-d4n" secondAttribute="top" constant="3" id="vHf-LM-cFI"/>
-                                                <constraint firstItem="RZn-CX-tGD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XNT-C0-d4n" secondAttribute="leading" constant="20" id="vUO-Yh-Mym"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="label" destination="RZn-CX-tGD" id="NTx-KT-w91"/>
+                                            <outlet property="message" destination="RZn-CX-tGD" id="ZGr-Hq-M4F"/>
+                                            <outlet property="writtenDateLabel" destination="UXt-Rg-ENc" id="iXv-8h-wlN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

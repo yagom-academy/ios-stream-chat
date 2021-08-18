@@ -24,20 +24,20 @@ final class Chatting {
         
     }
     func enterTheChatRoom() {
-        tcpSocket.send(data: ChattingConstant.enterTheChatRoom(name: userName).format)
+        tcpSocket.send(data: StreamConstant.enterTheChatRoom(name: userName).format)
     }
     func leaveTheChatRoom() {
-        tcpSocket.send(data: ChattingConstant.leaveTheChatRoom)
+        tcpSocket.send(data: StreamConstant.leaveTheChatRoom)
     }
     func send(message: String) throws {
         if message.count > Integers.maximumNumberOfMessageCharacters {
             throw ChattingError.sendingMessagesIsLimitedTo300
         }
-        tcpSocket.send(data: ChattingConstant.send(message: message).format)
+        tcpSocket.send(data: StreamConstant.send(message: message).format)
     }
     func receivedData() throws -> MessageData {
         let customizedBuffer = try tcpSocket.receive(
-            totalSizeOfBuffer: ChattingConstant.totalSizeOfBuffer)
+            totalSizeOfBuffer: StreamConstant.totalSizeOfBuffer)
         guard let receivedString = String(bytes: customizedBuffer,
                                           encoding: String.Encoding.utf8) else {
             throw ChattingError.failToConvertCustomizedBufferToString
