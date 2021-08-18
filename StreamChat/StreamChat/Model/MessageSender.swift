@@ -10,4 +10,5 @@ import Foundation
 enum MessageSender {
     case myself
     case someoneElse
+    case system
 }

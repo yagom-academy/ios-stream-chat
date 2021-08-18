@@ -24,6 +24,7 @@ class ChatRoomViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(OthersMessageViewCell.self, forCellReuseIdentifier: OthersMessageViewCell.identifier)
         tableView.register(MyMessageViewCell.self, forCellReuseIdentifier: MyMessageViewCell.identifier)
+        tableView.register(SystemMessageViewCell.self, forCellReuseIdentifier: SystemMessageViewCell.identifier)
         tableView.keyboardDismissMode = .interactive
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
@@ -186,7 +187,7 @@ extension ChatRoomViewController: ChatReadable {
         if userName != self.myUserName && decodedMessageStringList.count == 2 {
             receiveMessage(username: "\(userName):", content: content)
         } else if userName != self.myUserName && decodedMessageStringList.count == 1 {
-            receiveUserInformationMessage(content: content)
+            receiveSystemMessage(content: content)
         }
     }
     
@@ -202,10 +203,10 @@ extension ChatRoomViewController: ChatReadable {
         chatMessageView.scrollToRow(at: indexPath, at: .bottom, animated: true)
     }
     
-    private func receiveUserInformationMessage(content: String) {
+    private func receiveSystemMessage(content: String) {
         guard content.isEmpty == false else { return }
         
-        chatList.append(Message(content: content, senderUsername: "", messageSender: .someoneElse))
+        chatList.append(Message(content: content, senderUsername: "", messageSender: .system))
         
         let indexPath = IndexPath(row: chatList.count - 1, section: 0)
         
@@ -223,18 +224,24 @@ extension ChatRoomViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = chatList[indexPath.row]
-        let messageIdentifier = message.messageSender == .myself ? MyMessageViewCell.identifier : OthersMessageViewCell.identifier
+        
         if message.messageSender == .myself {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: messageIdentifier, for: indexPath) as? MyMessageViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MyMessageViewCell.identifier, for: indexPath) as? MyMessageViewCell else {
                 return UITableViewCell()
             }
             cell.changeLabelText("\(message.senderUsername) \(message.content)")
             return cell
         } else if message.messageSender == .someoneElse {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: messageIdentifier, for: indexPath) as? OthersMessageViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: OthersMessageViewCell.identifier, for: indexPath) as? OthersMessageViewCell else {
                 return UITableViewCell()
             }
             cell.changeLabelText("\(message.senderUsername) \(message.content)")
+            return cell
+        } else if message.messageSender == .system {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SystemMessageViewCell.identifier, for: indexPath) as? SystemMessageViewCell else {
+                return UITableViewCell()
+            }
+            cell.changeLabelText(message.content)
             return cell
         }
         return UITableViewCell()
