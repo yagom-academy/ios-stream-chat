@@ -8,7 +8,7 @@
 import Foundation
 
 final class MockURLSessionStreamTask: URLSessionStreamTaskProtocol {
-    static var setUrlSessionStreamDelegate: (InputStreamProtocol, OutputStreamProtocol) -> Void = {_, _ in}
+    static var setUrlSessionStreamDelegate: (InputStreamProtocol, OutputStreamProtocol) -> Void = { _, _ in }
     static var inputStream: InputStreamProtocol?
     static var outputStream: OutputStreamProtocol?
     
@@ -18,7 +18,7 @@ final class MockURLSessionStreamTask: URLSessionStreamTaskProtocol {
     
     func captureStreams() {
         UnitTestVariables.serverConnectionTestList.append(UnitTestConstants.captureStreamsCall)
-        MockURLSessionStreamTask.setUrlSessionStreamDelegate( MockURLSessionStreamTask.inputStream!, MockURLSessionStreamTask.outputStream!)
+        MockURLSessionStreamTask.setUrlSessionStreamDelegate(MockURLSessionStreamTask.inputStream!, MockURLSessionStreamTask.outputStream!)
     }
     
     func closeRead() {
