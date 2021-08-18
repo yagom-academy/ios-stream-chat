@@ -1,5 +1,5 @@
 //
-//  TableViewCell.swift
+//  MyMessageCell.swift
 //  StreamChat
 //
 //  Created by 기원우 on 2021/08/17.

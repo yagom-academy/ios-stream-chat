@@ -1,5 +1,5 @@
 //
-//  StreamChat - ViewController.swift
+//  StreamChat - StreamChatViewController.swift
 //  Created by yagom. 
 //  Copyright © yagom. All rights reserved.
 // 

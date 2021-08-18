@@ -135,7 +135,6 @@ extension StreamChat: StreamDelegate {
             chats.append(Chat(username: username,
                               message: message,
                               identifier: .other, date: Date()))
-            delegate?.insertMessage()
         } else {
             guard let stringNotification = stringArray.first?
                     .components(separatedBy: StreamDataFormat.shared.divisionSpaceNotifi),
@@ -149,7 +148,7 @@ extension StreamChat: StreamDelegate {
                               message: notificationMessage,
                               identifier: .notification,
                               date: Date()))
-            delegate?.insertMessage()
         }
+        delegate?.insertMessage()
     }
 }

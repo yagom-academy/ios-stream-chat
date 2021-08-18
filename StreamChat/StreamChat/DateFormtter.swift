@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class DateToStringFormatter {
+struct DateToStringFormatter {
     static let shared = DateToStringFormatter()
 
     let dateFormatter = DateFormatter()
