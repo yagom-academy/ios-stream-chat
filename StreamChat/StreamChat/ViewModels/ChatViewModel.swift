@@ -27,8 +27,8 @@ final class ChatViewModel {
         return messages.count
     }
     
-    func getMessage(indexPath: IndexPath) -> Chat {
-        return messages[indexPath.row]
+    func getMessage(row: Int) -> Chat {
+        return messages[row]
     }
     
     func resetMessages() {

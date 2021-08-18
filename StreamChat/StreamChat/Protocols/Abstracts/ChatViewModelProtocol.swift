@@ -12,7 +12,7 @@ protocol ChatViewModelProtocol: ChatViewModelDelegate {
     
     func getCountOfMessages() -> Int
     
-    func getMessage(indexPath: IndexPath) -> Chat
+    func getMessage(row: Int) -> Chat
     
     func resetMessages()
     

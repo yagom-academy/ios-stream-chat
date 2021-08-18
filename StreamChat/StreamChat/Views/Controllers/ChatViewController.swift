@@ -242,7 +242,7 @@ extension ChatViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let chatInformation = chatViewModel.getMessage(indexPath: indexPath)
+        let chatInformation = chatViewModel.getMessage(row: indexPath.row)
         switch chatInformation.senderType {
         case .userSelf:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyChatTableViewCell.identifier, for: indexPath) as? MyChatTableViewCell else {
