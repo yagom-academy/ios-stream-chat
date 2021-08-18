@@ -9,25 +9,39 @@ import UIKit
 
 final class NetworkManager: NSObject {
     private var inputStream: InputStreamProtocol?
-    private var outputStream: outputStreamProtocol?
+    private var outputStream: OutputStreamProtocol?
     private var streamTask: URLSessionStreamTaskProtocol?
     weak var delegate: ChatViewModelDelegate?
     
-    init(streamTask: URLSessionStreamTaskProtocol,
-         inputStream: InputStreamProtocol,
-         outputStream: outputStreamProtocol) {
+    init(streamTask: URLSessionStreamTaskProtocol) {
         self.streamTask = streamTask
-        self.inputStream = inputStream
-        self.outputStream = outputStream
     }
     
     override init() {
         super.init()
     }
     
+    // MARK: Setting
+    
     func setStreamTask(_ streamTask: URLSessionStreamTaskProtocol) {
         self.streamTask = streamTask
     }
+    
+    func setUrlSessionStreamDelegate(inputStream: InputStreamProtocol, outputStream: OutputStreamProtocol) {
+        self.outputStream = outputStream
+        self.inputStream = inputStream
+        
+        self.outputStream?.delegate = self
+        self.inputStream?.delegate = self
+        
+        self.inputStream?.schedule(in: .main, forMode: .default)
+        self.outputStream?.schedule(in: .main, forMode: .default)
+        
+        inputStream.open()
+        outputStream.open()
+    }
+    
+    // MARK: Network
     
     func connectServer() {
         streamTask?.resume()
@@ -47,17 +61,7 @@ final class NetworkManager: NSObject {
 
 extension NetworkManager: URLSessionStreamDelegate {
     func urlSession(_ session: URLSession, streamTask: URLSessionStreamTask, didBecome inputStream: InputStream, outputStream: OutputStream) {
-        self.outputStream = outputStream
-        self.inputStream = inputStream
-        
-        outputStream.delegate = self
-        inputStream.delegate = self
-        
-        inputStream.schedule(in: .main, forMode: .default)
-        outputStream.schedule(in: .main, forMode: .default)
-        
-        inputStream.open()
-        outputStream.open()
+        setUrlSessionStreamDelegate(inputStream: inputStream, outputStream: outputStream)
     }
 }
 
