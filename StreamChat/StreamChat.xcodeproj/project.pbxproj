@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C61292E026CCEE930058CA1A /* DateConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61292DF26CCEE930058CA1A /* DateConstant.swift */; };
 		C623183D26C948AA0026C82F /* Integers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C623183C26C948AA0026C82F /* Integers.swift */; };
 		C6800D9126C1506400EE1778 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C6800D9026C1506400EE1778 /* .swiftlint.yml */; };
 		C6800D9326C173C900EE1778 /* TcpSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6800D9226C173C900EE1778 /* TcpSocket.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		6BB33274245B6C44B64809A1 /* Pods-StreamChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.release.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.release.xcconfig"; sourceTree = "<group>"; };
 		C519B3CCF728D5E130A3795A /* Pods-StreamChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.debug.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.debug.xcconfig"; sourceTree = "<group>"; };
+		C61292DF26CCEE930058CA1A /* DateConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConstant.swift; sourceTree = "<group>"; };
 		C623183C26C948AA0026C82F /* Integers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Integers.swift; sourceTree = "<group>"; };
 		C6800D9026C1506400EE1778 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C6800D9226C173C900EE1778 /* TcpSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpSocket.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				C6E5677C26C2D363001782DC /* StreamConstant.swift */,
 				C623183C26C948AA0026C82F /* Integers.swift */,
 				C6BEA88226CCB76D00524987 /* ChattingViewConstant.swift */,
+				C61292DF26CCEE930058CA1A /* DateConstant.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -228,11 +231,11 @@
 		C7927553262C562B00EF5D3A /* StreamChat */ = {
 			isa = PBXGroup;
 			children = (
-				C6BEA88426CCBD0100524987 /* Extension */,
 				C6E5676C26C2CEFD001782DC /* Model */,
 				C6E5676826C2CE17001782DC /* View */,
 				C680194F26CB427800A190DB /* ViewModel */,
 				C6E5676726C2CDFF001782DC /* Error */,
+				C6BEA88426CCBD0100524987 /* Extension */,
 				C6E5677B26C2D33D001782DC /* Constants */,
 				C6E5676926C2CE5F001782DC /* SupportingFiles */,
 			);
@@ -410,6 +413,7 @@
 				C6B471D226C2E7480062B3CF /* ReceivedData.swift in Sources */,
 				C680195826CB746700A190DB /* ViewSize.swift in Sources */,
 				C680194E26CB422400A190DB /* StartViewController.swift in Sources */,
+				C61292E026CCEE930058CA1A /* DateConstant.swift in Sources */,
 				C6BEA88326CCB76D00524987 /* ChattingViewConstant.swift in Sources */,
 				C6AA33EB26C3904200F26969 /* MessageData.swift in Sources */,
 				C6A2B88626CBC55F00948CD0 /* ChattingViewController.swift in Sources */,
@@ -460,6 +464,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = StreamChatTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -480,6 +485,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = StreamChatTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -618,12 +624,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = StreamChat/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.StreamChat;
+				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.StreamChgat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -637,12 +644,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = StreamChat/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.StreamChat;
+				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.StreamChgat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

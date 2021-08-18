@@ -8,6 +8,7 @@
 import Foundation
 
 struct Integers {
+    
     static let suitableForChatMessageData = 2
     static let maximumNumberOfMessageCharacters = 300
 }

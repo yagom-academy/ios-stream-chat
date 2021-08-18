@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StartViewController: UIViewController, UITextFieldDelegate {
+final class StartViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var userNameTextField: UITextField!
@@ -20,9 +20,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        logoImageView.image = ViewImage.logo
-        userNameTextField.delegate = self
-        enterChatRoomButton.isEnabled = false
+        setStartView()
     }
     @IBAction func clickEnterChatRoomButton(_ sender: Any) {
         guard let userName: String = userNameTextField.text else {
@@ -40,16 +38,19 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         let text = (userNameTextField.text! as NSString).replacingCharacters(in: range,
                                                                              with: string)
         if text.isEmpty || text.count > ViewSize.maximumUserName {
-            enterChatRoomButton.titleLabel?.textColor = ViewColor.lightGray
-            enterChatRoomButton.backgroundColor = ViewColor.white
-            enterChatRoomButton.isEnabled = false
+            setEnterChatRoomButton(titleColor: ViewColor.lightGray,
+                                   backgroundColor: ViewColor.white, isEnable: false)
         } else {
-            enterChatRoomButton.titleLabel?.textColor = ViewColor.white
-            enterChatRoomButton.backgroundColor = ViewColor.nomalBrown
-            enterChatRoomButton.isEnabled = true
+            setEnterChatRoomButton(titleColor: ViewColor.white,
+                                   backgroundColor: ViewColor.nomalBrown, isEnable: true)
         }
         
         return true
+    }
+    private func setStartView() {
+        logoImageView.image = ViewImage.logo
+        userNameTextField.delegate = self
+        enterChatRoomButton.isEnabled = false
     }
     private func putUpInappropriateNameErrorAlert(error: Error) {
         let alert = UIAlertController(title: "", message: "\(error)",
@@ -57,5 +58,11 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         let actionOfOk = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(actionOfOk)
         present(alert, animated: false, completion: nil)
+    }
+    private func setEnterChatRoomButton(titleColor: UIColor?, backgroundColor: UIColor?,
+                                        isEnable: Bool) {
+        enterChatRoomButton.titleLabel?.textColor = titleColor
+        enterChatRoomButton.backgroundColor = backgroundColor
+        enterChatRoomButton.isEnabled = isEnable
     }
 }

@@ -10,9 +10,19 @@ import Foundation
 extension DateFormatter {
     
     func convertToStringForChat(date: Date) -> String {
-        self.dateFormat = "a hh:mm"
-        self.locale = Locale(identifier: "ko_KR")
+        self.dateFormat = DateConstant.kakaoDateFormat
+        self.locale = Locale(identifier: currentLocaleIdentifier())
         
         return self.string(from: date)
+    }
+    
+    private func currentLocaleIdentifier() -> String {
+        if let localeID = Locale.preferredLanguages.first,
+           let languageCode = Locale(identifier: localeID).languageCode,
+           let regionCode = Locale.current.regionCode {
+            return "\(languageCode)_\(regionCode)"
+        } else {
+            return Locale.current.identifier
+        }
     }
 }

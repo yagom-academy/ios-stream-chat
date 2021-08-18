@@ -74,11 +74,11 @@ extension ChattingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chats.count
     }
-    
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chat = chats[indexPath.row]
-        let identifier = chat.isMyMessage ? "RightCell" : "LeftCell"
+        let identifier = chat.isMyMessage ? BubbleCell.rightCellIdentifier :
+            BubbleCell.leftCellIdentifier
         guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier,
                                                  for: indexPath) as? BubbleCell else {
             return UITableViewCell()

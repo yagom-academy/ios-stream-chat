@@ -8,6 +8,7 @@
 import UIKit
 
 struct ChattingViewConstant {
+    
     static let lengthOfKeyboard: CGFloat = 25
     static let lengthOfChatInputWindow: CGFloat = 8
 }

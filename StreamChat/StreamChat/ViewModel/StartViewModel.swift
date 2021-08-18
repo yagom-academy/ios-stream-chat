@@ -7,7 +7,8 @@
 
 import Foundation
 
-class StartViewModel {
+final class StartViewModel {
+    
     private let host = StreamConstant.host
     private let port = StreamConstant.port
     

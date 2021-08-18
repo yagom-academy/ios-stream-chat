@@ -8,6 +8,7 @@
 import UIKit
 
 struct ViewColor {
+    
     static let lightGray = UIColor(named: "LightGray")
     static let white = UIColor(named: "White")
     static let nomalBrown = UIColor(named: "KakaoBrown")

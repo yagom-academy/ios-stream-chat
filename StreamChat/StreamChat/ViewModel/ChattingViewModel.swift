@@ -7,6 +7,6 @@
 
 import Foundation
 
-class ChattingViewModel {
+final class ChattingViewModel {
     
 }

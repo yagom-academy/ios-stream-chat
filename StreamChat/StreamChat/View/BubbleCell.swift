@@ -9,6 +9,9 @@ import UIKit
 
 final class BubbleCell: UITableViewCell {
     
+    static let rightCellIdentifier = "RightCell"
+    static let leftCellIdentifier = "LeftCell"
+    
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var writtenDateLabel: UILabel!
 }
