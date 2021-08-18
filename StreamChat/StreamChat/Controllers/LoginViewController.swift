@@ -8,7 +8,18 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    // MARK: - properties
+    // MARK: - Views
+    
+    private let welcomeLabel: UILabel = {
+        let label = UILabel()
+        label.adjustsFontForContentSizeCategory = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .systemGray6
+        label.text = "Welcome to StreamChat"
+        label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        label.textAlignment = .center
+        return label
+    }()
     
     private let streamImageView: UIImageView = {
         let imageView = UIImageView()
@@ -29,12 +40,43 @@ class LoginViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "Enter your nickname"
         textField.backgroundColor = .white
-        textField.font = UIFont.preferredFont(forTextStyle: .title1)
+        textField.font = UIFont.preferredFont(forTextStyle: .body)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
+    private let loginButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .systemGreen
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+        button.setTitle("Login", for: .normal)
+        button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        button.addTarget(self, action: #selector(login), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var loginTextStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [loginTextField, loginButton])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.spacing = 5
+        return stackView
+    }()
+    
     // MARK: - Methods
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,31 +84,56 @@ class LoginViewController: UIViewController {
         loginTextField.delegate = self
     }
     
+    @objc private func login(_ sender: UIButton) {
+        let chatRoomViewController = ChatRoomViewController()
+        if let userName = loginTextField.text {
+            chatRoomViewController.myUserName = userName
+        }
+        loginTextField.text = nil
+        loginTextField.resignFirstResponder()
+        navigationController?.pushViewController(chatRoomViewController, animated: false)
+    }
+    
     private func setUpViews() {
-        navigationItem.title = "개울챗!"
+        navigationItem.title = "Login!"
         self.view.backgroundColor = .white
-        self.view.addSubview(loginView)
-        loginView.addSubview(loginTextField)
         self.view.addSubview(streamImageView)
+        self.view.addSubview(loginTextStackView)
+        self.view.addSubview(welcomeLabel)
         
         NSLayoutConstraint.activate([
-            loginView.heightAnchor.constraint(greaterThanOrEqualToConstant: self.view.bounds.height / 6),
-            loginView.widthAnchor.constraint(equalToConstant: self.view.bounds.width),
-            loginView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            loginView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            loginView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            loginView.bottomAnchor.constraint(equalTo: streamImageView.topAnchor),
+//            loginView.heightAnchor.constraint(greaterThanOrEqualToConstant: self.view.bounds.height / 6),
+//            loginView.widthAnchor.constraint(equalToConstant: self.view.bounds.width),
+//            loginView.topAnchor.constraint(equalTo: self.view.topAnchor),
+//            loginView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+//            loginView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+//            loginView.bottomAnchor.constraint(equalTo: streamImageView.topAnchor),
+//
+//            loginTextField.topAnchor.constraint(equalTo: loginView.topAnchor, constant: 10),
+//            loginTextField.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 10),
+//            loginTextField.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -10),
+//            loginTextField.bottomAnchor.constraint(equalTo: loginView.bottomAnchor, constant: 10),
+//
+//            streamImageView.heightAnchor.constraint(greaterThanOrEqualToConstant: self.view.bounds.height / 3),
+//            streamImageView.widthAnchor.constraint(greaterThanOrEqualToConstant: self.view.bounds.width / 2),
+//            streamImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
+//            streamImageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
+//            streamImageView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -10)
+//            streamImageView.heightAnchor.constraint(equalToConstant: self.view.bounds.height),
+//            streamImageView.widthAnchor.constraint(equalToConstant: self.view.bounds.width),
+            streamImageView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            streamImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            streamImageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            streamImageView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             
-            loginTextField.topAnchor.constraint(equalTo: loginView.topAnchor, constant: 10),
-            loginTextField.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 10),
-            loginTextField.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -10),
-            loginTextField.bottomAnchor.constraint(equalTo: loginView.bottomAnchor, constant: 10),
+            welcomeLabel.centerYAnchor.constraint(equalTo: streamImageView.centerYAnchor, constant: -100),
+            welcomeLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
+            welcomeLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
             
-            streamImageView.heightAnchor.constraint(greaterThanOrEqualToConstant: self.view.bounds.height / 3),
-            streamImageView.widthAnchor.constraint(greaterThanOrEqualToConstant: self.view.bounds.width / 2),
-            streamImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
-            streamImageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
-            streamImageView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -10)
+            loginTextStackView.centerYAnchor.constraint(equalTo: streamImageView.centerYAnchor),
+            loginTextStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
+            loginTextStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10)
+            
         ])
     }
 }
