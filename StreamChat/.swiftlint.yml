@@ -5,5 +5,3 @@ disabled_rules:
 included:
 excluded:
 - StreamChatTests/
-- AppDelegate/
-- SceneDelegate/
