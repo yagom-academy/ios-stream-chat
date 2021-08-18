@@ -90,11 +90,11 @@ extension StreamChatViewController: UITableViewDataSource {
     }
 }
 
-protocol StreamChatDelegate {
+protocol StreamChatViewControllerDelegate {
     func insertMessage()
 }
 
-extension StreamChatViewController: StreamChatDelegate {
+extension StreamChatViewController: StreamChatViewControllerDelegate {
     func insertMessage() {
         let lastRow: Int = StreamChat.shared.countChats() - 1
         let indexPath: IndexPath = IndexPath(row: lastRow, section: 0)

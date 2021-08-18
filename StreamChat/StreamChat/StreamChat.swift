@@ -19,7 +19,7 @@ final class StreamChat: NSObject {
     private var myUsername = StreamDataFormat.shared.emptyUsername
     private var chats: [Chat] = []
 
-    var delegate: StreamChatDelegate?
+    var delegate: StreamChatViewControllerDelegate?
 
     func setupNetworkCommunication() {
         var readStream: Unmanaged<CFReadStream>?
