@@ -15,6 +15,7 @@ class ChatRoomViewController: UIViewController {
     private var chatList: [Message] = []
     private let chatRoom = ChatRoom(chatNetworkManager: ChatNetworkManager())
     private var bottomConstraint: NSLayoutConstraint?
+    let prohibitedTexts = ["::END", "USR_NAME::", "LEAVE::", "MSG::"]
     
     // MARK: - Views
     
@@ -128,16 +129,21 @@ class ChatRoomViewController: UIViewController {
     }
     
     @objc private func sendMessage(_ sender: UIButton) {
-        guard let text = messageInputTextField.text,
-              text.isEmpty == false else { return }
-        chatList.append(Message(content: text, senderUsername: "\(self.myUserName):", messageSender: .myself))
-        chatRoom.send(text)
-        messageInputTextField.text = nil
-        
-        let indexPath = IndexPath(row: chatList.count - 1, section: 0)
-        
-        chatMessageView.insertRows(at: [indexPath], with: .none)
-        chatMessageView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        if let text = messageInputTextField.text,
+              text.isEmpty == false,
+              !prohibitedTexts.contains(where: {text.contains($0)}) {
+            
+            chatList.append(Message(content: text, senderUsername: "\(self.myUserName):", messageSender: .myself))
+            chatRoom.send(text)
+            messageInputTextField.text = nil
+            
+            let indexPath = IndexPath(row: chatList.count - 1, section: 0)
+            
+            chatMessageView.insertRows(at: [indexPath], with: .none)
+            chatMessageView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        } else {
+            alertInvalidTextFieldInputToUser()
+        }
     }
     
     private func scrollToLastChat() {
@@ -248,10 +254,15 @@ extension ChatRoomViewController: UITableViewDataSource {
         
     }
 }
+
+// MARK: - UITextFieldDelegate
+
 extension ChatRoomViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = textField.text,
-              text.isEmpty == false {
+              text.isEmpty == false,
+              !prohibitedTexts.contains(where: {text.contains($0)}) {
+            
             chatList.append(Message(content: text, senderUsername: "\(self.myUserName):", messageSender: .myself))
             chatRoom.send(text)
             messageInputTextField.text = nil
@@ -260,7 +271,19 @@ extension ChatRoomViewController: UITextFieldDelegate {
             
             chatMessageView.insertRows(at: [indexPath], with: .none)
             chatMessageView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        } else {
+            alertInvalidTextFieldInputToUser()
         }
         return true
+    }
+    
+    private func alertInvalidTextFieldInputToUser() {
+        let alertViewController = UIAlertController(title: "잘못된 포멧", message: "빈 문자열은 전송할 수 없습니다. 이 중 해당되는 문자가 포함된 문자열 또한 전송할 수 없습니다. [USR_NAME::, LEAVE::, MSG::, LEAVE::] ", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertViewController.addAction(okAction)
+        present(alertViewController, animated: true) { [weak self] in
+            self?.messageInputTextField.text = nil
+            
+        }
     }
 }

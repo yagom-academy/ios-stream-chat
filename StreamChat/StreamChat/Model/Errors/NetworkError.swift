@@ -9,4 +9,7 @@ import Foundation
 
 enum NetworkError: Error {
     case unableToReadDataFromNetwork
+    case unableToWriteDataToNetwork
+    case connectionError
+    case unknownError
 }

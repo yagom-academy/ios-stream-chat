@@ -10,6 +10,7 @@ import UIKit
 final class ChatRoom: NSObject {
     
     // MARK: - Properties
+    
     var username = ""
     var chatNetworkManager: ChatNetworkManageable
     weak var delegate: ChatReadable?
