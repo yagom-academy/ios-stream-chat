@@ -13,7 +13,7 @@ final class MockURLSession: URLSessionProtocol {
     var delegate: URLSessionDelegate?
     var delegateQueue: OperationQueue?
     var didStreamConnectionFail = false
-    var mockStreamTask: MockStreamTask?
+    var mockStreamTask: URLSessionStreamTaskProtocol?
     
     init(configuration: URLSessionConfiguration, delegate: URLSessionDelegate?, delegateQueue: OperationQueue?) {
         self.configuration = configuration
@@ -28,7 +28,7 @@ final class MockURLSession: URLSessionProtocol {
     
     func streamTask(withHostName hostname: String, port: Int) -> URLSessionStreamTask {
         mockStreamTask = MockStreamTask()
-        return mockStreamTask!
+        return mockStreamTask! as! URLSessionStreamTask
     }
     
     

@@ -7,7 +7,7 @@
 @testable import StreamChat
 import Foundation
 
-final class MockStreamTask: URLSessionStreamTask {
+final class MockStreamTask: URLSessionStreamTaskProtocol {
     var dataList = [Data]()
     var timeLimit: TimeInterval = 10
     var writeCounter: Int = 0
@@ -17,28 +17,29 @@ final class MockStreamTask: URLSessionStreamTask {
     var resumeDidCalled: Bool = false
     var resultHandler: (() -> Void)?
     var successfulDataString = "AvailableData"
-    override func resume() {
+    
+    func resume() {
         resumeDidCalled = true
     }
     
-    override func readData(ofMinLength minBytes: Int, maxLength maxBytes: Int, timeout: TimeInterval, completionHandler: @escaping (Data?, Bool, Error?) -> Void) {
+    func readData(ofMinLength minBytes: Int, maxLength maxBytes: Int, timeout: TimeInterval, completionHandler: @escaping (Data?, Bool, Error?) -> Void) {
         let completeData = successfulDataString.data(using: .utf8)!
         readDataCounter += 1
         resultHandler?()
         return completionHandler(completeData, true, nil)
     }
     
-    override func write(_ data: Data, timeout: TimeInterval, completionHandler: @escaping (Error?) -> Void) {
+    func write(_ data: Data, timeout: TimeInterval, completionHandler: @escaping (Error?) -> Void) {
         dataList.append(data)
         writeCounter += 1
         resultHandler?()
     }
     
-    override func closeWrite() {
+    func closeWrite() {
         closeWriteCounter += 1
     }
     
-    override func closeRead() {
+    func closeRead() {
         closeReadCounter += 1
     }
 }

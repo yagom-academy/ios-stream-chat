@@ -10,7 +10,7 @@ import Foundation
 final class ChatNetworkManager: NSObject, ChatNetworkManageable {
     
     var urlSession: URLSessionProtocol
-    var streamTask: URLSessionStreamTask?
+    var streamTask: URLSessionStreamTaskProtocol?
     
     init(urlSession: URLSessionProtocol = URLSession.shared) {
         self.urlSession = urlSession
