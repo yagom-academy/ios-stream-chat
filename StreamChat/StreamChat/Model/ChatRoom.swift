@@ -12,6 +12,7 @@ final class ChatRoom: NSObject {
     // MARK: - Properties
     var username = ""
     var chatNetworkManager: ChatNetworkManageable
+    weak var delegate: ChatReadable?
     
     // MARK: - Methods
     
@@ -24,7 +25,12 @@ final class ChatRoom: NSObject {
         chatNetworkManager.read { [weak self] result in
             switch result {
             case .success(let data):
-                NSLog(String(data: data, encoding: .utf8)!)
+                defer {
+                    self?.receiveChat()
+                }
+                DispatchQueue.main.async {
+                    self?.delegate?.fetchMessageFromServer(data: data)
+                }
             case .failure(let error):
                 NSLog(error.localizedDescription)
             }
