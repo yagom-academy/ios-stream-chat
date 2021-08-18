@@ -55,7 +55,7 @@ final class OtherMessageCell: UITableViewCell {
         contentView.addSubview(usernameLabel)
 
         messageLable.text = message
-        timeLabel.text = DateToStringFormatter.sherd.dateToStringTime(at: time)
+        timeLabel.text = DateToStringFormatter.shared.dateToStringTime(at: time)
         usernameLabel.text = username
 
         usernameLabel.snp.makeConstraints { label in

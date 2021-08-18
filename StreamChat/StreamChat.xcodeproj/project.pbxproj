@@ -15,6 +15,8 @@
 		70A60B9C26C4CBFE00C08915 /* StreamChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A60B9B26C4CBFE00C08915 /* StreamChat.swift */; };
 		70AC514226CBDC4700F26FF3 /* OtherMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AC514126CBDC4700F26FF3 /* OtherMessageCell.swift */; };
 		70AC514426CBDCA500F26FF3 /* DateFormtter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AC514326CBDCA500F26FF3 /* DateFormtter.swift */; };
+		70AC514926CBEF7E00F26FF3 /* StreamChatJoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AC514826CBEF7E00F26FF3 /* StreamChatJoinViewController.swift */; };
+		70B4C86326CC919700843FEE /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B4C86226CC919700843FEE /* NotificationCell.swift */; };
 		70E8D7B726CBB74A008FD6CC /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E8D7B626CBB74A008FD6CC /* Chat.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
 		C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927556262C562B00EF5D3A /* SceneDelegate.swift */; };
@@ -31,6 +33,8 @@
 		70A60B9B26C4CBFE00C08915 /* StreamChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamChat.swift; sourceTree = "<group>"; };
 		70AC514126CBDC4700F26FF3 /* OtherMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMessageCell.swift; sourceTree = "<group>"; };
 		70AC514326CBDCA500F26FF3 /* DateFormtter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormtter.swift; sourceTree = "<group>"; };
+		70AC514826CBEF7E00F26FF3 /* StreamChatJoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamChatJoinViewController.swift; sourceTree = "<group>"; };
+		70B4C86226CC919700843FEE /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		70E8D7B626CBB74A008FD6CC /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		C7927551262C562B00EF5D3A /* StreamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7927554262C562B00EF5D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +60,7 @@
 		706AEF9D26CB587A0032F719 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				70AC514826CBEF7E00F26FF3 /* StreamChatJoinViewController.swift */,
 				C7927558262C562B00EF5D3A /* StreamChatViewController.swift */,
 			);
 			name = ViewController;
@@ -106,6 +111,7 @@
 			children = (
 				706AEF9E26CB5AA10032F719 /* MyMessageCell.swift */,
 				70AC514126CBDC4700F26FF3 /* OtherMessageCell.swift */,
+				70B4C86226CC919700843FEE /* NotificationCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -234,9 +240,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70AC514926CBEF7E00F26FF3 /* StreamChatJoinViewController.swift in Sources */,
 				7072F72926C50A3400826FF7 /* StreamInfomation.swift in Sources */,
 				C7927559262C562B00EF5D3A /* StreamChatViewController.swift in Sources */,
 				706AEFA126CB89470032F719 /* SendMessageView.swift in Sources */,
+				70B4C86326CC919700843FEE /* NotificationCell.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
 				70AC514426CBDCA500F26FF3 /* DateFormtter.swift in Sources */,
 				70AC514226CBDC4700F26FF3 /* OtherMessageCell.swift in Sources */,

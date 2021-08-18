@@ -14,6 +14,7 @@ final class MyMessageCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "bubble_right")
         imageView.contentMode = .scaleToFill
+        imageView.tintColor = .systemGreen
         return imageView
     }()
 
@@ -31,21 +32,13 @@ final class MyMessageCell: UITableViewCell {
         return label
     }()
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-
     func setupMessage(message: String, time: Date) {
         contentView.addSubview(messageView)
         contentView.addSubview(messageLable)
         contentView.addSubview(timeLabel)
 
         messageLable.text = message
-        timeLabel.text = DateToStringFormatter.sherd.dateToStringTime(at: time)
+        timeLabel.text = DateToStringFormatter.shared.dateToStringTime(at: time)
 
         messageView.snp.makeConstraints { imageView in
             imageView.top.equalToSuperview().inset(5)

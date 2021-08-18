@@ -8,7 +8,7 @@
 import Foundation
 
 final class DateToStringFormatter {
-    static let sherd = DateToStringFormatter()
+    static let shared = DateToStringFormatter()
 
     let dateFormatter = DateFormatter()
 

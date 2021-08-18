@@ -8,7 +8,7 @@
 import UIKit
 
 final class SendMessageView: UIView {
-    var delegate: ViewControllerDelegate?
+    var delegate: StreamChatDelegate?
 
     private let messageTextfield: UITextField = {
         let textField = UITextField()

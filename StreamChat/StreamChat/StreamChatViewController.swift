@@ -8,7 +8,6 @@ import UIKit
 import SnapKit
 
 final class StreamChatViewController: UIViewController {
-    private let streamChat = StreamChat(username: "테스트")
 
     private let tableView = UITableView()
     private let sendMessageView = SendMessageView()
@@ -16,6 +15,7 @@ final class StreamChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        StreamChat.shared.delegate = self
         setupTableView()
         setupSendMessageView()
     }
@@ -25,6 +25,7 @@ final class StreamChatViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(MyMessageCell.self, forCellReuseIdentifier: MyMessageCell.reuseIfentifier)
         tableView.register(OtherMessageCell.self, forCellReuseIdentifier: OtherMessageCell.reuseIdentifier)
+        tableView.register(NotificationCell.self, forCellReuseIdentifier: NotificationCell.reuseIdentifier)
 
         tableView.backgroundColor = .systemBackground
         tableView.snp.makeConstraints { tableView in
@@ -48,43 +49,55 @@ final class StreamChatViewController: UIViewController {
 // MARK: - TableView DataSource
 extension StreamChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return streamChat.countChats()
+        return StreamChat.shared.countChats()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let chat = streamChat.readChats(at: indexPath.row)
+        let chat = StreamChat.shared.readChats(at: indexPath.row)
 
         switch chat.identifier {
         case .my:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MyMessageCell.reuseIfentifier,
-                                                           for: indexPath) as? MyMessageCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: MyMessageCell.reuseIfentifier,
+                    for: indexPath) as? MyMessageCell else { return UITableViewCell() }
             cell.setupMessage(message: chat.message, time: chat.date)
 
             return cell
         case .other:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: OtherMessageCell.reuseIdentifier,
-                                                           for: indexPath) as? OtherMessageCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: OtherMessageCell.reuseIdentifier,
+                    for: indexPath) as? OtherMessageCell else { return UITableViewCell() }
             cell.setupMessage(message: chat.message, time: chat.date, username: chat.username)
 
             return cell
         default:
-            let cell = UITableViewCell()
-            print("noti!")
-
+            guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: NotificationCell.reuseIdentifier,
+                    for: indexPath) as? NotificationCell else { return UITableViewCell() }
+            cell.setupNotificationLabel(message: chat.message)
             return cell
         }
     }
 }
 
-protocol ViewControllerDelegate {
+protocol StreamChatDelegate {
     func sendMessage(message: String)
+
+    func receiveMessage()
 }
 
-extension StreamChatViewController: ViewControllerDelegate {
+extension StreamChatViewController: StreamChatDelegate {
     func sendMessage(message: String) {
-        streamChat.sendChat(message: message)
+        StreamChat.shared.sendChat(message: message)
 
-        let lastRow: Int = streamChat.countChats() - 1
+        let lastRow: Int = StreamChat.shared.countChats() - 1
+        let indexPath: IndexPath = IndexPath(row: lastRow, section: 0)
+        tableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.none)
+        tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
+    }
+
+    func receiveMessage() {
+        let lastRow: Int = StreamChat.shared.countChats() - 1
         let indexPath: IndexPath = IndexPath(row: lastRow, section: 0)
         tableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.none)
         tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)

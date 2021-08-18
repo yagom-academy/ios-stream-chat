@@ -8,20 +8,18 @@
 import Foundation
 
 final class StreamChat: NSObject {
+    static let shared = StreamChat()
+
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
 
     private let maxReadLength = 4096
     private let maxSendMessageLength = 300
     private let receiveMessageCount = 2
-    private var username: String
-    private var chats: [Chat] = [Chat(username: "우디", message: "메시지지롱", identifier: .my, date: Date()),
-                                 Chat(username: "스티븐", message: "그저 디코에서 보였을 뿐", identifier: .other, date: Date()),
-                                 Chat(username: "우디", message: "잘 됐으면", identifier: .my, date: Date())]
+    private var username = ""
+    private var chats: [Chat] = []
 
-    init(username: String) {
-        self.username = username
-    }
+    var delegate: StreamChatDelegate?
 
     func setupNetworkCommunication() {
         var readStream: Unmanaged<CFReadStream>?
@@ -54,9 +52,8 @@ final class StreamChat: NSObject {
     }
 
     func joinChat(username: String) {
-        let data = StreamDataFormat.shared.join(data: username)
         self.username = username
-
+        let data = StreamDataFormat.shared.join(data: username)
         stringToOutputStreamData(string: data)
     }
 
@@ -64,11 +61,11 @@ final class StreamChat: NSObject {
         if message.count < maxSendMessageLength {
             let data = StreamDataFormat.shared.sendMessage(data: message)
 
-            stringToOutputStreamData(string: data)
             chats.append(Chat(username: username,
                               message: message,
                               identifier: .my,
                               date: Date()))
+            stringToOutputStreamData(string: data)
         } else {
             print("message limit over")
         }
@@ -124,21 +121,35 @@ extension StreamChat: StreamDelegate {
         guard let stringArray = String(bytesNoCopy: buffer,
                                        length: length,
                                        encoding: .utf8,
-                                       freeWhenDone: true)?.components(separatedBy: StreamDataFormat.shared.divisionPoint) else { return }
+                                       freeWhenDone: true)?
+                .components(separatedBy: StreamDataFormat.shared.divisionPoint) else { return }
 
         if stringArray.count == receiveMessageCount {
+            print("receive Message")
             guard let username = stringArray.first,
-                  let message = stringArray.last else { return }
+                  let message = stringArray.last,
+                  self.username != username else { return }
 
-            // TODO: - 메시지 수신 오브젝트 생성 및 출력
-            print(StreamDataFormat.shared.receiveMessage(username: username, message: message))
+            print("username: \(username)")
+            print("message: \(message)")
+
+            chats.append(Chat(username: username,
+                              message: message,
+                              identifier: .other, date: Date()))
+            delegate?.receiveMessage()
         } else {
-            guard let stringNotification = stringArray.first?.components(separatedBy: StreamDataFormat.shared.divisionSpaceNotifi),
+            guard let stringNotification = stringArray.first?
+                    .components(separatedBy: StreamDataFormat.shared.divisionSpaceNotifi),
                   let username = stringNotification.first,
-                  let status = stringNotification.last else { return }
+                  let status = stringNotification.last,
+                  self.username != username else { return }
 
-            // TODO: - 타인의 채팅 참가, 중간 여부에 따른 알림 생성 및 출력
-            print(StreamDataFormat.shared.othreUserChatStatus(username: username, status: status))
+            let notificationMessage = "\(username) has \(status)"
+            chats.append(Chat(username: username,
+                              message: notificationMessage,
+                              identifier: .notification,
+                              date: Date()))
+            delegate?.receiveMessage()
         }
     }
 }
