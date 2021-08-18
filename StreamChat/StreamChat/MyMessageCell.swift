@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class MyMessageCell: UITableViewCell {
     static let reuseIfentifier = "myMessageCell"

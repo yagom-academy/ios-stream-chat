@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class NotificationCell: UITableViewCell {
     static let reuseIdentifier = "notificationCell"
