@@ -11,7 +11,7 @@ final class MockOutputStream: outputStreamProtocol {
     weak var delegate: StreamDelegate?
     
     func open() {
-        
+        UnitTestVariables.serverConnectionTestList.append(UnitTestConstants.outputStreamOpen)
     }
     
     func close() {
@@ -23,7 +23,7 @@ final class MockOutputStream: outputStreamProtocol {
     }
     
     func schedule(in aRunLoop: RunLoop, forMode mode: RunLoop.Mode) {
-        
+        UnitTestVariables.serverConnectionTestList.append(UnitTestConstants.outputStreamScheduleCall)
     }
     
 }
