@@ -66,7 +66,8 @@ final class SendMessageView: UIView {
     @objc func didTapSendButton() {
         guard let text = messageTextfield.text,
               text.isEmpty == false else { return }
-        delegate?.sendMessage(message: text)
+        StreamChat.shared.sendChat(message: text)
+        delegate?.insertMessage()
         messageTextfield.text = nil
     }
 }

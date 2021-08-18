@@ -8,7 +8,6 @@ import UIKit
 import SnapKit
 
 final class StreamChatViewController: UIViewController {
-
     private let tableView = UITableView()
     private let sendMessageView = SendMessageView()
 
@@ -31,6 +30,7 @@ final class StreamChatViewController: UIViewController {
 
     private func setupTableView() {
         view.addSubview(tableView)
+
         tableView.dataSource = self
         tableView.register(MyMessageCell.self, forCellReuseIdentifier: MyMessageCell.reuseIfentifier)
         tableView.register(OtherMessageCell.self, forCellReuseIdentifier: OtherMessageCell.reuseIdentifier)
@@ -91,22 +91,11 @@ extension StreamChatViewController: UITableViewDataSource {
 }
 
 protocol StreamChatDelegate {
-    func sendMessage(message: String)
-
-    func receiveMessage()
+    func insertMessage()
 }
 
 extension StreamChatViewController: StreamChatDelegate {
-    func sendMessage(message: String) {
-        StreamChat.shared.sendChat(message: message)
-
-        let lastRow: Int = StreamChat.shared.countChats() - 1
-        let indexPath: IndexPath = IndexPath(row: lastRow, section: 0)
-        tableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.none)
-        tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
-    }
-
-    func receiveMessage() {
+    func insertMessage() {
         let lastRow: Int = StreamChat.shared.countChats() - 1
         let indexPath: IndexPath = IndexPath(row: lastRow, section: 0)
         tableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.none)

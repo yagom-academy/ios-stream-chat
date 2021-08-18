@@ -97,11 +97,11 @@
 		7072F71826C4FFD900826FF7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				70A60B9B26C4CBFE00C08915 /* StreamChat.swift */,
-				7072F72826C50A3400826FF7 /* StreamInfomation.swift */,
-				70136AEE26CA161C006BB174 /* StreamDataFormat.swift */,
 				70E8D7B626CBB74A008FD6CC /* Chat.swift */,
+				70A60B9B26C4CBFE00C08915 /* StreamChat.swift */,
+				70136AEE26CA161C006BB174 /* StreamDataFormat.swift */,
 				70AC514326CBDCA500F26FF3 /* DateFormtter.swift */,
+				7072F72826C50A3400826FF7 /* StreamInfomation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";

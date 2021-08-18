@@ -69,7 +69,14 @@ final class StreamChatJoinViewController: UIViewController {
             StreamChat.shared.joinChat(username: text)
             usernameTextField.text = nil
         } else {
-            print("10글자!")
+            let alert = UIAlertController(title: "닉네임 글자수 초과!",
+                                          message: "닉네임은 10글자 이하로 해주세요",
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(okAction)
+            present(alert, animated: true) {
+                self.usernameTextField.text = nil
+            }
         }
     }
 }

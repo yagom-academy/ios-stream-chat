@@ -59,5 +59,4 @@ final class MyMessageCell: UITableViewCell {
             label.bottom.equalToSuperview().inset(5)
         }
     }
-
 }

@@ -11,14 +11,6 @@ import SnapKit
 final class OtherMessageCell: UITableViewCell {
     static let reuseIdentifier = "otherMessageCell"
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-
     let usernameLabel: UILabel = {
         let label = UILabel()
         label.text = "receive Username"
