@@ -16,6 +16,8 @@ final class StreamChatViewController: UIViewController {
         super.viewDidLoad()
 
         StreamChat.shared.delegate = self
+        view.backgroundColor = .systemBackground
+        self.navigationController?.isNavigationBarHidden = false
         setupTableView()
         setupSendMessageView()
     }
@@ -24,6 +26,7 @@ final class StreamChatViewController: UIViewController {
         super.viewWillDisappear(animated)
 
         StreamChat.shared.stopChat()
+        self.navigationController?.isNavigationBarHidden = true
     }
 
     private func setupTableView() {

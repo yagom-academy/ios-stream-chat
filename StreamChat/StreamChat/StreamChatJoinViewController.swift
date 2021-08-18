@@ -17,6 +17,7 @@ final class StreamChatJoinViewController: UIViewController {
                                                   width: 10,
                                                   height: textField.frame.height))
         textField.leftViewMode = .always
+        textField.placeholder = "10글자 이내의 닉네임 입력"
         return textField
     }()
 
@@ -33,9 +34,13 @@ final class StreamChatJoinViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "스트림 채팅 입장"
         view.backgroundColor = .systemBackground
+        navigationController?.isNavigationBarHidden = true
+        setupUsernameTextField()
+        setupJoinButton()
+    }
 
+    private func setupUsernameTextField() {
         view.addSubview(usernameTextField)
         usernameTextField.snp.makeConstraints { textField in
             textField.centerY.equalTo(view.safeAreaLayoutGuide)
@@ -44,7 +49,9 @@ final class StreamChatJoinViewController: UIViewController {
             textField.height.equalTo(50)
 
         }
+    }
 
+    private func setupJoinButton() {
         view.addSubview(joinButton)
         joinButton.snp.makeConstraints { button in
             button.centerY.equalTo(view.safeAreaLayoutGuide)
@@ -56,7 +63,7 @@ final class StreamChatJoinViewController: UIViewController {
     @objc func didTapJoinButton() {
         if let text = usernameTextField.text, text.isEmpty == false, text.count <= 10 {
             let streamChatViewController = StreamChatViewController()
-            
+
             self.navigationController?.pushViewController(streamChatViewController, animated: true)
             StreamChat.shared.setupNetworkCommunication()
             StreamChat.shared.joinChat(username: text)
