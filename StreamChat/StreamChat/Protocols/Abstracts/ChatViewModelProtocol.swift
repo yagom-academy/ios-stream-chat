@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ChatViewModelProtocol: ChatViewModelDelegate {
+protocol ChatViewModelProtocol: NetworkManagerDelegate {
     var onUpdated: (_ newMessages: [Chat], _ oldMessages: [Chat]) -> Void { get set }
     
     func getCountOfMessages() -> Int

@@ -11,7 +11,7 @@ final class NetworkManager: NSObject {
     private var inputStream: InputStreamProtocol?
     private var outputStream: OutputStreamProtocol?
     private var streamTask: URLSessionStreamTaskProtocol?
-    weak var delegate: ChatViewModelDelegate?
+    weak var delegate: NetworkManagerDelegate?
     
     init(streamTask: URLSessionStreamTaskProtocol) {
         self.streamTask = streamTask
@@ -21,7 +21,7 @@ final class NetworkManager: NSObject {
         super.init()
     }
     
-    // MARK: Setting
+    // MARK: Setting function
     
     func setStreamTask(_ streamTask: URLSessionStreamTaskProtocol) {
         self.streamTask = streamTask
@@ -41,7 +41,7 @@ final class NetworkManager: NSObject {
         outputStream.open()
     }
     
-    // MARK: Network
+    // MARK: Stream function
     
     func connectServer() {
         streamTask?.resume()

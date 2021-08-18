@@ -8,7 +8,7 @@
 import Foundation
 
 class MockNetworkManager: NetworkManagerProtocol {
-    weak var delegate: ChatViewModelDelegate?
+    weak var delegate: NetworkManagerDelegate?
     
     func setUrlSessionStreamDelegate(inputStream: InputStreamProtocol,
                                      outputStream: OutputStreamProtocol) {

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NetworkManagerProtocol {
-    var delegate: ChatViewModelDelegate? { get set }
+    var delegate: NetworkManagerDelegate? { get set }
     
     func connectServer()
     
