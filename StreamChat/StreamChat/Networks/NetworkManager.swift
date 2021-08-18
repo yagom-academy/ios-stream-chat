@@ -63,7 +63,7 @@ extension NetworkManager: URLSessionStreamDelegate {
 
 extension NetworkManager: StreamDelegate {
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
-        if inputStream as? Stream == aStream {
+        if (aStream as? InputStream) != nil {
             switch eventCode {
             case .hasBytesAvailable:
                 var data = Data()

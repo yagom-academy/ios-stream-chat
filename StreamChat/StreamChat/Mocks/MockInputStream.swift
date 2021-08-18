@@ -6,3 +6,24 @@
 //
 
 import Foundation
+
+final class MockInputStream: InputStreamProtocol {
+    weak var delegate: StreamDelegate?
+    
+    func open() {
+        
+    }
+    
+    func close() {
+        
+    }
+    
+    func read(data: inout Data) -> Int {
+        return 0
+    }
+    
+    func schedule(in aRunLoop: RunLoop, forMode mode: RunLoop.Mode) {
+        
+    }
+    
+}
