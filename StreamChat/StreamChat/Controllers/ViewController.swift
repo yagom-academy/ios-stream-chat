@@ -7,12 +7,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    let chatRoom = ChatRoom(chatNetworkManager: ChatNetworkManager())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        chatRoom.joinChat(username: "James")
     }
-
-
 }
-
