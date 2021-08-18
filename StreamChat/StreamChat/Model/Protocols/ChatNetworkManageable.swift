@@ -8,8 +8,9 @@
 import Foundation
 
 protocol ChatNetworkManageable: AnyObject {
+    
     func setUpNetwork()
-    func read(from streamTask: URLSessionStreamTask?)
+    func read(completionHandler: @escaping (Result<Data, NetworkError>) -> Void)
     func write(data: Data)
     func closeStream()
 }
