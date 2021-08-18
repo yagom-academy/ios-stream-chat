@@ -107,7 +107,7 @@ class ChatRoomViewController: UIViewController {
     @objc private func sendMessage(_ sender: UIButton) {
         guard let text = messageInputTextField.text,
               text.isEmpty == false else { return }
-        chatList.append(Message(content: text, senderUsername: self.myUserName, messageSender: .myself))
+        chatList.append(Message(content: text, senderUsername: "\(self.myUserName):", messageSender: .myself))
         chatRoom.send(text)
         messageInputTextField.text = nil
         
@@ -145,6 +145,51 @@ class ChatRoomViewController: UIViewController {
         ])
     }
 }
+
+// MARK: - ChatReadable
+
+extension ChatRoomViewController: ChatReadable {
+    func fetchMessageFromServer(data: Data) {
+        guard let decodedMessageStringList = String(data: data, encoding: .utf8)?.components(separatedBy: "::"),
+              let userName = decodedMessageStringList.first,
+              let content = decodedMessageStringList.last else { return }
+        if userName != self.myUserName && decodedMessageStringList.count == 2 {
+            receiveMessage(username: "\(userName):", content: content)
+        } else if userName != self.myUserName && decodedMessageStringList.count == 1 {
+            receiveUserInformationMessage(content: content)
+        }
+    }
+    
+    private func distinguishNotificationFromMessage(messageArray: [String]) {
+
+    }
+    
+    private func receiveMessage(username: String, content: String) {
+        guard username.isEmpty == false,
+              content.isEmpty == false else { return }
+        
+        chatList.append(Message(content: content, senderUsername: username, messageSender: .someoneElse))
+        
+        let indexPath = IndexPath(row: chatList.count - 1, section: 0)
+        
+        chatMessageView.insertRows(at: [indexPath], with: .none)
+        chatMessageView.scrollToRow(at: indexPath, at: .middle, animated: true)
+    }
+    
+    private func receiveUserInformationMessage(content: String) {
+        guard content.isEmpty == false else { return }
+        
+        chatList.append(Message(content: content, senderUsername: "", messageSender: .someoneElse))
+        
+        let indexPath = IndexPath(row: chatList.count - 1, section: 0)
+        
+        chatMessageView.insertRows(at: [indexPath], with: .none)
+        chatMessageView.scrollToRow(at: indexPath, at: .middle, animated: true)
+    }
+}
+
+// MARK: - UITableViewDataSource
+
 extension ChatRoomViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chatList.count
@@ -157,15 +202,16 @@ extension ChatRoomViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: messageIdentifier, for: indexPath) as? MyMessageViewCell else {
                 return UITableViewCell()
             }
-            cell.changeLabelText(message.content)
+            cell.changeLabelText("\(message.senderUsername) \(message.content)")
             return cell
-        } else {
+        } else if message.messageSender == .someoneElse {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: messageIdentifier, for: indexPath) as? OthersMessageViewCell else {
                 return UITableViewCell()
             }
-            cell.changeLabelText(message.content)
+            cell.changeLabelText("\(message.senderUsername) \(message.content)")
             return cell
         }
+        return UITableViewCell()
         
     }
 }

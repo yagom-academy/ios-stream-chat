@@ -18,6 +18,8 @@
 		EAA925CD26CBB7FD003D1D8F /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA925CC26CBB7FD003D1D8F /* ChatRoomViewController.swift */; };
 		EAA925CF26CBCBC9003D1D8F /* MyMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA925CE26CBCBC9003D1D8F /* MyMessageViewCell.swift */; };
 		EAA925D126CBD32C003D1D8F /* OthersMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA925D026CBD32C003D1D8F /* OthersMessageViewCell.swift */; };
+		EAA925D326CC147D003D1D8F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA925D226CC147D003D1D8F /* NetworkError.swift */; };
+		EAA925D526CC16BC003D1D8F /* ChatReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA925D426CC16BC003D1D8F /* ChatReadable.swift */; };
 		EAEB958026C559C4001A500D /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB957F26C559C4001A500D /* ChatRoom.swift */; };
 		EAEB958726C56307001A500D /* StreamInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB958626C56307001A500D /* StreamInformation.swift */; };
 		EAEB958926C580F0001A500D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB958826C580F0001A500D /* Message.swift */; };
@@ -56,6 +58,8 @@
 		EAA925CC26CBB7FD003D1D8F /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		EAA925CE26CBCBC9003D1D8F /* MyMessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageViewCell.swift; sourceTree = "<group>"; };
 		EAA925D026CBD32C003D1D8F /* OthersMessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersMessageViewCell.swift; sourceTree = "<group>"; };
+		EAA925D226CC147D003D1D8F /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		EAA925D426CC16BC003D1D8F /* ChatReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatReadable.swift; sourceTree = "<group>"; };
 		EAEB957F26C559C4001A500D /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		EAEB958626C56307001A500D /* StreamInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamInformation.swift; sourceTree = "<group>"; };
 		EAEB958826C580F0001A500D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -125,9 +129,18 @@
 			path = StreamChat;
 			sourceTree = "<group>";
 		};
+		EAA925D626CC326D003D1D8F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				EAA925D426CC16BC003D1D8F /* ChatReadable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		EAEB958126C55C31001A500D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EAA925D626CC326D003D1D8F /* Protocols */,
 				C7927558262C562B00EF5D3A /* LoginViewController.swift */,
 				EAA925CC26CBB7FD003D1D8F /* ChatRoomViewController.swift */,
 			);
@@ -154,6 +167,7 @@
 				EAEB95C926C65BAF001A500D /* ConnectionConfiguration.swift */,
 				EAEB95CB26C65C95001A500D /* StreamError.swift */,
 				EAA925C826CB5142003D1D8F /* ChatNetworkManager.swift */,
+				EAA925D226CC147D003D1D8F /* NetworkError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -301,7 +315,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA925D526CC16BC003D1D8F /* ChatReadable.swift in Sources */,
 				EAEB95D126C66DC7001A500D /* URLSessionProtocol.swift in Sources */,
+				EAA925D326CC147D003D1D8F /* NetworkError.swift in Sources */,
 				EAA925CB26CB548D003D1D8F /* ChatNetworkManageable.swift in Sources */,
 				EAEB95CA26C65BAF001A500D /* ConnectionConfiguration.swift in Sources */,
 				C7927559262C562B00EF5D3A /* LoginViewController.swift in Sources */,
