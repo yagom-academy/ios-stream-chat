@@ -11,12 +11,19 @@ import XCTest
 class StreamChatTests: XCTestCase {
     var networkManager: NetworkManager!
     var expectation: XCTestExpectation!
+    var inputStream: InputStreamProtocol!
+    var outputStream: outputStreamProtocol!
+    var streamTask: URLSessionStreamTaskProtocol!
     
     override func setUp() {
-        let configuration = URLSessionConfiguration.default
-        configuration.protocolClasses = [MockURLProtocol.self]
-        let delegateQueue = OperationQueue.main
-        networkManager = NetworkManager(configuration: configuration, delegateQueue: delegateQueue)
+        inputStream = MockInputStream()
+        outputStream = MockOutputStream()
+        streamTask = MockURLSessionStreamTask()
+        networkManager = NetworkManager(streamTask: streamTask)
+        
+        MockURLSessionStreamTask.setUrlSessionStreamDelegate = networkManager.setUrlSessionStreamDelegate(inputStream:outputStream:)
+        MockURLSessionStreamTask.inputStream = inputStream
+        MockURLSessionStreamTask.outputStream = outputStream
     }
 
     override func setUpWithError() throws {
@@ -40,11 +47,14 @@ class StreamChatTests: XCTestCase {
     }
     
     func test_connectServer_성공() throws {
-
-        guard let inputStream = networkManager.inputStream else {
-            return
-        }
-        networkManager.stream(inputStream, handle: .hasBytesAvailable)
-       
+        let expectedData = [UnitTestConstants.resumeCall,
+                            UnitTestConstants.captureStreamsCall,
+                            UnitTestConstants.inputStreamScheduleCall,
+                            UnitTestConstants.outputStreamScheduleCall,
+                            UnitTestConstants.inputStreamOpen,
+                            UnitTestConstants.outputStreamOpen]
+        networkManager.connectServer()
+        print(UnitTestVariables.serverConnectionTestList == expectedData)
+        XCTAssertEqual(expectedData, UnitTestVariables.serverConnectionTestList)
     }
 }
