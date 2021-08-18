@@ -13,11 +13,11 @@ final class MockURLSessionStreamTask: URLSessionStreamTaskProtocol {
     static var outputStream: OutputStreamProtocol?
     
     func resume() {
-        UnitTestVariables.serverConnectionTestList.append(UnitTestConstants.resumeCall)
+        UnitTestVariables.appendFunctionNameIntoServerConnectionTestList(UnitTestConstants.resumeCall)
     }
     
     func captureStreams() {
-        UnitTestVariables.serverConnectionTestList.append(UnitTestConstants.captureStreamsCall)
+        UnitTestVariables.appendFunctionNameIntoServerConnectionTestList(UnitTestConstants.captureStreamsCall)
         MockURLSessionStreamTask.setUrlSessionStreamDelegate(MockURLSessionStreamTask.inputStream!, MockURLSessionStreamTask.outputStream!)
     }
     

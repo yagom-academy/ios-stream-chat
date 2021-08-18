@@ -58,7 +58,7 @@ class StreamChatTests: XCTestCase {
             XCTFail("delegate == nil")
             return
         }
-        print(UnitTestVariables.serverConnectionTestList == expectedData)
-        XCTAssertEqual(expectedData, UnitTestVariables.serverConnectionTestList)
+        XCTAssertEqual(expectedData, UnitTestVariables.getServerConnectionTestList())
+        UnitTestVariables.resetServerConnectionTestList()
     }
 }

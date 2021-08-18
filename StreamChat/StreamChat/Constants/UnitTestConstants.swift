@@ -8,5 +8,14 @@
 import Foundation
 
 enum UnitTestVariables {
-    static var serverConnectionTestList: [String] = []
+    private static var serverConnectionTestList: [String] = []
+    static func appendFunctionNameIntoServerConnectionTestList(_ functionName: String) {
+        UnitTestVariables.serverConnectionTestList.append(functionName)
+    }
+    static func resetServerConnectionTestList() {
+        UnitTestVariables.serverConnectionTestList = []
+    }
+    static func getServerConnectionTestList() -> [String] {
+        UnitTestVariables.serverConnectionTestList
+    }
 }
