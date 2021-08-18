@@ -74,7 +74,7 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let chatRoomViewController = ChatRoomViewController()
         if let userName = loginTextField.text {
-            chatRoomViewController.username = userName
+            chatRoomViewController.myUserName = userName
         }
         loginTextField.text = nil
         loginTextField.resignFirstResponder()

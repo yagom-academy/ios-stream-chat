@@ -11,7 +11,7 @@ class ChatRoomViewController: UIViewController {
     
     // MARK: - Properties
     
-    var username = ""
+    var myUserName = ""
     private var chatList: [Message] = []
     private let chatRoom = ChatRoom(chatNetworkManager: ChatNetworkManager())
     
@@ -61,7 +61,8 @@ class ChatRoomViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        chatRoom.joinChat(username: username)
+        chatRoom.joinChat(username: myUserName)
+        chatRoom.receiveChat()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -73,6 +74,7 @@ class ChatRoomViewController: UIViewController {
         super.viewDidLoad()
         setUpChatRoomView()
         chatMessageView.dataSource = self
+        chatRoom.delegate = self
         changeLayoutWhenKeyboardShowsAndHides()
     }
     
@@ -105,7 +107,7 @@ class ChatRoomViewController: UIViewController {
     @objc private func sendMessage(_ sender: UIButton) {
         guard let text = messageInputTextField.text,
               text.isEmpty == false else { return }
-        chatList.append(Message(content: text, senderUsername: self.username, messageSender: .myself))
+        chatList.append(Message(content: text, senderUsername: self.myUserName, messageSender: .myself))
         chatRoom.send(text)
         messageInputTextField.text = nil
         
