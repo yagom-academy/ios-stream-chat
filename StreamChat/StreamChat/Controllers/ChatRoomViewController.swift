@@ -84,9 +84,14 @@ class ChatRoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpChatRoomView()
-        chatMessageView.dataSource = self
-        chatRoom.delegate = self
+        setDelegates()
         changeLayoutWhenKeyboardShowsAndHides()
+    }
+    
+    private func setDelegates() {
+        chatMessageView.dataSource = self
+        messageInputTextField.delegate = self
+        chatRoom.delegate = self
     }
     
     private func changeLayoutWhenKeyboardShowsAndHides() {
@@ -159,8 +164,7 @@ class ChatRoomViewController: UIViewController {
             messageInputStackView.trailingAnchor.constraint(equalTo: messageInputView.trailingAnchor, constant: -5)
             
         ])
-        bottomConstraint =
-            messageInputStackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -8)
+        bottomConstraint = messageInputStackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -8)
         bottomConstraint?.isActive = true
         
         NSLayoutConstraint.activate([
@@ -235,5 +239,21 @@ extension ChatRoomViewController: UITableViewDataSource {
         }
         return UITableViewCell()
         
+    }
+}
+extension ChatRoomViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let text = textField.text,
+              text.isEmpty == false {
+            chatList.append(Message(content: text, senderUsername: "\(self.myUserName):", messageSender: .myself))
+            chatRoom.send(text)
+            messageInputTextField.text = nil
+            
+            let indexPath = IndexPath(row: chatList.count - 1, section: 0)
+            
+            chatMessageView.insertRows(at: [indexPath], with: .none)
+            chatMessageView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
+        return true
     }
 }

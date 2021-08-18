@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .systemGray6
         label.text = "Welcome to StreamChat"
+        label.numberOfLines = 0
         label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         label.textAlignment = .center
         return label
@@ -102,25 +103,6 @@ class LoginViewController: UIViewController {
         self.view.addSubview(welcomeLabel)
         
         NSLayoutConstraint.activate([
-//            loginView.heightAnchor.constraint(greaterThanOrEqualToConstant: self.view.bounds.height / 6),
-//            loginView.widthAnchor.constraint(equalToConstant: self.view.bounds.width),
-//            loginView.topAnchor.constraint(equalTo: self.view.topAnchor),
-//            loginView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-//            loginView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-//            loginView.bottomAnchor.constraint(equalTo: streamImageView.topAnchor),
-//
-//            loginTextField.topAnchor.constraint(equalTo: loginView.topAnchor, constant: 10),
-//            loginTextField.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 10),
-//            loginTextField.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -10),
-//            loginTextField.bottomAnchor.constraint(equalTo: loginView.bottomAnchor, constant: 10),
-//
-//            streamImageView.heightAnchor.constraint(greaterThanOrEqualToConstant: self.view.bounds.height / 3),
-//            streamImageView.widthAnchor.constraint(greaterThanOrEqualToConstant: self.view.bounds.width / 2),
-//            streamImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
-//            streamImageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
-//            streamImageView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -10)
-//            streamImageView.heightAnchor.constraint(equalToConstant: self.view.bounds.height),
-//            streamImageView.widthAnchor.constraint(equalToConstant: self.view.bounds.width),
             streamImageView.topAnchor.constraint(equalTo: self.view.topAnchor),
             streamImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             streamImageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
