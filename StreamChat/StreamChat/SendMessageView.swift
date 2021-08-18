@@ -12,8 +12,7 @@ final class SendMessageView: UIView {
 
     private let messageTextfield: UITextField = {
         let textField = UITextField()
-        textField.backgroundColor = .systemPink
-        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.backgroundColor = .systemGray6
         textField.leftView = UIView(frame: CGRect(x: 0,
                                                   y: 0,
                                                   width: 10,
@@ -25,7 +24,8 @@ final class SendMessageView: UIView {
     let sendButton: UIButton = {
         let button = UIButton()
         button.setTitle("Send", for: .normal)
-        button.backgroundColor = .systemGreen
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.backgroundColor = .systemBackground
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(didTapSendButton), for: .touchUpInside)
         return button
@@ -34,22 +34,13 @@ final class SendMessageView: UIView {
     init() {
         super.init(frame: .zero)
 
-        self.backgroundColor = .systemGray
-        setupTextField()
+        self.backgroundColor = .systemBackground
         setupSendButton()
+        setupTextField()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-    }
-
-    private func setupTextField() {
-        self.addSubview(messageTextfield)
-
-        messageTextfield.snp.makeConstraints { textfield in
-            textfield.top.leading.bottom.equalTo(self.safeAreaLayoutGuide).inset(10)
-            textfield.width.equalTo(300)
-        }
     }
 
     private func setupSendButton() {
@@ -60,6 +51,15 @@ final class SendMessageView: UIView {
             button.height.equalTo(25)
             button.trailing.equalTo(self.safeAreaLayoutGuide).inset(15)
             button.centerY.equalTo(self)
+        }
+    }
+
+    private func setupTextField() {
+        self.addSubview(messageTextfield)
+
+        messageTextfield.snp.makeConstraints { textfield in
+            textfield.top.leading.bottom.equalTo(self.safeAreaLayoutGuide).inset(10)
+            textfield.trailing.equalTo(sendButton.snp.leading)
         }
     }
 

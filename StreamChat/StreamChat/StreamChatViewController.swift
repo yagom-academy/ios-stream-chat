@@ -37,6 +37,7 @@ final class StreamChatViewController: UIViewController {
         tableView.register(NotificationCell.self, forCellReuseIdentifier: NotificationCell.reuseIdentifier)
 
         tableView.backgroundColor = .systemBackground
+        tableView.separatorStyle = .none
         tableView.snp.makeConstraints { tableView in
             tableView.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
         }

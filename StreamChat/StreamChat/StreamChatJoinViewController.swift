@@ -36,8 +36,8 @@ final class StreamChatJoinViewController: UIViewController {
 
         view.backgroundColor = .systemBackground
         navigationController?.isNavigationBarHidden = true
-        setupUsernameTextField()
         setupJoinButton()
+        setupUsernameTextField()
     }
 
     private func setupUsernameTextField() {
@@ -45,7 +45,7 @@ final class StreamChatJoinViewController: UIViewController {
         usernameTextField.snp.makeConstraints { textField in
             textField.centerY.equalTo(view.safeAreaLayoutGuide)
             textField.leading.equalTo(view.safeAreaLayoutGuide).inset(30)
-            textField.width.lessThanOrEqualTo(300)
+            textField.trailing.equalTo(joinButton.snp.leading)
             textField.height.equalTo(50)
 
         }
@@ -55,7 +55,7 @@ final class StreamChatJoinViewController: UIViewController {
         view.addSubview(joinButton)
         joinButton.snp.makeConstraints { button in
             button.centerY.equalTo(view.safeAreaLayoutGuide)
-            button.leading.equalTo(usernameTextField.snp.trailing).offset(10)
+            button.width.equalTo(50)
             button.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
     }
