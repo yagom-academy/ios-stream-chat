@@ -9,8 +9,8 @@ import XCTest
 
 class StreamChatTests: XCTestCase {
     var sut_chatroom: ChatRoom!
-    var mock_networkmanager: ChatNetworkManager!
-    var mock_urlsession: URLSessionProtocol!
+    var mock_networkmanager: MockChatNetworkManager!
+    var mock_urlsession: MockURLSession!
     var mock_streamtask: MockStreamTask!
     
     override func setUpWithError() throws {
@@ -19,7 +19,7 @@ class StreamChatTests: XCTestCase {
         let configuration = URLSessionConfiguration.default
         configuration.requestCachePolicy = .reloadIgnoringCacheData
         mock_urlsession = MockURLSession(configuration: configuration, delegate: nil, delegateQueue: nil)
-        mock_networkmanager = ChatNetworkManager(urlSession: mock_urlsession)
+        mock_networkmanager = MockChatNetworkManager(urlSession: mock_urlsession)
         mock_streamtask = MockStreamTask()
         mock_networkmanager.streamTask = mock_streamtask
         sut_chatroom = ChatRoom(chatNetworkManager: mock_networkmanager)
@@ -30,11 +30,11 @@ class StreamChatTests: XCTestCase {
         mock_urlsession = nil
     }
     
-    func test_sut_chatroom_에서_joinChat메서드_호출시_streamtask가_정상적으로_writeData를_할수있는지_체크() {
+    func test_sut_chatroom_에서_send메서드_호출시_streamtask가_정상적으로_writeData를_할수있는지_체크() {
         
         // given
         let expectation = XCTestExpectation()
-        let name = "James"
+        let message = "hi"
         
         
         // when
@@ -46,13 +46,13 @@ class StreamChatTests: XCTestCase {
             XCTAssertEqual(self.mock_streamtask.dataList.count, 1)
             
             // verify that the written data is an expected data
-            XCTAssertEqual(expectedString, "James123")
+            XCTAssertEqual(expectedString, "hi")
             
             // verify that write method was called only once
             XCTAssertEqual(self.mock_streamtask.writeCounter, 1)
             expectation.fulfill()
         }
-        sut_chatroom.joinChat(username: name)
-        wait(for: [expectation], timeout: 3)
+        sut_chatroom.send(message)
+        wait(for: [expectation], timeout: 6)
     }
 }
