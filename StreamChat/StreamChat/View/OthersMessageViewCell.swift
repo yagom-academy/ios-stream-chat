@@ -15,7 +15,7 @@ class OthersMessageViewCell: UITableViewCell {
         imageView.image = UIImage(named: "bubble_left")?.withRenderingMode(.alwaysTemplate)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleToFill
-        imageView.tintColor = UIColor(red: 0, green: 0.7294, blue: 0.2039, alpha: 1.0)
+        imageView.tintColor = UIColor(red: 0, green: 0.9176, blue: 0, alpha: 1.0)
         return imageView
     }()
     
