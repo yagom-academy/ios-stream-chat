@@ -137,7 +137,7 @@ extension StreamChat: StreamDelegate {
                               identifier: .other, date: Date()))
         } else {
             guard let stringNotification = stringArray.first?
-                    .components(separatedBy: StreamDataFormat.shared.divisionSpaceNotifi),
+                    .components(separatedBy: StreamDataFormat.shared.divisionNotifi),
                   let username = stringNotification.first,
                   let status = stringNotification.last,
                   self.myUsername != username else { return }

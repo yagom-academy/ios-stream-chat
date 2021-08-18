@@ -11,7 +11,7 @@ struct StreamDataFormat {
     static let shared = StreamDataFormat()
 
     let divisionPoint = "::"
-    let divisionSpaceNotifi = " "
+    let divisionNotifi = "has"
     let emptyUsername = ""
 
     func join(data: String) -> String {
