@@ -20,6 +20,7 @@ final class TcpSocket: NSObject {
         outputStream?.open()
     }
     func send(data: String) {
+        // FIX: - 한글은 보내지지않는 오류해결
         outputStream?.write(data, maxLength: data.count)
     }
     func receive(totalSizeOfBuffer: Int) throws -> Data {

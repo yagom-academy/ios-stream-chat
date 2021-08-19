@@ -13,7 +13,7 @@ final class StartViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var enterChatRoomButton: UIButton!
     
-    private let startViewModel = StartViewModel()
+    private let viewModel = StartViewModel()
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
@@ -27,22 +27,15 @@ final class StartViewController: UIViewController, UITextFieldDelegate {
         if segue.identifier == ChattingViewController.segueIdentifier {
             let chattingViewController = segue.destination as? ChattingViewController
             
-            if let userName = sender as? String {
-                chattingViewController?.viewModel.setUserName(name: userName)
+            if let chatting = sender as? Chatting {
+                chattingViewController?.viewModel.setChatting(chatting)
             }
         }
     }
     @IBAction func clickEnterChatRoomButton(_ sender: Any) {
-        guard let userName: String = userNameTextField.text else {
-            return
-        }
-        do {
-            try startViewModel.enterTheChatRoom(userName: userName)
-        } catch {
-            putUpInappropriateNameErrorAlert(error: error)
-            userNameTextField.text = nil
-        }
-        performSegue(withIdentifier: ChattingViewController.segueIdentifier, sender: userName)
+        enterTheChatRoom()
+        performSegue(withIdentifier: ChattingViewController.segueIdentifier,
+                     sender: viewModel.getChatting())
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
@@ -62,6 +55,17 @@ final class StartViewController: UIViewController, UITextFieldDelegate {
         logoImageView.image = ViewImage.logo
         userNameTextField.delegate = self
         enterChatRoomButton.isEnabled = false
+    }
+    private func enterTheChatRoom() {
+        guard let userName: String = userNameTextField.text else {
+            return
+        }
+        do {
+            try viewModel.enterTheChatRoom(userName: userName)
+        } catch {
+            putUpInappropriateNameErrorAlert(error: error)
+            userNameTextField.text = nil
+        }
     }
     private func putUpInappropriateNameErrorAlert(error: Error) {
         let alert = UIAlertController(title: "", message: "\(error)",

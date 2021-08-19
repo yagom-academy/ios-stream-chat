@@ -15,7 +15,6 @@ final class ChattingViewController: UIViewController {
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
-    private let dateFormatter = DateFormatter()
     let viewModel = ChattingViewModel()
     
     override func viewDidLoad() {
@@ -25,13 +24,10 @@ final class ChattingViewController: UIViewController {
         addNotificationObserver()
     }
     @IBAction func sendMessage() {
-        let userName = viewModel.userName()
         guard let message = messageField.text, message.isEmpty == false else {
             return
         }
-        let writtenDate = dateFormatter.convertToStringForChat(date: Date())
-        let chatModel = ChatModel(user: userName, message: message, writtenDate: writtenDate)
-        viewModel.send(chatModel: chatModel)
+        viewModel.send(message: message)
         
         let indexPath = IndexPath(row: viewModel.numberOfChatList() - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.none)

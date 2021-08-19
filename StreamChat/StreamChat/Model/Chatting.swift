@@ -9,25 +9,28 @@ import Foundation
 
 final class Chatting {
     
-    let tcpSocket = TcpSocket()
-    let userName: String
+    private let tcpSocket = TcpSocket()
+    private let host: String
+    private let port: Int
+    private var userName = ""
     
-    init(userName: String, host: String, port: Int) throws {
-        self.userName = userName
-        if !isStringAppropriateForStreamConnecting(string: userName) {
+    init(host: String, port: Int) {
+        self.host = host
+        self.port = port
+    }
+    func setUser(name: String) throws {
+        if !isStringAppropriateForStreamConnecting(string: name) {
             throw ChattingError.unavailableCharactersWereUsed
         }
-
-        tcpSocket.connect(host: host, port: port)
-    }
-    func setUser(name: String) {
-        
+        userName = name
     }
     func enterTheChatRoom() {
+        tcpSocket.connect(host: host, port: port)
         tcpSocket.send(data: StreamConstant.enterTheChatRoom(name: userName).format)
     }
     func leaveTheChatRoom() {
         tcpSocket.send(data: StreamConstant.leaveTheChatRoom)
+        tcpSocket.disconnect()
     }
     func send(message: String) throws {
         if message.count > Integers.maximumNumberOfMessageCharacters {
@@ -45,9 +48,6 @@ final class Chatting {
         let data = ReceivedData(receivedString: receivedString)
         
         return data.processedData()
-    }
-    func disconnect() {
-        tcpSocket.disconnect()
     }
     private func isStringAppropriateForStreamConnecting(string: String) -> Bool {
         let inappropriateStrings = ["END"]

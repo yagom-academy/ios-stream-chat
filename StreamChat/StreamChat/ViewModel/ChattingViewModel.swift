@@ -9,19 +9,31 @@ import Foundation
 
 final class ChattingViewModel {
     
-    // TODO: - stream 연결
+    private let dateFormatter = DateFormatter()
+    private var chatting: Chatting?
     private var chatList: [ChatModel] = []
     private var chatName: String = ""
     
-    func setUserName(name: String) {
-        chatName = name
+    func enterTheChatRoom() {
+        chatting?.enterTheChatRoom()
     }
-    func userName() -> String {
-        return chatName
+    func setChatting(_ chatting: Chatting) {
+        self.chatting = chatting
     }
-    func send(chatModel: ChatModel) {
-        print("[chat message] \(chatModel.user): \(chatModel.message) (\(chatModel.writtenDate))")
+    func send(message: String) {
+        let writtenDate = dateFormatter.convertToStringForChat(date: Date())
+        do {
+            try chatting?.send(message: message)
+        } catch {
+            print(error)
+        }
+        
+        let chatModel = ChatModel(message: message, writtenDate: writtenDate)
+        print("[chat message] \(chatModel.message) (\(chatModel.writtenDate))")
         chatList.append(chatModel)
+    }
+    func leaveTheChatRoom() {
+        chatting?.leaveTheChatRoom()
     }
     func numberOfChatList() -> Int {
         return chatList.count

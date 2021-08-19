@@ -9,7 +9,7 @@ import Foundation
 
 struct ChatModel {
     
-    let user: String
+    let user: String = ""
     let message: String
     let writtenDate: String
     // TODO: - Bool.random() 삭제

@@ -26,7 +26,8 @@ final class StreamChatTests: XCTestCase {
     // MARK: - 메시지 전송 및 수신
     func test_메시지_전송_및_수신() throws {
         let messageToSend = "message for test"
-        let chatting = try Chatting(userName: userName, host: host, port: port)
+        let chatting = Chatting(host: host, port: port)
+        try chatting.setUser(name: userName)
         chatting.enterTheChatRoom()
         try chatting.send(message: messageToSend)
         
@@ -34,7 +35,6 @@ final class StreamChatTests: XCTestCase {
         let receivedMessage = receivedData.message
         
         chatting.leaveTheChatRoom()
-        chatting.disconnect()
         
         XCTAssertEqual(messageToSend, receivedMessage)
     }
@@ -46,7 +46,8 @@ final class StreamChatTests: XCTestCase {
             \(sixtyCharacterString)\(sixtyCharacterString)
             """
         let messageToSend = threeHundredCharacterString
-        let chatting = try Chatting(userName: userName, host: host, port: port)
+        let chatting = Chatting(host: host, port: port)
+        try chatting.setUser(name: userName)
         chatting.enterTheChatRoom()
         
         do {
@@ -57,24 +58,23 @@ final class StreamChatTests: XCTestCase {
         }
         
         chatting.leaveTheChatRoom()
-        chatting.disconnect()
     }
     
     // MARK: - 채팅참가 알림 및 수신
     func test_채팅참가_알림_및_수신() throws {
         let chatParticipationNotification = "\(actName) has joined"
-        let chattingOfObserver = try Chatting(userName: observerName, host: host, port: port)
+        let chattingOfObserver = Chatting(host: host, port: port)
+        try chattingOfObserver.setUser(name: observerName)
         chattingOfObserver.enterTheChatRoom()
         
-        let chattingOfAct = try Chatting(userName: actName, host: host, port: port)
+        let chattingOfAct = Chatting(host: host, port: port)
+        try chattingOfAct.setUser(name: actName)
         chattingOfAct.enterTheChatRoom()
         
         let receivedData = try chattingOfObserver.receivedData()
         let receivedMessage = "\(receivedData.userName) \(receivedData.message)"
         chattingOfAct.leaveTheChatRoom()
-        chattingOfAct.disconnect()
         chattingOfObserver.leaveTheChatRoom()
-        chattingOfObserver.disconnect()
 
         XCTAssertEqual(chatParticipationNotification, receivedMessage)
     }
@@ -82,10 +82,12 @@ final class StreamChatTests: XCTestCase {
     // MARK: - 채팅방 나가기 알림 및 수신
     func test_채팅방_나가기_알림_및_수신() throws {
         let leaveChatNotification = "\(actName) has left"
-        let chattingOfObserver = try Chatting(userName: observerName, host: host, port: port)
+        let chattingOfObserver = Chatting(host: host, port: port)
+        try chattingOfObserver.setUser(name: observerName)
         chattingOfObserver.enterTheChatRoom()
         
-        let chattingOfAct = try Chatting(userName: actName, host: host, port: port)
+        let chattingOfAct = Chatting(host: host, port: port)
+        try chattingOfAct.setUser(name: actName)
         chattingOfAct.enterTheChatRoom()
         
         _ = try chattingOfObserver.receivedData()
@@ -93,9 +95,7 @@ final class StreamChatTests: XCTestCase {
         
         let receivedData = try chattingOfObserver.receivedData()
         let receivedMessage = "\(receivedData.userName) \(receivedData.message)"
-        chattingOfAct.disconnect()
         chattingOfObserver.leaveTheChatRoom()
-        chattingOfObserver.disconnect()
 
         XCTAssertEqual(leaveChatNotification, receivedMessage)
     }
@@ -103,7 +103,8 @@ final class StreamChatTests: XCTestCase {
     func test_아이디_올바른_String값_적절성판단() throws {
         let validName = "TestName"
         let messageToSend = "message for test"
-        let chatting = try Chatting(userName: validName, host: host, port: port)
+        let chatting = Chatting(host: host, port: port)
+        try chatting.setUser(name: userName)
         chatting.enterTheChatRoom()
         try chatting.send(message: messageToSend)
         
@@ -111,15 +112,15 @@ final class StreamChatTests: XCTestCase {
         let receivedUserName = receivedData.userName
         
         chatting.leaveTheChatRoom()
-        chatting.disconnect()
         
         XCTAssertEqual(validName, receivedUserName)
     }
     
     func test_아이디_올바르지않은_String값_적절성판단() throws {
         let invalidName = "END"
+        let chatting = Chatting(host: host, port: port)
         do {
-            _ = try Chatting(userName: invalidName, host: host, port: port)
+            _ = try chatting.setUser(name: invalidName)
         } catch {
             let stringOfError: String = "\(error)"
             XCTAssertEqual(stringOfError, ChattingError.unavailableCharactersWereUsed.description)

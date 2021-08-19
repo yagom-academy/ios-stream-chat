@@ -11,9 +11,16 @@ final class StartViewModel {
     
     private let host = StreamConstant.host
     private let port = StreamConstant.port
+    private let chatting: Chatting
     
+    init() {
+        chatting = Chatting(host: host, port: port)
+    }
+    func getChatting() -> Chatting {
+        return chatting
+    }
     func enterTheChatRoom(userName: String) throws {
-        let chatting = try Chatting(userName: userName, host: host, port: port)
+        try chatting.setUser(name: userName)
         chatting.enterTheChatRoom()
     }
 }
