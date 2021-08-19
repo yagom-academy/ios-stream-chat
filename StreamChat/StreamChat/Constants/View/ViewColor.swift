@@ -9,12 +9,14 @@ import UIKit
 
 struct ViewColor {
     
-    static let lightGray = UIColor(named: "LightGray")
-    static let white = UIColor(named: "White")
-    static let nomalBrown = UIColor(named: "KakaoBrown")
-    static let nomalYellow = UIColor(named: "KakaoYellow")
-    static let chatRoomBackground = UIColor(named: "KakaoSkyblue")
-    static let chatTime = UIColor(named: "KakaoDarkGray")
-    static let myChatMessage = UIColor(named: "KakaoLightYellow")
-    static let friendsChatMessage = UIColor(named: "White")
+    static let lightGray = UIColor(named: "LightGray") ?? UIColor.lightGray
+    static let nomalWhite = UIColor(named: "White") ?? UIColor.white
+    static let nomalBlack = UIColor(named: "Black") ?? UIColor.black
+    static let nomalBrown = UIColor(named: "KakaoBrown") ?? UIColor.brown
+    static let nomalYellow = UIColor(named: "KakaoYellow") ?? UIColor.systemYellow
+    static let chatRoomBackground = UIColor(named: "KakaoSkyblue") ?? UIColor.systemBlue
+    static let chatTime = UIColor(named: "KakaoDarkGray") ?? UIColor.darkGray
+    static let myChatMessage = UIColor(named: "KakaoLightYellow") ?? UIColor.yellow
+    static let sendButtonBackground = UIColor(named: "KakaoLightYellow") ?? UIColor.yellow
+    static let friendsChatMessage = UIColor(named: "White") ?? UIColor.white
 }

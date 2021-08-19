@@ -50,9 +50,9 @@ final class StartViewController: UIViewController, UITextFieldDelegate {
                                                                              with: string)
         if text.isEmpty || text.count > ViewSize.maximumUserName {
             setEnterChatRoomButton(titleColor: ViewColor.lightGray,
-                                   backgroundColor: ViewColor.white, isEnable: false)
+                                   backgroundColor: ViewColor.nomalWhite, isEnable: false)
         } else {
-            setEnterChatRoomButton(titleColor: ViewColor.white,
+            setEnterChatRoomButton(titleColor: ViewColor.nomalWhite,
                                    backgroundColor: ViewColor.nomalBrown, isEnable: true)
         }
         

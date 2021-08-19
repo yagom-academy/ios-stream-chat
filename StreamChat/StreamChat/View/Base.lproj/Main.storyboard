@@ -174,14 +174,13 @@
                                 <rect key="frame" x="0.0" y="812" width="414" height="84"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PFH-p6-4hp">
-                                        <rect key="frame" x="8" y="8" width="344" height="34"/>
+                                        <rect key="frame" x="20" y="8" width="374" height="34"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGE-Aj-Xuf">
-                                        <rect key="frame" x="360" y="10" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGE-Aj-Xuf" customClass="SendButton" customModule="StreamChat" customModuleProvider="target">
+                                        <rect key="frame" x="359" y="10" width="30" height="30"/>
                                         <connections>
                                             <action selector="sendMessage" destination="9W3-64-xXM" eventType="touchUpInside" id="F5i-Hc-sbx"/>
                                         </connections>
@@ -189,11 +188,13 @@
                                 </subviews>
                                 <color key="backgroundColor" name="White"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="oGE-Aj-Xuf" secondAttribute="trailing" constant="8" id="PTx-e8-nc9"/>
-                                    <constraint firstItem="oGE-Aj-Xuf" firstAttribute="leading" secondItem="PFH-p6-4hp" secondAttribute="trailing" constant="8" id="aT8-hh-E82"/>
-                                    <constraint firstItem="PFH-p6-4hp" firstAttribute="leading" secondItem="95q-Mr-LpR" secondAttribute="leading" constant="8" id="cPK-mj-rhf"/>
+                                    <constraint firstItem="oGE-Aj-Xuf" firstAttribute="trailing" secondItem="PFH-p6-4hp" secondAttribute="trailing" constant="-5" id="52C-S2-aVT"/>
+                                    <constraint firstItem="oGE-Aj-Xuf" firstAttribute="bottom" secondItem="PFH-p6-4hp" secondAttribute="bottom" constant="-2" id="c4e-PW-BIS"/>
+                                    <constraint firstItem="PFH-p6-4hp" firstAttribute="leading" secondItem="95q-Mr-LpR" secondAttribute="leading" constant="20" id="cPK-mj-rhf"/>
                                     <constraint firstItem="PFH-p6-4hp" firstAttribute="top" secondItem="95q-Mr-LpR" secondAttribute="top" constant="8" id="gZZ-2z-OCf"/>
-                                    <constraint firstItem="PFH-p6-4hp" firstAttribute="centerY" secondItem="oGE-Aj-Xuf" secondAttribute="centerY" id="k28-GV-5VP"/>
+                                    <constraint firstItem="oGE-Aj-Xuf" firstAttribute="centerY" secondItem="PFH-p6-4hp" secondAttribute="centerY" id="tl7-Wu-reN"/>
+                                    <constraint firstItem="oGE-Aj-Xuf" firstAttribute="top" secondItem="PFH-p6-4hp" secondAttribute="top" constant="2" id="uZ9-0K-jvT"/>
+                                    <constraint firstAttribute="trailing" secondItem="PFH-p6-4hp" secondAttribute="trailing" constant="20" id="yyj-Ta-7wE"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -240,6 +241,11 @@
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="oGE-Aj-Xuf">
+            <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+    </designables>
     <resources>
         <image name="bubble_left" width="65" height="36"/>
         <image name="bubble_right" width="65" height="36"/>

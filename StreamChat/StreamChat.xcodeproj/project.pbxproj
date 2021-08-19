@@ -21,6 +21,7 @@
 		C6AA33EB26C3904200F26969 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA33EA26C3904200F26969 /* MessageData.swift */; };
 		C6AA33ED26C39D6400F26969 /* TcpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA33EC26C39D6400F26969 /* TcpError.swift */; };
 		C6B471D226C2E7480062B3CF /* ReceivedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B471D126C2E7480062B3CF /* ReceivedData.swift */; };
+		C6B92B0426CE42A100C96F21 /* SendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B92B0326CE42A100C96F21 /* SendButton.swift */; };
 		C6BEA87F26CCB5D400524987 /* BubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BEA87E26CCB5D400524987 /* BubbleCell.swift */; };
 		C6BEA88126CCB60600524987 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BEA88026CCB60600524987 /* ChatModel.swift */; };
 		C6BEA88326CCB76D00524987 /* ChattingViewConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BEA88226CCB76D00524987 /* ChattingViewConstant.swift */; };
@@ -63,6 +64,7 @@
 		C6AA33EA26C3904200F26969 /* MessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
 		C6AA33EC26C39D6400F26969 /* TcpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpError.swift; sourceTree = "<group>"; };
 		C6B471D126C2E7480062B3CF /* ReceivedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedData.swift; sourceTree = "<group>"; };
+		C6B92B0326CE42A100C96F21 /* SendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendButton.swift; sourceTree = "<group>"; };
 		C6BEA87E26CCB5D400524987 /* BubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleCell.swift; sourceTree = "<group>"; };
 		C6BEA88026CCB60600524987 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		C6BEA88226CCB76D00524987 /* ChattingViewConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewConstant.swift; sourceTree = "<group>"; };
@@ -133,6 +135,14 @@
 				C6AA33EA26C3904200F26969 /* MessageData.swift */,
 			);
 			path = Receive;
+			sourceTree = "<group>";
+		};
+		C6B92B0226CE428000C96F21 /* CoreGraphics */ = {
+			isa = PBXGroup;
+			children = (
+				C6B92B0326CE42A100C96F21 /* SendButton.swift */,
+			);
+			path = CoreGraphics;
 			sourceTree = "<group>";
 		};
 		C6BEA88426CCBD0100524987 /* Extension */ = {
@@ -237,6 +247,7 @@
 				C6E5676726C2CDFF001782DC /* Error */,
 				C6BEA88426CCBD0100524987 /* Extension */,
 				C6E5677B26C2D33D001782DC /* Constants */,
+				C6B92B0226CE428000C96F21 /* CoreGraphics */,
 				C6E5676926C2CE5F001782DC /* SupportingFiles */,
 			);
 			path = StreamChat;
@@ -404,6 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6B92B0426CE42A100C96F21 /* SendButton.swift in Sources */,
 				C680195626CB719700A190DB /* ViewColor.swift in Sources */,
 				C6E5677D26C2D363001782DC /* StreamConstant.swift in Sources */,
 				C6BEA88126CCB60600524987 /* ChatModel.swift in Sources */,
@@ -464,7 +476,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = SPWQVPZS24;
 				INFOPLIST_FILE = StreamChatTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -485,7 +497,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = SPWQVPZS24;
 				INFOPLIST_FILE = StreamChatTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -624,7 +636,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = SPWQVPZS24;
 				INFOPLIST_FILE = StreamChat/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -644,7 +656,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = SPWQVPZS24;
 				INFOPLIST_FILE = StreamChat/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
