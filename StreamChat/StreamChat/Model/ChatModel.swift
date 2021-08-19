@@ -1,5 +1,5 @@
 //
-//  Chat.swift
+//  ChatModel.swift
 //  StreamChat
 //
 //  Created by 강경 on 2021/08/18.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Chat {
+struct ChatModel {
     
     let user: String
     let message: String

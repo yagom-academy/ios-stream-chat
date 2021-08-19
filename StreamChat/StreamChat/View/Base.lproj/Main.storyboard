@@ -40,7 +40,6 @@
                                 </state>
                                 <connections>
                                     <action selector="clickEnterChatRoomButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FBL-un-BYd"/>
-                                    <segue destination="9W3-64-xXM" kind="show" id="nV8-jg-dIz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -64,6 +63,7 @@
                         <outlet property="enterChatRoomButton" destination="d0e-c0-oDd" id="elY-pr-NXL"/>
                         <outlet property="logoImageView" destination="p6I-nQ-7Hk" id="knB-OW-UNi"/>
                         <outlet property="userNameTextField" destination="Lgz-Q1-Xyd" id="4NQ-pM-HYu"/>
+                        <segue destination="9W3-64-xXM" kind="show" identifier="StartChattingView" id="ZyE-86-4YW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

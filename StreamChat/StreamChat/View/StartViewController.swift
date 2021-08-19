@@ -12,8 +12,9 @@ final class StartViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var enterChatRoomButton: UIButton!
-    private let startViewModel = StartViewModel()
     
+    private let startViewModel = StartViewModel()
+
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
     }
@@ -21,6 +22,15 @@ final class StartViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         setStartView()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == ChattingViewController.segueIdentifier {
+            let chattingViewController = segue.destination as? ChattingViewController
+            
+            if let userName = sender as? String {
+                chattingViewController?.viewModel.setUserName(name: userName)
+            }
+        }
     }
     @IBAction func clickEnterChatRoomButton(_ sender: Any) {
         guard let userName: String = userNameTextField.text else {
@@ -32,6 +42,7 @@ final class StartViewController: UIViewController, UITextFieldDelegate {
             putUpInappropriateNameErrorAlert(error: error)
             userNameTextField.text = nil
         }
+        performSegue(withIdentifier: ChattingViewController.segueIdentifier, sender: userName)
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {

@@ -9,17 +9,37 @@ import UIKit
 
 final class ChattingViewController: UIViewController {
 
+    static let segueIdentifier = "StartChattingView"
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
     private let dateFormatter = DateFormatter()
-    private var chats: [Chat] = []
+    let viewModel = ChattingViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
+        addNotificationObserver()
+    }
+    @IBAction func sendMessage() {
+        let userName = viewModel.userName()
+        guard let message = messageField.text, message.isEmpty == false else {
+            return
+        }
+        let writtenDate = dateFormatter.convertToStringForChat(date: Date())
+        let chatModel = ChatModel(user: userName, message: message, writtenDate: writtenDate)
+        viewModel.send(chatModel: chatModel)
         
+        let indexPath = IndexPath(row: viewModel.numberOfChatList() - 1, section: 0)
+        tableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.none)
+        tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
+        
+        messageField.text = nil
+    }
+    private func addNotificationObserver() {
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification,
                                                object: nil, queue: .main) { (notification) in
             guard let userInfo = notification.userInfo else {
@@ -53,30 +73,16 @@ final class ChattingViewController: UIViewController {
             }
         }
     }
-    @IBAction func sendMessage() {
-        guard let text = messageField.text,
-              text.isEmpty == false else {
-            return
-        }
-        let currentDate = Date()
-        chats.append(Chat(user: "test", message: text,
-                          writtenDate: dateFormatter.convertToStringForChat(date: currentDate)))
-        messageField.text = nil
-        
-        let indexPath = IndexPath(row: chats.count - 1, section: 0)
-        tableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.none)
-        tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
-    }
 }
 
 extension ChattingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chats.count
+        return viewModel.numberOfChatList()
     }
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let chat = chats[indexPath.row]
+        let chat = viewModel.chatInfo(index: indexPath.row)
         let identifier = chat.isMyMessage ? BubbleCell.rightCellIdentifier :
             BubbleCell.leftCellIdentifier
         guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier,

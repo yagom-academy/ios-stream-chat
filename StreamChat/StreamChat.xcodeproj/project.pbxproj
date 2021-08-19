@@ -22,7 +22,7 @@
 		C6AA33ED26C39D6400F26969 /* TcpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA33EC26C39D6400F26969 /* TcpError.swift */; };
 		C6B471D226C2E7480062B3CF /* ReceivedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B471D126C2E7480062B3CF /* ReceivedData.swift */; };
 		C6BEA87F26CCB5D400524987 /* BubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BEA87E26CCB5D400524987 /* BubbleCell.swift */; };
-		C6BEA88126CCB60600524987 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BEA88026CCB60600524987 /* Chat.swift */; };
+		C6BEA88126CCB60600524987 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BEA88026CCB60600524987 /* ChatModel.swift */; };
 		C6BEA88326CCB76D00524987 /* ChattingViewConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BEA88226CCB76D00524987 /* ChattingViewConstant.swift */; };
 		C6BEA88626CCBD1100524987 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BEA88526CCBD1100524987 /* DateFormatter.swift */; };
 		C6E5676426C2B0DE001782DC /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5676326C2B0DE001782DC /* Chatting.swift */; };
@@ -64,7 +64,7 @@
 		C6AA33EC26C39D6400F26969 /* TcpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpError.swift; sourceTree = "<group>"; };
 		C6B471D126C2E7480062B3CF /* ReceivedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedData.swift; sourceTree = "<group>"; };
 		C6BEA87E26CCB5D400524987 /* BubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleCell.swift; sourceTree = "<group>"; };
-		C6BEA88026CCB60600524987 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		C6BEA88026CCB60600524987 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		C6BEA88226CCB76D00524987 /* ChattingViewConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewConstant.swift; sourceTree = "<group>"; };
 		C6BEA88526CCBD1100524987 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		C6E5676326C2B0DE001782DC /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 				C6B471D426C2F0920062B3CF /* Receive */,
 				C6E5676326C2B0DE001782DC /* Chatting.swift */,
 				C6800D9226C173C900EE1778 /* TcpSocket.swift */,
-				C6BEA88026CCB60600524987 /* Chat.swift */,
+				C6BEA88026CCB60600524987 /* ChatModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -406,7 +406,7 @@
 			files = (
 				C680195626CB719700A190DB /* ViewColor.swift in Sources */,
 				C6E5677D26C2D363001782DC /* StreamConstant.swift in Sources */,
-				C6BEA88126CCB60600524987 /* Chat.swift in Sources */,
+				C6BEA88126CCB60600524987 /* ChatModel.swift in Sources */,
 				C6BEA88626CCBD1100524987 /* DateFormatter.swift in Sources */,
 				C6E5676626C2B35D001782DC /* ChattingError.swift in Sources */,
 				C6AA33ED26C39D6400F26969 /* TcpError.swift in Sources */,
