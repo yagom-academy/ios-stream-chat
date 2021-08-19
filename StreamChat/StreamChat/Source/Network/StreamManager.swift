@@ -78,11 +78,10 @@ class StreamManager: NSObject {
 
 extension StreamManager: StreamDelegate {
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
-        if eventCode == Stream.Event.hasBytesAvailable {
-            guard let inputStream = aStream as? InputStream else {
-                return
-            }
-            readAvailableBytes(stream: inputStream)
+        guard eventCode == Stream.Event.hasSpaceAvailable,
+              let inputStream = aStream as? InputStream else {
+            return
         }
+        readAvailableBytes(stream: inputStream)
     }
 }
