@@ -61,7 +61,7 @@ class StreamManager: NSObject {
         while stream.hasBytesAvailable {
             let numberOfBytesRead = inputStream?.read(buffer, maxLength: ChatServerInfo.maxMessageLength)
             
-            if numberOfBytesRead! < 0, stream.streamError != nil {
+            guard numberOfBytesRead! >= 0, stream.streamError == nil else {
                 break
             }
             
