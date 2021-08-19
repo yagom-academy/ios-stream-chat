@@ -10,6 +10,7 @@
 		B027F9B026C390C700AA67F3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B027F9AF26C390C700AA67F3 /* .swiftlint.yml */; };
 		B027F9B926C3A84200AA67F3 /* StreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027F9B826C3A84200AA67F3 /* StreamManager.swift */; };
 		B027F9D326C3A93500AA67F3 /* StreamChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027F9D226C3A93500AA67F3 /* StreamChatTests.swift */; };
+		B03FE47B26CE206C00D7BC22 /* UnsafeMutablePointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FE47A26CE206C00D7BC22 /* UnsafeMutablePointer.swift */; };
 		B0783CFE26C605FB00902FFE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0783CFD26C605FB00902FFE /* Message.swift */; };
 		B0783D0B26C65CE400902FFE /* MessageConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0783D0A26C65CE400902FFE /* MessageConstant.swift */; };
 		B0783D1126C65CFF00902FFE /* OutgoingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0783D1026C65CFF00902FFE /* OutgoingMessage.swift */; };
@@ -43,6 +44,7 @@
 		B027F9D026C3A93500AA67F3 /* StreamChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B027F9D226C3A93500AA67F3 /* StreamChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamChatTests.swift; sourceTree = "<group>"; };
 		B027F9D426C3A93500AA67F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B03FE47A26CE206C00D7BC22 /* UnsafeMutablePointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsafeMutablePointer.swift; sourceTree = "<group>"; };
 		B0783CFD26C605FB00902FFE /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		B0783D0A26C65CE400902FFE /* MessageConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageConstant.swift; sourceTree = "<group>"; };
 		B0783D1026C65CFF00902FFE /* OutgoingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessage.swift; sourceTree = "<group>"; };
@@ -105,6 +107,14 @@
 			path = StreamChatTests;
 			sourceTree = "<group>";
 		};
+		B03FE47926CE204E00D7BC22 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B03FE47A26CE206C00D7BC22 /* UnsafeMutablePointer.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		B0783CFB26C605E200902FFE /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +140,7 @@
 				B0D4692426C4FB9E00FBA6E1 /* Application */,
 				B0783D0926C65CD100902FFE /* Constant */,
 				B0D4692726C506E400FBA6E1 /* Controllers */,
+				B03FE47926CE204E00D7BC22 /* Extension */,
 				B0783CFB26C605E200902FFE /* Model */,
 				B0D4692E26C50D7400FBA6E1 /* Services */,
 				B0D4692826C5070000FBA6E1 /* Network */,
@@ -377,6 +388,7 @@
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
 				B0783D1526C65D1800902FFE /* MessageType.swift in Sources */,
 				B0D4692B26C508F500FBA6E1 /* ChatServerInfo.swift in Sources */,
+				B03FE47B26CE206C00D7BC22 /* UnsafeMutablePointer.swift in Sources */,
 				B027F9B926C3A84200AA67F3 /* StreamManager.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
 				B0783D1126C65CFF00902FFE /* OutgoingMessage.swift in Sources */,

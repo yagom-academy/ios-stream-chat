@@ -65,10 +65,7 @@ class StreamManager: NSObject {
                 break
             }
             
-            guard let bufferString = String(bytesNoCopy: buffer,
-                                            length: numberOfBytesRead!,
-                                       encoding: .utf8,
-                                       freeWhenDone: true) else {
+            guard let bufferString = buffer.toString(length: numberOfBytesRead) else {
                 continue
             }
             delegate?.received(message: bufferString)
