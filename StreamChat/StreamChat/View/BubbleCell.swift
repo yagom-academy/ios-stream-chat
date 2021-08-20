@@ -11,6 +11,7 @@ final class BubbleCell: UITableViewCell {
     
     static let rightCellIdentifier = "RightCell"
     static let leftCellIdentifier = "LeftCell"
+    static let centerCellIdentifier = "CenterCell"
     
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var writtenDateLabel: UILabel!

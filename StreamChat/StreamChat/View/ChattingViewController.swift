@@ -85,8 +85,15 @@ extension ChattingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chat = viewModel.chatInfo(index: indexPath.row)
-        let identifier = chat.isMyMessage ? BubbleCell.rightCellIdentifier :
-            BubbleCell.leftCellIdentifier
+        let identifier: String
+        switch chat.messageType {
+        case .ownChat:
+            identifier = BubbleCell.rightCellIdentifier
+        case .otherChat:
+            identifier = BubbleCell.leftCellIdentifier
+        case .notification:
+            identifier = BubbleCell.centerCellIdentifier
+        }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier,
                                                  for: indexPath) as? BubbleCell else {
             return UITableViewCell()

@@ -27,10 +27,10 @@ final class ChattingViewModel {
                                                object: nil)
     }
     @objc private func receiveStreamData(_ notification: Notification) {
-        if let messageData = notification.object as? MessageData,
-           messageData.userName != chatting?.ownName() {
+        if let messageData = notification.object as? MessageData {
             let chatModel = ChatModel(user: messageData.userName, message: messageData.message,
-                                      writtenDate: currentWritenDate, isMyMessage: false)
+                                      writtenDate: currentWritenDate,
+                                      messageType: messageData.messageType)
             chatList.value?.append(chatModel)
         }
     }
@@ -47,7 +47,7 @@ final class ChattingViewModel {
             print(error)
         }
         let chatModel = ChatModel(user: chatting?.ownName() ?? "", message: message,
-                                  writtenDate: currentWritenDate, isMyMessage: true)
+                                  writtenDate: currentWritenDate, messageType: .ownChat)
         chatList.value?.append(chatModel)
     }
     func leaveTheChatRoom() {

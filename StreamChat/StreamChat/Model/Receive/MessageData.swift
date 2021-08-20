@@ -11,4 +11,5 @@ struct MessageData {
     
     let userName: String
     let message: String
+    let messageType: MessageType
 }

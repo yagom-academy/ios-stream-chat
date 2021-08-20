@@ -12,14 +12,12 @@ struct ChatModel {
     let user: String
     let message: String
     let writtenDate: String
-    let isMyMessage: Bool
+    let messageType: MessageType
     
-    // TODO: - Bool.random() 삭제
-    // TODO: - user: String = "" 삭제
-    init(user: String = "", message: String, writtenDate: String, isMyMessage: Bool = Bool.random()) {
+    init(user: String, message: String, writtenDate: String, messageType: MessageType) {
         self.user = user
         self.message = message
         self.writtenDate = writtenDate
-        self.isMyMessage = isMyMessage
+        self.messageType = messageType
     }
 }

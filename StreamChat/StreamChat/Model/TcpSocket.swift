@@ -11,28 +11,25 @@ final class TcpSocket: NSObject {
     
     var inputStream: InputStream?
     var outputStream: OutputStream?
-//    var data: Observable<[MessageData]> = Observable([])
     
     func connect(host: String, port: Int) {
         // TODO: - deprecated 함수에대한 변경
         Stream.getStreamsToHost(withName: host, port: port, inputStream: &inputStream,
                                 outputStream: &outputStream)
-        // Set delegate
-        inputStream!.delegate = self
-        outputStream!.delegate = self
-        
-        // Schedule
-        inputStream!.schedule(in: .main, forMode: RunLoop.Mode.default)
-        outputStream!.schedule(in: .main, forMode: RunLoop.Mode.default)
-        
+
+        inputStream?.delegate = self
+        inputStream?.schedule(in: .main, forMode: RunLoop.Mode.default)
         inputStream?.open()
+        
+        outputStream?.delegate = self
+        outputStream?.schedule(in: .main, forMode: RunLoop.Mode.default)
         outputStream?.open()
     }
     func send(data: String) {
         // FIX: - 한글은 보내지지않는 오류 -> 유니코드 설정문제로 의심됨
         outputStream?.write(data, maxLength: data.count)
     }
-    func receive(complete: @escaping ((MessageData) -> Void)) throws {
+    private func receive(complete: @escaping ((MessageData) -> Void)) throws {
         let customizedBuffer = try bufferData(totalSizeOfBuffer: StreamConstant.totalSizeOfBuffer)
         guard let receivedString = String(bytes: customizedBuffer,
                                           encoding: String.Encoding.utf8) else {
