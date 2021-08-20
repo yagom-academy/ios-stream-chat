@@ -8,5 +8,6 @@
 import UIKit
 
 struct ViewImage {
+    
     static let logo = UIImage(named: "Logo.png")
 }

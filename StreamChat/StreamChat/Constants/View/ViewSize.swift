@@ -8,5 +8,6 @@
 import Foundation
 
 struct ViewSize {
+    
     static let maximumUserName = 10
 }

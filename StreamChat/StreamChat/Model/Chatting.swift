@@ -9,45 +9,37 @@ import Foundation
 
 final class Chatting {
     
-    let tcpSocket = TcpSocket()
-    let userName: String
+    private let tcpSocket = TcpSocket()
+    private let host: String
+    private let port: Int
+    private var userName = ""
     
-    init(userName: String, host: String, port: Int) throws {
-        self.userName = userName
-        if !isStringAppropriateForStreamConnecting(string: userName) {
+    init(host: String, port: Int) {
+        self.host = host
+        self.port = port
+    }
+    func setUser(name: String) throws {
+        if !isStringAppropriateForStreamConnecting(string: name) {
             throw ChattingError.unavailableCharactersWereUsed
         }
-
-        tcpSocket.connect(host: host, port: port)
+        userName = name
     }
-    func setUser(name: String) {
-        
+    func ownName() -> String {
+        return userName
     }
     func enterTheChatRoom() {
-        tcpSocket.send(data: ChattingConstant.enterTheChatRoom(name: userName).string)
+        tcpSocket.connect(host: host, port: port)
+        tcpSocket.send(data: StreamConstant.enterTheChatRoom(name: userName).format)
     }
     func leaveTheChatRoom() {
-        tcpSocket.send(data: ChattingConstant.leaveTheChatRoom)
+        tcpSocket.send(data: StreamConstant.leaveTheChatRoom.format)
+        tcpSocket.disconnect()
     }
     func send(message: String) throws {
-        if message.count > 300 {
-            throw ChattingError.sendingMessagesIsLimitedTo300
+        if message.count > MessageIntegers.maximumNumberOfMessageCharacters {
+            throw ChattingError.sendingMessageIsLimitedToMaximum
         }
-        tcpSocket.send(data: ChattingConstant.send(message: message).string)
-    }
-    func receivedData() throws -> MessageData {
-        let customizedBuffer = try tcpSocket.receive(
-            totalSizeOfBuffer: ChattingConstant.totalSizeOfBuffer)
-        guard let receivedString = String(bytes: customizedBuffer,
-                                          encoding: String.Encoding.utf8) else {
-            throw ChattingError.failToConvertCustomizedBufferToString
-        }
-        let data = ReceivedData(receivedString: receivedString)
-        
-        return data.processedData()
-    }
-    func disconnect() {
-        tcpSocket.disconnect()
+        tcpSocket.send(data: StreamConstant.send(message: message).format)
     }
     private func isStringAppropriateForStreamConnecting(string: String) -> Bool {
         let inappropriateStrings = ["END"]

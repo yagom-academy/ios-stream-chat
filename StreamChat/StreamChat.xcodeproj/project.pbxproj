@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C61292E026CCEE930058CA1A /* DateConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61292DF26CCEE930058CA1A /* DateConstant.swift */; };
+		C623183D26C948AA0026C82F /* MessageIntegers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C623183C26C948AA0026C82F /* MessageIntegers.swift */; };
 		C6800D9126C1506400EE1778 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C6800D9026C1506400EE1778 /* .swiftlint.yml */; };
 		C6800D9326C173C900EE1778 /* TcpSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6800D9226C173C900EE1778 /* TcpSocket.swift */; };
 		C680194E26CB422400A190DB /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680194D26CB422400A190DB /* StartViewController.swift */; };
@@ -14,13 +16,24 @@
 		C680195426CB714000A190DB /* ViewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680195326CB714000A190DB /* ViewImage.swift */; };
 		C680195626CB719700A190DB /* ViewColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680195526CB719700A190DB /* ViewColor.swift */; };
 		C680195826CB746700A190DB /* ViewSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680195726CB746700A190DB /* ViewSize.swift */; };
+		C6A2B88626CBC55F00948CD0 /* ChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2B88526CBC55F00948CD0 /* ChattingViewController.swift */; };
+		C6A2B88826CBCCE500948CD0 /* ChattingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2B88726CBCCE400948CD0 /* ChattingViewModel.swift */; };
 		C6AA33EB26C3904200F26969 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA33EA26C3904200F26969 /* MessageData.swift */; };
 		C6AA33ED26C39D6400F26969 /* TcpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA33EC26C39D6400F26969 /* TcpError.swift */; };
-		C6B471D226C2E7480062B3CF /* ReceivedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B471D126C2E7480062B3CF /* ReceivedData.swift */; };
+		C6B471D226C2E7480062B3CF /* MessageDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B471D126C2E7480062B3CF /* MessageDataManager.swift */; };
+		C6B92B0426CE42A100C96F21 /* SendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B92B0326CE42A100C96F21 /* SendButton.swift */; };
+		C6B92B0626CF0DAE00C96F21 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B92B0526CF0DAE00C96F21 /* Observable.swift */; };
+		C6B92B0826CF23BC00C96F21 /* InputStreamConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B92B0726CF23BC00C96F21 /* InputStreamConstant.swift */; };
+		C6BB14B626CF602A00EAECEC /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB14B526CF602A00EAECEC /* MessageType.swift */; };
+		C6BB14BB26CF639A00EAECEC /* NotificationTyp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB14BA26CF639A00EAECEC /* NotificationTyp.swift */; };
+		C6BEA87F26CCB5D400524987 /* BubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BEA87E26CCB5D400524987 /* BubbleCell.swift */; };
+		C6BEA88126CCB60600524987 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BEA88026CCB60600524987 /* ChatModel.swift */; };
+		C6BEA88326CCB76D00524987 /* ChattingViewConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BEA88226CCB76D00524987 /* ChattingViewConstant.swift */; };
+		C6BEA88626CCBD1100524987 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BEA88526CCBD1100524987 /* DateFormatter.swift */; };
 		C6E5676426C2B0DE001782DC /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5676326C2B0DE001782DC /* Chatting.swift */; };
 		C6E5676626C2B35D001782DC /* ChattingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5676526C2B35D001782DC /* ChattingError.swift */; };
 		C6E5677426C2CFA8001782DC /* StreamChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5677326C2CFA8001782DC /* StreamChatTests.swift */; };
-		C6E5677D26C2D363001782DC /* ChattingConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5677C26C2D363001782DC /* ChattingConstant.swift */; };
+		C6E5677D26C2D363001782DC /* StreamConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E5677C26C2D363001782DC /* StreamConstant.swift */; };
 		C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927554262C562B00EF5D3A /* AppDelegate.swift */; };
 		C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7927556262C562B00EF5D3A /* SceneDelegate.swift */; };
 		C792755C262C562B00EF5D3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C792755A262C562B00EF5D3A /* Main.storyboard */; };
@@ -41,6 +54,8 @@
 /* Begin PBXFileReference section */
 		6BB33274245B6C44B64809A1 /* Pods-StreamChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.release.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.release.xcconfig"; sourceTree = "<group>"; };
 		C519B3CCF728D5E130A3795A /* Pods-StreamChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.debug.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.debug.xcconfig"; sourceTree = "<group>"; };
+		C61292DF26CCEE930058CA1A /* DateConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConstant.swift; sourceTree = "<group>"; };
+		C623183C26C948AA0026C82F /* MessageIntegers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageIntegers.swift; sourceTree = "<group>"; };
 		C6800D9026C1506400EE1778 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C6800D9226C173C900EE1778 /* TcpSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpSocket.swift; sourceTree = "<group>"; };
 		C680194D26CB422400A190DB /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -48,15 +63,26 @@
 		C680195326CB714000A190DB /* ViewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewImage.swift; sourceTree = "<group>"; };
 		C680195526CB719700A190DB /* ViewColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewColor.swift; sourceTree = "<group>"; };
 		C680195726CB746700A190DB /* ViewSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSize.swift; sourceTree = "<group>"; };
+		C6A2B88526CBC55F00948CD0 /* ChattingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewController.swift; sourceTree = "<group>"; };
+		C6A2B88726CBCCE400948CD0 /* ChattingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewModel.swift; sourceTree = "<group>"; };
 		C6AA33EA26C3904200F26969 /* MessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
 		C6AA33EC26C39D6400F26969 /* TcpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpError.swift; sourceTree = "<group>"; };
-		C6B471D126C2E7480062B3CF /* ReceivedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedData.swift; sourceTree = "<group>"; };
+		C6B471D126C2E7480062B3CF /* MessageDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDataManager.swift; sourceTree = "<group>"; };
+		C6B92B0326CE42A100C96F21 /* SendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendButton.swift; sourceTree = "<group>"; };
+		C6B92B0526CF0DAE00C96F21 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		C6B92B0726CF23BC00C96F21 /* InputStreamConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStreamConstant.swift; sourceTree = "<group>"; };
+		C6BB14B526CF602A00EAECEC /* MessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
+		C6BB14BA26CF639A00EAECEC /* NotificationTyp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTyp.swift; sourceTree = "<group>"; };
+		C6BEA87E26CCB5D400524987 /* BubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleCell.swift; sourceTree = "<group>"; };
+		C6BEA88026CCB60600524987 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		C6BEA88226CCB76D00524987 /* ChattingViewConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewConstant.swift; sourceTree = "<group>"; };
+		C6BEA88526CCBD1100524987 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		C6E5676326C2B0DE001782DC /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
 		C6E5676526C2B35D001782DC /* ChattingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingError.swift; sourceTree = "<group>"; };
 		C6E5677126C2CFA8001782DC /* StreamChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E5677326C2CFA8001782DC /* StreamChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamChatTests.swift; sourceTree = "<group>"; };
 		C6E5677526C2CFA8001782DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6E5677C26C2D363001782DC /* ChattingConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingConstant.swift; sourceTree = "<group>"; };
+		C6E5677C26C2D363001782DC /* StreamConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamConstant.swift; sourceTree = "<group>"; };
 		C7927551262C562B00EF5D3A /* StreamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7927554262C562B00EF5D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7927556262C562B00EF5D3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				C680195026CB428E00A190DB /* StartViewModel.swift */,
+				C6A2B88726CBCCE400948CD0 /* ChattingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -112,10 +139,36 @@
 		C6B471D426C2F0920062B3CF /* Receive */ = {
 			isa = PBXGroup;
 			children = (
-				C6B471D126C2E7480062B3CF /* ReceivedData.swift */,
+				C6BB14B726CF637A00EAECEC /* Type */,
+				C6B471D126C2E7480062B3CF /* MessageDataManager.swift */,
 				C6AA33EA26C3904200F26969 /* MessageData.swift */,
 			);
 			path = Receive;
+			sourceTree = "<group>";
+		};
+		C6B92B0226CE428000C96F21 /* CoreGraphics */ = {
+			isa = PBXGroup;
+			children = (
+				C6B92B0326CE42A100C96F21 /* SendButton.swift */,
+			);
+			path = CoreGraphics;
+			sourceTree = "<group>";
+		};
+		C6BB14B726CF637A00EAECEC /* Type */ = {
+			isa = PBXGroup;
+			children = (
+				C6BB14B526CF602A00EAECEC /* MessageType.swift */,
+				C6BB14BA26CF639A00EAECEC /* NotificationTyp.swift */,
+			);
+			path = Type;
+			sourceTree = "<group>";
+		};
+		C6BEA88426CCBD0100524987 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C6BEA88526CCBD1100524987 /* DateFormatter.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		C6E5676726C2CDFF001782DC /* Error */ = {
@@ -132,6 +185,8 @@
 			children = (
 				C792755A262C562B00EF5D3A /* Main.storyboard */,
 				C680194D26CB422400A190DB /* StartViewController.swift */,
+				C6A2B88526CBC55F00948CD0 /* ChattingViewController.swift */,
+				C6BEA87E26CCB5D400524987 /* BubbleCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -154,6 +209,8 @@
 				C6B471D426C2F0920062B3CF /* Receive */,
 				C6E5676326C2B0DE001782DC /* Chatting.swift */,
 				C6800D9226C173C900EE1778 /* TcpSocket.swift */,
+				C6BEA88026CCB60600524987 /* ChatModel.swift */,
+				C6B92B0526CF0DAE00C96F21 /* Observable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -171,7 +228,11 @@
 			isa = PBXGroup;
 			children = (
 				C680195226CB712D00A190DB /* View */,
-				C6E5677C26C2D363001782DC /* ChattingConstant.swift */,
+				C6E5677C26C2D363001782DC /* StreamConstant.swift */,
+				C623183C26C948AA0026C82F /* MessageIntegers.swift */,
+				C6BEA88226CCB76D00524987 /* ChattingViewConstant.swift */,
+				C61292DF26CCEE930058CA1A /* DateConstant.swift */,
+				C6B92B0726CF23BC00C96F21 /* InputStreamConstant.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -204,7 +265,9 @@
 				C6E5676826C2CE17001782DC /* View */,
 				C680194F26CB427800A190DB /* ViewModel */,
 				C6E5676726C2CDFF001782DC /* Error */,
+				C6BEA88426CCBD0100524987 /* Extension */,
 				C6E5677B26C2D33D001782DC /* Constants */,
+				C6B92B0226CE428000C96F21 /* CoreGraphics */,
 				C6E5676926C2CE5F001782DC /* SupportingFiles */,
 			);
 			path = StreamChat;
@@ -372,19 +435,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6B92B0426CE42A100C96F21 /* SendButton.swift in Sources */,
 				C680195626CB719700A190DB /* ViewColor.swift in Sources */,
-				C6E5677D26C2D363001782DC /* ChattingConstant.swift in Sources */,
+				C6E5677D26C2D363001782DC /* StreamConstant.swift in Sources */,
+				C6BEA88126CCB60600524987 /* ChatModel.swift in Sources */,
+				C6BEA88626CCBD1100524987 /* DateFormatter.swift in Sources */,
 				C6E5676626C2B35D001782DC /* ChattingError.swift in Sources */,
 				C6AA33ED26C39D6400F26969 /* TcpError.swift in Sources */,
-				C6B471D226C2E7480062B3CF /* ReceivedData.swift in Sources */,
+				C6BB14B626CF602A00EAECEC /* MessageType.swift in Sources */,
+				C6B471D226C2E7480062B3CF /* MessageDataManager.swift in Sources */,
 				C680195826CB746700A190DB /* ViewSize.swift in Sources */,
 				C680194E26CB422400A190DB /* StartViewController.swift in Sources */,
+				C61292E026CCEE930058CA1A /* DateConstant.swift in Sources */,
+				C6BEA88326CCB76D00524987 /* ChattingViewConstant.swift in Sources */,
 				C6AA33EB26C3904200F26969 /* MessageData.swift in Sources */,
+				C6A2B88626CBC55F00948CD0 /* ChattingViewController.swift in Sources */,
 				C6800D9326C173C900EE1778 /* TcpSocket.swift in Sources */,
+				C6A2B88826CBCCE500948CD0 /* ChattingViewModel.swift in Sources */,
+				C6B92B0626CF0DAE00C96F21 /* Observable.swift in Sources */,
 				C6E5676426C2B0DE001782DC /* Chatting.swift in Sources */,
 				C680195426CB714000A190DB /* ViewImage.swift in Sources */,
+				C6BEA87F26CCB5D400524987 /* BubbleCell.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
+				C623183D26C948AA0026C82F /* MessageIntegers.swift in Sources */,
+				C6BB14BB26CF639A00EAECEC /* NotificationTyp.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
+				C6B92B0826CF23BC00C96F21 /* InputStreamConstant.swift in Sources */,
 				C680195126CB428E00A190DB /* StartViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,6 +500,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = StreamChatTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -444,6 +521,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = StreamChatTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -582,12 +660,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = StreamChat/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.StreamChat;
+				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.StreamChgat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -601,12 +680,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = StreamChat/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.StreamChat;
+				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.StreamChgat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
