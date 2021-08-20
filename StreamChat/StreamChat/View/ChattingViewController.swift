@@ -22,18 +22,24 @@ final class ChattingViewController: UIViewController {
         
         tableView.dataSource = self
         addNotificationObserver()
+
+        viewModel.chatList.bind { _ in
+            if self.viewModel.numberOfChatList != 0 {
+                self.insertRow()
+            }
+        }
     }
     @IBAction func sendMessage() {
         guard let message = messageField.text, message.isEmpty == false else {
             return
         }
         viewModel.send(message: message)
-        
-        let indexPath = IndexPath(row: viewModel.numberOfChatList() - 1, section: 0)
+        messageField.text = nil
+    }
+    private func insertRow() {
+        let indexPath = IndexPath(row: viewModel.numberOfChatList - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.none)
         tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
-        
-        messageField.text = nil
     }
     private func addNotificationObserver() {
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification,
@@ -74,7 +80,7 @@ final class ChattingViewController: UIViewController {
 extension ChattingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfChatList()
+        return viewModel.numberOfChatList
     }
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,9 +91,7 @@ extension ChattingViewController: UITableViewDataSource {
                                                  for: indexPath) as? BubbleCell else {
             return UITableViewCell()
         }
-        cell.message.text = chat.message
-        cell.writtenDateLabel.textColor = ViewColor.chatTime
-        cell.writtenDateLabel.text = chat.writtenDate
+        cell.update(chat: chat)
         
         return cell
     }

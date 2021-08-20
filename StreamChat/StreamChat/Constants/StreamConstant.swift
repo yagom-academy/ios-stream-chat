@@ -24,4 +24,5 @@ enum StreamConstant {
     static let port = 5080
     static let totalSizeOfBuffer = 1024
     static let leaveTheChatRoom = "LEAVE::::END"
+    static let receiveStreamData = "ReceiveStreamData"
 }

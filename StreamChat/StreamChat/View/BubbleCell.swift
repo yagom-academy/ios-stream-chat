@@ -14,4 +14,10 @@ final class BubbleCell: UITableViewCell {
     
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var writtenDateLabel: UILabel!
+    
+    func update(chat: ChatModel) {
+        message.text = chat.message
+        writtenDateLabel.textColor = ViewColor.chatTime
+        writtenDateLabel.text = chat.writtenDate
+    }
 }

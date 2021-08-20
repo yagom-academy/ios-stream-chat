@@ -24,6 +24,9 @@ final class Chatting {
         }
         userName = name
     }
+    func ownName() -> String {
+        return userName
+    }
     func enterTheChatRoom() {
         tcpSocket.connect(host: host, port: port)
         tcpSocket.send(data: StreamConstant.enterTheChatRoom(name: userName).format)
@@ -37,17 +40,6 @@ final class Chatting {
             throw ChattingError.sendingMessagesIsLimitedTo300
         }
         tcpSocket.send(data: StreamConstant.send(message: message).format)
-    }
-    func receivedData() throws -> MessageData {
-        let customizedBuffer = try tcpSocket.receive(
-            totalSizeOfBuffer: StreamConstant.totalSizeOfBuffer)
-        guard let receivedString = String(bytes: customizedBuffer,
-                                          encoding: String.Encoding.utf8) else {
-            throw ChattingError.failToConvertCustomizedBufferToString
-        }
-        let data = ReceivedData(receivedString: receivedString)
-        
-        return data.processedData()
     }
     private func isStringAppropriateForStreamConnecting(string: String) -> Bool {
         let inappropriateStrings = ["END"]

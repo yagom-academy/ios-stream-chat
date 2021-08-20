@@ -11,9 +11,29 @@ final class ChattingViewModel {
     
     private let dateFormatter = DateFormatter()
     private var chatting: Chatting?
-    private var chatList: [ChatModel] = []
-    private var chatName: String = ""
+    var chatList: Observable<[ChatModel]> = Observable([])
+    var numberOfChatList: Int {
+        return chatList.value?.count ?? 0
+    }
+    var currentWritenDate: String {
+        return dateFormatter.convertToStringForChat(date: Date())
+    }
     
+    init() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.receiveStreamData(_:)),
+                                               name: Notification.Name(StreamConstant
+                                                                        .receiveStreamData),
+                                               object: nil)
+    }
+    @objc private func receiveStreamData(_ notification: Notification) {
+        if let messageData = notification.object as? MessageData,
+           messageData.userName != chatting?.ownName() {
+            let chatModel = ChatModel(user: messageData.userName, message: messageData.message,
+                                      writtenDate: currentWritenDate, isMyMessage: false)
+            chatList.value?.append(chatModel)
+        }
+    }
     func enterTheChatRoom() {
         chatting?.enterTheChatRoom()
     }
@@ -21,24 +41,21 @@ final class ChattingViewModel {
         self.chatting = chatting
     }
     func send(message: String) {
-        let writtenDate = dateFormatter.convertToStringForChat(date: Date())
         do {
             try chatting?.send(message: message)
         } catch {
             print(error)
         }
-        
-        let chatModel = ChatModel(message: message, writtenDate: writtenDate)
-        print("[chat message] \(chatModel.message) (\(chatModel.writtenDate))")
-        chatList.append(chatModel)
+        let chatModel = ChatModel(user: chatting?.ownName() ?? "", message: message,
+                                  writtenDate: currentWritenDate, isMyMessage: true)
+        chatList.value?.append(chatModel)
     }
     func leaveTheChatRoom() {
+        NotificationCenter.default.removeObserver(Notification.Name(StreamConstant
+                                                                        .receiveStreamData))
         chatting?.leaveTheChatRoom()
     }
-    func numberOfChatList() -> Int {
-        return chatList.count
-    }
     func chatInfo(index: Int) -> ChatModel {
-        return chatList[index]
+        return chatList.value![index]
     }
 }

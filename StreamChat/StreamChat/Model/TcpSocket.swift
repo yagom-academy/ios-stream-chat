@@ -11,27 +11,46 @@ final class TcpSocket: NSObject {
     
     var inputStream: InputStream?
     var outputStream: OutputStream?
+//    var data: Observable<[MessageData]> = Observable([])
     
     func connect(host: String, port: Int) {
         // TODO: - deprecated 함수에대한 변경
         Stream.getStreamsToHost(withName: host, port: port, inputStream: &inputStream,
                                 outputStream: &outputStream)
+        // Set delegate
+        inputStream!.delegate = self
+        outputStream!.delegate = self
+        
+        // Schedule
+        inputStream!.schedule(in: .main, forMode: RunLoop.Mode.default)
+        outputStream!.schedule(in: .main, forMode: RunLoop.Mode.default)
+        
         inputStream?.open()
         outputStream?.open()
     }
     func send(data: String) {
-        // FIX: - 한글은 보내지지않는 오류해결
+        // FIX: - 한글은 보내지지않는 오류 -> 유니코드 설정문제로 의심됨
         outputStream?.write(data, maxLength: data.count)
     }
-    func receive(totalSizeOfBuffer: Int) throws -> Data {
+    func receive(complete: @escaping ((MessageData) -> Void)) throws {
+        let customizedBuffer = try bufferData(totalSizeOfBuffer: StreamConstant.totalSizeOfBuffer)
+        guard let receivedString = String(bytes: customizedBuffer,
+                                          encoding: String.Encoding.utf8) else {
+            throw ChattingError.failToConvertCustomizedBufferToString
+        }
+        let data = ReceivedData(receivedString: receivedString).processedData()
+        print(data)
+        complete(data)
+    }
+    private func bufferData(totalSizeOfBuffer: Int) throws -> Data {
         var initializedBuffer = [UInt8](repeating: 0, count: totalSizeOfBuffer)
-        guard let bufferOfReaded = inputStream?.read(&initializedBuffer,
+        guard let bufferOfRead = inputStream?.read(&initializedBuffer,
                                                      maxLength: totalSizeOfBuffer) else {
             throw TcpError.failedToReadInputStream
         }
 
         return try customizedBufferData(buffer: initializedBuffer,
-                                        differenceOfBufferBytes: totalSizeOfBuffer - bufferOfReaded)
+                                        differenceOfBufferBytes: totalSizeOfBuffer - bufferOfRead)
     }
     func disconnect() {
         inputStream?.close()
@@ -46,6 +65,32 @@ final class TcpSocket: NSObject {
             return Data(customizedBuffer)
         } else {
             throw TcpError.noDataReceived
+        }
+    }
+}
+
+extension TcpSocket: StreamDelegate {
+    func stream(_ stream: Stream, handle eventCode: Stream.Event) {
+        if stream === inputStream {
+            switch eventCode {
+            case Stream.Event.errorOccurred:
+                InputStreamConstant.errorOccurred.printString()
+            case Stream.Event.openCompleted:
+                InputStreamConstant.openCompleted.printString()
+            case Stream.Event.hasBytesAvailable:
+                InputStreamConstant.hasBytesAvailable.printString()
+                do {
+                    try receive { data in
+                        NotificationCenter.default.post(
+                            name: Notification.Name(StreamConstant.receiveStreamData),
+                            object: data)
+                    }
+                } catch {
+                    print(error)
+                }
+            default:
+                break
+            }
         }
     }
 }
