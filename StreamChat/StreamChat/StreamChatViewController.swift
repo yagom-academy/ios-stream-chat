@@ -8,7 +8,7 @@ import UIKit
 import SnapKit
 
 final class StreamChatViewController: UIViewController {
-    private var bottomConstraint = NSLayoutConstraint()
+    private unowned var bottomConstraint = NSLayoutConstraint()
     private let tableView = UITableView()
     private let sendMessageView = SendMessageView()
 
@@ -37,11 +37,12 @@ final class StreamChatViewController: UIViewController {
 
     private func setupKeyboardWillShow() {
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification,
-                                               object: nil, queue: .main) { notification in
+                                               object: nil, queue: .main) { [weak self] notification in
             guard let userInfo = notification.userInfo else { return }
 
             guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
-                  let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
+                  let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval,
+                  let self = self else { return }
 
             self.bottomConstraint.constant = -keyboardFrame.height + 35
 
@@ -54,9 +55,10 @@ final class StreamChatViewController: UIViewController {
 
     private func setupKeyboardWillHide() {
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification,
-                                               object: nil, queue: .main) { notification in
+                                               object: nil, queue: .main) { [weak self] notification in
             guard let userInfo = notification.userInfo else { return }
-            guard let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
+            guard let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval,
+                  let self = self else { return }
 
             self.bottomConstraint.constant = 0
 
