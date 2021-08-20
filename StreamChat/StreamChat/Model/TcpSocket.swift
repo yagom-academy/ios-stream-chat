@@ -38,8 +38,7 @@ final class TcpSocket: NSObject {
                                           encoding: String.Encoding.utf8) else {
             throw ChattingError.failToConvertCustomizedBufferToString
         }
-        let data = ReceivedData(receivedString: receivedString).processedData()
-        print(data)
+        let data = MessageDataManager().convertStringToMessageData(receivedString: receivedString)
         complete(data)
     }
     private func bufferData(totalSizeOfBuffer: Int) throws -> Data {

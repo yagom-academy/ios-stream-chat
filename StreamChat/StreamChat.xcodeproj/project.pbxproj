@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C61292E026CCEE930058CA1A /* DateConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61292DF26CCEE930058CA1A /* DateConstant.swift */; };
-		C623183D26C948AA0026C82F /* Integers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C623183C26C948AA0026C82F /* Integers.swift */; };
+		C623183D26C948AA0026C82F /* MessageIntegers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C623183C26C948AA0026C82F /* MessageIntegers.swift */; };
 		C6800D9126C1506400EE1778 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C6800D9026C1506400EE1778 /* .swiftlint.yml */; };
 		C6800D9326C173C900EE1778 /* TcpSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6800D9226C173C900EE1778 /* TcpSocket.swift */; };
 		C680194E26CB422400A190DB /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680194D26CB422400A190DB /* StartViewController.swift */; };
@@ -20,7 +20,7 @@
 		C6A2B88826CBCCE500948CD0 /* ChattingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2B88726CBCCE400948CD0 /* ChattingViewModel.swift */; };
 		C6AA33EB26C3904200F26969 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA33EA26C3904200F26969 /* MessageData.swift */; };
 		C6AA33ED26C39D6400F26969 /* TcpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA33EC26C39D6400F26969 /* TcpError.swift */; };
-		C6B471D226C2E7480062B3CF /* ReceivedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B471D126C2E7480062B3CF /* ReceivedData.swift */; };
+		C6B471D226C2E7480062B3CF /* MessageDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B471D126C2E7480062B3CF /* MessageDataManager.swift */; };
 		C6B92B0426CE42A100C96F21 /* SendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B92B0326CE42A100C96F21 /* SendButton.swift */; };
 		C6B92B0626CF0DAE00C96F21 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B92B0526CF0DAE00C96F21 /* Observable.swift */; };
 		C6B92B0826CF23BC00C96F21 /* InputStreamConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B92B0726CF23BC00C96F21 /* InputStreamConstant.swift */; };
@@ -53,7 +53,7 @@
 		6BB33274245B6C44B64809A1 /* Pods-StreamChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.release.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.release.xcconfig"; sourceTree = "<group>"; };
 		C519B3CCF728D5E130A3795A /* Pods-StreamChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamChat.debug.xcconfig"; path = "Target Support Files/Pods-StreamChat/Pods-StreamChat.debug.xcconfig"; sourceTree = "<group>"; };
 		C61292DF26CCEE930058CA1A /* DateConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConstant.swift; sourceTree = "<group>"; };
-		C623183C26C948AA0026C82F /* Integers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Integers.swift; sourceTree = "<group>"; };
+		C623183C26C948AA0026C82F /* MessageIntegers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageIntegers.swift; sourceTree = "<group>"; };
 		C6800D9026C1506400EE1778 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C6800D9226C173C900EE1778 /* TcpSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpSocket.swift; sourceTree = "<group>"; };
 		C680194D26CB422400A190DB /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 		C6A2B88726CBCCE400948CD0 /* ChattingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewModel.swift; sourceTree = "<group>"; };
 		C6AA33EA26C3904200F26969 /* MessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
 		C6AA33EC26C39D6400F26969 /* TcpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpError.swift; sourceTree = "<group>"; };
-		C6B471D126C2E7480062B3CF /* ReceivedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedData.swift; sourceTree = "<group>"; };
+		C6B471D126C2E7480062B3CF /* MessageDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDataManager.swift; sourceTree = "<group>"; };
 		C6B92B0326CE42A100C96F21 /* SendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendButton.swift; sourceTree = "<group>"; };
 		C6B92B0526CF0DAE00C96F21 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		C6B92B0726CF23BC00C96F21 /* InputStreamConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStreamConstant.swift; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 		C6B471D426C2F0920062B3CF /* Receive */ = {
 			isa = PBXGroup;
 			children = (
-				C6B471D126C2E7480062B3CF /* ReceivedData.swift */,
+				C6B471D126C2E7480062B3CF /* MessageDataManager.swift */,
 				C6AA33EA26C3904200F26969 /* MessageData.swift */,
 			);
 			path = Receive;
@@ -215,7 +215,7 @@
 			children = (
 				C680195226CB712D00A190DB /* View */,
 				C6E5677C26C2D363001782DC /* StreamConstant.swift */,
-				C623183C26C948AA0026C82F /* Integers.swift */,
+				C623183C26C948AA0026C82F /* MessageIntegers.swift */,
 				C6BEA88226CCB76D00524987 /* ChattingViewConstant.swift */,
 				C61292DF26CCEE930058CA1A /* DateConstant.swift */,
 				C6B92B0726CF23BC00C96F21 /* InputStreamConstant.swift */,
@@ -428,7 +428,7 @@
 				C6BEA88626CCBD1100524987 /* DateFormatter.swift in Sources */,
 				C6E5676626C2B35D001782DC /* ChattingError.swift in Sources */,
 				C6AA33ED26C39D6400F26969 /* TcpError.swift in Sources */,
-				C6B471D226C2E7480062B3CF /* ReceivedData.swift in Sources */,
+				C6B471D226C2E7480062B3CF /* MessageDataManager.swift in Sources */,
 				C680195826CB746700A190DB /* ViewSize.swift in Sources */,
 				C680194E26CB422400A190DB /* StartViewController.swift in Sources */,
 				C61292E026CCEE930058CA1A /* DateConstant.swift in Sources */,
@@ -442,7 +442,7 @@
 				C680195426CB714000A190DB /* ViewImage.swift in Sources */,
 				C6BEA87F26CCB5D400524987 /* BubbleCell.swift in Sources */,
 				C7927555262C562B00EF5D3A /* AppDelegate.swift in Sources */,
-				C623183D26C948AA0026C82F /* Integers.swift in Sources */,
+				C623183D26C948AA0026C82F /* MessageIntegers.swift in Sources */,
 				C7927557262C562B00EF5D3A /* SceneDelegate.swift in Sources */,
 				C6B92B0826CF23BC00C96F21 /* InputStreamConstant.swift in Sources */,
 				C680195126CB428E00A190DB /* StartViewModel.swift in Sources */,
