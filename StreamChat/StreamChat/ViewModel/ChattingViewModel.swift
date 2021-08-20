@@ -27,7 +27,8 @@ final class ChattingViewModel {
                                                object: nil)
     }
     @objc private func receiveStreamData(_ notification: Notification) {
-        if let messageData = notification.object as? MessageData {
+        if let messageData = notification.object as? MessageData,
+           messageData.userName != chatting?.ownName() {
             let chatModel = ChatModel(user: messageData.userName, message: messageData.message,
                                       writtenDate: currentWritenDate,
                                       messageType: messageData.messageType)

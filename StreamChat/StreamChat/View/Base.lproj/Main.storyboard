@@ -102,6 +102,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUq-1r-Whh">
+                                                    <rect key="frame" x="73" y="32" width="414" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" name="KakaoSkyblue"/>
                                             <constraints>
@@ -111,6 +118,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="message" destination="HHZ-HD-4ol" id="fxa-fO-GEq"/>
+                                            <outlet property="name" destination="NUq-1r-Whh" id="BLp-IZ-gcN"/>
                                             <outlet property="writtenDateLabel" destination="wVx-qE-FKT" id="onS-6s-aeO"/>
                                         </connections>
                                     </tableViewCell>
@@ -121,39 +129,62 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble_left" translatesAutoresizingMaskIntoConstraints="NO" id="03x-X7-UGZ">
-                                                    <rect key="frame" x="0.0" y="3" width="76.5" height="86"/>
-                                                    <color key="tintColor" name="White"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upv-HM-BLg">
-                                                    <rect key="frame" x="35" y="11" width="29.5" height="70"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1E8-Ri-Yfv">
-                                                    <rect key="frame" x="80.5" y="78.5" width="41" height="10.5"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="9"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="qxl-6y-ZB3">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeV-pL-LTn">
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Si-nY-FKE">
+                                                            <rect key="frame" x="0.0" y="20.5" width="414" height="71.5"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble_left" translatesAutoresizingMaskIntoConstraints="NO" id="03x-X7-UGZ">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="76.5" height="71.5"/>
+                                                                    <color key="tintColor" name="White"/>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1E8-Ri-Yfv">
+                                                                    <rect key="frame" x="80.5" y="61" width="41" height="10.5"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="9"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upv-HM-BLg">
+                                                                    <rect key="frame" x="35" y="29" width="29.5" height="14"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" name="KakaoSkyblue"/>
+                                                            <constraints>
+                                                                <constraint firstItem="03x-X7-UGZ" firstAttribute="top" secondItem="2Si-nY-FKE" secondAttribute="top" id="1qX-e2-D7j"/>
+                                                                <constraint firstItem="upv-HM-BLg" firstAttribute="leading" secondItem="03x-X7-UGZ" secondAttribute="leading" constant="35" id="2oF-3S-7Am"/>
+                                                                <constraint firstItem="upv-HM-BLg" firstAttribute="trailing" secondItem="03x-X7-UGZ" secondAttribute="trailing" constant="-12" id="6x6-Eo-vX1"/>
+                                                                <constraint firstItem="upv-HM-BLg" firstAttribute="centerY" secondItem="03x-X7-UGZ" secondAttribute="centerY" id="Bha-wR-a1F"/>
+                                                                <constraint firstItem="1E8-Ri-Yfv" firstAttribute="bottom" secondItem="03x-X7-UGZ" secondAttribute="bottom" id="DA3-VU-Eb6"/>
+                                                                <constraint firstItem="03x-X7-UGZ" firstAttribute="leading" secondItem="2Si-nY-FKE" secondAttribute="leading" id="Ptn-Ot-zNL"/>
+                                                                <constraint firstItem="1E8-Ri-Yfv" firstAttribute="trailing" secondItem="upv-HM-BLg" secondAttribute="trailing" constant="57" id="YJo-hZ-bGz"/>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1E8-Ri-Yfv" secondAttribute="trailing" constant="100" id="sdB-es-IUS"/>
+                                                                <constraint firstAttribute="bottom" secondItem="03x-X7-UGZ" secondAttribute="bottom" id="wsQ-mx-ohL"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <color key="backgroundColor" name="KakaoSkyblue"/>
                                             <constraints>
-                                                <constraint firstItem="1E8-Ri-Yfv" firstAttribute="trailing" secondItem="upv-HM-BLg" secondAttribute="trailing" constant="57" id="0tR-9t-pWJ"/>
-                                                <constraint firstItem="1E8-Ri-Yfv" firstAttribute="bottom" secondItem="03x-X7-UGZ" secondAttribute="bottom" id="6ua-MD-DJt"/>
-                                                <constraint firstItem="upv-HM-BLg" firstAttribute="trailing" secondItem="03x-X7-UGZ" secondAttribute="trailing" constant="-12" id="G72-IU-oYI"/>
-                                                <constraint firstItem="upv-HM-BLg" firstAttribute="leading" secondItem="03x-X7-UGZ" secondAttribute="leading" constant="35" id="PM7-7N-YaH"/>
-                                                <constraint firstItem="03x-X7-UGZ" firstAttribute="leading" secondItem="b9b-0L-XBk" secondAttribute="leading" id="S8T-wV-X9X"/>
-                                                <constraint firstItem="upv-HM-BLg" firstAttribute="bottom" secondItem="03x-X7-UGZ" secondAttribute="bottom" constant="-8" id="WsK-1T-HoI"/>
-                                                <constraint firstItem="03x-X7-UGZ" firstAttribute="top" secondItem="b9b-0L-XBk" secondAttribute="top" constant="3" id="d36-RR-DOL"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1E8-Ri-Yfv" secondAttribute="trailing" constant="100" id="eg5-OL-sVo"/>
-                                                <constraint firstAttribute="bottom" secondItem="03x-X7-UGZ" secondAttribute="bottom" constant="3" id="fbF-i1-I56"/>
-                                                <constraint firstItem="upv-HM-BLg" firstAttribute="top" secondItem="03x-X7-UGZ" secondAttribute="top" constant="8" id="h7j-lq-mk9"/>
+                                                <constraint firstAttribute="trailing" secondItem="qxl-6y-ZB3" secondAttribute="trailing" id="Ijo-lw-eno"/>
+                                                <constraint firstItem="qxl-6y-ZB3" firstAttribute="top" secondItem="b9b-0L-XBk" secondAttribute="top" id="Nfj-PY-BOD"/>
+                                                <constraint firstAttribute="bottom" secondItem="qxl-6y-ZB3" secondAttribute="bottom" id="ciC-f6-WnL"/>
+                                                <constraint firstItem="qxl-6y-ZB3" firstAttribute="leading" secondItem="b9b-0L-XBk" secondAttribute="leading" id="dCp-NI-nWA"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="message" destination="upv-HM-BLg" id="8hl-tm-5cH"/>
+                                            <outlet property="name" destination="aeV-pL-LTn" id="GJT-dC-1Ja"/>
                                             <outlet property="writtenDateLabel" destination="1E8-Ri-Yfv" id="rT2-9p-ZYq"/>
                                         </connections>
                                     </tableViewCell>
@@ -180,6 +211,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7Q-CV-qbe">
+                                                    <rect key="frame" x="92" y="42" width="414" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" name="KakaoSkyblue"/>
                                             <constraints>
@@ -197,6 +235,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="message" destination="RZn-CX-tGD" id="ZGr-Hq-M4F"/>
+                                            <outlet property="name" destination="y7Q-CV-qbe" id="PaB-oI-6hw"/>
                                             <outlet property="writtenDateLabel" destination="UXt-Rg-ENc" id="iXv-8h-wlN"/>
                                         </connections>
                                     </tableViewCell>
