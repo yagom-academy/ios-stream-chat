@@ -8,11 +8,18 @@
 import Foundation
 
 final class StreamChat: NSObject {
+    static let shared = StreamChat()
+
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
 
-    private var username = ""
     private let maxReadLength = 4096
+    private let maxSendMessageLength = 300
+    private let receiveMessageCount = 2
+    private var myUsername = StreamDataFormat.shared.emptyUsername
+    private var chats: [Chat] = []
+
+    var delegate: StreamChatViewControllerDelegate?
 
     func setupNetworkCommunication() {
         var readStream: Unmanaged<CFReadStream>?
@@ -45,23 +52,26 @@ final class StreamChat: NSObject {
     }
 
     func joinChat(username: String) {
-        let data = "USR_NAME::\(username)::END"
-        self.username = username
-
+        self.myUsername = username
+        let data = StreamDataFormat.shared.join(data: username)
         stringToOutputStreamData(string: data)
     }
 
     func sendChat(message: String) {
-        if message.count < 300 {
-            let data = "MSG::\(message)::END"
+        if message.count < maxSendMessageLength {
+            let data = StreamDataFormat.shared.sendMessage(data: message)
 
+            chats.append(Chat(username: myUsername,
+                              message: message,
+                              identifier: .my,
+                              date: Date()))
             stringToOutputStreamData(string: data)
         } else {
             print("message limit over")
         }
     }
 
-    private func readChat(stream: InputStream) {
+    private func receiveChat(stream: InputStream) {
         let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxReadLength)
 
         while stream.hasBytesAvailable {
@@ -78,11 +88,22 @@ final class StreamChat: NSObject {
     }
 
     func stopChat() {
-        let data = "LEAVE::::END"
+        let data = StreamDataFormat.shared.leave()
 
         stringToOutputStreamData(string: data)
         inputStream?.close()
         outputStream?.close()
+
+        self.chats = []
+        self.myUsername = StreamDataFormat.shared.emptyUsername
+    }
+
+    func countChats() -> Int {
+        return chats.count
+    }
+
+    func readChats(at index: Int) -> Chat {
+        return chats[index]
     }
 }
 
@@ -91,31 +112,43 @@ extension StreamChat: StreamDelegate {
         switch eventCode {
         case .hasBytesAvailable:
             guard let inputStream = aStream as? InputStream else { return }
-            readChat(stream: inputStream)
+            receiveChat(stream: inputStream)
         case .endEncountered:
             stopChat()
         default:
             print("unknown Event")
         }
     }
-    
+
     private func processedMessagedString(buffer: UnsafeMutablePointer<UInt8>, length: Int) {
         guard let stringArray = String(bytesNoCopy: buffer,
                                        length: length,
                                        encoding: .utf8,
-                                       freeWhenDone: true)?.components(separatedBy: "::") else { return }
-        
-        if stringArray.count == 2 {
-            guard let name = stringArray.first,
-                  let message = stringArray.last else { return }
+                                       freeWhenDone: true)?
+                .components(separatedBy: StreamDataFormat.shared.divisionPoint) else { return }
 
-            print("\(name) : \(message)")
+        if stringArray.count == receiveMessageCount {
+            guard let username = stringArray.first,
+                  let message = stringArray.last,
+                  self.myUsername != username else { return }
+
+            chats.append(Chat(username: username,
+                              message: message,
+                              identifier: .other, date: Date()))
         } else {
-            guard let stringNotification = stringArray.first?.components(separatedBy: " "),
-                  let name = stringNotification.first,
-                  let joinStatus = stringNotification.last else { return }
+            guard let stringNotification = stringArray.first?
+                    .components(separatedBy: StreamDataFormat.shared.divisionNotifi),
+                  let username = stringNotification.first,
+                  let status = stringNotification.last,
+                  self.myUsername != username else { return }
 
-            print("\(name) has \(joinStatus)")
+            let notificationMessage = StreamDataFormat.shared.notificationMessage(username: username,
+                                                                                  status: status)
+            chats.append(Chat(username: username,
+                              message: notificationMessage,
+                              identifier: .notification,
+                              date: Date()))
         }
+        delegate?.insertMessage()
     }
 }
